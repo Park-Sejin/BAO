@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="3.1" id="WebApp_ID"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<display-name>BAO</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+
+	<!-- 톰캣 맵핑정보를 읽어서 해당 주소로 서블릿 객체 정보를 연결(요청) -->
+	<servlet>
+		<servlet-name>MemberFrontController</servlet-name>
+		<servlet-class>member.action.MemberFrontController</servlet-class>
+	</servlet>
+
+	<!-- 이름에 해당하는 요청에 들어왔을경우 서블릿을 연결 -->
+	<!-- http://서버주소:포트번호/어플리케이션이름(프로젝트이름)/myServlet -->
+	<servlet-mapping>
+		<servlet-name>MemberFrontController</servlet-name>
+		<url-pattern>*.bo</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!-- 디비연결 -->
+	<resource-ref>
+		<description>BAO</description>
+		<res-ref-name>jdbc/bao</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+
+</web-app>

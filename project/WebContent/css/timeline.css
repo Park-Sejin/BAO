@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+article {
+	border: 1px solid;
+	
+}
+
+div#title {
+	background-color: #f66;
+	border: 1px solid;
+}
