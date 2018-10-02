@@ -2,10 +2,26 @@
 
 article {
 	border: 1px solid;
-	
+	margin: 100px 200px;
+	width: 700px;
+	height: 1000px;
 }
 
 div#title {
 	background-color: #f66;
 	border: 1px solid;
+	width: 700px;
+	height: 70px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 70px;
+}
+
+div#title span#time_left {
+	margin: 0 0 0 10px;
+}
+div#title span#time_right {
+	float: right;
+	margin: 0 10px 0 0;
 }
