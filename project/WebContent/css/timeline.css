@@ -1,15 +1,27 @@
 @CHARSET "UTF-8";
 
-article {
-	border: 1px solid;
-	margin: 100px 200px;
+body {
+	background-color: #f6f6f6;
+}
+
+article#timeline {
+	margin: 100px auto;
 	width: 700px;
 	height: 1000px;
+	
+}
+
+div#mar_btm {
+	margin-bottom: 10px;
+}
+
+
+div#report {
+	background-color: #fff;
 }
 
 div#title {
 	background-color: #f66;
-	border: 1px solid;
 	width: 700px;
 	height: 70px;
 	color: #fff;
@@ -19,9 +31,87 @@ div#title {
 }
 
 div#title span#time_left {
-	margin: 0 0 0 10px;
+	margin: 0 0 0 20px;
 }
 div#title span#time_right {
 	float: right;
-	margin: 0 10px 0 0;
+	margin: 0 20px 0 0;
 }
+
+div#chart_title {
+	font-size: 13px;
+    color: #555;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+}
+
+a#chart_up {
+    width: 50px;
+    height: 50px;
+    background-image: url(../img/timeline/chart_up.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    float: right;
+}
+
+
+div#chart {
+	width: 670px;
+	height: 225px;
+}
+
+div#chart_cir { /* 업무 리포트 보기(그림) */
+	width: 400px;
+    height: 225px;
+    float: left;
+    
+    text-align: center;
+    line-height: 225px;
+}
+
+/* -------------------------------------------업무 리포트 리스트 부분(요청, 진행, ... 등등 */
+
+ul#chart_list { /* 업무 리포트 보기(리스트) */
+	float: right;
+    padding-top: 0px;
+    width: 170px;
+    box-sizing: border-box;
+    list-style: none;
+    margin: 0 70px 0 0;
+    padding: 0;
+}
+
+ul#chart_list li{
+	position: relative;
+    cursor: pointer;
+    padding: 10px 0 0 20px;
+    height: 40px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px solid #e7e7e7;
+    box-sizing: border-box;
+    text-align: -webkit-match-parent;
+}
+
+ul#chart_list span { /* 동그라미 */
+	display: inline-block;
+    vertical-align: top;
+    margin-top: 4px;
+    margin-right: 8px;
+    width: 15px;
+    height: 12px;
+    border-radius: 6px;
+}
+
+ul#chart_list span.chart1:NTH-OF-TYPE(2n-1) { background-color: #4aaefb; }
+ul#chart_list span.chart2:NTH-OF-TYPE(2n-1) { background-color: #50b766; }
+ul#chart_list span.chart3:NTH-OF-TYPE(2n-1) { background-color: #f17a19; }
+ul#chart_list span.chart4:NTH-OF-TYPE(2n-1) { background-color: #2e417e; }
+ul#chart_list span.chart5:NTH-OF-TYPE(2n-1) { background-color: #aeaeae; }
+
+ul#chart_list span.chart1:NTH-OF-TYPE(2n) { color: #4aaefb; margin: 0 0 0 30px;}
+ul#chart_list span.chart2:NTH-OF-TYPE(2n) { color: #50b766; margin: 0 0 0 30px;}
+ul#chart_list span.chart3:NTH-OF-TYPE(2n) { color: #f17a19; margin: 0 0 0 16px;}
+ul#chart_list span.chart4:NTH-OF-TYPE(2n) { color: #2e417e; margin: 0 0 0 30px;}
+ul#chart_list span.chart5:NTH-OF-TYPE(2n) { color: #aeaeae; margin: 0 0 0 30px;}
