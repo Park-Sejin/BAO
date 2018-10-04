@@ -25,7 +25,7 @@
 	<!-- http://서버주소:포트번호/어플리케이션이름(프로젝트이름)/myServlet -->
 	<servlet-mapping>
 		<servlet-name>MemberFrontController</servlet-name>
-		<url-pattern>*.bo</url-pattern>
+		<url-pattern>*.me</url-pattern>
 	</servlet-mapping>
 
 

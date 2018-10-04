@@ -1,0 +1,183 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #f6f6f6;
+}
+
+
+.content {
+   position: relative;
+   padding: 10px 0 6opx 36px;
+   min-height: 650px;
+   margin: 120px 300px 0 570px;
+}
+
+.left {
+   position: relative;
+   z-index: 100;
+   font-weight: bold;
+   font-size: 18px;
+   color: #111;
+   margin-right: 10px;
+}
+
+.right {
+   position: absolute;
+   top: 11px;
+   right: 0;
+   z-index: 900;
+   font-size: 14px;
+   color: #333;
+}
+
+.myset {
+   position: relative;
+   cursor: pointer;
+}
+
+.btn_pj_work {
+   position: relative;
+   height: 244px;
+   width: 245px;
+   margin-top: 20px;
+   margin-bottom: 12px;
+   margin-right: 10px;
+   text-align: center;
+   border: 1px dashed #aeabd8;
+   border-radius: 5px;
+   background-color: #f9f9f9;
+   display: inline-block;
+   text-align: center;
+   line-height: 244px;
+   color: #5f5ab9;
+   font-weight: bold;
+   font-size: 18px;
+   background: url("img/content/ico_plus.png") no-repeat;
+   background-position: center 70px;
+   cursor: pointer;
+}
+
+.collabo_list {
+   position: absolute;
+   float: left;
+   height: 244px;
+   width: 245px;
+   margin-top: 20px;
+   margin-bottom: 12px;
+   border-radius: 5px;
+   background-color: #fff;
+   display: inline;
+   text-align: center;
+   color: #fff;
+   font-weight: bold;
+   font-size: 18px;
+   border-bottom: 1px solid #d9d9d9;
+}
+
+.collabo_title {
+   cursor: pointer;
+   margin: 0 0 15px 0;
+   min-height: 113px;
+   background-color: #5593e7;
+   position: relative;
+   border-radius: 4px 4px 0 0;
+   line-height: 140px;
+}
+
+.collabo_title_txt {
+   margin: 0 25px 0 25px;
+   text-align: center;
+   text-overflow: inherit;
+}
+
+.star {
+   top: -5px;
+   left: 20px;
+   height: 70px;
+   position: absolute;
+   width: 20px;
+   background: url("img/content/btn_bookmark_offc81e.png") no-repeat 0 center;
+}
+
+.big_num {
+   display: inline-block;
+   vertical-align: middle;
+   height: 22px;
+   line-height: 20px;
+   padding: 0 6px;
+   font-family: Verdana;
+   font-weight: bold;
+   font-size: 14px;
+   color: #fff;
+   letter-spacing: -1px;
+   text-align: center;
+   border-radius: 11px;
+   background-color: #d64648;
+   position: absolute;
+   top: -6px;
+   right: -6px;
+}
+
+.ico_comy {
+   background: url("img/content/ico_compy_onc81e.png") no-repeat;
+   width: 20px;
+   height: 20px;
+   display: inline-block;
+   margin-top: 8px;
+   margin-right: 20px;
+   vertical-align: top;
+}
+
+.folow_user_list {
+   position: relative;
+   margin: 10px 0 15px 0;
+}
+
+.rd_li {
+   display: inline-block;
+   vertical-align: middle;
+   width: 30px;
+   height: 30px;
+   line-height: 30px;
+   text-align: center;
+   font-size: 9px;
+   color: #111;
+   font-weight: bold;
+   letter-spacing: -1px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
+   border: 1px solid #d3d3d3;
+   border-radius: 16px;
+   background-color: #f0f1f3;
+}
+
+.userli_num {
+   position: relative;
+   top: 0;
+   right: 0;
+   padding: 0;
+   margin-top: 10px;
+   font-size: 14px;
+   color: #a2a2a2;
+   text-align: center;
+   background: none;
+}
+
+.btn_btmfix {
+   z-index: 13001;
+   position: fixed;
+   bottom: 10px;
+   right: 10px;
+   min-width: 100px;
+   height: 48px;
+   line-height: 46px;
+   padding: 0 20px;
+   color: #fff;
+   font-weight: bold;
+   font-size: 16px;
+   text-align: center;
+   border-radius: 48px;
+   background-color: #6661c1;
+   cursor: pointer;
+}

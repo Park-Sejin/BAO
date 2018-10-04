@@ -9,7 +9,15 @@
 		<link href="css/timeline.css" rel="stylesheet" type="text/css">
 		
 	</head>
+	
 	<body>
+		
+		<jsp:include page="right_menu.jsp"></jsp:include>
+		<jsp:include page="LeftHeader.jsp"></jsp:include>
+		<jsp:include page="top3.jsp"></jsp:include>
+		
+		
+		
 		<article id="timeline">
 			<div id="title">
 				<span id="time_left">
@@ -21,8 +29,8 @@
 					<img src=""style="border: 1px solid; width: 10px; height: 10px;">
 				</span>
 			</div>
-			
 			<div id="mar_btm"></div>
+			
 			
 			<div id="report">
 				<div id="chart_title">
@@ -45,6 +53,45 @@
 					</ul>
 				</div>
 			</div>
+			<div id="mar_btm"></div>
+			
+			
+			<div id="time_write">
+				<ul>
+					<li><a>글</a></li>
+					<li><a>업무</a></li>
+					<li><a>일정</a></li>
+					<li><a>할일</a></li>
+				</ul>
+				
+				
+				
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		
 		</article>
 	</body>

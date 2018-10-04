@@ -24,14 +24,19 @@ public class MemberFrontController extends HttpServlet{
     	
     	
     	// 가상주소를 비교해서 페이지 처리
-    	if(command.equals("/member.bo")){ 
+    	if(command.equals("/login.me")){ 
     		
     		forward = new ActionForward();
-    		forward.setPath("./member/insertForm.jsp");
+    		forward.setPath("./member/login.jsp");
     		forward.setRedirect(false);
     		
-    	}else if(command.equals("/insertAction.bo")){
-    		action = new insertAction();
+    	}else if(command.equals("/join.me")){
+    		forward = new ActionForward();
+    		forward.setPath("./member/join.jsp");
+    		forward.setRedirect(false);
+    		
+    	}else if(command.equals("/MemberJoinAction.me")){
+    		action = new MemberJoinAction();
     		
     		try {
 				forward = action.execute(request, response);

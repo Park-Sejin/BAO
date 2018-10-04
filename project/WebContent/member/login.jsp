@@ -6,16 +6,16 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
 		
-		<link href="../css/login.css" rel="stylesheet" type="text/css">
+		<link href="./css/login.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<header>
 			<div id="log_head">
-				<img src="../img/login/logo.png" width="135" height="50" id="log_logo_img">
+				<img src="./img/login/logo.png" width="135" height="50" id="log_logo_img">
 				<span id="log_logo">로그인</span>
 				<div id="head_btn">
 					<a href="">모바일 앱 설치</a>
-					<a href="">회원가입</a>
+					<a href="./join.me">회원가입</a>
 				</div>
 			</div>
 		</header>

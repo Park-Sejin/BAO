@@ -5,20 +5,16 @@ body {
 }
 
 article#timeline {
-	margin: 100px auto;
+	margin: 120px 300px 0 570px;
 	width: 700px;
 	height: 1000px;
-	
+	position: static;
 }
 
-div#mar_btm {
-	margin-bottom: 10px;
-}
+div#mar_btm { margin-bottom: 10px; }
 
-
-div#report {
-	background-color: #fff;
-}
+/* --------------------------------------------------------------업무공유방 부분*/
+div#report { background-color: #fff; }
 
 div#title {
 	background-color: #f66;
@@ -38,6 +34,8 @@ div#title span#time_right {
 	margin: 0 20px 0 0;
 }
 
+
+/* -----------------------------------------------------------업무리포트 보기 부분*/
 div#chart_title {
 	font-size: 13px;
     color: #555;
@@ -49,7 +47,7 @@ div#chart_title {
 a#chart_up {
     width: 50px;
     height: 50px;
-    background-image: url(../img/timeline/chart_up.png);
+    background-image: url(./img/timeline/chart_up.png);
     background-repeat: no-repeat;
     background-position: center center;
     float: right;
@@ -61,7 +59,9 @@ div#chart {
 	height: 225px;
 }
 
-div#chart_cir { /* 업무 리포트 보기(그림) */
+
+/* ---------------------------------------------------------업무 리포트 보기(그림)*/
+div#chart_cir { 
 	width: 400px;
     height: 225px;
     float: left;
@@ -71,7 +71,6 @@ div#chart_cir { /* 업무 리포트 보기(그림) */
 }
 
 /* -------------------------------------------업무 리포트 리스트 부분(요청, 진행, ... 등등 */
-
 ul#chart_list { /* 업무 리포트 보기(리스트) */
 	float: right;
     padding-top: 0px;
@@ -115,3 +114,39 @@ ul#chart_list span.chart2:NTH-OF-TYPE(2n) { color: #50b766; margin: 0 0 0 30px;}
 ul#chart_list span.chart3:NTH-OF-TYPE(2n) { color: #f17a19; margin: 0 0 0 16px;}
 ul#chart_list span.chart4:NTH-OF-TYPE(2n) { color: #2e417e; margin: 0 0 0 30px;}
 ul#chart_list span.chart5:NTH-OF-TYPE(2n) { color: #aeaeae; margin: 0 0 0 30px;}
+
+
+
+/* -------------------------------------------------------------글 작성 부분 */
+
+div#time_write{ background-color: #fff;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

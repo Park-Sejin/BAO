@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+.LeftHeaderBody{
+   margin-left:-8px;
+   height: 3000px;
+   position: fixed;
+   display: block;
+   float: left;
+   width: 550px;
+   border-color: black;
+   background-color:#F6F6F6;
+   align:right;
+}
+
+.LeftHeaderSub{
+   margin-left:350px;
+}
+
+
+.LeftMenuTb{
+   text-align:left; 
+   color:#575757;
+   cursor:pointer;
+}
+.LeftMenuTr{
+   height:40px;
+}
+
+.LeftMenuTb:hover{
+   background-color:#D5D5D5;
+   
+}
