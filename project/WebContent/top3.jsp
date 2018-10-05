@@ -32,21 +32,22 @@
 </head>
 <body>
 	<div class="service_header">
-		<div style="margin-left: 350px;">
+		<div style="margin-left: 406px; margin-top:10px; ">
 			<table>
 				<tr>
-					<td width="100px"><a href=""><img src="img/top_header/logo.png"
-							width="75px" height="75px"></a></td>
+					<td width="370px"><a href=""><img src="img/top_header/logo.png"
+							width="50px" height="50px"></a></td>
 					<td>
 						<form action="">
-							<input type="text" id="okff" size="80" style="line-height: 40px;"
+							<input type="text"  size="80" 
+							style="line-height: 40px; border:none; border-bottom:1.5px solid silver;"
 								placeholder="전체에서 검색"> <input type="submit" class="hide">
 						</form>
 					</td>
-					<td width="400px"></td>
+					<td width="500px"></td>
 					<td>
 						<div class="test1">
-							<a><img src="img/top_header/ico_top_alram_offc4ca.png"></a>
+							<a><img src="img/top_header/ico_top_alram_offc4ca.png" ></a>
 							<div id="aa1">
 								<a>채팅</a> <a>연락처</a> <a>+</a>
 								<hr>

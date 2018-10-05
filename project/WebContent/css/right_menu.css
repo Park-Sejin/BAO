@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 
 div#rightMenuBox {
-   margin-left: 680px;
-   float: right;
-   width: 900px;
+	margin-left: 680px;
+	float: right;
+	width: 900px;
     position: fixed;
 }
 
@@ -225,7 +225,7 @@ a:hover, a:active {
 }
 
 .part_title h5 {
-   display: block;
+	display: block;
     font-size: 12px;
     font-weight: normal;
     color: #a2a2a2;
@@ -299,6 +299,7 @@ a:hover, a:active {
     background-repeat: no-repeat;
     background-position: center center;
 }
+
 
 
 
