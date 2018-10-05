@@ -11,7 +11,7 @@
 	<body>
 		<header>
 			<div id="log_head">
-				<img src="./img/login/logo.png" width="135" height="50" id="log_logo_img">
+				<img src="./img/login/logo.png" width="50" height="50" id="log_logo_img">
 				<span id="log_logo">로그인</span>
 				<div id="head_btn">
 					<a href="">모바일 앱 설치</a>
@@ -22,12 +22,12 @@
 	
 		<article>
 		
-		<form action="" method="post" id="login">
+		<div id="login">
 			<input type="text" name="id" placeholder="이메일 또는 아이디" id="text"><br>
 			<input type="password" name="pass" placeholder="비밀번호"  id="text"><br>
 			<input type="checkbox" name="check" id="check"> 자동 로그인<br><br><br>
 			
-			<input type="submit" value="로그인" id="submit"><br>
+			<input type="button" value="로그인" id="submit"><br>
 			
 			<div id="lost"><a href="">비밀번호를 잊어버리셨나요?</a></div>
 			
@@ -39,7 +39,7 @@
 		
 			<input type="button" value="카카오계정으로 시작하기" id="btn_k"><br>
 			<input type="button" value="구글계정으로 시작하기" id="btn_g"><br>
-		</form>
+		</div>
 		
 		
 	

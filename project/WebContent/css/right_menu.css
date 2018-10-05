@@ -1,9 +1,10 @@
 @CHARSET "UTF-8";
 
 div#rightMenuBox {
-	margin: 0 430px 0 0;
-	float: right;
-	width: 900px;
+   margin-left: 680px;
+   float: right;
+   width: 900px;
+    position: fixed;
 }
 
 
@@ -26,7 +27,6 @@ li { display: list-item;}
 
 .aside_wrap {
     float: right;
-    position: fixed;
     margin-left: 730px;
     width: 276px;
     height: 300px;
@@ -42,7 +42,7 @@ a.btn_listback {
     text-indent: 54px;
     color: #5f5ab9;
     font-weight: bold;
-    background-image: url(./img/right_menu/btn_listback.gif);
+    background-image: url(../img/right_menu/btn_listback.gif);
 }
 
 a.btn_listback:hover { background-image:url(../img/right_menu/btn_listback_overc4ca.gif);}
@@ -97,7 +97,7 @@ a.btn_listback:hover { background-image:url(../img/right_menu/btn_listback_overc
     color: #444;
     text-align: center;
     letter-spacing: -1px;
-    background-image: url(./img/right_menu/icon_aside1679.png?6);
+    background-image: url(../img/right_menu/icon_aside1679.png?6);
     background-color: none;
     background-repeat: no-repeat;
 }
@@ -131,7 +131,7 @@ a.btn_listback:hover { background-image:url(../img/right_menu/btn_listback_overc
     width: 25px;
     height: 16px;
     background-repeat: no-repeat;
-    background-image: url(./img/right_menu/ico_invite.png?3);
+    background-image: url(../img/right_menu/ico_invite.png?3);
 }
 
 .all_aplct_title {
@@ -225,7 +225,7 @@ a:hover, a:active {
 }
 
 .part_title h5 {
-	display: block;
+   display: block;
     font-size: 12px;
     font-weight: normal;
     color: #a2a2a2;
@@ -285,11 +285,11 @@ a:hover, a:active {
 }
 
 .participant_wrap ul li .btn_right a.chat.on, .participant_wrap ul li .btn_right a.chat:hover {
-    background-image: url(./img/right_menu/btn_s_rightchat_on.png);
+    background-image: url(../img/right_menu/btn_s_rightchat_on.png);
 }
 
 .participant_wrap ul li .btn_right a.chat {
-    background-image: url(./img/right_menu/btn_s_rightchat_off.png);
+    background-image: url(../img/right_menu/btn_s_rightchat_off.png);
 }
 
 .participant_wrap ul li .btn_right > a.btn { /* 채팅버튼 */
@@ -299,7 +299,6 @@ a:hover, a:active {
     background-repeat: no-repeat;
     background-position: center center;
 }
-
 
 
 

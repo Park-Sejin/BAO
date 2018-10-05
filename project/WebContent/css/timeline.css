@@ -47,7 +47,7 @@ div#chart_title {
 a#chart_up {
     width: 50px;
     height: 50px;
-    background-image: url(./img/timeline/chart_up.png);
+    background-image: url(../img/timeline/chart_up.png);
     background-repeat: no-repeat;
     background-position: center center;
     float: right;
