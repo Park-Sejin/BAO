@@ -1,0 +1,103 @@
+@CHARSET "UTF-8";
+
+div#clear {
+   clear: both;
+}
+
+/* ---------------------------------------------------chat head */
+div#chat_top {
+   height: 80px;
+   font-size: 20px;
+   color: #fff;
+   font-weight: bold;
+   text-align: center;
+   line-height: 80px;
+   background-color: #561dad;
+}
+
+img#chat_menu {
+   float: right;
+   width: 50px;
+   height: 50px;
+   margin: 15px 15px;
+}
+
+
+/* ----------------------------------------------------chat 본문 */
+div#chat_boay {
+   height: 720px;
+}
+
+fieldset{
+   border-top: 1px solid #333;
+   border-bottom: none;
+   border-left: none;
+   border-right: none;
+}
+
+fieldset>legend {
+   text-align: center;
+   margin: 10px auto;
+   padding: 0 20px;
+}
+
+/* ---------------------------------------------------chat 대화상자 */
+div#chat_receive { /* 메세지 받은 사람 */
+   float: right;
+   padding: 15px;
+}
+div#chat_receive span#chat_msg {
+   border: 1px solid #d6c0f8;
+   padding: 12px;
+   border-radius:10px;
+   background-color: #d6c0f8;
+}
+
+div#chat_send { /* 메세지 보낸 사람 */
+   float: left;
+   padding: 15px;
+}
+div#chat_send span#chat_msg {
+   border: 1px solid #f9bfef;
+   padding: 12px;
+   border-radius:10px;
+   background-color: #f9bfef;
+}
+
+/* ------------------------------------------------ 메세지 입력 창*/
+div#chat_clip {
+   height: 50px;
+   background-color: #eee;
+}
+
+div#chat_clip img {
+   width: 30px;
+   height: 30px;
+   margin: 10px;
+}
+
+textarea {
+   border: none;
+   padding: 5px;
+}
+
+div#chat_btn {
+   float: right;
+   padding: 30px 25px;
+   background-color: #ddd;
+   color: #fff;
+   font-weight: bold;
+   margin-top: 3px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
