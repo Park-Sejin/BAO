@@ -51,7 +51,7 @@
                <span id="chat_msg">잔다</span>
             </div>
             
-         </fieldset>
+         </fieldset>dd
       </div>
       
       
