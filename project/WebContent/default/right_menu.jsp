@@ -3,10 +3,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<link href="css/right_menu.css" rel="stylesheet">
-
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Insert title here</title>
+	<link href="css/right_menu.css" rel="stylesheet">
+	<link href="css/profile_popup.css" rel="stylesheet">
+	
 </head>
 <body>
 
@@ -60,10 +61,10 @@
 					<ul id="sendienceAdminUl" style="display: block;">
 						<li>
 							<div class="photo">
-								<img src="img/right_menu/img_photo_null32.png" style="">
+								<img src="./img/right_menu/img_photo_null32.png" style="">
 							</div>
-							<div class="username">
-								<a onclick="">이름이름</a>
+							<div class="username" id="menu_profile">
+								<a href="#">이름이름</a>
 							</div>
 							<div class="btn_right">
 								<a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
@@ -100,6 +101,62 @@
 		</div>
 	</div>
 	<!-- //aside -->
+	
+	
+	
+	
+	<!-- 팝업창 div -->
+	<div id="profile_div" class="modal">
+		<div id="profilePopup" class="prdbx_wrap" style="top: 50%; left: 50%; width: 400px; height: 672px; z-index: 9100; position: fixed; margin-top: -336px; margin-left: -200px; ">
+			<div class="prof_bx">
+				<div class="prof_thumb">
+					<span class="bg"></span>
+					<a class="btn_close" id="inviteBoxClose" title="닫기"></a>
+					<img id="PRFL_PHTG" src="./img/right_menu/img_photo_null_for_prfl.png" alt="" onerror="this.src='/design2/img_rn/img_photo_null_for_prfl.png'" style="object-fit: cover; height: 400px; width: 400px;">
+				</div>
+				<div class="prof_info">
+					<div class="prof_top">
+						<h2>
+							<span id="FLNM">박수진</span><span id="JBCL_NM" style="font-size: 20px; color: #969696; margin-left: 10px;"></span>
+						</h2>
+						<p id="CMNM">BAO</p>
+						<a id="EDIT" class="ico_mod" style="display: none;"></a>
+					</div>
+					<div class="prof_cn">
+						<p id="EML" style="visibility: visible;">sjin0425@naver.com</p>
+						<p id="CLPH_NO" style="visibility: hidden;"></p>
+						<p id="CMPN_TLPH_NO" style="visibility: hidden;"></p>
+					</div>
+					<div class="prof_btn">
+						<a id="CHAT" class="btn_prd_sty1_b"><span>채팅하기</span></a> <a id="PROFILE_EDIT" class="btn_prd_sty1" style=""><span style="color: #28272c">프로필 수정</span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+			var profile = document.getElementById('profile_div');
+			var btn = document.getElementById('menu_profile');
+			
+			
+			btn.onclick = function() {
+				profile.style.display = "block";
+			}
+			
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+			    if (event.target == profile) {
+			    	profile.style.display = "none";
+			    }
+			}
+	</script>
+	
+	
+	
+	
+	
+	
 	
 </body>
 </html>

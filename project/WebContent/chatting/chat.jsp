@@ -11,7 +11,7 @@
       <div id="chat_top">
          운영자
          <img src="../img/login/logo.png" alt="바꿔야함" id="chat_menu">
-      </div>
+      </div><br>
       
       
       <div id="chat_boay">
