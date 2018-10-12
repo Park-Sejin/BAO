@@ -6,7 +6,6 @@ article {
    background-color: #f0f0f0;
    margin-left:-10px;
    margin-right:-10px;
-   
 }
 
 /* --------------------------------------------------------------------------로그인 해더 */
@@ -15,10 +14,12 @@ header {
    margin-left:-10px; margin-right:-10px;
    border-bottom:1px solid #b9babf;
 }
+
 header div#log_head {
    margin-top:5px;
    margin-left:400px;
 }
+
 header span#log_logo {
    border-left: 2px solid #ddd;
    font-size: 28px;
@@ -51,8 +52,6 @@ header div#head_btn{
    position: absolute;
 }
 
-
-
 .btn-1 {
   background: #FFB9B9;
   border: 3px solid #fff;
@@ -62,10 +61,7 @@ header div#head_btn{
   font-weight: bold;
   padding: 0.5em 1em;
   text-transform: uppercase;
-  
 }
-
-
 
 .btn-1:hover {
   color: #FFB9B9;
@@ -95,7 +91,7 @@ header div#head_btn{
 
 /*--------------------------------------------------------------------------로그인본문*/
 
-div#login {
+form#login {
    margin: 80px 200px;
    padding: 40px 60px;
    width: 380px;
@@ -105,7 +101,7 @@ div#login {
    box-shadow:0px 0px 4px 1.5px #D5D5D5;
 }
 
-div#login input#join_NameTxt,div#login input#join_EmailTxt ,div#login input#join_PassTxt,div#login input#log_EmailTxt ,div#login input#log_PassTxt {
+form#login input#join_NameTxt,form#login input#join_EmailTxt ,form#login input#join_PassTxt,form#login input#log_EmailTxt ,form#login input#log_PassTxt {
    width: 350px;
    height: 50px;
    border: none;
@@ -116,7 +112,7 @@ div#login input#join_NameTxt,div#login input#join_EmailTxt ,div#login input#join
    font-weight: bold;
    background-color: #f7f7f7;
 }
-div#login input#submit{
+form#login input#submit{
    width: 370px;
    height: 60px;
    border: none;
@@ -124,41 +120,42 @@ div#login input#submit{
    margin: 0 0 10px 0;
    font-size: 18px;
    color: #fff;
+   background-color: #cccdd0;
 }
 
-div#login input#check {
+form#login input#check {
    background-color: #fff;
 }
 
-div#login #login_line>fieldset{
+form#login #login_line>fieldset{
    width: 345px;
    border-top: 1px solid #aaa;
    border-bottom: none;
    border-left: none;
    border-right: none; 
 }
-div#login #login_line legend{
+form#login #login_line legend{
    text-align: center;
    padding: 10px 40px;
 }
 
-div#login input#btn_k{
+form#login input#btn_k{
    width: 370px;
    height: 50px;
    border: none;
-   background-color: #ff0;
+   background-color: #ffe600;
    margin: 0 0 5px 0;
    border: 1px solid #eee;
-   
 }
 
-div#login div#lost{ 
+form#login div#lost{ 
    margin: 10px 100px;
    font-size: 14px;
 }
-div#login a{ color: #333; }
 
-div#login input#btn_g{
+form#login a{ color: #333; }
+
+form#login input#btn_g{
    width: 370px;
    height: 50px;
    border: none;
@@ -166,7 +163,52 @@ div#login input#btn_g{
    border: 1px solid #eee;
 }
 
+/*비밀번호찾기본문--------------------------------------------------------------------------*/
+h1 {
+	margin-top: 140px;
+	margin-bottom: 15px;
+	font-size: 26px;
+	font-weight: normal;
+	color: #5f5ab9;
+	text-align: center;
+}
 
+div#find_text {
+	font-size: 14px;
+	color: #969696;
+	text-align: center;
+}
 
+form#find {
+	margin: 80px 200px;
+	padding: 40px 60px;
+	width: 380px;
+	height: 160px;
+	background-color: #f7f7f7;
+	margin: 50px auto 90px auto;
+	box-shadow:0px 0px 4px 1.5px #D5D5D5;
+}
 
+form#find input#find_EmailTxt {
+	width: 350px;
+	height: 50px;
+	border: none;
+	padding: 0 10px;
+	border-bottom: 1px solid #ddd;
+	margin: 0 0 8px 0;
+	font-size: 15px;
+	font-weight: bold;
+	background-color: #f7f7f7;
+}
+
+form#find input#find_submit {
+	width: 370px;
+	height: 60px;
+	border: none;
+	padding: 0 10px;
+	margin: 0 0 10px 0;
+	font-size: 18px;
+	color: #fff;
+	background-color: #cccdd0;
+}
 

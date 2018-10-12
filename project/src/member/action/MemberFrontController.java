@@ -24,26 +24,37 @@ public class MemberFrontController extends HttpServlet{
     	
     	
     	// 가상주소를 비교해서 페이지 처리
-    	if(command.equals("/login.me")){ 
-    		
+    	if(command.equals("/Login.me")){ 
     		forward = new ActionForward();
     		forward.setPath("./member/login.jsp");
     		forward.setRedirect(false);
     		
-    	}else if(command.equals("/join.me")){
+    	} else if(command.equals("/MemberLoginAction.me")){
+    		action = new MemberLoginAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    		
+    	} else if(command.equals("/Join.me")){
     		forward = new ActionForward();
     		forward.setPath("./member/join.jsp");
     		forward.setRedirect(false);
     		
-    	}else if(command.equals("/MemberJoinAction.me")){
+    	} else if(command.equals("/MemberJoinAction.me")){
     		action = new MemberJoinAction();
-    		
     		try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
-				
 				e.printStackTrace();
 			}
+    		
+    	} else if(command.equals("/FindPassword.me")){
+    		forward = new ActionForward();
+    		forward.setPath("./member/findPassword.jsp");
+    		forward.setRedirect(false);
+    		
     	}
     	
     	
@@ -51,14 +62,13 @@ public class MemberFrontController extends HttpServlet{
     	
     	// 페이지 이동    
     	if(forward != null){
-    		if(forward.isRedirect()){
-    			response.sendRedirect(forward.getPath());
-    		}else{
-    			RequestDispatcher dispatcher =
-    					request.getRequestDispatcher(forward.getPath());
-    			dispatcher.forward(request, response);    			
-    		}
-    	}
+			if(forward.isRedirect()){
+				response.sendRedirect(forward.getPath());
+			} else {
+				RequestDispatcher dis = request.getRequestDispatcher(forward.getPath());
+				dis.forward(request, response);
+			}
+		}
     	
     	
     	

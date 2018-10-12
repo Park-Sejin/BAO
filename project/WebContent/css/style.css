@@ -106,30 +106,135 @@ img{border: 0;}
 }
 
 #aa1{
-	width: 380px;
-	height: 550px;
-	border: 1px solid black;
-	border-radius: 8px;
-	position: absolute;
-	top: 80px;
+   width: 380px;
+   height: 550px;
+   border: 1px solid black;
+   border-radius: 8px;
+   position: absolute;
+   top: 80px;
+   background-color: white;
 }
 
+#aa1_sec1>a{
+   width: 70px; 
+   height: 50px;
+   display: inline-block;
+   text-align: center;
+   font-weight: bold;
+   color:black;
+   line-height: 50px;
+}
+
+#aa1_sec1>#a3{
+   width: 50px; 
+   height: 50px;
+   display: inline-block;
+}
+
+
 #aa2{
-	width: 380px;
-	height: 550px;
-	border: 1px solid black;
-	border-radius: 8px;
-	position: absolute;
-	top: 80px;
+   width: 380px;
+   height: 550px;
+   border: 1px solid black;
+   border-radius: 8px;
+   position: absolute;
+   top: 80px;
+   overflow: scroll;
+   background-color: white;
 }
 
 #aa3{
-	width: 300px;
-	height: 319px;
-	border: 1px solid black;
-	border-radius: 8px;
-	position: absolute;
-	top: 80px;
+   width: 300px;
+   height: 228px;
+   border: 1px solid black;
+   border-radius: 8px;
+   position: absolute;
+   top: 80px;
+   background-color: white;
 }
 
+#aa1_sec1{
+   width: 100%;
+   height: 50px;
+}
 
+#aa1_sec2{
+   width: 100%;
+   height: 34px;
+}
+
+#aa1_sec3{
+   width: 100%;
+   height: 466px;
+   background-color: white;
+   overflow: scroll;
+}
+
+.sec3_div{
+   width: 100%;
+   height: 93px;
+   border: 1px solid #bbf;
+}
+
+.dd {
+   margin-top: 15px;
+   margin-left: 10px;
+}
+
+.rd{
+   border-radius: 20px;
+}
+
+.sec3_chat{
+   border: 1px solid black;
+}
+
+.sec3_name{
+   font-size: 13px;
+   font-weight: bold;
+}
+
+.sec3_con{
+   font-size: 13px;
+   
+}
+
+.sec3_date{
+   font-size: 12px;
+   font-weight: lighter;   
+}
+
+.aa1_sec1{
+   margin: 0 auto;
+}
+
+.aa1_sec2{
+   margin: 0 auto;
+}
+
+.aa3_sec1{
+   padding-top: 20px;
+   width: 100%;
+   height: 100px;
+}
+
+.aa3_sec1>div{
+   text-align: center;
+}
+
+.aa3_sec2{
+   text-align: center;
+}
+
+.aa3_sec2>a{
+   display:block;
+   width: 100%;
+   height: 34px;
+   color: black;
+   line-height: 34px;
+}
+
+.aa3_sec2>a:hover {
+   background-color: #e8e9ec;
+   font-weight: bold;
+}

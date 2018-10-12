@@ -1,5 +1,6 @@
 @CHARSET "UTF-8";
 
+
 div#clear {
    clear: both;
 }
@@ -25,7 +26,8 @@ img#chat_menu {
 
 /* ----------------------------------------------------chat 본문 */
 div#chat_boay {
-   height: 700px;
+   height: auto;
+   max-height: 700px;
 }
 
 fieldset{
@@ -51,6 +53,7 @@ div#chat_receive span#chat_msg {
    padding: 12px;
    border-radius:10px;
    background-color: #d6c0f8;
+   font-size: 12px;
 }
 
 div#chat_send { /* 메세지 보낸 사람 */
@@ -62,32 +65,86 @@ div#chat_send span#chat_msg {
    padding: 12px;
    border-radius:10px;
    background-color: #f9bfef;
+   font-size: 12px;
 }
 
 /* ------------------------------------------------ 메세지 입력 창*/
 div#chat_clip {
    height: 50px;
    background-color: #eee;
+   border:1px solid #eee;
 }
 
-div#chat_clip img {
-   width: 30px;
-   height: 30px;
-   margin: 10px;
+div#chat_c_img {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	vertical-align:middle;
+	margin:15px;
+   
+	background-image: url("../img/chat/file_off.png");
+	background-repeat: no-repeat;
+	background-size: 20px;
 }
+div#chat_c_img:HOVER {
+	background-image: url("../img/chat/file_on.png");
+	background-repeat: no-repeat;
+	background-size: 20px;
+}
+
+div#clip_menu {
+	position: absolute;
+	background-color: #fff;
+	border: 1px solid #eee;
+	border-radius: 3px;
+	
+	margin: -12px 0 0 15px;
+	/* padding: 5px; */
+	font-size: 12px;
+	box-shadow: 1px 1px 5px 1px #c2c2c2;
+}
+div#clip_menu li {
+	list-style: none;
+	margin-left: -40px;
+	padding: 8px;
+	cursor: pointer;
+}
+div#clip_menu li>img {
+	margin-right: 7px;
+	width: 14px;
+}
+
+div#clip_menu li:HOVER {
+	background-color: #efe8fb;
+	
+}
+
+
+
 
 textarea {
    border: none;
    padding: 5px;
 }
 
-div#chat_btn {
-   float: right;
-   padding: 30px 25px;
-   background-color: #ddd;
-   color: #fff;
-   font-weight: bold;
-   margin-top: 3px;
+input#chat_btn {
+	border-radius: 3px;
+	border: 0px currentColor;
+	width: 70px;
+	height: 70px;
+	right: 9px;
+	
+	color: #fff;
+	font-size: 14px;
+	position: absolute;
+	
+	cursor: pointer;
+	background-color: #ddd;
+	padding-right: 10px;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+   
 }
 
 

@@ -5,8 +5,16 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
+	
 	<link href="css/right_menu.css" rel="stylesheet">
 	<link href="css/profile_popup.css" rel="stylesheet">
+	
+	<script type="text/javascript">
+		function go_pop(){
+			
+			window.open("./chatting/chat.jsp","new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+		}
+	</script>
 	
 </head>
 <body>
@@ -128,7 +136,8 @@
 						<p id="CMPN_TLPH_NO" style="visibility: hidden;"></p>
 					</div>
 					<div class="prof_btn">
-						<a id="CHAT" class="btn_prd_sty1_b"><span>채팅하기</span></a> <a id="PROFILE_EDIT" class="btn_prd_sty1" style=""><span style="color: #28272c">프로필 수정</span></a>
+						<a id="CHAT" class="btn_prd_sty1_b" onclick="go_pop()"><span>채팅하기</span></a>
+						<a id="PROFILE_EDIT" class="btn_prd_sty1" style=""><span style="color: #28272c">프로필 수정</span></a>
 					</div>
 				</div>
 			</div>
