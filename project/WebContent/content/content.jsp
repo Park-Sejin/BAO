@@ -1,3 +1,7 @@
+<%@page import="project.member.db.ProjectMemberBean"%>
+<%@page import="project.member.db.ProjectMemberDAO"%>
+<%@page import="project.db.ProjectBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,8 +15,14 @@
 
 </head>
 <body>
-	<jsp:include page="default/LeftHeader.jsp"></jsp:include>
-	<jsp:include page="default/top3.jsp"></jsp:include>
+	<jsp:include page="../default/LeftHeader.jsp"></jsp:include>
+	<jsp:include page="../default/top3.jsp"></jsp:include>
+	
+	<%
+		List projectList = (List)request.getAttribute("projectList");
+	
+	
+	%>
 		
 		
 		
@@ -20,14 +30,14 @@
 		<div class="content">
 			<div>
 				<div class="left">
-					<span>전체</span><span>(0)</span>
+					<span>전체</span><span>(<%=projectList.size() %>)</span>
 				</div>
 				<div class="right">
 					<a class="myset">설정</a> | <a class="myset">편집</a>
 				</div>
 			</div>
-			<div class="btn_pj_work">
-				<a href="#" id="myBtn">프로젝트 만들기</a>
+			<div class="btn_pj_work" id="myBtn">
+				<a href="#">프로젝트 만들기</a>
 			</div>
 			
 			<!-- The Modal -->
@@ -42,14 +52,15 @@
 			  	<div class="modal_sec2">
 			  		<div>
 			  			<div class="bbb">프로젝트명</div>
-			  			<form action="">
-			  				<input type="text" size="65" class="sec2_txt" placeholder="프로젝트명 입력(최대 50자)">
+			  			<form action="./ProjectInsert.pr">
+			  				<!-- 추후 아이디 세션값으로 히든주기 -->
+			  				<input type="text" size="65" class="sec2_txt" placeholder="프로젝트명 입력(최대 50자)" name="proName">
 			  			
 				  			<br><Br>
 				  			
 				  			<div class="bbb">참여자 옵션</div>
-				  			<input type="radio" name="rd1" value="1"><span class="rd_sp">초대된 사람만</span>
-				  			<input type="radio" name="rd1" value="2"><span class="rd_sp">전체직원 초대(자동관리)</span>
+				  			<input type="radio" name="option" value="1" checked><span class="rd_sp">초대된 사람만</span>
+				  			<input type="radio" name="option" value="2"><span class="rd_sp">전체직원 초대(자동관리)</span>
 				  			<div class="bbb2">프로젝트 생성 후에는 '참여자 옵션' 변경이 불가능합니다.</div>
 				  			<br>
 				  			<hr>
@@ -100,29 +111,44 @@
 			</script>
 			<!-- /modal script -->
 			
-			<div class="collabo_list">
-				<div class="collabo_title">
-					<a class="star"></a>
-					<p class="collabo_title_txt">
-						<a>업무공유방</a> <span class="big_num">3</span>
-					</p>
-				</div>
-				<div class="right">
-					<span class="ico_comy"></span>
-				</div>
-				<div class="folow_user_list">
-					<div>
-						<span class="rd_li">엄재철</span> 
-						<span class="rd_li">여준혁</span>
-						<span class="rd_li">이미진</span> 
-						<span class="rd_li">박수진</span> 
-						<span class="rd_li">류수재</span>
+			<%
+				for(int i=0; i<projectList.size(); i++){
+					ProjectBean pb = (ProjectBean)projectList.get(i);
+					int num = pb.getNum();
+					String content = pb.getProName();
+					if(content.length() > 40){
+						content = content.substring(0, 40);
+					}
+					ProjectMemberDAO pmdao = new ProjectMemberDAO();
+					pmdao.getProjectMember(num);
+			%>
+				<div class="collabo_list">
+					<div class="collabo_title">
+						<a class="star"></a>
+						<p class="collabo_title_txt">
+							<a><%=content %></a> <span class="big_num">123?</span>
+						</p>
 					</div>
-					<div class="userli_num">
-						<strong>박수진</strong>님 외 5명
+					<div class="folow_user_list">
+						<div>
+						<%
+						for(int j=0; j<pmdao.getProjectMember(num).size(); j++){
+							ProjectMemberBean pmb = (ProjectMemberBean)pmdao.getProjectMember(num).get(j);
+						%>
+							<span class="rd_li"><%=pmb.getMember_name() %></span>
+						<%
+						}
+						%>
+						</div>
+						<div class="userli_num">
+							<strong><%=pb.getId() %></strong>님 외 <%=pmdao.getProjectMember(num).size()-1 %>명
+						</div>
 					</div>
 				</div>
-			</div>
+			<%
+				} 
+			%>
+			
 			<a class="btn_btmfix">1:1문의</a>
 	
 		</div>

@@ -36,11 +36,11 @@ body {
 }
 
 .btn_pj_work {
+	float : left;
    position: relative;
    height: 244px;
    width: 245px;
    margin-top: 20px;
-   margin-bottom: 12px;
    margin-right: 10px;
    text-align: center;
    border: 1px dashed #aeabd8;
@@ -48,22 +48,24 @@ body {
    background-color: #f9f9f9;
    display: inline-block;
    text-align: center;
-   line-height: 244px;
+   line-height: 264px;
    color: #5f5ab9;
    font-weight: bold;
    font-size: 18px;
-   background: url("img/content/ico_plus.png") no-repeat;
+   background: url("../img/content/ico_plus.png") no-repeat;
    background-position: center 70px;
    cursor: pointer;
 }
 
+.btn_pj_work a{
+	color: #6661c1;
+}
+
 .collabo_list {
-   position: absolute;
    float: left;
    height: 244px;
    width: 245px;
    margin-top: 20px;
-   margin-bottom: 12px;
    border-radius: 5px;
    background-color: #fff;
    display: inline;
@@ -72,23 +74,30 @@ body {
    font-weight: bold;
    font-size: 18px;
    border-bottom: 1px solid #d9d9d9;
+   margin-right: 10px;
+   
 }
 
 .collabo_title {
    cursor: pointer;
    margin: 0 0 15px 0;
-   min-height: 113px;
+   height: 150px;
    background-color: #5593e7;
    position: relative;
    border-radius: 4px 4px 0 0;
-   line-height: 140px;
 }
 
 .collabo_title_txt {
    margin: 0 25px 0 25px;
    text-align: center;
    text-overflow: inherit;
+   padding-top: 50px; 
 }
+
+.collabo_title_txt>a{
+	color:white;
+}
+
 
 .star {
    top: -5px;
@@ -96,7 +105,7 @@ body {
    height: 70px;
    position: absolute;
    width: 20px;
-   background: url("img/content/btn_bookmark_offc81e.png") no-repeat 0 center;
+   background: url("../img/content/btn_bookmark_offc81e.png") no-repeat 0 center;
 }
 
 .big_num {
@@ -118,15 +127,6 @@ body {
    right: -6px;
 }
 
-.ico_comy {
-   background: url("img/content/ico_compy_onc81e.png") no-repeat;
-   width: 20px;
-   height: 20px;
-   display: inline-block;
-   margin-top: 8px;
-   margin-right: 20px;
-   vertical-align: top;
-}
 
 .folow_user_list {
    position: relative;

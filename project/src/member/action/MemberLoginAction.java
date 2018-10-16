@@ -48,7 +48,7 @@ public class MemberLoginAction implements Action {
 		}
 		
 		ActionForward forward = new ActionForward();
-		forward.setPath("./content.jsp");
+		forward.setPath("./main.pr");
 		forward.setRedirect(true);
 		
 		return forward;

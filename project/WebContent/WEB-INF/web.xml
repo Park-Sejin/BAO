@@ -28,7 +28,15 @@
 		<url-pattern>*.me</url-pattern>
 	</servlet-mapping>
 
-
+	<servlet>
+		<servlet-name>ProjectFrontController</servlet-name>
+		<servlet-class>project.action.ProjectFrontController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ProjectFrontController</servlet-name>
+		<url-pattern>*.pr</url-pattern>
+	</servlet-mapping>
 
 	<!-- 디비연결 -->
 	<resource-ref>
