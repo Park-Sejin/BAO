@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import member.db.MemberDAO;
 
@@ -47,6 +48,11 @@ public class MemberLoginAction implements Action {
 			
 		}
 		
+		//세션정보가져오기
+		HttpSession session = request.getSession();
+		session.setAttribute("email", email);
+		
+		//페이지이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./main.pr");
 		forward.setRedirect(true);

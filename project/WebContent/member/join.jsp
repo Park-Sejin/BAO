@@ -38,7 +38,6 @@
 		    var getName= RegExp(/^[가-힣]+$/);
 		    var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정 
 				
-			//$(document).ready(function() {
 									
 				 //이름 공백확인
 				if($("#join_NameTxt").val() == ""){
@@ -97,11 +96,6 @@
 			    	return false;
 			    } 
 			    
-			  	//페이지 이동   
-				//location.href="./MemberJoinAction.me";
-			    
-			//});
-		    
 		}
 
 </script>

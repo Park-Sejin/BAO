@@ -8,7 +8,7 @@ article {
    margin-right:-10px;
 }
 
-/* --------------------------------------------------------------------------로그인 해더 */
+/* 로그인 해더-------------------------------------------------------------------------- */
 header {
    height: 70px;
    margin-left:-10px; margin-right:-10px;
@@ -89,7 +89,7 @@ header div#head_btn{
 
 
 
-/*--------------------------------------------------------------------------로그인본문*/
+/*로그인본문--------------------------------------------------------------------------*/
 
 form#login {
    margin: 80px 200px;
@@ -183,13 +183,13 @@ form#find {
 	margin: 80px 200px;
 	padding: 40px 60px;
 	width: 380px;
-	height: 160px;
+	height: 170px;
 	background-color: #f7f7f7;
 	margin: 50px auto 90px auto;
 	box-shadow:0px 0px 4px 1.5px #D5D5D5;
 }
 
-form#find input#find_EmailTxt {
+form#find input#find_EmailTxt, form#find input#passTxt1, form#find input#passTxt2 {
 	width: 350px;
 	height: 50px;
 	border: none;

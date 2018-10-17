@@ -8,15 +8,19 @@
 <link href="./css/login.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
+	function findPass(){
+		//이메일 공백 확인
+	    if($("#find_EmailTxt").val() == ""){
+	        $("#text").html("이메일을 입력해주세요");
+	        $("#find_EmailTxt").focus();
+	        return false;
+	    } 
+	}
+	
 	$(document).ready(function(){
-		function findPass(){
-			//이메일 공백 확인
-		    if($("#find_EmailTxt").val() == ""){
-		        $("#text").html("이메일을 입력해주세요");
-		        $("#find_EmailTxt").focus();
-		        return false;
-		    }
-		}
+		$("#find_EmailTxt").on("change keyup paste", function(){
+			$("#find_submit").css("background-color","#5f5ab9");
+		});
 	});
 	
 </script>

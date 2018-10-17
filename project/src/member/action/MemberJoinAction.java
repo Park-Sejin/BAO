@@ -25,7 +25,7 @@ public class MemberJoinAction implements Action{
 		
 		//객체생성
 		MemberDAO mdao = new MemberDAO();
-		mdao.insetMember(mb);
+		mdao.insertMember(mb);
 		
 		//페이지이동
 		ActionForward forward = new ActionForward();

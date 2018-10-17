@@ -114,8 +114,8 @@ public class MemberDAO {
 	//emailCheck(email, pass)
 	
 	
-	//insetMember(mb)
-	public void insetMember(MemberBean mb){
+	//insertMember(mb)
+	public void insertMember(MemberBean mb){
 		int num=0;
 		try {
 			con=getCon();
@@ -147,6 +147,6 @@ public class MemberDAO {
 			CloseDB();
 		}
 	}
-	//insetMember(mb)
+	//insertMember(mb)
 	
 }
