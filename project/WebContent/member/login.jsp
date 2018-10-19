@@ -9,90 +9,38 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script type="text/javascript">
 			
+			var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);	
+			var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
+		
 			$(document).ready(function(){		
-				$("#log_EmailTxt").keyup(function(){
-					var email = $("#log_EmailTxt").val();
-					$.ajax({
-						type:"POST",
-						url:"joinCheck.jsp",
-						data:{
-							"email":email
-						},
-						success:function(data){
-							
-							//로그인 체크
-							if(data.trim() != 1){
-								$("#text").html("이메일이 존재하지않습니다");
-							} else{
-								$("#text").html("비밀번호를 입력해주세요");
-							}
-						}
-					});
+				//이메일이 공백이 아니고 형식이 올바르고 비밀번호가 4~12자일때 버튼 색상변경
+				$("#log_PassTxt").on("change keyup paste", function(){
+					if($("#log_EmailTxt").val() != "" && getMail.test($("#log_EmailTxt").val()) && getCheck.test($("#log_PassTxt").val())){
+				    	$("#submit").css("background-color","#5f5ab9");
+				    }
 				});
 			});
 			
-			/* //쿠키값 가져오기
-			var cookie_user_id = getLogin();
-			//쿠키값 존재하면 id에 쿠키에서 가져온 id할당
-			if(cookie_user_id != ""){
-				$("#log_EmailTxt").val(cookie_user_id);
-			}
 			
-			//자동로그인체크시
-			$("#check").on("click",function(){
-				var isRemember;
-				
-				if($(this).is(":checked")){
-					isRemember = confirm("이 PC에 로그인 정보를 저장하시겠습니까? PC방등의 공공장소에서는 개인정보가 유출될 수 있으니 주의해주십시오.");
-					if(!isRemember){
-						$("#check").attr("checked",false);
+			$("#log_EmailTxt").keyup(function(){
+				var email = $("#log_EmailTxt").val();
+				$.ajax({
+					type:"POST",
+					url:"joinCheck.jsp",
+					data:{
+						"email":email
+					},
+					success:function(data){
+						
+						//로그인 체크
+						if(data.trim() != 1){
+							$("#text").html("이메일이 존재하지않습니다");
+						} else{
+							$("#text").html("비밀번호를 입력해주세요");
+						}
 					}
-				}
+				});
 			});
-			
-			//로그인 버튼 클릭시
-			$("#submit").on("click",function(){
-				if($("#check").is(":checked")){
-					saveLogin($("#log_EmailTxt").val());
-				} else {
-					saveLogin("");
-				}
-			});
-			
-			//로그인 정보 저장
-			function saveLogin(id){
-				if(id != ""){
-					setSave("userid",id,7);
-				} else {
-					setSave("userid",id,-1);
-				}
-			}
-			
-			//쿠키에 로그인정보저장
-			function setSave(name, value, expiredays){
-				var today = new Date();
-				today.setDate(today.getDate()+expiredays);
-				document.cookie = name + "=" + escape(value) + "; path=/; expires=" + today.toGMTString() + ";"
-			}
-			
-			//쿠키값 가져오기
-			function getLogin() {
-
-				// userid 쿠키에서 id 값을 가져온다.
-				var cook = document.cookie + ";";
-				var idx = cook.indexOf("userid", 0);
-				var val = "";
-				
-				if(idx != -1) {
-					cook = cook.substring(idx, cook.length);
-					begin = cook.indexOf("=", 0) + 1;
-					end = cook.indexOf(";", begin);
-					val = unescape(cook.substring(begin, end));
-				}
-				
-				return val;
-			} */
-			
 			
 			function LoginAction(){
 				//이메일 공백 확인
@@ -142,7 +90,7 @@
 			</div>
 		
 			<input type="button" value="카카오계정으로 시작하기" id="btn_k"><br>
-			<input type="button" value="구글계정으로 시작하기" id="btn_g"><br>
+			<input type="button" value="구글계정으로 시작하기" id="btn_g" onclick="location.href=''"><br>
 		</form>
 		
 		

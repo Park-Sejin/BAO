@@ -149,4 +149,102 @@ public class MemberDAO {
 	}
 	//insertMember(mb)
 	
+	
+	//updatePass(email, pass)
+	public void updatePass(String email, String pass){
+		try {
+			con=getCon();
+			
+			//email이 있으면 pass를 바꾼다
+			sql="select * from member where email=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				sql="update member set pass=? where email=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, pass);
+				pstmt.setString(2, email);
+				
+				pstmt.executeUpdate();
+				System.out.println("비밀번호 변경이 완료되었습니다.");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+	}
+	//updatePass(email, pass)
+	
+	
+	//getMember(email)
+	public MemberBean getMember(String email){
+		MemberBean mb = null;
+		try {
+			con = getCon();
+			
+			sql="select * from member where email=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				mb = new MemberBean();
+				mb.setEmail(rs.getString("email"));
+				mb.setName(rs.getString("name"));
+				mb.setPass(rs.getString("pass"));
+				mb.setDate(rs.getDate("date"));
+				mb.setMobile(rs.getString("mobile"));
+				mb.setTeam(rs.getString("team"));
+				mb.setPart(rs.getString("part"));
+				mb.setPosition(rs.getString("position"));
+				mb.setPhone(rs.getString("phone"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return mb;
+	}
+	//getMember(email)
+	
+	
+	//getMemberNum(id)
+	public int getMemberNum(String id){
+		int num = 0;
+		try {
+			con = getCon();
+			sql = "select * from member where email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				num = rs.getInt("num");
+				}
+	         
+		} catch (Exception e) {
+	    	  e.printStackTrace();
+	    } finally {
+	    	  	CloseDB();
+	    }
+		return num;
+	}
+	//getMemberNum(id)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

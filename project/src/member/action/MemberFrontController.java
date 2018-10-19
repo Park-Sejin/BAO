@@ -55,10 +55,31 @@ public class MemberFrontController extends HttpServlet{
     		forward.setPath("./member/findPassword.jsp");
     		forward.setRedirect(false);
     		
+    	} else if(command.equals("/SendMail.me")){
+    		forward = new ActionForward();
+    		forward.setPath("./member/sendMail.jsp");
+    		forward.setRedirect(false);
+    		
     	} else if(command.equals("/RePassword.me")){
     		forward = new ActionForward();
     		forward.setPath("./member/rePassword.jsp");
     		forward.setRedirect(false);
+    		
+    	} else if(command.equals("/RePasswordAction.me")){
+    		action = new RePasswordAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    		
+    	} else if(command.equals("/UpdateMember.me")){
+    		action = new UpdateMemberAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
     		
     	}
     	

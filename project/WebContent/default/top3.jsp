@@ -288,7 +288,7 @@
 								</div>
 								<hr>
 								<div class="aa3_sec2">
-									<a href="#">회원정보</a> <a href="#">로그아웃</a> <a href="#">도움말</a>
+									<a href="./UpdateMember.me">회원정보</a> <a href="#">로그아웃</a> <a href="#">도움말</a>
 								</div>
 							</div>
 						</div>

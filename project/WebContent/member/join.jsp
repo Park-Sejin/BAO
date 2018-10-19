@@ -10,34 +10,43 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript">
+
+	var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+	var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
+	var getName= RegExp(/^[가-힣]+$/);
+	var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정 
+
 		$(document).ready(function(){		
-			$("#join_EmailTxt").keyup(function(){
-				var email = $("#join_EmailTxt").val();
-				$.ajax({
-					type:"POST",
-					url:"joinCheck.jsp",
-					data:{
-						"email":email
-					},
-					success:function(data){
-						
-						//중복 체크
-						if(data.trim() == 1){
-							$("#text").html("동일한 이메일이 사용중입니다");
-						} else{
-							$("#text").html("사용가능한 이메일 입니다");
-						}
+			//모두 공백이 아니고 형식이 올바르면 버튼 색상변경
+			$("#join_PassTxt").on("change keyup paste", function(){
+				if($("#join_NameTxt").val() != "" && $("#join_EmailTxt").val() != "" && $("#join_PassTxt").val() != ""
+					&& getName.test($("#join_NameTxt").val()) && getMail.test($("#join_EmailTxt").val()) && getCheck.test($("#join_PassTxt").val())){
+			    		$("#submit").css("background-color","#5f5ab9");
+			    }
+			});
+		});
+		
+		$("#join_EmailTxt").keyup(function(){
+			var email = $("#join_EmailTxt").val();
+			$.ajax({
+				type:"POST",
+				url:"joinCheck.jsp",
+				data:{
+					"email":email
+				},
+				success:function(data){
+					
+					//중복 체크
+					if(data.trim() == 1){
+						$("#text").html("동일한 이메일이 사용중입니다");
+					} else{
+						$("#text").html("사용가능한 이메일 입니다");
 					}
-				});
+				}
 			});
 		});
 		
 		function JoinAction(){
-			var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
-		    var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
-		    var getName= RegExp(/^[가-힣]+$/);
-		    var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정 
-				
 									
 				 //이름 공백확인
 				if($("#join_NameTxt").val() == ""){
