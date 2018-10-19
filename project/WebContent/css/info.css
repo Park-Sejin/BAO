@@ -55,7 +55,7 @@ div#LeftHeaderDl dd {
 	margin-top: 15px;
 }
 
-/* content----- */
+/* updateContent----- */
 div#content {
 	padding: 30px 30px 60px 30px;
 	min-height: 450px;
@@ -105,7 +105,19 @@ table#pro_table input {
 	height: 30px;
 }
 
+input#passTxt1, table#pro_table input#passTxt2 {
+	border: 1px solid dfdfdf;
+}
 
+input#btnSave {
+	height: 30px;
+	width: 100px;
+	background-color: #534eaf;
+	color: #fff;
+	border-radius: 10px;
+	margin-top: 5px;
+	font-size: 14px;
+}
 
 
 

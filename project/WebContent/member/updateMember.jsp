@@ -76,7 +76,7 @@
 	<article>
 		<div id="LeftHeaderBody">
 			<div id="LeftHeaderSub">
-				<a href="history.back()"><img alt="돌아가기" src="./img/info/btn_back.gif"></a>
+				<a href="./main.pr"><img alt="돌아가기" src="./img/info/btn_back.gif"></a>
 			</div>
 			<div id="LeftHeaderDl">
 				<dl>

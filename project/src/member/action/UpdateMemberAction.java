@@ -17,8 +17,12 @@ public class UpdateMemberAction implements Action {
 		//이메일주소가 없으면 주소이동
 		HttpSession session = request.getSession();
 		String email = (String)session.getAttribute("email");
+		ActionForward forward = new ActionForward();
 		if(email == null){
-			response.sendRedirect("./Login.me");
+			forward.setPath("./Login.me");
+			forward.setRedirect(true);
+			return forward;
+			//response.sendRedirect("./Login.me");
 		}
 		
 		//이메일주소에 해당하는 정보 가져오기
@@ -27,7 +31,6 @@ public class UpdateMemberAction implements Action {
 		request.setAttribute("mb", mb);
 		
 		//페이지이동
-		ActionForward forward = new ActionForward();
 		forward.setPath("./member/updateMember.jsp");
 		forward.setRedirect(false);
 		

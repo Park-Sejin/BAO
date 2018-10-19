@@ -81,6 +81,11 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
     		
+    	} else if(command.equals("/PwdSetting.me")){
+    		forward = new ActionForward();
+    		forward.setPath("./member/pwdSetting.jsp");
+    		forward.setRedirect(false);
+    		
     	}
     	
     	
