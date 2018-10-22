@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+
+
+
+
+.invite_popup { border:1px solid red;	
+    			position: absolute;
+  				background-color: #fff;
+    			border-radius: 4px;
+    			-moz-border-radius: 4px;
+    			-webkit-border-radius: 4px;
+} 
+
+#invite_top {  	position: relative;
+ 				padding-top: 63px;
+    height: 77px;
+    border-bottom: 1px solid #e7e9eb;
+			 }
+
+#invitePrjname { text-align: center;
+				 margin : 5px;
+				}
+
+#invite_sub .tit { border: 1px solid red; width:300px; height:100px;  }
+
+#invite_sub { border: 1px solid blue;
+			  width:
+			  height:  }
+
+

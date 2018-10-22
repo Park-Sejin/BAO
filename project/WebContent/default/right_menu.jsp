@@ -8,11 +8,20 @@
 	
 	<link href="css/right_menu.css" rel="stylesheet">
 	<link href="css/profile_popup.css" rel="stylesheet">
+	<link href="css/invitebox.css" rel="stylesheet">
 	
 	<script type="text/javascript">
 		function go_pop(){
 			
 			window.open("./chatting/chat.jsp","new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+		}
+		
+		
+	</script>
+	
+	<script type="text/javascript">
+	function chat_pop(){
+		window.open("./chatting/chat.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
 		}
 	</script>
 	
@@ -46,16 +55,16 @@
 			</div>
 
 
-			<div id="projectChat" class="btn_prj_chat_box">
-				<a class="btn_prj_chat">프로젝트 채팅</a>
+			<div id="projectChat" class="btn_prj_chat_box" >
+				<a class="btn_prj_chat" onclick="chat_pop()" >프로젝트 채팅</a>
 			</div>
 
 
 			<div class="participant_wrap">
 				<div id="JOIN_TITLE" class="aplct_title"
 					style="cursor: pointer; display: none;">
-					참여요청&nbsp;<img src="/design2/img_rn/ico/ico_new3.png" alt=""><a
-						id="JOIN_CNT" style="display: none;"></a>
+					참여요청&nbsp;<img src="/design2/img_rn/ico/ico_new3.png" alt="">
+					<a id="JOIN_CNT" style="display: none;"></a>
 				</div>
 
 				<div class="participant_scroll mCustomScrollbar">
@@ -72,7 +81,7 @@
 								<img src="./img/right_menu/img_photo_null32.png" style="">
 							</div>
 							<div class="username" id="menu_profile">
-								<a href="#">이름이름</a>
+								<a href="#">이름</a>
 							</div>
 							<div class="btn_right">
 								<a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
@@ -107,7 +116,7 @@
 
 			<div id="addRcvList" style="display: none;"></div>
 		</div>
-	</div>
+	 </div>
 	<!-- //aside -->
 	
 	
@@ -143,24 +152,89 @@
 			</div>
 		</div>
 	</div>
+	<!-- 초대하기 -->
+	<div id="invite_div" class="modal">
+	  <div class="invite_popup" style="    width: 500px;
+    height: 620px;
+    z-index: 1100;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -310px;
+    margin-left: -250px;">
+		<div class="invite_divdefault" style="display:block; ">
+		<div id="invite_top">
+			<div id="invitePrjname"><h1>프로젝트이름</h1></div>
+			<div id="inviteboxclose" title="닫기"></div>
+		</div>
+		
+		<div id="invite_sub">
+			<ul>
+				<li><p class="tit">팀, 직원 동료 초대</p> <p class="txt">회사 직원 또는 조직도를 확인하고 초대할 수 있습니다.</p></li>
+				<li><p class="tit">프로젝트 참여자</p> <p class="txt">프로젝트를 함께 했던 사람을 초대할 수 있습니다. </p></li>
+				<li><p class="tit">이메일로 초대장 발송 </p> <p class="txt">초대장을 이메일로 발송할 수 있습니다.</p></li>
+				<li><p class="tit">초대링크</p> <p class="txt">http://123456123456.123456</p></li>
+			</ul>
+		</div>
+	 </div>
+	 </div>
+	</div>		
+
+	<!-- 파일함 -->
+	<div id="filebox_div" class="modal">
 	
+	</div>
+	
+	<!-- profile -->
 	<script>
 			var profile = document.getElementById('profile_div');
-			var btn = document.getElementById('menu_profile');
+			var btn1 = document.getElementById('menu_profile');
 			
 			
-			btn.onclick = function() {
+			btn1.onclick = function() {
 				profile.style.display = "block";
+			}
+			
+			<!-- invite  -->
+			 
+			var invite = document.getElementById('invite_div');
+			var btn2 = document.getElementById('rightBoxPrjInvite');
+			
+			
+			btn2.onclick = function() {
+				invite.style.display = "block";
+			}
+			
+			<!-- filebox -->
+			
+			var filebox = document.getElementById('filebox_div');
+			var btn3 = document.getElementById('prjFileList')
+			
+			btn3.onclick = function() {
+				filebox.style.display = "block";
 			}
 			
 			// When the user clicks anywhere outside of the modal, close it
 			window.onclick = function(event) {
 			    if (event.target == profile) {
 			    	profile.style.display = "none";
+			    	
+			    }else if(event.target == invite){
+			    	invite.style.display = "none";
+			    }else if(event.target == filebox){
+			    	filebox.style.display = "none";
 			    }
 			}
-	</script>
+
 	
+	
+	
+			
+			
+	</script>
+
+
+
 	
 	
 	
