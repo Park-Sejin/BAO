@@ -87,9 +87,9 @@
    
    <body>
       
-      <jsp:include page="right_menu.jsp"></jsp:include>
-      <jsp:include page="LeftHeader.jsp"></jsp:include>
-      <jsp:include page="top3.jsp"></jsp:include>
+      <jsp:include page="./default/right_menu.jsp"></jsp:include>
+      <jsp:include page="./default/LeftHeader.jsp"></jsp:include>
+      <jsp:include page="./default/top3.jsp"></jsp:include>
       
       
       
