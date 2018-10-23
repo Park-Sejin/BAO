@@ -27,7 +27,9 @@
 	
 </head>
 <body>
-
+	<% 
+			String name = (String)session.getAttribute("name");
+		%>
 	<!-- aside -->
 	<div id="rightMenuBox">
 		<div class="aside_wrap">
@@ -44,10 +46,14 @@
 				</ul>
 			</div>
 			<!-- 초대하기 -->
+			<% 
+				if(name=="admin"){%>
 			<div class="r_invite_box">
 				<a class="invite" id="rightBoxPrjInvite">초대하기</a>
 				<!-- <a class="inviteurl">초대URL생성</a> -->
 			</div>
+			
+			<%} %>
 			<!-- //콜라보설정 -->
 			<!-- 참여자목록 -->
 			<div class="all_aplct_title">
@@ -81,7 +87,7 @@
 								<img src="./img/right_menu/img_photo_null32.png" style="">
 							</div>
 							<div class="username" id="menu_profile">
-								<a href="#">이름</a>
+								<a href="#"><%=name %></a>
 							</div>
 							<div class="btn_right">
 								<a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
