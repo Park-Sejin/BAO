@@ -1,3 +1,7 @@
+<%@page import="project.db.ProjectDAO"%>
+<%@page import="project.db.ProjectBean"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -201,21 +205,32 @@
 		style="width: 556px; height: 483px; top: 50%; left: 50%; z-index: 1001; position: fixed; margin-top: -241.5px; margin-left: -278px; display: block;">
 			<div class="layerstyle4_po">
 				<div class="layerstyle4_title" style="height: 43px; background-color: #f4f4f4; border-radius: 7px 0;">
-					<h3 style="padding: 11px 0 0 16px; font-weight: normal;">
+					<h4 style="padding: 11px 0 0 16px; font-weight: normal;">
 						<span class="icon_url"></span>&nbsp;프로젝트 참여자
-					</h3>
+					</h4>
 					<a class="btn_layerstyle4_close"
 						style="position: absolute; top: 15px; right: 15px; width: 14px; height: 14px;">
 						<img src="./img/popup/allview_close.png" alt="닫기">
 					</a>
-					<ul id="part_ul">
-						<li><img src="./img/popup/default_profile.png" alt="프로필사진">
-							<a href="">이름</a></li>
-						<li><img src="./img/popup/default_profile.png" alt="프로필사진">
-							<a href="">이름</a></li>
-						<li><img src="./img/popup/default_profile.png" alt="프로필사진">
-							<a href="">이름</a></li>
-					</ul>
+					
+					<div id="ul_div">
+						<ul id="part_ul">
+							<%
+								ProjectDAO pdao = new ProjectDAO();
+								ArrayList<ProjectBean> arr = pdao.projectMemberInfo();
+								
+								System.out.println(arr.size());
+							
+								for(ProjectBean pb : arr){
+									System.out.println("포문 들어옴");
+								%>
+							<li>
+								<img src="./img/popup/default_profile.png" alt="프로필사진">
+								<a href=""><%=pb.getId() %></a>
+							</li>
+							<%} %>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

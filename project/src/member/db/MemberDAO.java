@@ -65,6 +65,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				check = 1;
+				System.out.println();
 			}
 			
 		} catch (Exception e) {
@@ -236,13 +237,63 @@ public class MemberDAO {
 	}
 	//getMemberNum(id)
 	
+	//insertKakaoMember(mb)
+	public void insertKakaoMember(MemberBean mb){
+		int num=0;
+		try {
+			con=getCon();
+			
+			//num 구하기
+			sql="select max(num) from member";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				num = rs.getInt(1)+1;
+			} else {
+				num = 1;
+			}
+			
+			//멤버 추가
+			sql="insert into member(num, name, email, profile, date) values(?,?,?,?,now())";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, mb.getName());
+			pstmt.setString(3, mb.getEmail());
+			pstmt.setString(4, mb.getProfile());
+			
+			pstmt.executeUpdate();
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+	}
+	//insertKakaoMember(mb)	
 	
-	
-	
-	
-	
-	
-	
+	//searchID(id)
+	public int searchID(String id){
+		int check=0;
+		try {
+			con = getCon();
+			sql = "select num from member where email=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				check=1;
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return check;
+	}
+	//searchID(id)
 	
 	
 	
