@@ -3,33 +3,31 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
-	
-	<link href="css/right_menu.css" rel="stylesheet">
-	<link href="css/profile_popup.css" rel="stylesheet">
-	<link href="css/invitebox.css" rel="stylesheet">
-	
-	<script type="text/javascript">
-		function go_pop(){
-			
-			window.open("./chatting/chat.jsp","new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
-		}
-		
-		
-	</script>
-	
-	<script type="text/javascript">
-	function chat_pop(){
-		window.open("./chatting/chat.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
-		}
-	</script>
-	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+
+<link href="css/right_menu.css" rel="stylesheet">
+<link href="css/profile_popup.css" rel="stylesheet">
+<link href="css/invitebox.css" rel="stylesheet">
+<link href="css/AllView_popup.css" rel="stylesheet">
+
+<script type="text/javascript">
+	function go_pop() {
+		window.open("./chatting/chat.jsp", "new", "width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+	}
+</script>
+
+<script type="text/javascript">
+	function chat_pop() {
+		window.open("./chatting/chat.jsp", "new", "width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+	}
+</script>
+
 </head>
 <body>
-	<% 
-			String name = (String)session.getAttribute("name");
-		%>
+	<%
+		String name = (String) session.getAttribute("name");
+	%>
 	<!-- aside -->
 	<div id="rightMenuBox">
 		<div class="aside_wrap">
@@ -46,13 +44,13 @@
 				</ul>
 			</div>
 			<!-- 초대하기 -->
-	
+
 			<div class="r_invite_box">
 				<a class="invite" id="rightBoxPrjInvite">초대하기</a>
-				 <!-- <a class="inviteurl">초대URL생성</a> -->
+				<!-- <a class="inviteurl">초대URL생성</a> -->
 			</div>
-			
-			
+
+
 			<!-- //콜라보설정 -->
 			<!-- 참여자목록 -->
 			<div class="all_aplct_title">
@@ -60,8 +58,8 @@
 			</div>
 
 
-			<div id="projectChat" class="btn_prj_chat_box" >
-				<a class="btn_prj_chat" onclick="chat_pop()" >프로젝트 채팅</a>
+			<div id="projectChat" class="btn_prj_chat_box">
+				<a class="btn_prj_chat" onclick="chat_pop()">프로젝트 채팅</a>
 			</div>
 
 
@@ -86,7 +84,7 @@
 								<img src="./img/right_menu/img_photo_null32.png" style="">
 							</div>
 							<div class="username" id="menu_profile">
-								<a href="#"><%=name %></a>
+								<a href="#"><%=name%></a>
 							</div>
 							<div class="btn_right">
 								<a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
@@ -121,25 +119,29 @@
 
 			<div id="addRcvList" style="display: none;"></div>
 		</div>
-	 </div>
+	</div>
 	<!-- //aside -->
-	
-	
-	
-	
+
+
+
+
 	<!-- 팝업창 div -->
 	<div id="profile_div" class="modal">
-		<div id="profilePopup" class="prdbx_wrap" style="top: 50%; left: 50%; width: 400px; height: 672px; z-index: 9100; position: fixed; margin-top: -336px; margin-left: -200px; ">
+		<div id="profilePopup" class="prdbx_wrap"
+			style="top: 50%; left: 50%; width: 400px; height: 672px; z-index: 9100; position: fixed; margin-top: -336px; margin-left: -200px;">
 			<div class="prof_bx">
 				<div class="prof_thumb">
-					<span class="bg"></span>
-					<a class="btn_close" id="inviteBoxClose" title="닫기"></a>
-					<img id="PRFL_PHTG" src="./img/right_menu/img_photo_null_for_prfl.png" alt="" onerror="this.src='/design2/img_rn/img_photo_null_for_prfl.png'" style="object-fit: cover; height: 400px; width: 400px;">
+					<span class="bg"></span> <a class="btn_close" id="inviteBoxClose"
+						title="닫기"></a> <img id="PRFL_PHTG"
+						src="./img/right_menu/img_photo_null_for_prfl.png" alt=""
+						onerror="this.src='/design2/img_rn/img_photo_null_for_prfl.png'"
+						style="object-fit: cover; height: 400px; width: 400px;">
 				</div>
 				<div class="prof_info">
 					<div class="prof_top">
 						<h2>
-							<span id="FLNM">박수진</span><span id="JBCL_NM" style="font-size: 20px; color: #969696; margin-left: 10px;"></span>
+							<span id="FLNM">박수진</span><span id="JBCL_NM"
+								style="font-size: 20px; color: #969696; margin-left: 10px;"></span>
 						</h2>
 						<p id="CMNM">BAO</p>
 						<a id="EDIT" class="ico_mod" style="display: none;"></a>
@@ -151,7 +153,8 @@
 					</div>
 					<div class="prof_btn">
 						<a id="CHAT" class="btn_prd_sty1_b" onclick="go_pop()"><span>채팅하기</span></a>
-						<a id="PROFILE_EDIT" class="btn_prd_sty1" style=""><span style="color: #28272c">프로필 수정</span></a>
+						<a id="PROFILE_EDIT" class="btn_prd_sty1" style=""><span
+							style="color: #28272c">프로필 수정</span></a>
 					</div>
 				</div>
 			</div>
@@ -159,44 +162,67 @@
 	</div>
 	<!-- 초대하기 -->
 	<div id="invite_div" class="modal">
-	  <div class="invite_popup" style="    width: 500px;
-    height: 620px;
-    z-index: 1100;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -310px;
-    margin-left: -250px;">
-		<div class="invite_divdefault" style="display:block; ">
-		<div id="invite_top">
-			<div id="invitePrjname"><h1>프로젝트이름</h1></div>
-			<div id="inviteboxclose" title="닫기"></div>
+		<div class="invite_popup"
+			style="width: 500px; height: 620px; z-index: 1100; position: fixed; top: 50%; left: 50%; margin-top: -310px; margin-left: -250px;">
+			<div class="invite_divdefault" style="display: block;">
+				<div id="invite_top">
+					<div id="invitePrjname">
+						<h1>프로젝트이름</h1>
+					</div>
+					<div id="inviteboxclose" title="닫기"></div>
+				</div>
+
+				<div id="invite_sub">
+					<ul>
+						<li><p class="tit">팀, 직원 동료 초대</p>
+							<p class="txt">회사 직원 또는 조직도를 확인하고 초대할 수 있습니다.</p>
+						</li>
+						<li><p class="tit">프로젝트 참여자</p>
+							<p class="txt">프로젝트를 함께 했던 사람을 초대할 수 있습니다.</p>
+						</li>
+						<li><p class="tit">이메일로 초대장 발송</p>
+							<p class="txt">초대장을 이메일로 발송할 수 있습니다.</p>
+						</li>
+						<li><p class="tit">초대링크</p>
+							<p class="txt">http://123456123456.123456</p>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		
-		<div id="invite_sub">
-			<ul>
-				<li><p class="tit">팀, 직원 동료 초대</p> <p class="txt">회사 직원 또는 조직도를 확인하고 초대할 수 있습니다.</p></li>
-				<li><p class="tit">프로젝트 참여자</p> <p class="txt">프로젝트를 함께 했던 사람을 초대할 수 있습니다. </p></li>
-				<li><p class="tit">이메일로 초대장 발송 </p> <p class="txt">초대장을 이메일로 발송할 수 있습니다.</p></li>
-				<li><p class="tit">초대링크</p> <p class="txt">http://123456123456.123456</p></li>
-			</ul>
-		</div>
-	 </div>
-	 </div>
-	</div>		
+	</div>
 
 	<!-- 파일함 -->
-	<div id="filebox_div" class="modal">
-	
-	</div>
-	
+	<div id="filebox_div" class="modal"></div>
+
 	<!-- 전체보기 팝업창 -->
-	<div id="part_member" class="modal">
-	<div>아아아아아</div>
-	
+	<div id="part_member" class="modal" >
+		<div id="part_member" class="AllView_div" 
+		style="width: 556px; height: 483px; top: 50%; left: 50%; z-index: 1001; position: fixed; margin-top: -241.5px; margin-left: -278px; display: block;">
+			<div class="layerstyle4_po">
+				<div class="layerstyle4_title" style="height: 43px; background-color: #f4f4f4; border-radius: 7px 0;">
+					<h3 style="padding: 11px 0 0 16px; font-weight: normal;">
+						<span class="icon_url"></span>&nbsp;프로젝트 참여자
+					</h3>
+					<a class="btn_layerstyle4_close"
+						style="position: absolute; top: 15px; right: 15px; width: 14px; height: 14px;">
+						<img src="./img/popup/allview_close.png" alt="닫기">
+					</a>
+					<ul id="part_ul">
+						<li><img src="./img/popup/default_profile.png" alt="프로필사진">
+							<a href="">이름</a></li>
+						<li><img src="./img/popup/default_profile.png" alt="프로필사진">
+							<a href="">이름</a></li>
+						<li><img src="./img/popup/default_profile.png" alt="프로필사진">
+							<a href="">이름</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
 	</div>
-	
-			<!-- profile -->
+
+	<!-- profile -->
 	<script>
 			var profile = document.getElementById('profile_div');
 			var btn1 = document.getElementById('menu_profile');
@@ -227,9 +253,9 @@
 			
 			/* 전체보기 팝업창 */
 			var part = document.getElementById('part_member');
-			btn = document.getElementById('allView');
+			btn4 = document.getElementById('allView');
 			
-			btn.onclick = function() {
+			btn4.onclick = function() {
 				part.style.display = "block";
 			}
 			
@@ -256,11 +282,11 @@
 
 
 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 </body>
 </html>
