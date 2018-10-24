@@ -46,14 +46,13 @@
 				</ul>
 			</div>
 			<!-- 초대하기 -->
-			<% 
-				if(name=="admin"){%>
+	
 			<div class="r_invite_box">
 				<a class="invite" id="rightBoxPrjInvite">초대하기</a>
-				<!-- <a class="inviteurl">초대URL생성</a> -->
+				 <!-- <a class="inviteurl">초대URL생성</a> -->
 			</div>
 			
-			<%} %>
+			
 			<!-- //콜라보설정 -->
 			<!-- 참여자목록 -->
 			<div class="all_aplct_title">
@@ -191,7 +190,13 @@
 	
 	</div>
 	
-	<!-- profile -->
+	<!-- 전체보기 팝업창 -->
+	<div id="part_member" class="modal">
+	<div>아아아아아</div>
+	
+	</div>
+	
+			<!-- profile -->
 	<script>
 			var profile = document.getElementById('profile_div');
 			var btn1 = document.getElementById('menu_profile');
@@ -201,7 +206,7 @@
 				profile.style.display = "block";
 			}
 			
-			<!-- invite  -->
+			/* <!-- invite  --> */
 			 
 			var invite = document.getElementById('invite_div');
 			var btn2 = document.getElementById('rightBoxPrjInvite');
@@ -211,7 +216,7 @@
 				invite.style.display = "block";
 			}
 			
-			<!-- filebox -->
+			/* <!-- filebox --> */
 			
 			var filebox = document.getElementById('filebox_div');
 			var btn3 = document.getElementById('prjFileList')
@@ -220,8 +225,16 @@
 				filebox.style.display = "block";
 			}
 			
+			/* 전체보기 팝업창 */
+			var part = document.getElementById('part_member');
+			btn = document.getElementById('allView');
+			
+			btn.onclick = function() {
+				part.style.display = "block";
+			}
+			
 			// When the user clicks anywhere outside of the modal, close it
-			window.onclick = function(event) {
+			window.onclick = function(event){
 			    if (event.target == profile) {
 			    	profile.style.display = "none";
 			    	
@@ -229,8 +242,10 @@
 			    	invite.style.display = "none";
 			    }else if(event.target == filebox){
 			    	filebox.style.display = "none";
+			    }else if(event.target == part){
+			    	part.style.display="none";
 			    }
-			}
+			} 
 
 	
 	
