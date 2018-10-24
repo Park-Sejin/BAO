@@ -1,3 +1,5 @@
+<%@page import="member.db.MemberDAO"%>
+<%@page import="member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -25,9 +27,13 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 	<%
 		String name = (String) session.getAttribute("name");
 	%>
+=======
+
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
 	<!-- aside -->
 	<div id="rightMenuBox">
 		<div class="aside_wrap">
@@ -57,11 +63,20 @@
 				전체 참여자&nbsp;<strong id="sendienceCnt">1명</strong><a id="allView">전체보기</a>
 			</div>
 
+<<<<<<< HEAD
 
 			<div id="projectChat" class="btn_prj_chat_box">
 				<a class="btn_prj_chat" onclick="chat_pop()">프로젝트 채팅</a>
+=======
+			
+				
+			<div id="projectChat" class="btn_prj_chat_box" >
+				<a class="btn_prj_chat" onclick="chat_pop()" >프로젝트 채팅</a>
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
 			</div>
-
+			<div>
+			
+			</div>
 
 			<div class="participant_wrap">
 				<div id="JOIN_TITLE" class="aplct_title"
@@ -78,13 +93,19 @@
 						</h5>
 					</div>
 					<!-- 이름 -->
+					
 					<ul id="sendienceAdminUl" style="display: block;">
+					
 						<li>
 							<div class="photo">
 								<img src="./img/right_menu/img_photo_null32.png" style="">
 							</div>
 							<div class="username" id="menu_profile">
+<<<<<<< HEAD
 								<a href="#"><%=name%></a>
+=======
+								<a href="#">이름이름이름이름이름</a>
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
 							</div>
 							<div class="btn_right">
 								<a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
@@ -161,6 +182,7 @@
 		</div>
 	</div>
 	<!-- 초대하기 -->
+<<<<<<< HEAD
 	<div id="invite_div" class="modal">
 		<div class="invite_popup"
 			style="width: 500px; height: 620px; z-index: 1100; position: fixed; top: 50%; left: 50%; margin-top: -310px; margin-left: -250px;">
@@ -189,8 +211,38 @@
 					</ul>
 				</div>
 			</div>
+=======
+	<div id="invite_div" class="modal"> 
+	  <div class="invite_popup" style="    width: 500px;
+    		height: 620px;
+  			z-index: 1100;
+    		position: fixed;
+    		top: 50%;
+    		left: 50%;
+    		margin-top: -310px;
+    		margin-left: -250px;">
+		<div class="invite_divdefault" style="display:block; ">
+		<div id="invite_top">
+			<div id="invitePrjname"><h1>프로젝트이름</h1></div>
+			<div id="inviteboxclose" title="닫기"></div>
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
 		</div>
+<<<<<<< HEAD
 	</div>
+=======
+		
+		<div id="invite_sub">
+			<ul>
+				<li><span class="ico ico1"></span><p class="tit">팀, 직원 동료 초대</p> <p class="txt">회사 직원 또는 조직도를 확인하고 초대할 수 있습니다.</p></li>
+				<li><span class="ico ico2"></span><p class="tit">프로젝트 참여자</p> <p class="txt">프로젝트를 함께 했던 사람을 초대할 수 있습니다. </p></li>
+				<li><span class="ico ico3"></span><p class="tit">이메일로 초대장 발송 </p> <p class="txt">초대장을 이메일로 발송할 수 있습니다.</p></li>
+				<li><span class="ico ico4"></span><p class="tit">초대링크</p> <p class="txt">http://123456123456.123456</p></li>
+			</ul>
+		</div>
+	 </div>
+	 </div>
+	</div>		
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
 
 	<!-- 파일함 -->
 	<div id="filebox_div" class="modal"></div>
@@ -221,9 +273,15 @@
 		</div>
 
 	</div>
+<<<<<<< HEAD
 
 	<!-- profile -->
 	<script>
+=======
+	
+			<!-- profile -->
+			<script>
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
 			var profile = document.getElementById('profile_div');
 			var btn1 = document.getElementById('menu_profile');
 			
@@ -273,20 +331,8 @@
 			    }
 			} 
 
-	
-	
-	
-			
+
 			
 	</script>
-
-
-
-
-
-
-
-
-
 </body>
 </html>
