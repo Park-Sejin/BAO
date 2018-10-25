@@ -223,7 +223,6 @@ public class ProjectDAO {
 		
 	}*/
 	
-	
 	public ArrayList<ProjectBean> projectMemberInfo(){
 		ArrayList<ProjectBean> arr = new ArrayList<ProjectBean>();
 		try {
@@ -232,7 +231,7 @@ public class ProjectDAO {
 			prpr = con.prepareStatement(sql);
 			
 			rs = prpr.executeQuery();
-			if(rs.next()){
+			while(rs.next()){
 				ProjectBean pb = new ProjectBean();
 				
 				pb.setId(rs.getString("id"));

@@ -2,6 +2,7 @@
 
 div#rightMenuBox {
 	margin-left: 680px;
+	margin-right: 300px;
 	float: right;
 	width: 900px;
     position: fixed;

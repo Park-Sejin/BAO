@@ -88,7 +88,12 @@
 								<img src="./img/right_menu/img_photo_null32.png" style="">
 							</div>
 							<div class="username" id="menu_profile">
-								<a href="#"><%=name%></a>
+							
+							<% 	ProjectDAO pdao = new ProjectDAO();
+								ArrayList<ProjectBean> arr = pdao.projectMemberInfo();
+								
+								for(ProjectBean pb : arr){ %>
+								<a href="#"><%=pb.getId() %></a> <%} %>
 							</div>
 							<div class="btn_right">
 								<a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
@@ -199,6 +204,7 @@
 	<!-- 파일함 -->
 	<div id="filebox_div" class="modal"></div>
 
+
 	<!-- 전체보기 팝업창 -->
 	<div id="part_member" class="modal" >
 		<div id="part_member" class="AllView_div" 
@@ -215,15 +221,7 @@
 					
 					<div id="ul_div">
 						<ul id="part_ul">
-							<%
-								ProjectDAO pdao = new ProjectDAO();
-								ArrayList<ProjectBean> arr = pdao.projectMemberInfo();
-								
-								System.out.println(arr.size());
-							
-								for(ProjectBean pb : arr){
-									System.out.println("포문 들어옴");
-								%>
+							<% for(ProjectBean pb : arr){%>
 							<li>
 								<img src="./img/popup/default_profile.png" alt="프로필사진">
 								<a href=""><%=pb.getId() %></a>
@@ -234,8 +232,10 @@
 				</div>
 			</div>
 		</div>
-
 	</div>
+
+
+
 
 	<!-- profile -->
 	<script>
