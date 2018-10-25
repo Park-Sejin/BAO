@@ -1,12 +1,13 @@
 @CHARSET "UTF-8";
 
+
 div#rightMenuBox {
-   border:1px solid red;
    margin-left: 1290px;
    float: right;
    width: 300px;
     position: fixed;
 }
+
 
 
 

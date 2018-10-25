@@ -13,7 +13,14 @@ public class MemberBean {
 	private String part;
 	private String position;
 	private String phone;
+	private String profile;
 	
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 	public int getNum() {
 		return num;
 	}
