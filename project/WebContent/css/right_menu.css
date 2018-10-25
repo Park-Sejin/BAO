@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 
 div#rightMenuBox {
-	margin-left: 680px;
+	margin-left: 1290px;
 	float: right;
-	width: 900px;
+	width: 300px;
     position: fixed;
 }
 
