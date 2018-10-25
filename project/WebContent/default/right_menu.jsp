@@ -13,19 +13,29 @@
 	<link href="css/invitebox.css" rel="stylesheet">
 	
 	<script type="text/javascript">
-		function go_pop(){
-			
-			window.open("./chatting/chat.jsp","new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+	
+	function go_pop(){
+		window.open("./chatting/chat.jsp","new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
 		}
 		
 		
-	</script>
-	
-	<script type="text/javascript">
 	function chat_pop(){
 		window.open("./chatting/chat.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
 		}
+	
+	/*  $("#invite2_div").click(function(){
+		
+		$("#invite2_div").addClass("black");
+		$("#invite_div").empty();
+	 	$("#invite_div").load("./timeline.jsp");
+		
+	}); */
+	 
+	
+	
 	</script>
+	
+	
 	
 </head>
 <body>
@@ -84,8 +94,12 @@
 					</div>
 					<!-- 이름 -->
 					
-					<ul id="sendienceAdminUl" style="display: block;">
+					<%
 					
+					String name=(String)session.getAttribute("name");
+					
+					%>
+					<ul id="sendienceAdminUl" style="display: block;">					
 						<li>
 							<div class="photo">
 								<img src="./img/right_menu/img_photo_null32.png" style="">
@@ -162,6 +176,32 @@
 			</div>
 		</div>
 	</div>
+	
+
+	
+	
+	<!-- 팝업창 div2  -->
+	
+	<div id="invite2_div" class="modal">
+		  <div class="invite2_popup" style="width:500px; height:620px; z-index:1100; position:fixed; ">
+			  <div id="invite2_top">
+				  <div id="invite2_title">
+					  <h2>초대하기</h2>
+				  </div>			
+		  </div>
+		  <div id="invite2_sub">
+		  	<ul>
+		  	  <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
+		  	  <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
+		  	  <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
+		  	  <li></li>
+		  	</ul>	
+		  </div>		
+		</div>
+	</div>
+	
+	
+	
 	<!-- 초대하기 -->
 	<div id="invite_div" class="modal"> 
 	  <div class="invite_popup" style="    width: 500px;
