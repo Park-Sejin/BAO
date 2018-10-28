@@ -37,6 +37,20 @@
 		<servlet-name>ProjectFrontController</servlet-name>
 		<url-pattern>*.pr</url-pattern>
 	</servlet-mapping>
+	
+	
+	<!-- 채팅 맵핑 -->
+	<servlet>
+		<servlet-name>ChattingFrontController</servlet-name>
+		<servlet-class>chatting.action.ChattingFrontController</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>ChattingFrontController</servlet-name>
+		<url-pattern>*.chat</url-pattern>
+	</servlet-mapping>
+
+
 
 	<!-- 디비연결 -->
 	<resource-ref>

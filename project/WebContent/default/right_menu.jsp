@@ -17,12 +17,12 @@
 	<script type="text/javascript">
 	
 	function go_pop(){
-		window.open("./chatting/chat.jsp","new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+		window.open("./chatting/chat2.jsp","new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
 		}
 		
 		
 	function chat_pop(){
-		window.open("./chatting/chat.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+		window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
 		}
 	
 	/*  $("#invite2_div").click(function(){
