@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="project.member.db.ProjectMemberBean"%>
+<%@page import="project.member.db.ProjectMemberDAO"%>
 <%@page import="project.db.ProjectDAO"%>
 <%@page import="project.db.ProjectBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -17,7 +20,7 @@
 	<script type="text/javascript">
 	
 	function go_pop(){
-		window.open("./chatting/chat2.jsp","new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+		window.open("./chatting/chat2.jsp?name=","new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
 		}
 		
 		
@@ -91,24 +94,24 @@
 						</h5>
 					</div>
 					<!-- 이름 -->
-					<ul id="sendienceAdminUl" style="display: block;">					
-						<li>
-							<div class="photo">
-								<img src="./img/right_menu/img_photo_null32.png" style="">
-							</div>
-							<div class="username" id="menu_profile">
-							
-							<% 	ProjectDAO pdao = new ProjectDAO();
-								ArrayList<ProjectBean> arr = pdao.projectMemberInfo();
+					<ul id="sendienceAdminUl" style="display: block;">		
+						<% 	ProjectMemberDAO pdao = new ProjectMemberDAO();
+								List<ProjectMemberBean> arr = pdao.getProjectMember(1);
 								
-								for(ProjectBean pb : arr){ %>
-								<a href="#"><%=pb.getId() %></a> <%} %>
-							</div>
-							<div class="btn_right">
-								<a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
-							</div>
-						</li>
-						<!-- 계속해서참여자추가(?) -->
+								for(ProjectMemberBean pb : arr){ %>			
+							<li>
+								<div class="photo">
+									<img src="./img/right_menu/img_photo_null32.png" style="">
+								</div>
+								<div class="username" id="menu_profile">
+									<a href="#"><%if(arr.size() != 0){%><%=pb.getMember_name() %><%} %></a>
+								</div>
+								<div class="btn_right">
+									<a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
+								</div>
+							</li>
+							 <%} %>
+							<!-- 계속해서참여자추가(?) -->
 
 
 					</ul>
@@ -256,10 +259,10 @@
 					
 					<div id="ul_div">
 						<ul id="part_ul">
-							<% for(ProjectBean pb : arr){%>
+							<% for(ProjectMemberBean pb : arr){%>
 							<li>
 								<img src="./img/popup/default_profile.png" alt="프로필사진">
-								<a href=""><%=pb.getId() %></a>
+								<a href=""><%=pb.getMember_name() %></a>
 							</li>
 							<%} %>
 						</ul>

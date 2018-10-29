@@ -222,31 +222,5 @@ public class ProjectDAO {
 		return list;
 		
 	}*/
-	
-	public ArrayList<ProjectBean> projectMemberInfo(){
-		ArrayList<ProjectBean> arr = new ArrayList<ProjectBean>();
-		try {
-			con = getCon();
-			sql = "select id from project";
-			prpr = con.prepareStatement(sql);
-			
-			rs = prpr.executeQuery();
-			while(rs.next()){
-				ProjectBean pb = new ProjectBean();
-				
-				pb.setId(rs.getString("id"));
-				
-				arr.add(pb);
-			}
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			CloseDB();
-		}
-		
-		return arr;
-	}
 
 }

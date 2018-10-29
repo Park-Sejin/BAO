@@ -11,6 +11,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import project.db.ProjectBean;
+
 public class ProjectMemberDAO {
 	Connection con = null;
 	PreparedStatement prpr = null;
@@ -53,7 +55,7 @@ public class ProjectMemberDAO {
 		}
 	}
 	
-	public List getProjectMember(int num){
+	public List<ProjectMemberBean> getProjectMember(int num){
 		List list = null;
 		try {
 			con = getCon();

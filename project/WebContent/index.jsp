@@ -11,4 +11,4 @@
 			response.sendRedirect("./chatPage.chat"); 
 		%>
 	</body>
-</html>
+</html> 

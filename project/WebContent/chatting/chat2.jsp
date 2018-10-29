@@ -44,8 +44,9 @@
 		<% 
 			/* ChatServerEx cs = new ChatServerEx(); */
 			chat_Client cc = new chat_Client();
+			String name = "박세진";
 			
-			cc.ChatClient("박세진");
+			cc.ChatClient("name");
 		%>
 	
 		<div id="chat_top">
