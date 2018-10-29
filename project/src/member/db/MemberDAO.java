@@ -9,6 +9,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import project.member.db.ProjectMemberBean;
+
 public class MemberDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -294,6 +296,8 @@ public class MemberDAO {
 		return check;
 	}
 	//searchID(id)
+	
+	
 	
 	
 	

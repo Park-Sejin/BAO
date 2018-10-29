@@ -33,7 +33,7 @@ class ChatServerThread implements Runnable {
 			user_id = (String) ois.readObject();
 			// 이미 서버에 접속되어 있는 모든 클라이언트에게 XXX가 접속되었다는 메시지 전송
 			broadcast(user_id + "님이 접속하셨습니다.");
-			System.out.println("접속한 클라이언트의 아이디는 " + user_id + "입니다.");
+			System.out.println("접속한 클라이언트의 이름은 " + user_id + "입니다.");
 
 			// 여러 클라이언트에게 공유되는 해쉬 맵을 동기화시킴
 			synchronized (hm) {

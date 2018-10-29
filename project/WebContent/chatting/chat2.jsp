@@ -1,3 +1,8 @@
+<%@page import="member.db.MemberBean"%>
+<%@page import="member.db.MemberDAO"%>
+<%@page import="project.member.db.ProjectMemberDAO"%>
+<%@page import="project.member.db.ProjectMemberBean"%>
+<%@page import="project.db.ProjectBean"%>
 <%@page import="chat_test.chat_Client"%>
 <%@page import="chat_test.ChatServerEx"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -23,7 +28,8 @@
 						type: "post",
 						url: "./chatHandling.chat",
 						data: {
-							txt_input: $("#txt_input").val()
+							txt_input: $("#txt_input").val(),
+							name: $("#chat_name").val()
 						},
 						success: function(data){
 							/* $("#chat_msg").text(data.trim()); */
@@ -42,11 +48,16 @@
 	</head>
 	<body>
 		<% 
+			/* String email = (String) session.getAttribute("email"); */
+			String email = "sujin11@naver.com"; // 임의의 값
+		
 			/* ChatServerEx cs = new ChatServerEx(); */
 			chat_Client cc = new chat_Client();
-			String name = "박세진";
+			MemberDAO mdao = new MemberDAO();
+			MemberBean mb = mdao.getMember(email);
 			
-			cc.ChatClient("name");
+			
+			cc.ChatClient(mb.getName());
 		%>
 	
 		<div id="chat_top">
@@ -90,6 +101,7 @@
 			<textarea rows="5" cols="50" placeholder="메세지를 입력하세요." id="txt_input"
 				style="width: 87%; resize: none; outline: none; overflow: hidden;"></textarea>
 			<input type="button" value="전송" id="chat_btn">
+			<input type="hidden" value=<%=mb.getName() %> id="chat_name">
 		</div>
 	
 	
