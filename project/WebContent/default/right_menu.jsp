@@ -88,17 +88,18 @@
 
 				<div class="participant_scroll mCustomScrollbar">
 					<!-- title -->
+					<% 	ProjectMemberDAO pdao = new ProjectMemberDAO();
+						List<ProjectMemberBean> arr = pdao.getProjectMember(1);%>
 					<div id="sendienceFirst" class="part_title first">
 						<h5>
-							<strong>프로젝트 관리자</strong><span id="sendienceAdminCnt">(0)</span>
+							<strong>프로젝트 관리자</strong><span id="sendienceAdminCnt">(<%= arr.size()%>)</span>
 						</h5>
 					</div>
 					<!-- 이름 -->
 					<ul id="sendienceAdminUl" style="display: block;">		
-						<% 	ProjectMemberDAO pdao = new ProjectMemberDAO();
-								List<ProjectMemberBean> arr = pdao.getProjectMember(1);
+						
 								
-								for(ProjectMemberBean pb : arr){ %>			
+								<%for(ProjectMemberBean pb : arr){ %>	
 							<li>
 								<div class="photo">
 									<img src="./img/right_menu/img_photo_null32.png" style="">
