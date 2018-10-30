@@ -1,8 +1,6 @@
 package chat_test;
 
 import java.net.*;
-
-
 import java.io.*;
 
 //***ReceiveDataThread 클래스 설계(키보드로 메시지를 송신하면서 서버로부터 메시지를 수신 받기 위함)*****
@@ -17,12 +15,13 @@ public class ReceiveDataThread implements Runnable{
 		this.ois = ois;
 	}// ReceiveDataThread 클래스의 생성자의 끝
 
+	
+	// sleep 후 syncro로 동기화
 	public void run() { // Runnable 인터페이스 run() 메서드 오버라이딩
 		try {
 			
 			while (true) {
 				receiveData = (String) ois.readObject(); // 서버 데이터 수신
-				
 				if(receiveData != null) {
 					
 				}

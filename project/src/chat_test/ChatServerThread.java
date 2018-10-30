@@ -23,8 +23,7 @@ class ChatServerThread implements Runnable {
 			// 클라이언트로부터 아이피 주소를 얻어 출력함
 			System.out.println(child.getInetAddress() + "로부터 연결요청 받음");
 			// 클라이언트로부터 데이터를 수신받기 위해 클라이언트로부터 입력 스트림을 얻어
-			ois = new ObjectInputStream(child.getInputStream()); // ObjectInputStream으로
-																	// 변환
+			ois = new ObjectInputStream(child.getInputStream()); // ObjectInputStream으로 변환
 			// 클라이언트로 데이터를 송신하기 위해서 출력 스트림 얻어 ObjectOutputStream으로 변환
 			oos = new ObjectOutputStream(child.getOutputStream());
 
@@ -57,11 +56,7 @@ class ChatServerThread implements Runnable {
 				receiveData = (String) ois.readObject(); // 입력 스트림을 통해 클라이언트가 보낸
 															// 메시지를 읽어옴
 				// 클라이언트로부터 종료 메시지가 들어오면 반복 문을 벗어나서 finally 구문으로 간다.
-				if (receiveData.equals("/quit"))
-					break;
-				// 귓속말을 위해서 특정 클라이언트에게 메시지를 보냈다면 sendMag를 호출한다.
-				else if (receiveData.equals("/to"))
-					sendMsg(receiveData);
+				if (receiveData.equals("/quit")) break;
 				else // 받은 메시지를 모든 클라이언트에게 브로드 캐스팅한다.
 					broadcast(user_id + " : " + receiveData);
 			} // while
@@ -96,26 +91,5 @@ class ChatServerThread implements Runnable {
 			}
 		}
 	}// broadcast 메서드의 끝
-
-	// ? 귓속말을 위해서 특정 클라이언트에게 메시지를 보냈다면 다음과 같은 형식으로 보냄.++++++++++++
-	// /to 아이디 대화내용
-	public void sendMsg(String message) {
-		// 귓속말로 넘어온 메시지 중 아이디 부분에 해당되는 문자열을 찾기 위해서
-		int begin = message.indexOf(" ") + 1; // 처음 공백 문자 다음부터
-		int end = message.indexOf(" ", begin); // 두 번째 공백 문자 사이의 문자가 아이디가 됨
-
-		if (end != -1) {
-			String id = message.substring(begin, end); // 보내진 메시지 중 아이디 부분만 얻어냄
-			String msg = message.substring(end + 1); // 아이디 이후는 대화내용이 된다.
-			ObjectOutputStream oos = hm.get(id); // 해쉬 맵에서 아이디로 출력 스트림을 얻어 냄
-			try {
-				if (oos != null) {
-					oos.writeObject(id + "님이 다음과 같은 귀속말을 보내셨습니다. : " + msg);
-					oos.flush();
-				} // if
-			} catch (IOException e) {
-			}
-		} // if
-	}// sendMsg 메서드 끝
 
 }// ChatServerThread 클래스의 끝

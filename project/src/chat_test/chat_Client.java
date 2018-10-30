@@ -45,7 +45,7 @@ public class chat_Client {
 		}
 	}
 
-	public void ChatSubmit(String txt_input) {
+	public synchronized void ChatSubmit(String txt_input) {
 
 		String sendData; // 서버로 보낼 데이터를 저장하기 위한 변수
 		sendData = txt_input; // 글 입력 상자에서 데이터를 얻어
