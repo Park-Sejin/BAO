@@ -49,7 +49,7 @@
 	<body>
 		<% 
 			/* String email = (String) session.getAttribute("email"); */
-			String email = "sujin11@naver.com"; // 임의의 값
+			String email = "tpwls1226@naver.com"; // 임의의 값
 		
 			/* ChatServerEx cs = new ChatServerEx(); */
 			chat_Client cc = new chat_Client();

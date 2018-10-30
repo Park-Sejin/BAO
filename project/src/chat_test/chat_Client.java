@@ -12,7 +12,7 @@ public class chat_Client {
 	ObjectInputStream ois; // 서버로부터 데이터를 전송받기 위한 스트림
 	String usr_id; // 접속자의 아이디를 저장할 변수 선언
 	ReceiveDataThread rt; // 서버가 보낸 데이터를 받기 위한 스레드 객체
-	String ipAddress = "127.0.0.1";
+	String ipAddress;
 	final static int server_port = 6000;
 
 	static ObjectOutputStream save_oos; // 서버에 데이터를 전송하기 위한 스트림
@@ -22,6 +22,8 @@ public class chat_Client {
 		// 접속할 서버의 아이피와 포트 번호로 소켓 생성하고 사용자 아이디를 서버로 보냄
 		// 접속할 서버의 아이피 주소와 포트를 이용해서 클라이언트 소켓 생성
 		try {
+			ipAddress = "127.0.0.1";
+			
 			client = new Socket(ipAddress, server_port);
 			// 서버로 메시지를 보내기 위해서 출력 스트림 얻어 ObjectOutputStream으로 변환
 			oos = new ObjectOutputStream(client.getOutputStream());

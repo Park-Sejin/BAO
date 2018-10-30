@@ -26,6 +26,9 @@
     	
     	System.out.println("name: " + name + ", session: " + mb.getName());
     	
+    	
+    	String receive_msg = "";
+    	
     %>
     
     <%if(name.equals(mb.getName())) { %>
@@ -38,7 +41,7 @@
 		
 	<%} else { %>
 		<div id="chat_send"> <!-- 받은 메세지 -->
-			<span id="chat_msg">안녕하세요</span>
+			<span id="chat_msg"><%=receive_msg %></span>
 			<span id="chat_time">
 			<sub>오후 12:32</sub></span>
 			<sup style="color: #f66;">1</sup>
