@@ -14,9 +14,12 @@
     
     	String name = null;
     	String txt_input = null;
+    	String receiveData = null;
     	
     	name = request.getParameter("name");
     	txt_input = request.getParameter("txt_input");
+    	receiveData = request.getParameter("receiveData");
+    	System.out.println("-------"+receiveData+"-------");
     	
     	chat_Client cc = new chat_Client();
 		

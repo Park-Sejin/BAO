@@ -4,7 +4,7 @@ import java.net.*;
 import java.io.*;
 
 //***ReceiveDataThread 클래스 설계(키보드로 메시지를 송신하면서 서버로부터 메시지를 수신 받기 위함)*****
-public class ReceiveDataThread implements Runnable{
+class ReceiveDataThread implements Runnable {
 	Socket client; // 서버와 통신하기 위한 소켓
 	ObjectInputStream ois; // 서버로부터 데이터를 수신받기 위한 스트림
 	String receiveData; // 서버로부터 수신받은 데이터를 저장하기 위한 변수
@@ -15,21 +15,55 @@ public class ReceiveDataThread implements Runnable{
 		this.ois = ois;
 	}// ReceiveDataThread 클래스의 생성자의 끝
 
-	
-	// sleep 후 syncro로 동기화
-	public void run() { // Runnable 인터페이스 run() 메서드 오버라이딩
+	public void run() {
 		try {
-			
-			while (true) {
-				receiveData = (String) ois.readObject(); // 서버 데이터 수신
-				if(receiveData != null) {
+			// 입력 스트림을 통해 데이터를 읽어 와서 출력
+			while ((receiveData = (String) ois.readObject()) != null){
+				
+				System.out.println("(받은메세지 추측)"+receiveData);
+				//---------------------------------------------
+				
+				try {
+					String data = URLEncoder.encode("receiveData", "UTF-8")
+							+ "=" + URLEncoder.encode(receiveData, "UTF-8");
 					
+					
+					
+					URL url = new URL("http://localhost:8080/project/chatting/chatHandling.jsp");
+					URLConnection conn = url.openConnection();
+					
+					conn.setDoOutput(true);
+					OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+					wr.write(data);
+					wr.flush();
+					
+					System.out.println("data------------------"+wr);
+					
+					/*BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+					String line;
+					while((line = rd.readLine()) != null){
+						System.out.println(line);
+					}*/
+					wr.close();
+					/*rd.close();*/
+					
+				}catch(Exception e){
+					e.printStackTrace();
 				}
+					
 			}
+			
 		} catch (ClassNotFoundException e) {
-			System.out.print(e);
-		} catch (IOException e) { // 예외 처리
-			System.out.print(e);
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				ois.close();
+				client.close();
+			} catch (IOException e2) {
+				e2.printStackTrace();
+			}
 		} // finally
 	}// run 메서드의 끝
 }// ReceiveDataThread 클래스의 끝

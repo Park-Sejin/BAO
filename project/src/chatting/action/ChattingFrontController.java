@@ -34,13 +34,13 @@ public class ChattingFrontController extends HttpServlet{
     		forward.setPath("./chatting/chatHandling.jsp");
     		forward.setRedirect(false);
     		
-    	}else if(command.equals("/ChatServerThread.chat")){
-    		/*action = new ReceiveDataThread();*/
+    	/*}else if(command.equals("/ChatServerThread.chat")){
+    		action = new ReceiveDataThread();
     		try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
+			}*/
     		
     	} 
     	
