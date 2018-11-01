@@ -1,6 +1,9 @@
 package chat_test;
 
 import java.net.*;
+
+import chatting.db.ChatBean;
+
 import java.io.*;
 
 //***ReceiveDataThread 클래스 설계(키보드로 메시지를 송신하면서 서버로부터 메시지를 수신 받기 위함)*****
@@ -14,6 +17,17 @@ class ReceiveDataThread implements Runnable {
 		client = s;
 		this.ois = ois;
 	}// ReceiveDataThread 클래스의 생성자의 끝
+	
+	static String memo;
+	
+	public static String getMemo() {
+		return memo;
+	}
+	public static void setMemo(String memo) {
+		ReceiveDataThread.memo = memo;
+	}
+
+
 
 	public void run() {
 		try {
@@ -21,35 +35,45 @@ class ReceiveDataThread implements Runnable {
 			while ((receiveData = (String) ois.readObject()) != null){
 				
 				System.out.println("(받은메세지 추측)"+receiveData);
-				//---------------------------------------------
 				
-				try {
+				setMemo(receiveData);
+				//---------------------------------------------
+				ChatBean cb = new ChatBean();
+				
+				
+				
+				/*try {
 					String data = URLEncoder.encode("receiveData", "UTF-8")
 							+ "=" + URLEncoder.encode(receiveData, "UTF-8");
 					
-					
+					System.out.println("data------------------"+data);
 					
 					URL url = new URL("http://localhost:8080/project/chatting/chatHandling.jsp");
 					URLConnection conn = url.openConnection();
 					
+					((HttpURLConnection)conn).setRequestMethod("POST");
 					conn.setDoOutput(true);
+					
+					
 					OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
 					wr.write(data);
 					wr.flush();
 					
-					System.out.println("data------------------"+wr);
 					
-					/*BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-					String line;
-					while((line = rd.readLine()) != null){
+					BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+					String line = null;
+					
+					while ((line = br.readLine()) != null) {
 						System.out.println(line);
-					}*/
-					wr.close();
-					/*rd.close();*/
+					}
 					
-				}catch(Exception e){
+					wr.close();
+					br.close();
+					
+				}catch(IOException e){
+					System.out.println("--------------IOException------------");
 					e.printStackTrace();
-				}
+				}*/
 					
 			}
 			
