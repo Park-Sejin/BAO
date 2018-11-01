@@ -6,7 +6,7 @@
 
     <%
     	/* String email = (String) session.getAttribute("email"); */
-    	String email = "sujin11@naver.com";
+    	String email = "tpwls1226@naver.com";
 	    MemberDAO mdao = new MemberDAO();
 		MemberBean mb = mdao.getMember(email);
 		
@@ -16,14 +16,11 @@
     	String txt_input = null;
     	String receiveData = null;
     	
-    	name = request.getParameter("name");
+    	name = request.getParameter("chat_name");
     	txt_input = request.getParameter("txt_input");
     	/* receiveData = request.getParameter("receiveData"); */
     	
     	
-    	
-    	
-    	System.out.println("-------"+receiveData+"-------");
     	
     	chat_Client cc = new chat_Client();
 		

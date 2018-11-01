@@ -12,7 +12,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
-		<link href="./css/chat.css" rel="stylesheet" type="text/css">
+		<link href="../css/chat.css" rel="stylesheet" type="text/css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		
 		<script type="text/javascript">
@@ -49,21 +49,22 @@
 	<body>
 		<% 
 			/* String email = (String) session.getAttribute("email"); */
-			String email = "sujin11@naver.com"; // 임의의 값
+			String receive_email = request.getParameter("receive_email");
+			String sender_email = "tpwls1226@naver.com"; // 세션값으로 바꿔야함, 임의의 값임
 			
-		
 			/* ChatServerEx cs = new ChatServerEx(); */
 			chat_Client cc = new chat_Client();
 			MemberDAO mdao = new MemberDAO();
-			MemberBean mb = mdao.getMember(email);
+			MemberBean re_mb = mdao.getMember(receive_email);
 			
-			session.setAttribute("email"+mb.getNum(), email);
+			/* session.setAttribute("email"+mb.getNum(), email); */
 			
-			cc.ChatClient(mb.getName());
+			MemberBean sen_mb = mdao.getMember(sender_email);
+			cc.ChatClient(sen_mb.getName());
 		%>
 	
 		<div id="chat_top">
-			운영자 <img src="../img/login/logo.png" alt="바꿔야함" id="chat_menu">
+			<%=re_mb.getName() %> <img src="../img/login/logo.png" alt="바꿔야함" id="chat_menu">
 		</div>
 		<br>
 	
@@ -103,7 +104,7 @@
 			<textarea rows="5" cols="50" placeholder="메세지를 입력하세요." id="txt_input"
 				style="width: 87%; resize: none; outline: none; overflow: hidden;"></textarea>
 			<input type="button" value="전송" id="chat_btn">
-			<input type="hidden" value=<%=mb.getName() %> id="chat_name">
+			<input type="hidden" value=<%=sen_mb.getName() %> id="chat_name">
 		</div>
 	
 	

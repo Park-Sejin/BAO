@@ -18,28 +18,25 @@ class ReceiveDataThread implements Runnable {
 		this.ois = ois;
 	}// ReceiveDataThread 클래스의 생성자의 끝
 	
-	static String memo;
-	
-	public static String getMemo() {
-		return memo;
-	}
-	public static void setMemo(String memo) {
-		ReceiveDataThread.memo = memo;
-	}
-
-
 
 	public void run() {
 		try {
 			// 입력 스트림을 통해 데이터를 읽어 와서 출력
 			while ((receiveData = (String) ois.readObject()) != null){
 				
-				System.out.println("(받은메세지 추측)"+receiveData);
+				System.out.println(receiveData);
 				
-				setMemo(receiveData);
 				//---------------------------------------------
-				ChatBean cb = new ChatBean();
+				String[] name = receiveData.split(" : ");
 				
+				System.out.println(name[0]);
+				System.out.println(name[1]);
+				
+				ChatBean cb = new ChatBean();
+				cb.setSender(name[0]);
+				cb.setReceiver("");
+				cb.setMessage(name[1]);
+				cb.setRead_cnt(0);
 				
 				
 				/*try {

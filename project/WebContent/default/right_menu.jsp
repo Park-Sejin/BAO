@@ -20,7 +20,8 @@
 	<script type="text/javascript">
 	
 	function go_pop(){
-		window.open("./chatting/chat2.jsp?name=","new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+		var email = document.getElementById('receive_email').value;
+		window.open("chatting/chat2.jsp?receive_email="+email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
 		}
 		
 		
@@ -169,9 +170,10 @@
 						<a id="EDIT" class="ico_mod" style="display: none;"></a>
 					</div>
 					<div class="prof_cn">
-						<p id="EML" style="visibility: visible;">sjin0425@naver.com</p>
+						<p id="EML" style="visibility: visible;">sujin11@naver.com</p>
 						<p id="CLPH_NO" style="visibility: hidden;"></p>
 						<p id="CMPN_TLPH_NO" style="visibility: hidden;"></p>
+						<input type="hidden" id="receive_email" value="sujin11@naver.com"> <!-- 임의의 값 -->
 					</div>
 					<div class="prof_btn">
 						<a id="CHAT" class="btn_prd_sty1_b" onclick="go_pop()"><span>채팅하기</span></a>

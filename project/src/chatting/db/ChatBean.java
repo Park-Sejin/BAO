@@ -10,6 +10,15 @@ public class ChatBean {
 	Date date;
 	int read_cnt;
 	
+	/*
+	create table chat(
+	num int primary key auto_increment,
+	receiver varchar(45),
+	sender varchar(45),
+	message text,
+	date timestamp default now(),
+	read_cnt int);
+	 */
 	
 	public int getNum() {
 		return num;

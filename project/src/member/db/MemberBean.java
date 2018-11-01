@@ -15,16 +15,6 @@ public class MemberBean {
 	private String phone;
 	private String profile;
 	
-	/*
-		create table chat(
-		num int primary key auto_increment,
-		receiver varchar(45),
-		sender varchar(45),
-		message text,
-		date timestamp default now(),
-		read_cnt int);
-	 */
-	
 	public String getProfile() {
 		return profile;
 	}
