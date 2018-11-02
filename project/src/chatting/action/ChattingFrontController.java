@@ -29,11 +29,15 @@ public class ChattingFrontController extends HttpServlet{
     		forward.setPath("./chatting/chat2.jsp");
     		forward.setRedirect(false);
     		
-    	} else if(command.equals("/chatting/chatHandling.chat")){  // 페이지 이동 고쳐야함 뭐임............
-    		System.out.println("?");
+    	} else if(command.equals("/chatHandling.chat")){ 
     		forward = new ActionForward();
     		forward.setPath("./chatting/chatHandling.jsp");
     		forward.setRedirect(false);
+    	}else if(command.equals("/timeline.chat")){ 
+    		forward = new ActionForward();
+    		forward.setPath("./timeline.jsp");
+    		forward.setRedirect(false);
+    		
     		
     	/*}else if(command.equals("/ChatServerThread.chat")){
     		action = new ReceiveDataThread();

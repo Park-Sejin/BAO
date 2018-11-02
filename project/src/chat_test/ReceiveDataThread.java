@@ -3,6 +3,7 @@ package chat_test;
 import java.net.*;
 
 import chatting.db.ChatBean;
+import chatting.db.ChatDAO;
 
 import java.io.*;
 
@@ -11,11 +12,14 @@ class ReceiveDataThread implements Runnable {
 	Socket client; // 서버와 통신하기 위한 소켓
 	ObjectInputStream ois; // 서버로부터 데이터를 수신받기 위한 스트림
 	String receiveData; // 서버로부터 수신받은 데이터를 저장하기 위한 변수
+	
+	String receive_name;
 
 	// 접속 요청한 소켓 객체와 입력 스트림이 전달됨
-	public ReceiveDataThread(Socket s, ObjectInputStream ois) {
+	public ReceiveDataThread(Socket s, ObjectInputStream ois, String re_name) {
 		client = s;
 		this.ois = ois;
+		this.receive_name = re_name;
 	}// ReceiveDataThread 클래스의 생성자의 끝
 	
 
@@ -29,14 +33,14 @@ class ReceiveDataThread implements Runnable {
 				//---------------------------------------------
 				String[] name = receiveData.split(" : ");
 				
-				System.out.println(name[0]);
-				System.out.println(name[1]);
-				
 				ChatBean cb = new ChatBean();
 				cb.setSender(name[0]);
-				cb.setReceiver("");
+				cb.setReceiver(receive_name);
 				cb.setMessage(name[1]);
 				cb.setRead_cnt(0);
+				
+				ChatDAO cdao = new ChatDAO();
+				cdao.ChatSubmit(cb);
 				
 				
 				/*try {

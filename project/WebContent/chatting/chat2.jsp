@@ -12,7 +12,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
-		<link href="../css/chat.css" rel="stylesheet" type="text/css">
+		<link href="./css/chat.css" rel="stylesheet" type="text/css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		
 		<script type="text/javascript">
@@ -60,7 +60,7 @@
 			/* session.setAttribute("email"+mb.getNum(), email); */
 			
 			MemberBean sen_mb = mdao.getMember(sender_email);
-			cc.ChatClient(sen_mb.getName());
+			cc.ChatClient(sen_mb.getName(), re_mb.getName());
 		%>
 	
 		<div id="chat_top">

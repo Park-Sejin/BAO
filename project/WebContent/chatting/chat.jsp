@@ -5,7 +5,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Insert title here</title>
-		<link href="../css/chat.css" rel="stylesheet" type="text/css">
+		<link href="./css/chat.css" rel="stylesheet" type="text/css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		
 		<script type="text/javascript">
@@ -21,7 +21,7 @@
 	</head>
 	<body>
 		<div id="chat_top">
-			운영자 <img src="../img/login/logo.png" alt="바꿔야함" id="chat_menu">
+			운영자 <img src="./img/login/logo.png" alt="바꿔야함" id="chat_menu">
 		</div>
 		<br>
 	
@@ -71,9 +71,9 @@
 		
 		<div id="clip_menu">
 			<ul>
-				<li><img src="../img/chat/addfile_pc.png">pc에서 올리기</li>
-				<li><img src="../img/chat/addfile_drop.png">드롭박스에서 가져오기</li>
-				<li><img src="../img/chat/addfile_google.png">구글 드라이브에서 가져오기</li>
+				<li><img src="./img/chat/addfile_pc.png">pc에서 올리기</li>
+				<li><img src="./img/chat/addfile_drop.png">드롭박스에서 가져오기</li>
+				<li><img src="./img/chat/addfile_google.png">구글 드라이브에서 가져오기</li>
 			</ul>
 		</div>
 		

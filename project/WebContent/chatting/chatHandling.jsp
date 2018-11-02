@@ -14,26 +14,25 @@
     
     	String name = null; 
     	String txt_input = null;
-    	String receiveData = null;
+    	/* String receiveData = null; */
     	
-    	name = request.getParameter("chat_name");
-    	txt_input = request.getParameter("txt_input");
+    	/* name = request.getParameter("chat_name");
+    	txt_input = request.getParameter("txt_input"); */
     	/* receiveData = request.getParameter("receiveData"); */
-    	
-    	
     	
     	chat_Client cc = new chat_Client();
 		
-    	if(txt_input != null){
+    	/* if(txt_input != null){
     		cc.ChatSubmit(txt_input);
     	}else if(name.equals("exit")){
     		cc.ChatExit();
-    	}
+    	} */
     	
-    	System.out.println("name: " + name + ", session: " + email);
+    	//System.out.println("name: " + name + ", session: " + email);
     	
     	
-    	String receive_msg = "";
+    	
+    	String receive_msg = "12121212";
     	
     %>
     

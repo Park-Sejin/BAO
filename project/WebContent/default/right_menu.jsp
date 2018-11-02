@@ -21,7 +21,7 @@
 	
 	function go_pop(){
 		var email = document.getElementById('receive_email').value;
-		window.open("chatting/chat2.jsp?receive_email="+email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+		window.open("./chatPage.chat?receive_email="+email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
 		}
 		
 		
