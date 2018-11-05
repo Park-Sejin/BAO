@@ -5,6 +5,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+import chatting.action.ReceiveDataThread;
+import member.db.MemberBean;
+import member.db.MemberDAO;
+
 public class chat_Client {
 	// Client
 	Socket client = null; // 클라이언트 소켓
@@ -18,7 +22,7 @@ public class chat_Client {
 	static ObjectOutputStream save_oos; // 서버에 데이터를 전송하기 위한 스트림
 	static ObjectInputStream save_ois; // 서버로부터 데이터를 전송받기 위한 스트림
 
-	public void ChatClient(String se_name, String re_name) {
+	public void ChatClient(String se_email, String receive_email) {
 		// 접속할 서버의 아이피와 포트 번호로 소켓 생성하고 사용자 아이디를 서버로 보냄
 		// 접속할 서버의 아이피 주소와 포트를 이용해서 클라이언트 소켓 생성
 		try {
@@ -31,10 +35,13 @@ public class chat_Client {
 			ois = new ObjectInputStream(client.getInputStream());
 
 			// +++++++++++++++++++++++++++++++++
-			usr_id = se_name; // 글상자에서 대화명(사용자 id)를 얻어와서
+			MemberDAO mdao = new MemberDAO();
+			MemberBean sen_mb = mdao.getMember(se_email);
+			
+			usr_id = sen_mb.getName(); // 글상자에서 대화명(사용자 id)를 얻어와서
 			oos.writeObject(usr_id); // 서버에게 송신
 			oos.flush();
-			rt = new ReceiveDataThread(client, ois, re_name);
+			rt = new ReceiveDataThread(client, ois, receive_email);
 			Thread t = new Thread(rt); // 스레드 객체 생성
 			t.start(); // 스레드를 시작하고
 

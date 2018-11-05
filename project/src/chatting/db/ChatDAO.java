@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -32,6 +34,7 @@ public class ChatDAO {
 	}
 	
 	
+	// 메세지를 저장하는 메서드
 	public void ChatSubmit(ChatBean cb){
 		try {
 			con=getCon();
@@ -51,4 +54,39 @@ public class ChatDAO {
 		} finally { CloseDB(); }
 	}
 	
+	
+	// 이메일에 따른 채팅메세지를 가져오는 메서드
+	public ArrayList<ChatBean> getChat(String email){
+		
+		ArrayList<ChatBean> arr = new ArrayList<ChatBean>();
+		
+		try {
+			con=getCon();
+			
+			sql="select * from chat where receiver=? or sender=? order by date";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			pstmt.setString(2, email);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ChatBean cb = new ChatBean();
+				
+				cb.setReceiver(rs.getString("receiver"));
+				cb.setSender(rs.getString("sender"));
+				cb.setMessage(rs.getString("Message"));
+				cb.setDate(rs.getDate("date"));
+				cb.setRead_cnt(rs.getInt("read_cnt"));
+				
+				arr.add(cb);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { CloseDB(); }
+		
+		return arr;
+	}
 }

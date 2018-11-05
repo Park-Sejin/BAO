@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="chatting.db.ChatDAO"%>
+<%@page import="chatting.db.ChatBean"%>
 <%@page import="member.db.MemberBean"%>
 <%@page import="member.db.MemberDAO"%>
 <%@page import="chat_test.chat_Client"%>
@@ -6,50 +9,51 @@
 
     <%
     	/* String email = (String) session.getAttribute("email"); */
-    	String email = "tpwls1226@naver.com";
-	    MemberDAO mdao = new MemberDAO();
-		MemberBean mb = mdao.getMember(email);
-		
-		
-    
-    	String name = null; 
-    	String txt_input = null;
-    	/* String receiveData = null; */
+    	String email = "sujin11@naver.com"; // 세션값
+    	String txt_input = request.getParameter("txt_input");
+    	String sen_email = request.getParameter("sender_email");
     	
-    	/* name = request.getParameter("chat_name");
-    	txt_input = request.getParameter("txt_input"); */
-    	/* receiveData = request.getParameter("receiveData"); */
+    	String receiveData = (String)request.getAttribute("receiveData");
     	
-    	chat_Client cc = new chat_Client();
+    	
+    	/* 디비 저장-------------------------------------------------- */
+    	if(txt_input.length() != 0) {
+	    	ChatBean cb = new ChatBean();
+			cb.setSender(sen_email); // 세선 값
+			cb.setReceiver(request.getParameter("receive_email"));
+			cb.setMessage(request.getParameter("txt_input"));
+			cb.setRead_cnt(0);
+			
+			ChatDAO cdao = new ChatDAO();
+			cdao.ChatSubmit(cb);
+    	}
+		/* --------------------------------------------------------- */
+    	
 		
-    	/* if(txt_input != null){
+    	 chat_Client cc = new chat_Client(); 
+    	 if(txt_input != null){
     		cc.ChatSubmit(txt_input);
-    	}else if(name.equals("exit")){
+    	}/* else if(name.equals("exit")){
     		cc.ChatExit();
-    	} */
+    	}  */
     	
     	//System.out.println("name: " + name + ", session: " + email);
     	
-    	
-    	
-    	String receive_msg = "12121212";
-    	
     %>
-    
-    <%if(name.equals(mb.getName())) { %>
+    <% if(sen_email.equals(email)) { %>
 	    <div id="chat_receive"> <!-- 보낸 메세지 -->
 			<sup style="color: #f66;">1</sup>
 			<span id="chat_time"><sub>오후 12:30</sub></span>
-			<span id="chat_msg"><%if(txt_input != null){%> <%=txt_input %> <%} %></span>
+			<span id="chat_msg"> <%=txt_input %></span>
 		</div>
 		<div id="clear"></div>
-		
+			
 	<%} else { %>
 		<div id="chat_send"> <!-- 받은 메세지 -->
-			<span id="chat_msg"><%=receive_msg %></span>
+			<span id="chat_msg"><%=receiveData %></span>
 			<span id="chat_time">
 			<sub>오후 12:32</sub></span>
 			<sup style="color: #f66;">1</sup>
 		</div>
 		<div id="clear"></div>
-	<%} %>
+	<% } %>

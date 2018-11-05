@@ -1,3 +1,7 @@
+<%@page import="java.sql.Date"%>
+<%@page import="chatting.db.ChatBean"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="chatting.db.ChatDAO"%>
 <%@page import="member.db.MemberBean"%>
 <%@page import="member.db.MemberDAO"%>
 <%@page import="project.member.db.ProjectMemberDAO"%>
@@ -29,7 +33,8 @@
 						url: "./chatHandling.chat",
 						data: {
 							txt_input: $("#txt_input").val(),
-							name: $("#chat_name").val()
+							sender_email: $("#sender_email").val(),
+							receive_email: $("#receive_email").val()
 						},
 						success: function(data){
 							/* $("#chat_msg").text(data.trim()); */
@@ -50,7 +55,7 @@
 		<% 
 			/* String email = (String) session.getAttribute("email"); */
 			String receive_email = request.getParameter("receive_email");
-			String sender_email = "tpwls1226@naver.com"; // 세션값으로 바꿔야함, 임의의 값임
+			String sender_email = "sujin11@naver.com"; // 세션값으로 바꿔야함, 임의의 값임
 			
 			/* ChatServerEx cs = new ChatServerEx(); */
 			chat_Client cc = new chat_Client();
@@ -58,9 +63,8 @@
 			MemberBean re_mb = mdao.getMember(receive_email);
 			
 			/* session.setAttribute("email"+mb.getNum(), email); */
-			
-			MemberBean sen_mb = mdao.getMember(sender_email);
-			cc.ChatClient(sen_mb.getName(), re_mb.getName());
+			cc.ChatClient(sender_email, receive_email);
+		
 		%>
 	
 		<div id="chat_top">
@@ -69,14 +73,15 @@
 		<br>
 	
 		
-		<div id="chat_boay" style="min-width: 100px; min-height: 600px;">
+		<div id="chat_boay" style="min-width: 100px; min-height: 600px; height: 630px; overflow-y: scroll;">
+			
 			<fieldset>
+				<jsp:include page="past_chat.jsp"></jsp:include>
+				
 				<legend>년도-월-일 요일</legend>
 				<div id="text_page">
 				
-				
-				
-					
+				<!-- 실시간 -->
 				</div>
 	
 			</fieldset>
@@ -104,7 +109,8 @@
 			<textarea rows="5" cols="50" placeholder="메세지를 입력하세요." id="txt_input"
 				style="width: 87%; resize: none; outline: none; overflow: hidden;"></textarea>
 			<input type="button" value="전송" id="chat_btn">
-			<input type="hidden" value=<%=sen_mb.getName() %> id="chat_name">
+			<input type="hidden" value=<%=sender_email %> id="sender_email">
+			<input type="hidden" value=<%=receive_email %> id="receive_email">
 		</div>
 	
 	
