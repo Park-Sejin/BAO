@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LeftHeader</title>
 <link href="css/HeaderCss.css" rel="stylesheet">
+<link href="css/content.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
@@ -13,8 +14,9 @@
 		<div class="LeftHeaderSub">
 			<table width="200px">
 				<tr height="40px">
-					<td class="LeftMenuTb"
-						onClick=" location.href='http://www.naver.com' "><img
+					<td id = "promain"
+						class="LeftMenuTb"
+						onClick=""><img
 						src="img/left_header/ico_cb_alleccb.png">&nbsp;&nbsp;전체</td>
 				</tr>
 				<tr height="40px">
@@ -23,8 +25,9 @@
 						src="img/left_header/ico_cb_nsorteccb.png">&nbsp;&nbsp;미보관</td>
 				</tr>
 				<tr height="40px">
-					<td class="LeftMenuTb"
-						onClick=" location.href='http://www.naver.com' "><img
+					<td id = "favorite"
+						class="LeftMenuTb"
+						><img
 						src="img/left_header/ico_cb_importeccb.png">&nbsp;&nbsp;중요</td>
 				</tr>
 				<tr height="40px">
@@ -55,9 +58,28 @@
 						src="img/left_header/ico_schedules.png">&nbsp;&nbsp;전체 일정</td>
 				</tr>
 				<tr height="40px">
-					<td class="LeftMenuTb"
-						onClick=" location.href='http://www.naver.com' "><img
-						src="img/left_header/ico_cloudeccb.png">&nbsp;&nbsp;전체 파일</td>
+					<td class="LeftMenuTb" id="allfile"><img src="img/left_header/ico_cloudeccb.png">&nbsp;&nbsp;전체 파일</td>
+						<!-- The Modal -->
+						<div id="inAllfile" class="modal">
+			
+							<!-- Modal content -->
+							<div class="modal-content">
+							fdsfds
+							</div>
+						</div>
+							<script>
+							// Get the modal
+								var inAllfile = document.getElementById('inAllfile');
+	
+								// Get the button that opens the modal
+								var allfile = document.getElementById("allfile");
+	
+								// When the user clicks the button, open the modal 
+								allfile.onclick = function() {
+									inAllfile.style.display = "block";
+								}
+							</script>
+							
 				</tr>
 				<tr height="40px">
 					<td class="LeftMenuTb"

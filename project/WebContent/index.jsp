@@ -8,7 +8,8 @@
 	</head>
 	<body>
 		<%
-			response.sendRedirect("./timeline.chat"); 
+			/* response.sendRedirect("./timeline.chat");  */
+			response.sendRedirect("./main.pr");
 		%>
 	</body>
 </html> 

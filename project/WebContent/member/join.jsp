@@ -8,7 +8,7 @@
 
 <link href="./css/login.css" rel="stylesheet" type="text/css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 
 	var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
@@ -17,32 +17,39 @@
 	var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정 
 
 		$(document).ready(function(){		
+			//아이디중복확인
+			$("#join_EmailTxt").keyup(function(){
+				var email = $("#join_EmailTxt").val();
+				$.ajax({
+					type:"POST",
+					url:"./member/joinCheck.jsp",
+					data:{
+						"email":email
+					},
+					dataType : "text",
+					error : function(){
+						alert('통신실패!!');
+					},
+					success:function(data){
+						//중복 체크
+						if(data.trim() == 1){
+							$("#text").html("동일한 이메일이 사용중입니다");
+							$("#submit").css("background-color","#cccdd0");
+							$("#join_EmailTxt").val("");
+							$("#join_EmailTxt").focus();
+						} else{
+							$("#text").html("사용가능한 이메일 입니다");
+						}
+					}
+				});
+			});
+			
 			//모두 공백이 아니고 형식이 올바르면 버튼 색상변경
 			$("#join_PassTxt").on("change keyup paste", function(){
 				if($("#join_NameTxt").val() != "" && $("#join_EmailTxt").val() != "" && $("#join_PassTxt").val() != ""
 					&& getName.test($("#join_NameTxt").val()) && getMail.test($("#join_EmailTxt").val()) && getCheck.test($("#join_PassTxt").val())){
 			    		$("#submit").css("background-color","#5f5ab9");
 			    }
-			});
-		});
-		
-		$("#join_EmailTxt").keyup(function(){
-			var email = $("#join_EmailTxt").val();
-			$.ajax({
-				type:"POST",
-				url:"joinCheck.jsp",
-				data:{
-					"email":email
-				},
-				success:function(data){
-					
-					//중복 체크
-					if(data.trim() == 1){
-						$("#text").html("동일한 이메일이 사용중입니다");
-					} else{
-						$("#text").html("사용가능한 이메일 입니다");
-					}
-				}
 			});
 		});
 		
@@ -57,7 +64,6 @@
 				
 				//이메일 공백 확인
 			    if($("#join_EmailTxt").val() == ""){
-			        //alert("이메일을 입력해주세요");
 			        $("#text").html("이메일을 입력해주세요");
 			        $("#join_EmailTxt").focus();
 			        return false;
@@ -65,7 +71,6 @@
 				
 			  	//이메일 유효성 검사
 			    if(!getMail.test($("#join_EmailTxt").val())){
-			        //alert("이메일형식에 맞게 입력해주세요")
 			        $("#text").html("이메일형식에 맞게 입력해주세요");
 			        $("#join_EmailTxt").val("");
 			        $("#join_EmailTxt").focus();
@@ -74,15 +79,13 @@
 				
 				//비밀번호 공백 확인
 			    if($("#join_PassTxt").val() == ""){
-			        //alert("비밀번호를 입력해주세요");
 			        $("#text").html("비밀번호를 입력해주세요");
 			        $("#join_PassTxt").focus();
 			        return false;
 			    }
 				
-			    //아이디 비밀번호 같음 확인
+			    //이름 비밀번호 같음 확인
 			    if($("#join_NameTxt").val() == $("#join_PassTxt").val()){
-			        //alert("비밀번호를 아이디와 동일하게 설정할 수 없습니다");
 			        $("#text").html("비밀번호를 아이디와 동일하게 설정할 수 없습니다");
 			        $("#join_PassTxt").val("");
 			        $("#join_PassTxt").focus();
@@ -91,7 +94,6 @@
 				
 			    //비밀번호 유효성검사
 			    if(!getCheck.test($("#join_PassTxt").val())){
-			        //alert("영문과 숫자를 4~12 범위로 입력해주세요");
 			        $("#text").html("영문과 숫자를 4~12 범위로 입력해주세요");
 			        $("#join_PassTxt").val("");
 			        $("#join_PassTxt").focus();
@@ -100,7 +102,6 @@
 			    
 			    //체크박스 검사
 			    if($('input:checkbox[name="check"]').is(":checked") == false){
-			    	//alert("서비스 이용약관 및 개인정보 취급방침에 동의해야 가입이 가능합니다");
 			    	$("#text").html("서비스 이용약관 및 개인정보 취급방침에 동의해야 가입이 가능합니다");
 			    	return false;
 			    } 
@@ -108,6 +109,36 @@
 		}
 
 </script>
+
+<!-- 구글로그인 -->
+<script src="https://apis.google.com/js/api:client.js"></script>
+		<script>
+			  var googleUser = {};
+			  var startApp = function() {
+			    gapi.load('auth2', function(){
+			      // Retrieve the singleton for the GoogleAuth library and set up the client.
+			      auth2 = gapi.auth2.init({
+			        client_id: '582781589974-rk7pm8gf932johsg4uctn2r31gs7d8gb.apps.googleusercontent.com',
+			        cookiepolicy: 'single_host_origin',
+			        // Request scopes in addition to 'profile' and 'email'
+			        //scope: 'additional_scope'
+			      });
+			      attachSignin(document.getElementById('customBtn'));
+			    });
+			  };
+			
+			  function attachSignin(element) {
+			    console.log(element.id);
+			    auth2.attachClickHandler(element, {},
+			        function(googleUser) {
+			    		var email = googleUser.getBasicProfile().getEmail();
+		    			var name = googleUser.getBasicProfile().getName(); 
+						location.href='./GoogleLogin.me?email='+email+'&name='+name;
+			        }, function(error) {
+			          alert(JSON.stringify(error, undefined, 2));
+			        });
+			  }
+		</script>
 
 </head>
 <body>
@@ -140,7 +171,14 @@
 		</div>
 
 		<input type="button" value="카카오계정으로 시작하기" id="btn_k"><br>
-		<input type="button" value="구글계정으로 시작하기" id="btn_g"><br>
+		<!-- 구글계정으로 로그인 -->
+			<div id="gSignInWrapper">
+			    <div id="customBtn" class="customGPlusSignIn">
+			      <span class="icon"></span>
+			      <span class="buttonText">구글계정으로 시작하기</span>
+			    </div>
+		  	</div>
+		  	<script>startApp();</script>
 	</form>
 
 

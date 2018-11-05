@@ -38,7 +38,7 @@ body {
 .btn_pj_work {
 	float : left;
    position: relative;
-   height: 244px;
+   height: 240px;
    width: 245px;
    margin-top: 20px;
    margin-right: 10px;
@@ -75,6 +75,7 @@ body {
    font-size: 18px;
    border-bottom: 1px solid #d9d9d9;
    margin-right: 10px;
+   z-index: 1;
    
 }
 
@@ -99,13 +100,22 @@ body {
 }
 
 
-.star {
-   top: -5px;
+.starOff {
+   top: 18px;
    left: 20px;
-   height: 70px;
+   height: 20px;
    position: absolute;
    width: 20px;
    background: url("../img/content/btn_bookmark_offc81e.png") no-repeat 0 center;
+}
+
+.starOn {
+   top: 18px;
+   left: 20px;
+   height: 20px;
+   position: absolute;
+   width: 20px;
+   background: url("../img/content/btn_bookmark_onc81e.png") no-repeat 0 center;
 }
 
 .big_num {
@@ -165,7 +175,7 @@ body {
 }
 
 .btn_btmfix {
-   z-index: 13001;
+   z-index: 10001;
    position: fixed;
    bottom: 10px;
    right: 10px;
@@ -186,7 +196,7 @@ body {
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 99999; /* Sit on top */
     padding-top: 200px; /* Location of the box */
     left: 0;
     top: 0;

@@ -3,304 +3,318 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
-	
-	<link rel="stylesheet" href="./css/style.css" type="text/css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	
-	<script type="text/javascript">
-		// html dom 이 다 로딩된 후 실행된다.
-		$(document).ready(function() {
-			// memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
-			$(".test1>#aa1").hide();
-			$(".test1>a").click(function() {
-				$("#aa1").toggle();
-			});
-			// memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
-			$(".test2>#aa2").hide();
-			$(".test2>a").click(function() {
-				$("#aa2").toggle();
-			});
-			// memu 클래스 바로 하위에 있는 a 태그를 클릭했을때
-			$(".test3>#aa3").hide();
-			$(".test3>a").click(function() {
-				$("#aa3").toggle();
-			});
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./css/top.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$('#click_chat').click(function(){
+			$.ajax({
+	            url:'./default/top_test1.jsp',
+	            type:'get',
+	            data:{
+	            	'id':'admin'
+	            },
+	            success:function(data){
+	            	$('#chat_block').empty();
+	            	$('#chat_block').append(data);
+	            }
+	        })
 		});
-	</script>
+		
+		$('#click_number').click(function(){
+			$.ajax({
+	            url:'./default/top_test2.jsp',
+	            type:'get',
+	            data:{
+	            	'id':'admin'
+	            },
+	            success:function(data){
+	            	$('#chat_block').empty();
+	            	$('#chat_block').append(data);
+	            }
+	        })
+		});
+		
+		$('#click_plus').click(function(){
+			alert("dfs");
+		});
+		$('#click_nockalarm').click(function(){
+			$.ajax({
+	            url:'./default/top_test3.jsp',
+	            type:'get',
+	            data:{
+	            	'id':'admin'
+	            },
+	            success:function(data){
+	            	$('#hd_alarm_sec2').empty();
+	            	$('#hd_alarm_sec2').append(data);
+	            }
+	        })
+		});
+		$('#click_allalarm').click(function(){
+			$.ajax({
+	            url:'./default/top_test4.jsp',
+	            type:'get',
+	            data:{
+	            	'id':'admin'
+	            },
+	            success:function(data){
+	            	$('#hd_alarm_sec2').empty();
+	            	$('#hd_alarm_sec2').append(data);
+	            }
+	        })
+		});
+		
+		$('#click_allck').click(function(){
+			alert("dfs");
+		});
+		
+	})
+</script>
+
 </head>
 <body>
-	<div class="service_header">
-		<div style="margin-left: 406px; margin-top:10px; ">
-			<table>
-				<tr>
-					<td width="370px"><a href=""><img src="./img/top_header/logomark2.png" width="50px" height="50px"></a></td>
-					<td>
-						<form action="">
-							<input type="text" size="80" style="line-height: 40px; border:none; border-bottom:1.5px solid silver;" placeholder="전체에서 검색">
-							<input type="submit" class="hide">
-						</form>
-					</td>
-					<td width="500px"></td>
-					<td>
-						<div class="test1">
-							<a><img src="./img/top_header/ico_top_alram_offc4ca.png"></a>
-							<div id="aa1">
-								<div id="aa1_sec1">
-									<a href="#">채팅</a> <a href="#">연락처</a> <a id="a3" href="#">+</a>
-								</div>
-								<hr>
-								<div id="aa1_sec2">
-									<form action="">
-										<input type="text" placeholder="  이름 또는 채팅방 검색" size="40"
-											style="line-height: 25px; border-radius: 20px;"> <input
-											type="submit" class="hide">
-									</form>
-								</div>
+	<header>
+	<a href="./main.pr"></a>
 
-								<div id="aa1_sec3">
+	<Div id="search">
+		<form action="./search.pr">
+			<select id="search_type" name="search_type1">
+				<option name="all" value="all">ALL</option>
+				<option name="project" value="project">프로젝트</option>
+				<option name="write" value="write">글</option>
+				<option name="member" value="member">참여자</option>
+			</select>
 
-									<div class="sec3_div">
-										<div class="dd">
-											<div class="sec3_chat">
-												<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-													class="f_l rd">
-												<div class="sec3_name">
-													<!-- 이름 -->
-													김철수
-												</div>
-												<div class="sec3_con">
-													<!-- 대화 내용 -->
-													안녕하세요 ^^
-												</div>
-												<div class="sec3_date">
-													<!-- 날짜 -->
-													2018-10-08
-												</div>
-											</div>
-										</div>
-									</div>
+			<input type="text" placeholder="전체에서 검색" id="search_text" name="keyword"> 
+			<input type="submit" style="display: none; border-radius: 10px;">
+		</form>
+	</Div>
 
-									<div class="sec3_div">
-										<div class="dd">
-											<div class="sec3_chat">
-												<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-													class="f_l rd">
-												<div class="sec3_name">
-													<!-- 이름 -->
-													김철수
-												</div>
-												<div class="sec3_con">
-													<!-- 대화 내용 -->
-													안녕하세요 ^^
-												</div>
-												<div class="sec3_date">
-													<!-- 날짜 -->
-													2018-10-08
-												</div>
-											</div>
-										</div>
-									</div>
+	<ul id="header_icon">
+		<li>
+			<a id="icon_chat"></a> 
+			<!-- The Modal -->
+			<div id="myModal1" class="modal2">
 
-									<div class="sec3_div">
-										<div class="dd">
-											<div class="sec3_chat">
-												<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-													class="f_l rd">
-												<div class="sec3_name">
-													<!-- 이름 -->
-													김철수
-												</div>
-												<div class="sec3_con">
-													<!-- 대화 내용 -->
-													안녕하세요 ^^
-												</div>
-												<div class="sec3_date">
-													<!-- 날짜 -->
-													2018-10-08
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="sec3_div">
-										<div class="dd">
-											<div class="sec3_chat">
-												<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-													class="f_l rd">
-												<div class="sec3_name">
-													<!-- 이름 -->
-													김철수
-												</div>
-												<div class="sec3_con">
-													<!-- 대화 내용 -->
-													안녕하세요 ^^
-												</div>
-												<div class="sec3_date">
-													<!-- 날짜 -->
-													2018-10-08
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="sec3_div">
-										<div class="dd">
-											<div class="sec3_chat">
-												<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-													class="f_l rd">
-												<div class="sec3_name">
-													<!-- 이름 -->
-													김철수
-												</div>
-												<div class="sec3_con">
-													<!-- 대화 내용 -->
-													안녕하세요 ^^
-												</div>
-												<div class="sec3_date">
-													<!-- 날짜 -->
-													2018-10-08
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<div class="sec3_div">
-										<div class="dd">
-											<div class="sec3_chat">
-												<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-													class="f_l rd">
-												<div class="sec3_name">
-													<!-- 이름 -->
-													김철수
-												</div>
-												<div class="sec3_con">
-													<!-- 대화 내용 -->
-													안녕하세요 ^^
-												</div>
-												<div class="sec3_date">
-													<!-- 날짜 -->
-													2018-10-08
-												</div>
-											</div>
-										</div>
-									</div>
-
-
-								</div>
+				<!-- Modal content -->
+				<div id="hd_chat">
+					<div id="hd_chat_sec1">
+						<a href="#" id="click_chat">채팅</a> <a href="#" id="click_number">연락처</a> <a href="#" id="click_plus">+</a>
+					</div>
+					<hr>
+					<div id="chat_block">
+						<div id="hd_chat_sec2">
+							<div id="chat_search">
+								<form action="">
+									<img src="./img/top_header/if_icon-111-search_314478.png" width="30" style="position: absolute; left: 10px;">
+									<input type="text" placeholder="이름 또는 채팅방 검색" size="50"
+											style=" margin-left:5px;  line-height: 30px;  outline: none; position: absolute; left: 50px; border: none;"> 
+									<input type="submit" style="display: none;">
+								</form>
 							</div>
 						</div>
-					</td>
-					<td>
-						<div class="test2">
-							<a><img src="./img/top_header/ico_top_alram_offc4ca.png"></a>
-							<div id="aa2">
-								<div>
-									<div class="sec3_div">
-										<div class="dd">
-											<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-												class="f_l rd">
-											<div>
-												<div class="sec3_name">'BAO' 업무 공유방</div>
-												<div class="sec3_con">김철수님이 댓글을 등록했습니다.</div>
-												<div class="sec3_date">2018-10-05 | 17:11</div>
-
-											</div>
-										</div>
-									</div>
-									<div class="sec3_div">
-										<div class="dd">
-											<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-												class="f_l rd">
-											<div>
-												<div class="sec3_name">'BAO' 업무 공유방</div>
-												<div class="sec3_con">김철수님이 댓글을 등록했습니다.</div>
-												<div class="sec3_date">2018-10-05 | 17:11</div>
-
-											</div>
-										</div>
-									</div>
-									<div class="sec3_div">
-										<div class="dd">
-											<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-												class="f_l rd">
-											<div>
-												<div class="sec3_name">'BAO' 업무 공유방</div>
-												<div class="sec3_con">김철수님이 댓글을 등록했습니다.</div>
-												<div class="sec3_date">2018-10-05 | 17:11</div>
-
-											</div>
-										</div>
-									</div>
-									<div class="sec3_div">
-										<div class="dd">
-											<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-												class="f_l rd">
-											<div>
-												<div class="sec3_name">'BAO' 업무 공유방</div>
-												<div class="sec3_con">김철수님이 댓글을 등록했습니다.</div>
-												<div class="sec3_date">2018-10-05 | 17:11</div>
-
-											</div>
-										</div>
-									</div>
-									<div class="sec3_div">
-										<div class="dd">
-											<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-												class="f_l rd">
-											<div>
-												<div class="sec3_name">'BAO' 업무 공유방</div>
-												<div class="sec3_con">김철수님이 댓글을 등록했습니다.</div>
-												<div class="sec3_date">2018-10-05 | 17:11</div>
-
-											</div>
-										</div>
-									</div>
-									<div class="sec3_div">
-										<div class="dd">
-											<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-												class="f_l rd">
-											<div>
-												<div class="sec3_name">'BAO' 업무 공유방</div>
-												<div class="sec3_con">김철수님이 댓글을 등록했습니다.</div>
-												<div class="sec3_date">2018-10-05 | 17:11</div>
-
-											</div>
-										</div>
-									</div>
-
-
-
-								</div>
+	
+						<div id="hd_chat_sec3">
+						
+							<div class="sec3_div">
+								<img src="./img/top_header/thumb26.gif" width="40px"
+												height="40px"  class="sec3_div_img">
+								<span class="sec3_div_name">김철수</span>
+								<span class="sec3_div_title">안녕하세요</span>
+								<span class="sec3_div_date">2018.10.25</span>
 							</div>
-						</div>
-					</td>
-					<td>
-						<div class="test3">
-							<a><img src="./img/top_header/ico_top_alram_offc4ca.png"></a>
-							<div id="aa3">
-								<div class="aa3_sec1">
-									<div>
-										<img src="./img/top_header/thumb26.gif" width="40px" height="40px"
-											class="rd"> <br> <b>류수재</b>
-									</div>
-								</div>
-								<hr>
-								<div class="aa3_sec2">
-									<a href="./UpdateMember.me">회원정보</a> <a href="#">로그아웃</a> <a href="#">도움말</a>
-								</div>
+						
+							<div class="sec3_div">
+								<img src="./img/top_header/thumb26.gif" width="40px"
+												height="40px"  class="sec3_div_img">
+								<span class="sec3_div_name">김철수</span>
+								<span class="sec3_div_title">안녕하세요</span>
+								<span class="sec3_div_date">2018.10.25</span>
 							</div>
+							
+							<div class="sec3_div">
+								<img src="./img/top_header/thumb26.gif" width="40px"
+												height="40px"  class="sec3_div_img">
+								<span class="sec3_div_name">김철수</span>
+								<span class="sec3_div_title">안녕하세요</span>
+								<span class="sec3_div_date">2018.10.25</span>
+							</div>
+							
+							<div class="sec3_div">
+								<img src="./img/top_header/thumb26.gif" width="40px"
+												height="40px"  class="sec3_div_img">
+								<span class="sec3_div_name">김철수</span>
+								<span class="sec3_div_title">안녕하세요</span>
+								<span class="sec3_div_date">2018.10.25</span>
+							</div>
+							
+							<div class="sec3_div">
+								<img src="./img/top_header/thumb26.gif" width="40px"
+												height="40px"  class="sec3_div_img">
+								<span class="sec3_div_name">김철수</span>
+								<span class="sec3_div_title">안녕하세요</span>
+								<span class="sec3_div_date">2018.10.25</span>
+							</div>
+							
+							
+							
 						</div>
-					</td>
-					<td width="600px"></td>
+					</div>
+				</div>
+
+			</div> 
+		</li>
+			
+		<li>
+			<a id="icon_alarm"></a>
+			<!-- The Modal -->
+			<div id="myModal2" class="modal2">
+
+				<!-- Modal content -->
+				<div id="hd_alarm">
+					<div id="hd_alarm_sec1">
+						<a href="#" id="click_nockalarm">미확인알림</a>
+						<a href="#" id="click_allalarm">전체알림</a>
+						<a href="#" id="click_allck">모두 읽음</a>
+					</div>
+					
+					<div id="hd_alarm_sec2">
+                     	<div class="sec3_div">
+                     		<img src="./img/top_header/thumb26.gif" width="40px"
+										height="40px"  class="sec3_div_img">
+							<span class="sec3_div_name">프로젝트 명 </span>
+							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
+							<span class="sec3_div_date">7시간 전 </span>
+                    	</div>
+                    	
+                     	<div class="sec3_div">
+                     		<img src="./img/top_header/thumb26.gif" width="40px"
+										height="40px"  class="sec3_div_img">
+							<span class="sec3_div_name">프로젝트 명 </span>
+							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
+							<span class="sec3_div_date">7시간 전 </span>
+                    	</div>
+                    	
+                     	<div class="sec3_div">
+                     		<img src="./img/top_header/thumb26.gif" width="40px"
+										height="40px"  class="sec3_div_img">
+							<span class="sec3_div_name">프로젝트 명 </span>
+							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
+							<span class="sec3_div_date">7시간 전 </span>
+                    	</div>
+                    	
+                     	<div class="sec3_div">
+                     		<img src="./img/top_header/thumb26.gif" width="40px"
+										height="40px"  class="sec3_div_img">
+							<span class="sec3_div_name">프로젝트 명 </span>
+							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
+							<span class="sec3_div_date">7시간 전 </span>
+                    	</div>
+                    	
+                     	<div class="sec3_div">
+                     		<img src="./img/top_header/thumb26.gif" width="40px"
+										height="40px"  class="sec3_div_img">
+							<span class="sec3_div_name">프로젝트 명 </span>
+							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
+							<span class="sec3_div_date">7시간 전 </span>
+                    	</div>
+                    	
+                     	<div class="sec3_div">
+                     		<img src="./img/top_header/thumb26.gif" width="40px"
+										height="40px"  class="sec3_div_img">
+							<span class="sec3_div_name">프로젝트 명 </span>
+							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
+							<span class="sec3_div_date">7시간 전 </span>
+                    	</div>
+                    
+                    
+                    
+                    
+                    </div>
+                     		
+                </div>
+
+			</div> 
+		</li>
+		
+		<li>
+			<a id="icon_member"></a>
+			<!-- The Modal -->
+			<div id="myModal3" class="modal2">
+
+				<!-- Modal content -->
+				<div id="hd_member">
+                     	<div class="hd_member_sec1">
+                     		<div>
+                     			<img src="./img/top_header/thumb26.gif" width="40px" height="40px" class="rd">
+                     			<br>
+                     			<b>류수재</b>
+                     		</div>
+                     	</div>
+                     	<hr>
+                     	<div class="hd_member_sec2">
+                     		<a href="#">회원정보</a>
+                     		<a href="#">로그아웃</a>
+                     		<a href="#">도움말</a>
+                     	</div>
+               </div>
+			</div> 
+			<script>
+			// Get the modal
+			var modal1 = document.getElementById('myModal1');
+
+			// Get the button that opens the modal
+			var btn1 = document.getElementById("icon_chat");
+
+			// When the user clicks the button, open the modal 
+			btn1.onclick = function() {
+				modal1.style.display = "block";
+			}
+
+			// Get the modal
+			var modal2 = document.getElementById('myModal2');
+
+			// Get the button that opens the modal
+			var btn2 = document.getElementById("icon_alarm");
+
+			// When the user clicks the button, open the modal 
+			btn2.onclick = function() {
+				modal2.style.display = "block";
+			}
+			
+			// Get the modal
+			var modal3 = document.getElementById('myModal3');
+
+			// Get the button that opens the modal
+			var btn3 = document.getElementById("icon_member");
+
+			// When the user clicks the button, open the modal 
+			btn3.onclick = function() {
+				modal3.style.display = "block";
+			}
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal1) {
+					modal1.style.display = "none";
+				}
+				if (event.target == modal2) {
+					modal2.style.display = "none";
+				}
+				if (event.target == modal3) {
+					modal3.style.display = "none";
+				}
+			}
+			
+			</script>
+			
+		</li>
+	</ul>
 
 
-				</tr>
-
-			</table>
-		</div>
-	</div>
+	</header>
 
 </body>
 </html>

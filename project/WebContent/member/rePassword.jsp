@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <link href="./css/login.css" rel="stylesheet" type="text/css">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 
 	var getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);

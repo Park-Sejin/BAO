@@ -11,8 +11,6 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import project.db.ProjectBean;
-
 public class ProjectMemberDAO {
 	Connection con = null;
 	PreparedStatement prpr = null;
@@ -55,7 +53,10 @@ public class ProjectMemberDAO {
 		}
 	}
 	
-	public List<ProjectMemberBean> getProjectMember(int num){
+	
+	
+	// 해당 프로젝트 멤버 가져오기
+	public List getProjectMember(int num){
 		List list = null;
 		try {
 			con = getCon();
@@ -68,7 +69,6 @@ public class ProjectMemberDAO {
 				ProjectMemberBean pmb = new ProjectMemberBean();
 				pmb.setDate(rs.getDate("date"));
 				pmb.setMaster(rs.getInt("master"));
-				pmb.setMember_name(rs.getString("member_name"));
 				pmb.setMember_num(rs.getInt("member_num"));
 				pmb.setNum(rs.getInt("num"));
 				pmb.setProject_num(rs.getInt("project_num"));
@@ -84,6 +84,7 @@ public class ProjectMemberDAO {
 		
 		return list;
 	}
+	
 	
 	
 }

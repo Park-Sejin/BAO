@@ -1,3 +1,4 @@
+<%@page import="member.db.MemberDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="project.member.db.ProjectMemberBean"%>
 <%@page import="project.member.db.ProjectMemberDAO"%>
@@ -44,6 +45,7 @@
 <body>
 	<%
 		String email = (String) session.getAttribute("email");
+		int num = Integer.parseInt(request.getParameter("num"));
 	%>
 	<!-- aside -->
 	<div id="rightMenuBox">
@@ -89,8 +91,9 @@
 
 				<div class="participant_scroll mCustomScrollbar">
 					<!-- title -->
-					<% 	ProjectMemberDAO pdao = new ProjectMemberDAO();
-						List<ProjectMemberBean> arr = pdao.getProjectMember(1);%>
+					<% ProjectMemberDAO pmdao = new ProjectMemberDAO();
+						List<ProjectMemberBean> arr = new ArrayList<ProjectMemberBean>();
+						arr = pmdao.getProjectMember(num);%>
 					<div id="sendienceFirst" class="part_title first">
 						<h5>
 							<strong>프로젝트 관리자</strong><span id="sendienceAdminCnt">(<%= arr.size()%>)</span>
@@ -100,13 +103,16 @@
 					<ul id="sendienceAdminUl" style="display: block;">		
 						
 								
-								<%for(ProjectMemberBean pb : arr){ %>	
+								<%for(ProjectMemberBean pmb : arr){ 
+									MemberDAO mdao = new MemberDAO();
+									MemberBean mb = mdao.getMember(pmb.getMember_num()); %>
+									
 							<li>
 								<div class="photo">
 									<img src="./img/right_menu/img_photo_null32.png" style="">
 								</div>
 								<div class="username" id="menu_profile">
-									<a href="#"><%if(arr.size() != 0){%><%=pb.getMember_name() %><%} %></a>
+									<a href="#"><%= mb.getName()%></a>
 								</div>
 								<div class="btn_right">
 									<a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
@@ -166,7 +172,10 @@
 							<span id="FLNM">박수진</span><span id="JBCL_NM"
 								style="font-size: 20px; color: #969696; margin-left: 10px;"></span>
 						</h2>
-						<p id="CMNM">BAO</p>
+						<%ProjectDAO pdao = new ProjectDAO();
+							ProjectBean pb = pdao.getProject(num);%>
+						
+						<p id="CMNM"><%=pb.getProName() %></p>
 						<a id="EDIT" class="ico_mod" style="display: none;"></a>
 					</div>
 					<div class="prof_cn">
@@ -262,12 +271,12 @@
 					
 					<div id="ul_div">
 						<ul id="part_ul">
-							<% for(ProjectMemberBean pb : arr){%>
+							<%-- <% for(ProjectMemberBean pb : arr){%> --%>
 							<li>
 								<img src="./img/popup/default_profile.png" alt="프로필사진">
-								<a href=""><%=pb.getMember_name() %></a>
+								<a href="">이름이름</a>
 							</li>
-							<%} %>
+							<%-- <%} %> --%>
 						</ul>
 					</div>
 				</div>
