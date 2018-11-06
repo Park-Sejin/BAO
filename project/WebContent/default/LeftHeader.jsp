@@ -63,8 +63,29 @@
 						<div id="inAllfile" class="modal">
 			
 							<!-- Modal content -->
-							<div class="modal-content">
-							fdsfds
+							<div class="file-content">
+								<div class="file-top">
+									<span>전체 파일</span>
+								</div>
+								<div class="file-bottom">
+									<div>
+										<div class="box1">
+										</div>
+										<img src="./img/top_header/if_icon-111-search_314478.png" width="25" id="file_search">
+										<input type="text" size="55"
+											style=" margin-left:5px;  line-height: 20px;  outline: none; border: none; position: relative; top: -27px; left: 22px;">
+										<a href="#" id="file_button">문서</a>
+										<a href="#" id="image_button">이미지</a>
+									</div>
+									<div>
+										<select>
+											<option>참여중인 프로젝트의 전체파일</option>
+											<option>내가 올린 파일</option>
+											<option>내가 지정되어 공유된 파일</option>
+										</select>
+										<a href="#" class="f_r">내려받기</a>
+									</div>
+								</div>
 							</div>
 						</div>
 							<script>
