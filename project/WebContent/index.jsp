@@ -10,7 +10,7 @@
 		<%
 			/* response.sendRedirect("./timeline.chat");  */
 			response.sendRedirect("./main.pr");
-			// 수정했습니다.
+			// 수정
 		%>
 	</body>
 </html> 
