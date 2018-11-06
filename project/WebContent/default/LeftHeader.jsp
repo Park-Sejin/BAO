@@ -91,9 +91,8 @@
 										</select>
 										<a href="#" id="file_download">내려받기</a>
 									</div>
-									<div>
-										
-										
+									<div class="file_zone">
+										<div class="zone_top"><span>파일명</span> <span>등록정보</span></div>
 										
 									</div>
 								</div>
