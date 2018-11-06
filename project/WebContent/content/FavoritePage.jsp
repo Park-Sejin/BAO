@@ -162,7 +162,6 @@
 							//1부터 7까지 랜덤으로 출력되는 값구하기
 							int random = (int)Math.floor(Math.random()*6)+1;
 							String color = "";
-							System.out.println("random: "+random);
 
 							switch(random) {
 							   case 1 : color = "#eeac44"; break;
@@ -173,7 +172,6 @@
 							   case 6 : color = "#5593e7"; break;
 							}
 
-							System.out.println("color: "+color);
 		%>
 		<div class="collabo_list">
 			<div class="collabo_title" style="background-color: <%=color %>">
