@@ -4,6 +4,10 @@ body {
 	background-color: #f6f6f6;
 }
 
+a{
+	text-decoration: none;
+}
+
 
 .content {
    position: relative;
@@ -287,6 +291,24 @@ body {
 	right: -42px;
 	top: -25px;
 	border-radius: 5px;
+}
+
+.file_select{
+	border: none;
+	outline: none;
+	cursor: pointer;
+	height: 30px;
+}
+
+.file_select>option{
+	cursor: pointer;
+}
+
+#file_download{
+	float: right;
+	left: 20px;
+	color: black;
+	text-decoration: none;
 }
 
 .file-bottom>a{

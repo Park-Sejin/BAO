@@ -26,6 +26,12 @@
 				</tr>
 				<tr height="40px">
 					<td id = "favorite"
+					
+					
+					
+					
+					
+					
 						class="LeftMenuTb"
 						><img
 						src="img/left_header/ico_cb_importeccb.png">&nbsp;&nbsp;중요</td>
@@ -78,12 +84,17 @@
 										<a href="#" id="image_button">이미지</a>
 									</div>
 									<div>
-										<select>
+										<select class="file_select">
 											<option>참여중인 프로젝트의 전체파일</option>
 											<option>내가 올린 파일</option>
 											<option>내가 지정되어 공유된 파일</option>
 										</select>
-										<a href="#" class="f_r">내려받기</a>
+										<a href="#" id="file_download">내려받기</a>
+									</div>
+									<div>
+										
+										
+										
 									</div>
 								</div>
 							</div>
