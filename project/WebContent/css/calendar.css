@@ -1,0 +1,89 @@
+@CHARSET "EUC-KR";
+
+body {
+	background-color: #f6f6f6;
+	overflow-y: scroll; 
+}
+
+article {
+	width: 1180px;
+	margin: 0 auto;
+}
+
+a {
+	cursor: pointer;
+}
+
+.clear {
+	clear: both;
+}
+
+/* left */
+div#LeftHeaderBody {
+   margin-left:-8px;
+   margin-top: 81px;
+   display: block;
+   float: left;
+   border-color: black;
+   background-color:#F6F6F6;
+   align:right;
+}
+
+div#LeftHeaderDl {
+	margin-top: 25px;
+	font-size: 15px;
+}
+
+div#LeftHeaderDl dt {
+	color: #939394;
+	padding-left: 20px;
+}
+
+div#LeftHeaderDl dd {
+	padding-left: 20px;
+	margin-top: 15px;
+}
+
+div#LeftHeaderDl dd>input[type="checkbox"] {
+	margin-right: 10px;
+	display: none;
+	/* background-color: #f67066; */
+}
+
+div#LeftHeaderDl dd>input[type="checkbox"]+label::before {
+	display: inline-block; 
+	width:17px; 
+	height: 17px; 
+	background: #fa3062;
+	cursor: pointer; 
+	border-radius: 3px;
+	float: left;
+	content: ' '; 
+	vertical-align: middle; 
+	margin: 5px;
+}
+
+div#LeftHeaderDl dd>input[type="checkbox"]:checked+label::before {
+	background-image: url("../img/content/ico_checkimg.png");
+}
+
+div#LeftHeaderDl dd>input[type="checkbox"]+label>span {
+	vertical-align: middle; 
+	top: 0; 
+	left:0px; 
+	display: block; 
+	width: 150px;
+}
+
+
+/* 내용부분 */
+div#content {
+	padding: 30px 30px 60px 30px;
+	min-height: 450px;
+	font-size: 14px;
+	float: left;
+	margin-top: 81px;
+}
+
+
+

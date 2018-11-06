@@ -13,21 +13,8 @@ public class MemberBean {
 	private String part;
 	private String position;
 	private String phone;
-	private String profile;
 	private String image;
 	
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-	public String getProfile() {
-		return profile;
-	}
-	public void setProfile(String profile) {
-		this.profile = profile;
-	}
 	public int getNum() {
 		return num;
 	}
@@ -88,5 +75,12 @@ public class MemberBean {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
+	
 
 }

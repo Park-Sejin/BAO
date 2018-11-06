@@ -54,7 +54,7 @@
 				</tr>
 				<tr height="40px">
 					<td class="LeftMenuTb"
-						onClick=" location.href='http://www.naver.com' "><img
+						onClick=" location.href='./calendar.pr' "><img
 						src="img/left_header/ico_schedules.png">&nbsp;&nbsp;전체 일정</td>
 				</tr>
 				<tr height="40px">

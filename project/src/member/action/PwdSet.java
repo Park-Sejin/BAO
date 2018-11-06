@@ -14,20 +14,15 @@ public class PwdSet implements Action {
 
 		System.out.println("PwdSet_execute()");
 		
-		//이메일주소가 없으면 주소이동
+		//이메일 세션값 받아오기
 		HttpSession session = request.getSession();
-		MemberBean mb = new MemberBean();
 		String email = (String)session.getAttribute("email");
-		ActionForward forward = new ActionForward();
-		if(email == null){
-			forward.setPath("./Login.me");
-			forward.setRedirect(true);
-			return forward;
-		}
+		
 		
 		//이메일 주소 넘겨주기
 		session.setAttribute("email", email);
 		
+		ActionForward forward = new ActionForward();
 		forward.setPath("./member/pwdSetting.jsp");
 		forward.setRedirect(false);
 		

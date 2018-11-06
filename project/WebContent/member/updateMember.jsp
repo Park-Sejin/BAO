@@ -86,6 +86,7 @@
 </script>
 </head>
 <body>
+	<!-- 상단삽입 -->
 	<jsp:include page="../default/top3.jsp"></jsp:include>
 	
 	<div class="clear"></div>
@@ -107,7 +108,6 @@
 					<dt>설정</dt>
 					<dd><a id="alramSetting">알림 설정</a></dd>
 					<dd><a id="prjColorSetting">프로젝트 색상 설정</a></dd>
-					<dd><a id="phSyncSetting">연락처 동기화 설정</a></dd>
 				</dl>
 			</div>
 		</div>

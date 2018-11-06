@@ -14,11 +14,11 @@ public class KakaoJoinAction implements Action{
 		HttpSession session = request.getSession();
 		String id = request.getParameter("userID")+"@ka";
 		String name = request.getParameter("userNickName");
-		String profile = request.getParameter("profile");
+		String image = request.getParameter("image");
 		MemberBean mb = new MemberBean();
 		mb.setEmail(id);
 		mb.setName(name);
-		mb.setProfile(profile);
+		mb.setImage(image);
 		MemberDAO mdao = new MemberDAO();
 		// id가 있는지 체크
 		int check = mdao.searchID(id);
