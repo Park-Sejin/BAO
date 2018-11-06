@@ -380,7 +380,40 @@ public class MemberDAO {
 	//insertImage(mb)
 	
 	
-	
+	// 회원번호에 맞는 이름을 가져오는 메서드
+	//getMember(num)
+	public MemberBean getMember(int num) {
+		MemberBean mb = new MemberBean();
+		try {
+			con = getCon();
+
+			sql = "select * from member where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+	            
+				mb.setEmail(rs.getString("email"));
+				mb.setName(rs.getString("name"));
+				mb.setPass(rs.getString("pass"));
+	            mb.setDate(rs.getDate("date"));
+	            mb.setMobile(rs.getString("mobile"));
+	            mb.setTeam(rs.getString("team"));
+	            mb.setPart(rs.getString("part"));
+	            mb.setPosition(rs.getString("position"));
+	            mb.setPhone(rs.getString("phone"));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+
+		return mb;
+	}
+	//getMember(num)
 	
 	
 	

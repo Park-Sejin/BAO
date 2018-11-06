@@ -68,9 +68,12 @@ public class ProjectFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
 		}else if(command.equals("/calendar.pr")){
-    		forward = new ActionForward();
-    		forward.setPath("./content/calendar.jsp");
-    		forward.setRedirect(false);
+			action = new Calendar();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
     	}
 	    	
     	// 페이지 이동    

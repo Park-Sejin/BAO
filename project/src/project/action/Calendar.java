@@ -1,4 +1,4 @@
-package member.action;
+package project.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -7,12 +7,11 @@ import javax.servlet.http.HttpSession;
 import member.setting.db.SettingBean;
 import member.setting.db.SettingDAO;
 
-public class AlramSet implements Action {
+public class Calendar implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		System.out.println("AlramSet_execute()");
+		System.out.println("Calendar_execute()");
 		
 		//이메일 세션 가져오기
 		HttpSession session = request.getSession();
@@ -22,18 +21,21 @@ public class AlramSet implements Action {
 		SettingDAO sdao = new SettingDAO();
 		SettingBean sb = sdao.getSetting(email);
 		//저장된 정보가 있으면 값 넘기기
-		if(sb.getAlram() != null){
-			String alram = sb.getAlram();
-			request.setAttribute("alram", alram);
-		} 
+		if(sb.getWork() != null){
+			int schedule1 = sb.getSchedule1();
+			int schedule2 = sb.getSchedule2();
+			String work = sb.getWork();
+			request.setAttribute("schedule1", schedule1);
+			request.setAttribute("schedule2", schedule2);
+			request.setAttribute("work", work);
+		}
 		
-		//넘겨줄 정보 저장
+		//이메일정보 넘기기
 		request.setAttribute("email", email);
-		
 		
 		//페이지이동
 		ActionForward forward = new ActionForward();
-		forward.setPath("./member/alramSetting.jsp");
+		forward.setPath("./content/calendar.jsp");
 		forward.setRedirect(false);
 		
 		return forward;

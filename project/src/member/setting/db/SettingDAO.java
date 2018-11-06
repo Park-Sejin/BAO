@@ -170,6 +170,9 @@ public class SettingDAO {
 				sb.setEmail(rs.getString("email"));
 				sb.setAlram(rs.getString("alram"));
 				sb.setColor(rs.getString("color"));
+				sb.setSchedule1(rs.getInt("schedule1"));
+				sb.setSchedule2(rs.getInt("schedule2"));
+				sb.setWork(rs.getString("work"));
 			}
 			
 		} catch (Exception e) {
