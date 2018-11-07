@@ -12,7 +12,6 @@
 <link href="css/profile_popup.css" rel="stylesheet">
 <link href="css/invitebox.css" rel="stylesheet">
 <link href="css/AllView_popup.css" rel="stylesheet">
-
 <link href="css/HeaderCss.css" rel="stylesheet">
 <link href="css/content.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
