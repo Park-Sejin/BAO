@@ -56,7 +56,7 @@ public class ProjectFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/projectJoinPage.pr")){
+		}else if(command.equals("/5m2Zg4FH5jF5T.pr")){
 			forward = new ActionForward();
     		forward.setPath("./content/projectJoin.jsp");
     		forward.setRedirect(false);

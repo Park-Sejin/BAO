@@ -107,14 +107,18 @@ public class ProjectDAO {
 	}
 
 	// 해당 회원의 프로젝트 리스트 불러오기
-	public List getProjectList(String id) {
+	public List getProjectList(int memNum) {
 		List list = null;
 
 		try {
 			con = getCon();
-			sql = "select * from project where id=?";
+			sql = "select project.num, project.pro_name, project.id, project.date, project.pro_option"
+					+ " from project"
+					+ " join project_member"
+					+ " on (project.num = project_member.project_num)"
+					+ " where project_member.member_num=?";
 			prpr = con.prepareStatement(sql);
-			prpr.setString(1, id);
+			prpr.setInt(1, memNum);
 			rs = prpr.executeQuery();
 			list = new ArrayList();
 			while (rs.next()) {
