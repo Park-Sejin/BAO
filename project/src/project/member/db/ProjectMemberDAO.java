@@ -85,6 +85,32 @@ public class ProjectMemberDAO {
 		return list;
 	}
 	
+	// 프로젝트 가입할 때 해당 회원이 이미 가입했는지 확인
+	public int memberCheck(int memNum, int proNum){
+		int check = 0;
+		try {
+			con = getCon();
+			sql = "select * from project_member where project_num = ? and member_num = ?";
+			prpr = con.prepareStatement(sql);
+			prpr.setInt(1, proNum);
+			prpr.setInt(2, memNum);
+			rs = prpr.executeQuery();
+			if(rs.next()){
+				// 해당 회원이 이미 가입함
+				check = 1;
+			}else{
+				// 가입안한상태
+				check=0;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return check;
+	}
+	
 	
 	
 }

@@ -243,7 +243,7 @@
 							<p class="txt">초대장을 이메일로 발송할 수 있습니다.</p>
 						</li>
 						<li><p class="tit">초대링크</p>
-							<p class="txt">http://123456123456.123456</p>
+							<p class="txt">http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num=<%=num %></p>
 						</li>
 					</ul>
 				</div>
