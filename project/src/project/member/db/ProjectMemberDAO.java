@@ -102,7 +102,6 @@ public class ProjectMemberDAO {
 				// 가입안한상태
 				check=0;
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -110,6 +109,8 @@ public class ProjectMemberDAO {
 		}
 		return check;
 	}
+	
+	
 	
 	
 	
