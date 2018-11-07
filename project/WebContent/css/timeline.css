@@ -4,11 +4,23 @@ body {
 	background-color: #f6f6f6;
 }
 
+#container {
+	width: 2000px;
+}
+
 article#timeline {
-	margin: 120px 300px 0 570px;
+/* 	margin: 120px 300px 0 570px; */
+	margin-top: 0px;
+	margin-right:0px;
+	margin-bottom:0;
+	/* margin-left: 570px; */
 	width: 700px;
 	height: 1000px;
-	position: static;
+	/* position: static;
+	top:0; */
+	display: inline-block;
+   vertical-align: top;
+   margin-top: 150px;
 }
 
 div#mar_btm {

@@ -11,7 +11,7 @@ a{
 
 .content {
    position: relative;
-   padding: 10px 0 6opx 36px;
+/*    padding: 10px 0 6opx 36px; */
    min-height: 650px;
    margin: 120px 300px 0 570px;
 }

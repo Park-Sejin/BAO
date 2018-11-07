@@ -1,12 +1,17 @@
 @CHARSET "UTF-8";
 
-.AllView_div { /* 전체팝업 */
-    position: absolute;
-    background-color: #fff;
-    border-radius: 4px;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-}
+ /* 전체팝업   */
+#part_memberPopup {    
+
+	background-color: #fff;
+	width: 556px;
+    top: 50%;
+    left: 50%;
+    z-index: 1001;
+    position: fixed;
+    margin-top: -241.5px;
+    margin-left: -278px;
+    display: block;}
 
 
 #ul_div {
@@ -39,6 +44,42 @@ ul#part_ul img {
 }
 
 
+
+    .layerstyle4_title{ /* title  */
+    
+    position: relative;
+    height: 43px;
+    background: #f4f4f4;
+    border-radius: 7px 7px 0 0;
+    -moz-border-radius: 7px 7px 0 0;
+    -webkit-border-radius: 7px 7px 0 0;
+    }
+    
+    .layerstyle4_cont { /* title아래 cont  */
+    position: relative;
+    padding: 20px;
+	}
+    
+    .mcustominsidepeople > li { /* li */
+    position: relative;
+    height: 69px;
+    line-height: 67px;
+    border-bottom: 1px solid #e9eaed;
+	
+}
+
+.AllViewbtn_right a.set {
+    background-image: url(/img/popup/btn_rightset_off.png);
+}
+
+
+.AllViewbtn_right a.btn {
+    display: inline-block;
+    width: 30px;
+    height: 70px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 
 .modal {
     display: none; /* Hidden by default */
