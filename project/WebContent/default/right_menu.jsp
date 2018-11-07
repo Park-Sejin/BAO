@@ -12,6 +12,7 @@
    pageEncoding="UTF-8"%>
 
 
+
    
    <script type="text/javascript">
    
@@ -38,6 +39,7 @@
    function closeWin() {
 	   part.close();
 	}
+
 
     
    
@@ -244,7 +246,11 @@
                      <p class="txt">초대장을 이메일로 발송할 수 있습니다.</p>
                   </li>
                   <li id="invitelink"><p class="tit">초대링크</p>
+<<<<<<< HEAD
                      <p class="txt">http://123456123456.123456</p>
+=======
+                     <p class="txt">http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num=<%=num %></p>
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
                   </li>
                </ul>
             </div>
@@ -254,6 +260,7 @@
 
    <!-- 파일함 -->
    <div id="filebox_div" class="modal">
+<<<<<<< HEAD
 		<div id="part_memberPopup" class="AllView_div">
 			<div class="layerstyle4_po">
 				<div class="layerstyle4_title">
@@ -337,6 +344,36 @@
 			</div>
 		</div>
 	</div>
+=======
+      <div id="part_memberPopup" class="AllView_div">
+         <div class="layerstyle4_po">
+            <div class="layerstyle4_title">
+               <!-- style="height: 43px; background-color: #f4f4f4; border-radius: 7px 0;" -->
+               <h4 style="padding: 11px 0 0 16px; font-weight: normal;">
+                  <span class="icon_url"></span>&nbsp;프로젝트파일
+               </h4>
+               <a class="btn_layerstyle4_close" onclick="document.getElementById('filebox_div').style.display='none'"
+                  style="position: absolute; top: 15px; right: 15px; width: 14px; height: 14px;">
+                  <img src="./img/popup/allview_close.png" alt="닫기">
+               </a>
+            </div>
+            
+            <div class="layerstyle4_cont">
+               <div id="contsearch">
+                  <img src="../img/어쩌고저쩌고어쩌고..저쩌고 ㅠㅠㅠㅠㅠ">
+                  <input type="text" value="파일명, 등록자명으로 검색이 가능합니다.">
+                  <button id="clicktxt">문서</button>
+                  <button id="clickimg">이미지</button>
+               </div>
+               
+               <div></div>
+               
+            
+            </div>
+         </div>
+      </div>
+   </div>
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
 
 
    <!-- profile -->
@@ -403,16 +440,141 @@
  			}
          } 
 
+<<<<<<< HEAD
    
    
    
          
          
    </script>
+=======
+   <!-- 전체보기 팝업창 -->
+   <div id="part_member" class="modal">
+      <div id="part_memberPopup" class="AllView_div">
+         <div class="layerstyle4_po">
+            <div class="layerstyle4_title">
+               <!-- style="height: 43px; background-color: #f4f4f4; border-radius: 7px 0;" -->
+               <h4 style="padding: 11px 0 0 16px; font-weight: normal;">
+                  <span class="icon_url"></span>&nbsp;프로젝트 참여자
+               </h4>
+               <a class="btn_layerstyle4_close" onclick="document.getElementById('part_member').style.display='none'"
+                  style="position: absolute; top: 15px; right: 15px; width: 14px; height: 14px;">
+                  <img src="./img/popup/allview_close.png" alt="닫기">
+               </a>
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
 
 
+            </div>
+            <!-- top -->
+            <div class="layerstyle4_cont">
+               <div style="margin-right: 14px;">
+                  <div class="mcustomScrollbar">
+                     <div class="mcustominside">
+                        <ul class="mcustominsidepeople">
+                           <%
+                              for (ProjectMemberBean pmb : arr) {
+                                 MemberDAO mdao = new MemberDAO();
+                                       MemberBean mb = mdao.getMember(pmb.getMember_num()); 
+                                 
+                           %>
+                           <li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
+                           <a id="insidepeople" style="border: 1px solid green;"><%=mb.getName() %></a><b>|</b><strong><%=pmb.getNum() %></strong>
+                              <div class="AllViewbtn_right">
+                                 <a class="btn set" id="moresetting"><span class="blind"></span></a>
+                              </div></li>
+                           <%
+                              }
+                           %>
+                           <li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
+                           <span id="insidepeople">이름2</span>
+                              <div class="AllViewbtn_right">
+                                 <a class="btn set" id="moresetting"><!-- <span class="blind"></span> --></a>
+                              </div></li>
+
+                        </ul>
+                     </div>
+
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </div>
 
 
+   <!-- profile -->
+   <script>
+         var profile = document.getElementById('profile_div');
+         var btn1 = document.getElementById('menu_profile');
+         
+         
+         btn1.onclick = function() {
+            profile.style.display = "block";
+         }
+         
+         /* <!-- invite  --> */
+          
+         var invite = document.getElementById('invite_div');
+         var btn2 = document.getElementById('rightBoxPrjInvite');
+         
+         
+         btn2.onclick = function() {
+            invite.style.display = "block";
+         }
+         
+         /* <!-- filebox --> */
+         
+         var filebox = document.getElementById('filebox_div');
+         var btn3 = document.getElementById('prjFileList')
+         
+         btn3.onclick = function() {
+            filebox.style.display = "block";
+         }
+         
+         /* 전체보기 팝업창 */
+         var part = document.getElementById('part_member');
+         btn4 = document.getElementById('allView');
+         
+         btn4.onclick = function() {
+            part.style.display = "block";
+         }  
+        
+         
+         /* 전체보기 팝업창에서 프로필  */
+       var test = document.getElementById('profile_div');
+       btn5 = document.getElementById('insidepeople');
+       
+       btn5.onclick = function() {
+          test.style.display="block";
+       }
+         
+         
+         
+         // When the user clicks anywhere outside of the modal, close it
+         window.onclick = function(event){
+             if (event.target == profile) {
+                profile.style.display = "none";
+                
+             }else if(event.target == invite){
+                invite.style.display = "none";
+             }else if(event.target == filebox){
+                filebox.style.display = "none";
+             }else if(event.target == part){
+                part.style.display="none";
+             }else if (event.target == test) {
+             test.style.display="none";
+          }
+         } 
+
+<<<<<<< HEAD
 
 
-
+=======
+   
+   
+   
+         
+         
+   </script>
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
