@@ -22,7 +22,7 @@ public class AlramSet implements Action {
 		SettingDAO sdao = new SettingDAO();
 		SettingBean sb = sdao.getSetting(email);
 		//저장된 정보가 있으면 값 넘기기
-		if(sb.getAlram() != null){
+		if(sb != null){
 			String alram = sb.getAlram();
 			request.setAttribute("alram", alram);
 		} 

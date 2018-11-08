@@ -21,9 +21,9 @@ public class Calendar implements Action {
 		SettingDAO sdao = new SettingDAO();
 		SettingBean sb = sdao.getSetting(email);
 		//저장된 정보가 있으면 값 넘기기
-		if(sb.getWork() != null){
-			int schedule1 = sb.getSchedule1();
-			int schedule2 = sb.getSchedule2();
+		if(sb != null){
+			String schedule1 = Integer.toString(sb.getSchedule1());
+			String schedule2 = Integer.toString(sb.getSchedule2());
 			String work = sb.getWork();
 			request.setAttribute("schedule1", schedule1);
 			request.setAttribute("schedule2", schedule2);

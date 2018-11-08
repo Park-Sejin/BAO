@@ -98,12 +98,15 @@ public class SettingDAO {
 				num = 1;
 			}
 			
-			sql="insert into setting(num, email, alram, color) values(?,?,?,?)";
+			sql="insert into setting(num, email, alram, color, schedule1, schedule2, work) values(?,?,?,?,?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, sb.getEmail());
 			pstmt.setString(3, sb.getAlram());
 			pstmt.setString(4, sb.getColor());
+			pstmt.setInt(5, sb.getSchedule1());
+			pstmt.setInt(6, sb.getSchedule2());
+			pstmt.setString(7, sb.getWork());
 			
 			pstmt.executeUpdate();
 			System.out.println("설정등록");
@@ -142,6 +145,36 @@ public class SettingDAO {
 				
 				pstmt.executeUpdate();
 				System.out.println("색상 설정 수정");
+				
+			} else if(sb.getSchedule1() == -1 || sb.getSchedule1() == 1){
+				//내가 등록한 일정 수정
+				sql="update setting set schedule1=? where email=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, sb.getSchedule1());
+				pstmt.setString(2, sb.getEmail());
+				
+				pstmt.executeUpdate();
+				System.out.println("내가 등록한 일정 수정");
+				
+			} else if(sb.getSchedule2() == -1 || sb.getSchedule2() == 1){
+				//내가 등록한 일정 수정
+				sql="update setting set schedule2=? where email=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setInt(1, sb.getSchedule2());
+				pstmt.setString(2, sb.getEmail());
+				
+				pstmt.executeUpdate();
+				System.out.println("초대받은 일정 수정");
+				
+			} else if(sb.getWork() != null){
+				//업무 수정
+				sql="update setting set work=? where email=?";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1, sb.getWork());
+				pstmt.setString(2, sb.getEmail());
+				
+				pstmt.executeUpdate();
+				System.out.println("업무 수정");
 			}
 			
 		} catch (Exception e) {

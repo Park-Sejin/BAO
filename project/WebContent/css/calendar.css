@@ -29,27 +29,28 @@ div#LeftHeaderBody {
    align:right;
 }
 
-div#LeftHeaderDl {
+div.LeftHeaderDl {
 	margin-top: 25px;
 	font-size: 15px;
 }
 
-div#LeftHeaderDl dt {
+div.LeftHeaderDl dt {
 	color: #939394;
 	padding-left: 20px;
 }
 
-div#LeftHeaderDl dd {
+div.LeftHeaderDl dd {
 	padding-left: 20px;
 	margin-top: 15px;
+	line-height: 100%;
 }
 
-div#LeftHeaderDl dd>input[type="checkbox"] {
+div.LeftHeaderDl dd>input[type="checkbox"] {
 	margin-right: 10px;
 	display: none;
 }
 
-div#LeftHeaderDl dd>input[type="checkbox"]+label::before {
+div.LeftHeaderDl dd>input[type="checkbox"]+label::before {
 	display: inline-block; 
 	width:17px; 
 	height: 17px; 
@@ -61,28 +62,29 @@ div#LeftHeaderDl dd>input[type="checkbox"]+label::before {
 	margin: 0 7px;
 }
 /* Ã¼Å©¹Ú½º »ö»ó */
-div#LeftHeaderBody input[type="checkbox"]:NTH-OF-TYPE(1)+label::before{
+div.LeftHeaderDl:NTH-OF-TYPE(1) dd:NTH-OF-TYPE(1) input[type="checkbox"]+label::before{
 	background: #fa3062;
 } 
-div#LeftHeaderBody input[type="checkbox"]:NTH-OF-TYPE(2)+label::before{
+div.LeftHeaderDl:NTH-OF-TYPE(1) dd:NTH-OF-TYPE(2) input[type="checkbox"]+label::before{
 	background: #f8972e;
 } 
-div#LeftHeaderBody input[type="checkbox"]:NTH-OF-TYPE(3)+label::before{
+div.LeftHeaderDl:NTH-OF-TYPE(2) dd:NTH-OF-TYPE(1) input[type="checkbox"]+label::before{
 	background: #fabb11;
 } 
-div#LeftHeaderBody input[type="checkbox"]:NTH-OF-TYPE(3)+label::before{
+div.LeftHeaderDl:NTH-OF-TYPE(2) dd:NTH-OF-TYPE(2) input[type="checkbox"]+label::before{
 	background: #23b877;
 }
-div#LeftHeaderBody input[type="checkbox"]:NTH-OF-TYPE(3)+label::before{
+div.LeftHeaderDl:NTH-OF-TYPE(2) dd:NTH-OF-TYPE(3) input[type="checkbox"]+label::before{
 	background: #00c3bd;
 }
 
-div#LeftHeaderDl dd>input[type="checkbox"]:checked+label::before {
+div.LeftHeaderDl:NTH-OF-TYPE(1) dd>input[type="checkbox"]:checked+label::before,
+	div.LeftHeaderDl:NTH-OF-TYPE(2) dd>input[type="checkbox"]:checked+label::before  {
 	background-image: url("../img/content/ico_checkimg.png");
+	z-index: 99999;
 }
 
-div#LeftHeaderDl dd>input[type="checkbox"]+label>span {
-	vertical-align: middle; 
+div.LeftHeaderDl dd>input[type="checkbox"]+label>span {
 	top: 0; 
 	left:0px; 
 	display: block; 
@@ -168,11 +170,17 @@ td.today {
    border:1px solid #ddd;
    width:150px;
    height:20px;
-   font-family:µ¸¿ò;
+   font-family:'µ¸¿ò';
    padding:3px;
    text-align: center;
    font-size: 13px;
  }
+.week:NTH-OF-TYPE(1) {
+	color: #e44a4a;
+}
+.week:NTH-OF-TYPE(7) {
+	color: #4285f4;
+}
 .preNext{
    text-decoration: none;
    background: #f5f5f5;
