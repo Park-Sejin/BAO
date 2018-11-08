@@ -235,5 +235,16 @@ td.today {
     overflow: scroll;
     overflow-x: hidden;
 }
+.viewSched {
+	margin-top: 7px;
+	background: #fa3062;
+	border-radius: 10px;
+	text-align: left;
+	padding-left: 10px;
+}
+.viewSched>a {
+	text-decoration: none;
+	color: #fff;
+}
 /* 달력부분 */
 

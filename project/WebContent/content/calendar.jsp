@@ -178,17 +178,26 @@
 		for (i = 1; i <= lastDay; i++) {    
 			if (eDate.getFullYear() == nYear && eDate.getMonth() == nMonth && i == nDate) { 
 				//오늘
-				calendarStr += "<TD class=today >" + i + "</TD>"
+				calendarStr += "<TD class=today>" + i + "<BR>"
+				//DB에 해당 날짜의 일정이 있으면 삽입
+				calendarStr += "<DIV class=viewSched><a href=''>날짜일정제목</a></DIV>"
+				calendarStr += "</TD>"
 			} else {
 				if (col == 0) {  
 					//일요일
-					calendarStr += "<TD class=sunday>" + i + "</TD>"
+					calendarStr += "<TD class=sunday>" + i + "<BR>"
+					//DB에 해당 날짜의 일정이 있으면 삽입
+					calendarStr += "</TD>"
 				} else if (1 <= col && col <= 5) { 
 					//평일
-					calendarStr += "<TD class=workday>" + i + "</TD>"
+					calendarStr += "<TD class=workday>" + i + "<BR>"
+					//DB에 해당 날짜의 일정이 있으면 삽입
+					calendarStr += "</TD>"
 				} else if (col == 6) {  
 					//토요일
-					calendarStr += "<TD class=satday>" + i + "</TD>"
+					calendarStr += "<TD class=satday>" + i + "<BR>"
+					//DB에 해당 날짜의 일정이 있으면 삽입
+					calendarStr += "</TD>"
 				}
 			}
 
