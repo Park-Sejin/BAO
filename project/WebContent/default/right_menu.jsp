@@ -27,19 +27,13 @@
 		/* $(document).ready(function() {
 			$('#server_cnt').attr('value',1);
 		}); */
-		
-		var cnt = 0;
-		if(cnt == 0){
-			cnt = 1;
-			/* new chat_test.ChatServerEx(); */
-			
-			<%-- <% ChatServerEx server = new ChatServerEx(); %> --%>
-		}
-		
-		
 		var receive_email = document.getElementById('receive_email').value;
 		window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
 		alert("ddd");
+	}
+	
+	function server() {
+		window.open("./serverStart.chat","new","width=100, height=100");
 	}
 		
 		
@@ -229,7 +223,8 @@
                   <p id="EML" style="visibility: visible;">tpwls1226@naver.com</p>
                   <p id="CLPH_NO" style="visibility: hidden;"></p>
                   <p id="CMPN_TLPH_NO" style="visibility: hidden;"></p>
-                  <input type="hidden" id="receive_email" value="tpwls1226@naver.com"> <!-- 임의의 값 -->
+                  <input type="hidden" id="receive_email" value="sujin11@naver.com"> <!-- 임의의 값 -->
+               		<input type="button" value="server" onclick="server()">
                </div>
                <div class="prof_btn">
                   <a id="CHAT" class="btn_prd_sty1_b" onclick="go_pop()"><span>채팅하기</span></a>

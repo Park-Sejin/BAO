@@ -49,36 +49,18 @@
 			});
 			
 		</script>
-<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAKoMSa4Y9N53JlGnGCKSmwHdrzhTws63Y",
-    authDomain: "teamproject-bao.firebaseapp.com",
-    databaseURL: "https://teamproject-bao.firebaseio.com",
-    projectId: "teamproject-bao",
-    storageBucket: "",
-    messagingSenderId: "537665519896"
-  };
-  firebase.initializeApp(config);
-</script>
 	
 	</head>
 	<body>
 		<% 
-			/* String email = (String) session.getAttribute("email"); */
+			String sender_email = (String) session.getAttribute("email");
 			String receive_email = request.getParameter("receive_email");
-			String sender_email = "tpwls1226@naver.com"; // 세션값으로 바꿔야함, 임의의 값임
-			System.out.println(sender_email);
-			
-			/* ChatServerEx server = new ChatServerEx(receive_email,sender_email); */
-			
 			
 			MemberDAO mdao = new MemberDAO();
 			MemberBean re_mb = mdao.getMember(receive_email);
 			
 			/* session.setAttribute("email"+mb.getNum(), email); */
-			hat_Client cc = new chat_Client();
+			chat_Client cc = new chat_Client();
 			cc.ChatClient(sender_email, receive_email);
 			/* cc.ChatExit(); //채팅 종료 시. */
 		

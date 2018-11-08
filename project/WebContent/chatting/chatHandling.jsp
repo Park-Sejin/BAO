@@ -8,8 +8,7 @@
     pageEncoding="UTF-8"%>
 
     <%
-    	/* String email = (String) session.getAttribute("email"); */
-    	String email = "sujin11@naver.com"; // 세션값
+    	String email = (String) session.getAttribute("email");
     	String txt_input = request.getParameter("txt_input");
     	String sen_email = request.getParameter("sender_email");
     	

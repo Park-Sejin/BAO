@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import chat_test.dd;
-
 public class ChattingFrontController extends HttpServlet{
 
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,18 +25,18 @@ public class ChattingFrontController extends HttpServlet{
     	
     	// 가상주소를 비교해서 페이지 처리
     	if(command.equals("/chatPage.chat")){ 
+    		forward = new ActionForward();
+    		forward.setPath("./chatting/chat2.jsp");
+    		forward.setRedirect(false);
+    		
+    	}else if(command.equals("/serverStart.chat")){ 
     		action = new ServerStartAction();
     		try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-    		
-    		/*forward = new ActionForward();
-    		forward.setPath("./chatting/chat2.jsp");
-    		forward.setRedirect(false);*/
-    		
-    	} else if(command.equals("/chatHandling.chat")){ 
+    	}else if(command.equals("/chatHandling.chat")){ 
     		forward = new ActionForward();
     		forward.setPath("./chatting/chatHandling.jsp");
     		forward.setRedirect(false);
@@ -56,17 +54,6 @@ public class ChattingFrontController extends HttpServlet{
 				e.printStackTrace();
 			}*/
     		
-    	} else if(command.equals("/test.chat")){ 
-    		action = new dd();
-    		try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-    	}else if(command.equals("/test11.chat")){ 
-    		forward = new ActionForward();
-    		forward.setPath("./test.jsp");
-    		forward.setRedirect(false);
     	}
     	
     	

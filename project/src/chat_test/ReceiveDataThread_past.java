@@ -1,29 +1,35 @@
 package chat_test;
 
-import java.net.*;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.Socket;
 
-import chatting.db.ChatBean;
-import chatting.db.ChatDAO;
-import member.db.MemberBean;
-import member.db.MemberDAO;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import java.io.*;
+import chatting.action.Action;
+import chatting.action.ActionForward;
 
 //***ReceiveDataThread 클래스 설계(키보드로 메시지를 송신하면서 서버로부터 메시지를 수신 받기 위함)*****
-class ReceiveDataThread_past implements Runnable {
+class ReceiveDataThread_past implements Runnable, Action {
 	Socket client; // 서버와 통신하기 위한 소켓
 	ObjectInputStream ois; // 서버로부터 데이터를 수신받기 위한 스트림
 	String receiveData; // 서버로부터 수신받은 데이터를 저장하기 위한 변수
-	
-	String receive_email;
 
 	// 접속 요청한 소켓 객체와 입력 스트림이 전달됨
-	public ReceiveDataThread_past(Socket s, ObjectInputStream ois, String receive_email) {
+	public ReceiveDataThread_past(Socket s, ObjectInputStream ois) {
 		client = s;
 		this.ois = ois;
-		this.receive_email = receive_email;
 	}// ReceiveDataThread 클래스의 생성자의 끝
 	
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		request.setAttribute("receiveData", receiveData);
+		
+		return null;
+	}
 
 	public synchronized void run() {
 		try {
@@ -32,19 +38,12 @@ class ReceiveDataThread_past implements Runnable {
 				
 				System.out.println(receiveData);
 				
-				// 모델정보 control->action 
+				
+				
+				/*String name = receiveData.split(":")[1];*/
 				
 				//---------------------------------------------
-				/*String[] name = receiveData.split(" : ");
 				
-				ChatBean cb = new ChatBean();
-				cb.setSender(name[0]); // 세선 값
-				cb.setReceiver(receive_email);
-				cb.setMessage(name[1]);
-				cb.setRead_cnt(0);
-				
-				ChatDAO cdao = new ChatDAO();
-				cdao.ChatSubmit(cb);*/
 				
 				
 				/*try {
@@ -95,4 +94,6 @@ class ReceiveDataThread_past implements Runnable {
 			}
 		} // finally
 	}// run 메서드의 끝
+	
+	
 }// ReceiveDataThread 클래스의 끝
