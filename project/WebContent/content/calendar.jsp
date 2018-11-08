@@ -213,7 +213,7 @@
 </head>
 <body>
 	<!-- 상단삽입 -->
-	<jsp:include page="../default/top3.jsp"></jsp:include>
+	<jsp:include page="../default/top_in.jsp"></jsp:include>
 	
 	<div class="clear"></div>
 	<article>
