@@ -239,8 +239,6 @@
          </div>
       </div>
    </div>
-   
->>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
 
    
    
