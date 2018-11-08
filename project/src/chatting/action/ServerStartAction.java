@@ -13,23 +13,20 @@ public class ServerStartAction implements Action{
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
+		System.out.println("채팅하기 클릭. execute 들어옴");
+		
+		
 		String receive_email = request.getParameter("receive_email");
-		HttpSession session = request.getSession();
-		String sender_email = (String) session.getAttribute("email");
+		/*HttpSession session = request.getSession();*/
+		/*String sender_email = (String) session.getAttribute("email");*/
+		String sender_email = "tpwls1226@naver.com";
 		
 		System.out.println(sender_email);
 		System.out.println("dddddddddddd: " + receive_email);
+	
 		
-		ChatServerEx server = new ChatServerEx(sender_email, receive_email);
-		
-		response.setContentType("text/html; charset=utf-8");
-		PrintWriter out = response.getWriter();
-		
-		out.println("<script>");
-		out.println("alert('비밀번호 오류')");
-		out.println("history.back()");
-		out.println("</script>");
-		out.close();
+		/*ChatServerEx server = new ChatServerEx(sender_email, receive_email);*/
+		/*ChatServerEx server = new ChatServerEx();*/
 		
 		
 		System.out.println("dddddddddddd: " + receive_email);

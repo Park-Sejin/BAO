@@ -19,7 +19,7 @@ public class ChatServerEx {
 	HashMap<String, ObjectOutputStream> hm;
 
 	// 서버 소켓 생성, 데이터 송수신 하기 위해서 스레드(ChatServerThread)객체 생성
-	public ChatServerEx(String sender_email, String receive_email) {/*String receive_email, String sender_email*/
+	public ChatServerEx() {/*String receive_email, String sender_email*/
 		try {
 			server = new ServerSocket(port); // 포트를 지정해서 서버 소켓 생성
 		} catch (Exception e) { // 서버 소켓 생성에 실패하면
@@ -34,8 +34,8 @@ public class ChatServerEx {
 
 		while (true) { // 클라이언트의 접속을 항상 받아들일 수 있도록 무한루프를 돌림
 			try {
-				chat_Client cc = new chat_Client();
-				cc.ChatClient(sender_email, receive_email);
+				/*chat_Client cc = new chat_Client();
+				cc.ChatClient(sender_email, receive_email);*/
 	
 				child = server.accept(); // 클라이언트의 접속 요청을 받아들여
 

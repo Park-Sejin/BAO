@@ -10,8 +10,10 @@
 		<%
 			/* response.sendRedirect("./timeline.chat");  */
 			/* response.sendRedirect("./main.pr"); */
-			response.sendRedirect("./Login.me");
+			/* response.sendRedirect("./Login.me"); */
 			// 수정
+			
+			response.sendRedirect("./test11.chat");
 		%>
 	</body>
 </html> 

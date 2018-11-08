@@ -78,8 +78,8 @@
 			MemberBean re_mb = mdao.getMember(receive_email);
 			
 			/* session.setAttribute("email"+mb.getNum(), email); */
-			/* chat_Client cc = new chat_Client();
-			cc.ChatClient(sender_email, receive_email); */
+			hat_Client cc = new chat_Client();
+			cc.ChatClient(sender_email, receive_email);
 			/* cc.ChatExit(); //채팅 종료 시. */
 		
 		%>

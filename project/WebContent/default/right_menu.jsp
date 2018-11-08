@@ -39,6 +39,7 @@
 		
 		var receive_email = document.getElementById('receive_email').value;
 		window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+		alert("ddd");
 	}
 		
 		

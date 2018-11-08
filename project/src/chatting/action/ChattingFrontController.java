@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import chat_test.dd;
+
 public class ChattingFrontController extends HttpServlet{
 
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,7 +56,18 @@ public class ChattingFrontController extends HttpServlet{
 				e.printStackTrace();
 			}*/
     		
-    	} 
+    	} else if(command.equals("/test.chat")){ 
+    		action = new dd();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("/test11.chat")){ 
+    		forward = new ActionForward();
+    		forward.setPath("./test.jsp");
+    		forward.setRedirect(false);
+    	}
     	
     	
     	
