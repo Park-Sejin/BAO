@@ -1,0 +1,250 @@
+@CHARSET "EUC-KR";
+
+body {
+	background-color: #f6f6f6;
+	overflow-y: scroll; 
+}
+
+article {
+	width: 1260px;
+	margin: 0 auto;
+}
+
+a {
+	cursor: pointer;
+}
+
+.clear {
+	clear: both;
+}
+
+/* left */
+div#LeftHeaderBody {
+   margin-left:-8px;
+   margin-top: 81px;
+   display: block;
+   float: left;
+   border-color: black;
+   background-color:#F6F6F6;
+   align:right;
+}
+
+div.LeftHeaderDl {
+	margin-top: 25px;
+	font-size: 15px;
+}
+
+div.LeftHeaderDl dt {
+	color: #939394;
+	padding-left: 20px;
+}
+
+div.LeftHeaderDl dd {
+	padding-left: 20px;
+	margin-top: 15px;
+	line-height: 100%;
+}
+
+div.LeftHeaderDl dd>input[type="checkbox"] {
+	margin-right: 10px;
+	display: none;
+}
+
+div.LeftHeaderDl dd>input[type="checkbox"]+label::before {
+	display: inline-block; 
+	width:17px; 
+	height: 17px; 
+	cursor: pointer; 
+	border-radius: 3px;
+	float: left;
+	content: ' ';
+	vertical-align: middle; 
+	margin: 0 7px;
+}
+/* 체크박스 색상 */
+div.LeftHeaderDl:NTH-OF-TYPE(1) dd:NTH-OF-TYPE(1) input[type="checkbox"]+label::before{
+	background: #fa3062;
+} 
+div.LeftHeaderDl:NTH-OF-TYPE(1) dd:NTH-OF-TYPE(2) input[type="checkbox"]+label::before{
+	background: #f8972e;
+} 
+div.LeftHeaderDl:NTH-OF-TYPE(2) dd:NTH-OF-TYPE(1) input[type="checkbox"]+label::before{
+	background: #fabb11;
+} 
+div.LeftHeaderDl:NTH-OF-TYPE(2) dd:NTH-OF-TYPE(2) input[type="checkbox"]+label::before{
+	background: #23b877;
+}
+div.LeftHeaderDl:NTH-OF-TYPE(2) dd:NTH-OF-TYPE(3) input[type="checkbox"]+label::before{
+	background: #00c3bd;
+}
+
+div.LeftHeaderDl:NTH-OF-TYPE(1) dd>input[type="checkbox"]:checked+label::before,
+	div.LeftHeaderDl:NTH-OF-TYPE(2) dd>input[type="checkbox"]:checked+label::before  {
+	background-image: url("../img/content/ico_checkimg.png");
+	z-index: 99999;
+}
+
+div.LeftHeaderDl dd>input[type="checkbox"]+label>span {
+	top: 0; 
+	left:0px; 
+	display: block; 
+	width: 150px;
+}
+
+
+/* 내용부분 */
+div#content {
+	padding: 30px 30px 30px 0px;
+	min-height: 450px;
+	font-size: 14px;
+	float: right;
+	margin-top: 81px;
+	background-color: #fff;
+}
+
+div#content h1 {
+	padding-left: 50px; 
+	display: inline-block;
+}
+
+div#content a#close {
+	width: 70px;
+	height: 25px;
+	background: #55555b;
+	color: #fff;
+	display: inline-block;
+	line-height: 25px;
+	text-decoration: none;
+	float: right;
+	text-align: center;
+}
+/* 달력부분 */
+.main_area{
+   border: 1px solid #ececff;
+   width:870px;
+   height: 580px;
+   margin-left: 230px;
+   margin-top: -110px;
+   background-color: #fff;
+}
+td.today {
+   border:1px solid #ddd;
+   background-color:#fcf8e3;
+   height:120px;
+   font-family:돋움;
+   padding:10px;
+   vertical-align: top;
+   text-align:right;
+   font-size: 13px;
+ }  
+ td.workday {
+   border:1px solid #ddd;
+   height:120px;
+   font-family:돋움;
+   padding:10px;
+   vertical-align: top;
+   text-align:right;
+   font-size: 13px;
+  }  
+.sunday{
+   border:1px solid #ddd;
+   height:120px;
+   font-family:돋움;
+   padding:10px;
+   color: #e44a4a;
+   vertical-align: top;
+   text-align:right;
+   font-size: 13px;
+  }  
+.satday{
+   border:1px solid #ddd;
+   height:100px;
+   font-family:돋움;
+   padding:10px;
+   vertical-align: top;
+   text-align:right;
+   font-size: 13px;
+   color: #4285f4;
+    }  
+.week{
+   border:1px solid #ddd;
+   width:150px;
+   height:20px;
+   font-family:'돋움';
+   padding:3px;
+   text-align: center;
+   font-size: 13px;
+ }
+.week:NTH-OF-TYPE(1) {
+	color: #e44a4a;
+}
+.week:NTH-OF-TYPE(7) {
+	color: #4285f4;
+}
+.preNext{
+   text-decoration: none;
+   background: #f5f5f5;
+   width: 50px;
+   height: 25px;
+   color: #555;
+   display: inline-block;
+   line-height: 23px;
+   text-align: center;
+   border: 1px solid #ddd;
+   font-weight: bold;
+}  
+.MainT{
+   display:block;
+   width:980px;
+   margin-left: 50px;
+   margin-top: 30px;
+   min-height: 700px;
+   border-collapse:collapse;
+}
+.main_calender_info{
+   border:1px solid darkgray;
+   width: 470px;
+   height:250px;
+   margin-left: 45%;
+   margin-top: -175px;
+   font-family: Dotum;
+   font-size: 12px;
+}
+.Ftr{
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.getCon{
+   border:1px solid darkgray;
+   width: 600px;
+   height:150px;
+   margin: auto;
+   margin-top: 10px;
+}
+.getCon>.getCon_sub{
+    border:1px solid darkgray;
+    font-family: Dotum;
+     font-size: 12px;
+}
+.GridViewDivScroll{
+   border-right: #afafaf solid 1px;
+    border-top: #afafaf solid 0px;
+    border-left: #afafaf solid 1px;
+    border-bottom: #afafaf solid 1px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.viewSched {
+	margin-top: 7px;
+	background: #fa3062;
+	border-radius: 10px;
+	text-align: left;
+	padding-left: 10px;
+}
+.viewSched>a {
+	text-decoration: none;
+	color: #fff;
+}
+/* 달력부분 */
+

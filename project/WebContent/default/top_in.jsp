@@ -256,8 +256,8 @@
                      	</div>
                      	<hr>
                      	<div class="hd_member_sec2">
-                     		<a href="#">회원정보</a>
-                     		<a href="#">로그아웃</a>
+                     		<a href="./Set.me">회원정보</a>
+                     		<a href="./Logout.me">로그아웃</a>
                      		<a href="#">도움말</a>
                      	</div>
                </div>

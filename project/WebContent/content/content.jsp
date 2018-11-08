@@ -84,14 +84,15 @@
 </script>
 </head>
 <body>
-	<jsp:include page="../default/LeftHeader.jsp"></jsp:include>
+
 	<jsp:include page="../default/top_in.jsp"></jsp:include>
+	<jsp:include page="../default/LeftHeader.jsp"></jsp:include>
 	<%
 		List projectList = (List) request.getAttribute("projectList");
 		List projectFavoriteList = (List) request.getAttribute("projectFavoriteList");
 		
 	%>
-	<article id = "content">
+	<article id="content">
 	<div class="content" >
 		<div>
 			<div class="left">
@@ -117,8 +118,7 @@
 						<div class="bbb">프로젝트명</div>
 						<form action="./ProjectInsert.pr">
 							<!-- 추후 아이디 세션값으로 히든주기 -->
-							<input type="text" size="65" class="sec2_txt"
-								placeholder="프로젝트명 입력(최대 50자)" name="proName"> <br>
+							<input type="text" size="65" class="sec2_txt" placeholder="프로젝트명 입력(최대 50자)" name="proName"> <br>
 							<Br>
 
 							<div class="bbb">참여자 옵션</div>
@@ -201,7 +201,6 @@
 				//1부터 7까지 랜덤으로 출력되는 값구하기
 				int random = (int)Math.floor(Math.random()*6)+1;
 				String color = "";
-				System.out.println("random: "+random);
 
 				switch(random) {
 				   case 1 : color = "#eeac44"; break;
@@ -212,7 +211,6 @@
 				   case 6 : color = "#5593e7"; break;
 				}
 
-				System.out.println("color: "+color);
 		%>
 		<div class="collabo_list">
 			<div class="collabo_title" style="background-color: <%=color %>">

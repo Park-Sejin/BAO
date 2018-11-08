@@ -32,8 +32,9 @@ public class ProjectPromain implements Action{
 		// 게시판 글 목록 디비에서 가져옴 -> view(jsp)페이지로 전달
 		ProjectDAO pdao = new ProjectDAO();
 		MemberDAO mdao = new MemberDAO();
+		int idNum=mdao.getMemberNum(id);
 		// 전체 글 개수 가져오기
-		List projectList = pdao.getProjectList(id);
+		List projectList = pdao.getProjectList(idNum);
 
 		// 즐겨찾기 가져오기
 

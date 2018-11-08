@@ -49,6 +49,19 @@
 			});
 			
 		</script>
+<script src="https://www.gstatic.com/firebasejs/5.5.7/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAKoMSa4Y9N53JlGnGCKSmwHdrzhTws63Y",
+    authDomain: "teamproject-bao.firebaseapp.com",
+    databaseURL: "https://teamproject-bao.firebaseio.com",
+    projectId: "teamproject-bao",
+    storageBucket: "",
+    messagingSenderId: "537665519896"
+  };
+  firebase.initializeApp(config);
+</script>
 	
 	</head>
 	<body>

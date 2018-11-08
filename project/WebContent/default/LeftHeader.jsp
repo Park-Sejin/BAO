@@ -1,14 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>LeftHeader</title>
-<link href="css/HeaderCss.css" rel="stylesheet">
-<link href="css/content.css" rel="stylesheet" type="text/css">
-</head>
-<body>
 
 	<div class="LeftHeaderBody">
 		<div class="LeftHeaderSub">
@@ -26,6 +17,12 @@
 				</tr>
 				<tr height="40px">
 					<td id = "favorite"
+					
+					
+					
+					
+					
+					
 						class="LeftMenuTb"
 						><img
 						src="img/left_header/ico_cb_importeccb.png">&nbsp;&nbsp;중요</td>
@@ -54,7 +51,7 @@
 				</tr>
 				<tr height="40px">
 					<td class="LeftMenuTb"
-						onClick=" location.href='http://www.naver.com' "><img
+						onClick=" location.href='./calendar.pr' "><img
 						src="img/left_header/ico_schedules.png">&nbsp;&nbsp;전체 일정</td>
 				</tr>
 				<tr height="40px">
@@ -63,8 +60,33 @@
 						<div id="inAllfile" class="modal">
 			
 							<!-- Modal content -->
-							<div class="modal-content">
-							fdsfds
+							<div class="file-content">
+								<div class="file-top">
+									<span>전체 파일</span>
+								</div>
+								<div class="file-bottom">
+									<div>
+										<div class="box1">
+										</div>
+										<img src="./img/top_header/if_icon-111-search_314478.png" width="25" id="file_search">
+										<input type="text" size="55"
+											style=" margin-left:5px;  line-height: 20px;  outline: none; border: none; position: relative; top: -27px; left: 22px;">
+										<a href="#" id="file_button">문서</a>
+										<a href="#" id="image_button">이미지</a>
+									</div>
+									<div>
+										<select class="file_select">
+											<option>참여중인 프로젝트의 전체파일</option>
+											<option>내가 올린 파일</option>
+											<option>내가 지정되어 공유된 파일</option>
+										</select>
+										<a href="#" id="file_download">내려받기</a>
+									</div>
+									<div class="file_zone">
+										<div class="zone_top"><span>파일명</span> <span>등록정보</span></div>
+										
+									</div>
+								</div>
 							</div>
 						</div>
 							<script>
@@ -106,5 +128,3 @@
 			</table>
 		</div>
 	</div>
-</body>
-</html>

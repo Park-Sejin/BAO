@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -52,130 +51,139 @@ public class MemberDAO {
 			}
 		}
 	}
-
-	// emailCheck(name)
-	public int emailCheck(String email) {
+	
+	
+	//동일한 이메일이 존재하는지 확인
+	//emailCheck(name)
+	public int emailCheck(String email){
 		int check = 0;
 		try {
-			con = getCon();
-
-			sql = "select * from member where email=?";
-			pstmt = con.prepareStatement(sql);
+			con=getCon();
+			
+			sql="select * from member where email=?";
+			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			if(rs.next()){
 				check = 1;
-				System.out.println();
 			}
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
 		}
-
+		
 		return check;
 	}
-	// emailCheck(name)
-
-	// emailCheck(email, pass)
-	public int emailCheck(String email, String pass) {
+	//emailCheck(name)
+	
+	
+	//로그인시 이메일 비밀번호 확인
+	//emailCheck(email, pass)
+	public int emailCheck(String email, String pass){
 		int check = -1;
 		try {
-			con = getCon();
-
-			sql = "select pass from member where email=?";
-			pstmt = con.prepareStatement(sql);
+			con=getCon();
+			
+			sql="select pass from member where email=?";
+			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, email);
-
+			
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				// 아이디있다
-				if (pass.equals(rs.getString("pass"))) {
-					// 비밀번호 일치
+			if(rs.next()){
+				//아이디있다
+				if(pass.equals(rs.getString("pass"))){
+					//비밀번호 일치
 					check = 1;
 				} else {
-					// 비밀번호 불일치
+					//비밀번호 불일치
 					check = 0;
 				}
 			} else {
-				// 아이디없다
-				check = -1;
+				//아이디없다
+				check=-1;
 			}
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
 		}
-
+		
 		return check;
 	}
-	// emailCheck(email, pass)
-
-	// insertMember(mb)
-	public void insertMember(MemberBean mb) {
-		int num = 0;
+	//emailCheck(email, pass)
+	
+	
+	//회원가입
+	//insertMember(mb)
+	public void insertMember(MemberBean mb){
+		int num=0;
 		try {
-			con = getCon();
-
-			// num 구하기
-			sql = "select max(num) from member";
+			con=getCon();
+			
+			//num 구하기
+			sql="select max(num) from member";
 			pstmt = con.prepareStatement(sql);
-
+			
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				num = rs.getInt(1) + 1;
+			if(rs.next()){
+				num = rs.getInt(1)+1;
 			} else {
 				num = 1;
 			}
-
-			// 멤버 추가
-			sql = "insert into member(num, name, email, pass, date) values(?,?,?,?,now())";
+			
+			//멤버 추가
+			sql="insert into member(num, name, email, pass, date) values(?,?,?,?,now())";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, mb.getName());
 			pstmt.setString(3, mb.getEmail());
 			pstmt.setString(4, mb.getPass());
-
+			
 			pstmt.executeUpdate();
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
 		}
 	}
-	// insertMember(mb)
-
-	// updatePass(email, pass)
-	public void updatePass(String email, String pass) {
+	//insertMember(mb)
+	
+	
+	//비밀번호 변경
+	//updatePass(email, pass)
+	public void updatePass(String email, String pass){
 		try {
-			con = getCon();
-
-			// email이 있으면 pass를 바꾼다
-			sql = "select * from member where email=?";
-			pstmt = con.prepareStatement(sql);
+			con=getCon();
+			
+			//email이 있으면 pass를 바꾼다
+			sql="select * from member where email=?";
+			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, email);
+			
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				sql = "update member set pass=? where email=?";
-				pstmt = con.prepareStatement(sql);
+			if(rs.next()){
+				sql="update member set pass=? where num=?";
+				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1, pass);
-				pstmt.setString(2, email);
-
+				pstmt.setInt(2, rs.getInt(1));
+				
 				pstmt.executeUpdate();
 				System.out.println("비밀번호 변경이 완료되었습니다.");
 			}
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
 		}
 	}
-	// updatePass(email, pass)
-
+	//updatePass(email, pass)
+	
+	
 	//회원정보수정
 	//updateMember(mb)
 	public void updateMember(MemberBean mb){
@@ -202,19 +210,21 @@ public class MemberDAO {
 		}
 	}
 	//updateMember(mb)
-
-	// getMember(email)
-	public MemberBean getMember(String email) {
+		
+	
+	//회원정보가져오기
+	//getMember(email)
+	public MemberBean getMember(String email){
 		MemberBean mb = null;
 		try {
 			con = getCon();
-
-			sql = "select * from member where email=?";
-			pstmt = con.prepareStatement(sql);
+			
+			sql="select * from member where email=?";
+			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, email);
-
+			
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			if(rs.next()){
 				mb = new MemberBean();
 				mb.setEmail(rs.getString("email"));
 				mb.setName(rs.getString("name"));
@@ -225,20 +235,22 @@ public class MemberDAO {
 				mb.setPart(rs.getString("part"));
 				mb.setPosition(rs.getString("position"));
 				mb.setPhone(rs.getString("phone"));
+				mb.setImage(rs.getString("image"));
 			}
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
 		}
-
+		
 		return mb;
 	}
-	// getMember(email)
-
-	// getMemberNum(id)
-	public int getMemberNum(String id) {
+	//getMember(email)
+	
+	
+	//getMemberNum(id)
+	public int getMemberNum(String id){
 		int num = 0;
 		try {
 			con = getCon();
@@ -246,20 +258,22 @@ public class MemberDAO {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			if(rs.next()){
 				num = rs.getInt("num");
-			}
-
+				}
+	         
 		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			CloseDB();
-		}
+	    	  e.printStackTrace();
+	    } finally {
+	    	  	CloseDB();
+	    }
 		return num;
 	}
-	// getMemberNum(id)
-
-	// insertKakaoMember(mb)
+	//getMemberNum(id)
+	
+	
+	//카카오톡으로 멤버추가
+	//insertKakaoMember(mb)
 	public void insertKakaoMember(MemberBean mb) {
 		int num = 0;
 		try {
@@ -277,12 +291,12 @@ public class MemberDAO {
 			}
 
 			// 멤버 추가
-			sql = "insert into member(num, name, email, profile, date) values(?,?,?,?,now())";
+			sql = "insert into member(num, name, email, image, date) values(?,?,?,?,now())";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, num);
 			pstmt.setString(2, mb.getName());
 			pstmt.setString(3, mb.getEmail());
-			pstmt.setString(4, mb.getProfile());
+			pstmt.setString(4, mb.getImage());
 
 			pstmt.executeUpdate();
 
@@ -294,7 +308,9 @@ public class MemberDAO {
 	}
 	// insertKakaoMember(mb)
 
-	// searchID(id)
+	
+	//num값구하기
+	//searchID(id)
 	public int searchID(String id) {
 		int check = 0;
 		try {
@@ -312,11 +328,13 @@ public class MemberDAO {
 		} finally {
 			CloseDB();
 		}
+		
 		return check;
 	}
-	// searchID(id)
+	//searchID(id)
 
-	// getName(num)
+
+	//getName(num)
 	public String getName(int num) {
 		String name = "";
 		try {
@@ -336,32 +354,34 @@ public class MemberDAO {
 		}
 		return name;
 	}
-	// getName(num)
+	//getName(num)
 
-	// 프로필 이미지 삽입
-	// insertImage(mb)
-	public void insertImage(MemberBean mb) {
+	
+	//프로필 이미지 삽입
+	//insertImage(mb)
+	public void insertImage(MemberBean mb){
 		try {
 			con = getCon();
-
+			
 			sql = "update member set image=? where email=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, mb.getImage());
 			pstmt.setString(2, mb.getEmail());
-
+			
 			pstmt.executeUpdate();
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			CloseDB();
 		}
-
+		
 	}
-	// insertImage(mb)
+	//insertImage(mb)
 	
 	
 	// 회원번호에 맞는 이름을 가져오는 메서드
+	//getMember(num)
 	public MemberBean getMember(int num) {
 		MemberBean mb = new MemberBean();
 		try {
@@ -373,16 +393,16 @@ public class MemberDAO {
 
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				
+	            
 				mb.setEmail(rs.getString("email"));
 				mb.setName(rs.getString("name"));
 				mb.setPass(rs.getString("pass"));
-				mb.setDate(rs.getDate("date"));
-				mb.setMobile(rs.getString("mobile"));
-				mb.setTeam(rs.getString("team"));
-				mb.setPart(rs.getString("part"));
-				mb.setPosition(rs.getString("position"));
-				mb.setPhone(rs.getString("phone"));
+	            mb.setDate(rs.getDate("date"));
+	            mb.setMobile(rs.getString("mobile"));
+	            mb.setTeam(rs.getString("team"));
+	            mb.setPart(rs.getString("part"));
+	            mb.setPosition(rs.getString("position"));
+	            mb.setPhone(rs.getString("phone"));
 			}
 
 		} catch (Exception e) {
@@ -393,5 +413,11 @@ public class MemberDAO {
 
 		return mb;
 	}
-
+	//getMember(num)
+	
+	
+	
+	
+	
+	
 }

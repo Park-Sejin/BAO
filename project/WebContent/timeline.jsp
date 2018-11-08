@@ -1,13 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>Insert title here</title>
 
-      <link href="css/timeline.css" rel="stylesheet" type="text/css">
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<link href="css/timeline.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/top.css">
+<link href="css/right_menu.css" rel="stylesheet">
+<link href="css/profile_popup.css" rel="stylesheet">
+<link href="css/invitebox.css" rel="stylesheet">
+<link href="css/AllView_popup.css" rel="stylesheet">
+<link href="css/HeaderCss.css" rel="stylesheet">
+<link href="css/content.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
        <script src="jquery-sortable.js"></script>
 
 <script type="text/javascript">
@@ -86,16 +93,10 @@
    </head>
    
    <body>
-      
-      <jsp:include page="./default/right_menu.jsp"></jsp:include>
-      <jsp:include page="./default/LeftHeader.jsp"></jsp:include>
-      <jsp:include page="./default/top3.jsp"></jsp:include>
-      
-      
-      <%
-      	/* session.invalidate(); // 세션 종료 */
-      %>
-      
+
+   <div id="container">
+    <jsp:include page="./default/top3.jsp"></jsp:include>
+    <jsp:include page="./default/LeftHeader.jsp"></jsp:include>  
       
       <article id="timeline">
          <div id="title">
@@ -294,7 +295,7 @@
                         <option value="23:00">23:00</option>
                         <option value="24:00">24:00</option>
                      </select>
-                     <spen id="center_spen">~</spen>
+                     <span id="center_spen">~</span>
                      <select id="lastsc">
                         <option value="00:00">00:00</option>
                         <option value="01:00">01:00</option>
@@ -394,27 +395,12 @@
          </div>
          <!-- 할일 -->
          
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
-         
+      
       
       </article>
+     
+   
+      <jsp:include page="./default/right_menu.jsp"></jsp:include>     
+      </div>
    </body>
 </html>

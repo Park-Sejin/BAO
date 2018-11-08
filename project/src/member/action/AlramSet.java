@@ -4,6 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import member.setting.db.SettingBean;
+import member.setting.db.SettingDAO;
+
 public class AlramSet implements Action {
 
 	@Override
@@ -16,6 +19,13 @@ public class AlramSet implements Action {
 		String email = (String)session.getAttribute("email");
 		
 		//이메일주소에 해당하는 정보 가져오기
+		SettingDAO sdao = new SettingDAO();
+		SettingBean sb = sdao.getSetting(email);
+		//저장된 정보가 있으면 값 넘기기
+		if(sb != null){
+			String alram = sb.getAlram();
+			request.setAttribute("alram", alram);
+		} 
 		
 		//넘겨줄 정보 저장
 		request.setAttribute("email", email);

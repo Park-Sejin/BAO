@@ -12,14 +12,15 @@ public class RePasswordAction implements Action {
 		
 		System.out.println("RePasswordAction_execute()");
 		
+		//파라미터값 가져오기
 		String email = request.getParameter("email");
 		String pass = request.getParameter("pass");
 		
-		System.out.println("email : "+ email);
-		
+		//비밀번호 수정
 		MemberDAO mdao = new MemberDAO();
 		mdao.updatePass(email, pass);
 		
+		//페이지이동
 		ActionForward forward = new ActionForward();
 		forward.setPath("./Login.me");
 		forward.setRedirect(true);

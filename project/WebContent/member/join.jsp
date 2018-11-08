@@ -9,6 +9,9 @@
 <link href="./css/login.css" rel="stylesheet" type="text/css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://apis.google.com/js/api:client.js"></script>
+
 <script type="text/javascript">
 
 	var getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
@@ -110,8 +113,7 @@
 
 </script>
 
-<!-- 구글로그인 -->
-<script src="https://apis.google.com/js/api:client.js"></script>
+		<!-- 구글로그인 -->
 		<script>
 			  var googleUser = {};
 			  var startApp = function() {
@@ -170,7 +172,47 @@
 			</fieldset>
 		</div>
 
-		<input type="button" value="카카오계정으로 시작하기" id="btn_k"><br>
+		<!-- 카카오계정으로 로그인 -->
+         <a id="custom-login-btn" href="javascript:loginWithKakao()">
+         <img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="370" height="50"/>
+         </a>
+         <script type='text/javascript'>
+           //<![CDATA[
+             // 사용할 앱의 JavaScript 키를 설정해 주세요.
+             Kakao.init('1d5525149f2773d68dd108ba5af32c41');
+             function loginWithKakao() {
+               // 로그인 창을 띄웁니다.
+               Kakao.Auth.login({
+                 success: function(authObj) {
+                     Kakao.API.request({
+         
+                           url: '/v2/user/me',
+         
+                           success: function(res) {
+         
+                                // alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
+         
+                                // alert(JSON.stringify(authObj)); //<----Kakao.Auth.createLoginButton에서 불러온 결과값 json형태로 출력
+         
+                                 var userID = res.id;      //유저의 카카오톡 고유 id
+                                 var userNickName = res.properties.nickname; //유저가 등록한 별명
+                                 var profile = res.properties.profile_image; //프로필사진
+                                 
+                                 
+                                 location.href="kakaoJoin.me?userID="+userID+"&userNickName="+userNickName+"&profile="+profile;
+                               }
+         
+                             })
+         
+                 },
+                 fail: function(err) {
+                   alert(JSON.stringify(err));
+                 }
+               });
+             };
+           //]]>
+         </script>
+         
 		<!-- 구글계정으로 로그인 -->
 			<div id="gSignInWrapper">
 			    <div id="customBtn" class="customGPlusSignIn">

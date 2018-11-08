@@ -11,14 +11,17 @@ import javax.servlet.http.HttpServletResponse;
 public class MemberFrontController extends HttpServlet{
 
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
     	// 가상 주소 가져와서 필요한 주소만 가져오기
     	String requestURI = request.getRequestURI();
     	String contextPath = request.getContextPath();
     	String command = requestURI.substring(contextPath.length());
     	System.out.println("command : "+command);
     	
+    	
     	ActionForward forward = null;
     	Action action = null;
+    	
     	
     	// 가상주소를 비교해서 페이지 처리
     	if(command.equals("/Login.me")){ 
@@ -52,13 +55,6 @@ public class MemberFrontController extends HttpServlet{
     		forward.setPath("./member/findPassword.jsp");
     		forward.setRedirect(false);
     		
-    	} else if(command.equals("/kakaoJoin.me")){
-    		action = new KakaoJoinAction();
-    		try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
     	} else if(command.equals("/SendMail.me")){
     		forward = new ActionForward();
     		forward.setPath("./member/sendMail.jsp");
@@ -137,6 +133,14 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
         	 
+         } else if(command.equals("/AlramSetAction.me")){
+        	 action = new AlramSetAction();
+        	 try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+        	 
          } else if(command.equals("/PrjColorSet.me")){
         	 action = new PrjColorSet();
         	 try {
@@ -145,15 +149,24 @@ public class MemberFrontController extends HttpServlet{
 				e.printStackTrace();
 			}
         	 
-         } else if(command.equals("/PhSyncSet.me")){
-        	 action = new PhSyncSet();
+         } else if(command.equals("/PrjColorSetAction.me")){
+        	 action = new PrjColorSetAction();
         	 try {
 				forward = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
         	 
-         }
+         } else if(command.equals("/kakaoJoin.me")){
+    		action = new KakaoJoinAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    		
+    	} 
+    	
     	
     	// 페이지 이동    
     	if(forward != null){
@@ -167,6 +180,8 @@ public class MemberFrontController extends HttpServlet{
     	
 	}
 	
+	
+
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
@@ -176,5 +191,9 @@ public class MemberFrontController extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doProcess(request, response);
 	}
+	
+	
+	
+	
 
 }

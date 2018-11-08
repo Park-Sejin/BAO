@@ -56,7 +56,7 @@ public class ProjectFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/projectJoinPage.pr")){
+		}else if(command.equals("/5m2Zg4FH5jF5T.pr")){
 			forward = new ActionForward();
     		forward.setPath("./content/projectJoin.jsp");
     		forward.setRedirect(false);
@@ -67,7 +67,21 @@ public class ProjectFrontController extends HttpServlet{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+		}else if(command.equals("/calendar.pr")){
+			action = new Calendar();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}else if(command.equals("/calendarAction.pr")){
+    		action = new CalendarAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    	}
 	    	
     	// 페이지 이동    
     	if(forward != null){

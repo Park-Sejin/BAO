@@ -18,14 +18,6 @@ public class SetMemberAction implements Action {
 		HttpSession session = request.getSession();
 		String email = (String)session.getAttribute("email");
 		
-		//이메일주소가 없으면 주소이동
-		ActionForward forward = new ActionForward();
-		if(email == null){
-			forward.setPath("./Login.me");
-			forward.setRedirect(true);
-			return forward;
-		}
-		
 		//이메일주소에 해당하는 정보 가져오기
 		MemberDAO mdao = new MemberDAO();
 		MemberBean mb = mdao.getMember(email);
@@ -64,6 +56,7 @@ public class SetMemberAction implements Action {
 		request.setAttribute("image", image);
 		
 		//페이지이동
+		ActionForward forward = new ActionForward();
 		forward.setPath("./member/baseSet.jsp");
 		forward.setRedirect(false);
 		
