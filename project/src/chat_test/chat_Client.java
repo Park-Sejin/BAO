@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import chatting.action.ReceiveDataThread;
+import chat_test.ReceiveDataThread_past;
 import member.db.MemberBean;
 import member.db.MemberDAO;
 
@@ -15,7 +15,7 @@ public class chat_Client {
 	ObjectOutputStream oos; // 서버에 데이터를 전송하기 위한 스트림
 	ObjectInputStream ois; // 서버로부터 데이터를 전송받기 위한 스트림
 	String usr_id; // 접속자의 아이디를 저장할 변수 선언
-	ReceiveDataThread rt; // 서버가 보낸 데이터를 받기 위한 스레드 객체
+	ReceiveDataThread_past rt; // 서버가 보낸 데이터를 받기 위한 스레드 객체
 	String ipAddress;
 	final static int server_port = 6000;
 
@@ -29,10 +29,15 @@ public class chat_Client {
 			ipAddress = "127.0.0.1";
 			
 			client = new Socket(ipAddress, server_port);
-			// 서버로 메시지를 보내기 위해서 출력 스트림 얻어 ObjectOutputStream으로 변환
+			System.out.println("1111111");
+			
+			//서버로 메시지를 송신하기 위해서 출력 스트림을 얻어 ObjectOutputStream으로 변환
 			oos = new ObjectOutputStream(client.getOutputStream());
-			// 서버가 수신한 데이터를 읽기 위해서 입력 스트림을 얻어 ObjectInputStream으로 변환
+			System.out.println("222222");
+			
+			//서버로부터 데이터를 수신받기 위해서 클라이언트로부터 입력 스트림을 얻어 bjectInputStream으로 변환
 			ois = new ObjectInputStream(client.getInputStream());
+			System.out.println("33333333");
 
 			// +++++++++++++++++++++++++++++++++
 			MemberDAO mdao = new MemberDAO();
@@ -41,13 +46,17 @@ public class chat_Client {
 			usr_id = sen_mb.getName(); // 글상자에서 대화명(사용자 id)를 얻어와서
 			oos.writeObject(usr_id); // 서버에게 송신
 			oos.flush();
-			rt = new ReceiveDataThread(client, ois, receive_email);
+			rt = new ReceiveDataThread_past(client, ois, receive_email);
 			Thread t = new Thread(rt); // 스레드 객체 생성
 			t.start(); // 스레드를 시작하고
 
 			save_oos = oos;
 			save_ois = ois;
+		} catch (IOException e) {
+			System.out.println("IOException 오류");
+			e.printStackTrace();
 		} catch (Exception e) {
+			System.out.println("Exception 오류");
 			e.printStackTrace();
 		}
 	}

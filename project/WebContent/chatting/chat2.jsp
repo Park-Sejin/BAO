@@ -55,15 +55,19 @@
 		<% 
 			/* String email = (String) session.getAttribute("email"); */
 			String receive_email = request.getParameter("receive_email");
-			String sender_email = "sujin11@naver.com"; // 세션값으로 바꿔야함, 임의의 값임
+			String sender_email = "tpwls1226@naver.com"; // 세션값으로 바꿔야함, 임의의 값임
+			System.out.println(sender_email);
 			
-			/* ChatServerEx cs = new ChatServerEx(); */
-			chat_Client cc = new chat_Client();
+			/* ChatServerEx server = new ChatServerEx(receive_email,sender_email); */
+			
+			
 			MemberDAO mdao = new MemberDAO();
 			MemberBean re_mb = mdao.getMember(receive_email);
 			
 			/* session.setAttribute("email"+mb.getNum(), email); */
-			cc.ChatClient(sender_email, receive_email);
+			/* chat_Client cc = new chat_Client();
+			cc.ChatClient(sender_email, receive_email); */
+			/* cc.ChatExit(); //채팅 종료 시. */
 		
 		%>
 	

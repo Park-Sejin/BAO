@@ -25,9 +25,16 @@ public class ChattingFrontController extends HttpServlet{
     	
     	// 가상주소를 비교해서 페이지 처리
     	if(command.equals("/chatPage.chat")){ 
-    		forward = new ActionForward();
+    		action = new ServerStartAction();
+    		try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    		
+    		/*forward = new ActionForward();
     		forward.setPath("./chatting/chat2.jsp");
-    		forward.setRedirect(false);
+    		forward.setRedirect(false);*/
     		
     	} else if(command.equals("/chatHandling.chat")){ 
     		forward = new ActionForward();

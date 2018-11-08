@@ -92,6 +92,10 @@
       <jsp:include page="./default/top3.jsp"></jsp:include>
       
       
+      <%
+      	/* session.invalidate(); // 세션 종료 */
+      %>
+      
       
       <article id="timeline">
          <div id="title">
