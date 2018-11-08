@@ -14,6 +14,8 @@
     	
     	String receiveData = (String)request.getAttribute("receiveData");
     	
+    	System.out.println(receiveData);
+    	
     	
     	/* 디비 저장-------------------------------------------------- */
     	if(txt_input.length() != 0) {

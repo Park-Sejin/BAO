@@ -39,7 +39,6 @@ class ReceiveDataThread_past implements Runnable, Action {
 				System.out.println(receiveData);
 				
 				
-				
 				/*String name = receiveData.split(":")[1];*/
 				
 				//---------------------------------------------
