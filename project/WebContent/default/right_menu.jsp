@@ -389,7 +389,12 @@
          
          
          btn1.onclick = function() {
-            profile.style.display = "block";
+        	 /* $(document).ready(function() {
+     			$('#receive_email').attr('value',receive_email);
+        	 } */
+        	 
+        	 profile.style.display = "block";
+            
          }
          
          /* <!-- invite  --> */
