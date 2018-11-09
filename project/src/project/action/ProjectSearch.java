@@ -30,7 +30,7 @@ public class ProjectSearch implements Action {
 		// content.jsp에서 헤더 검색할 때 받아온 변수값
 		String type = request.getParameter("search_type1");
 		String keyword = request.getParameter("keyword");
-		System.out.println(keyword);
+		System.out.println("keyword : "+keyword);
 
 		ProjectDAO pdao = new ProjectDAO();
 		List searchList = null;
@@ -42,9 +42,11 @@ public class ProjectSearch implements Action {
 			System.out.println("project 검색 실행");
 			searchList = pdao.searchProject(keyword);
 		} else if (type.equals("write")) {
-
+			System.out.println("글 검색 실행");
+			searchList = pdao.searchWrite(keyword);
 		} else if (type.equals("member")) {
-
+			System.out.println("참여자 검색 실행");
+			searchList = pdao.searchMember(keyword);
 		}
 		
 		// 검색 결과값 저장

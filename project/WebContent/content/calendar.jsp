@@ -180,7 +180,7 @@
 				//오늘
 				calendarStr += "<TD class=today>" + i + "<BR>"
 				//DB에 해당 날짜의 일정이 있으면 삽입
-				calendarStr += "<DIV class=viewSched><a href=''>날짜일정제목</a></DIV>"
+				calendarStr += "<DIV class=viewSched><a href='"+"'>"+i+"</a></DIV>"
 				calendarStr += "</TD>"
 			} else {
 				if (col == 0) {  

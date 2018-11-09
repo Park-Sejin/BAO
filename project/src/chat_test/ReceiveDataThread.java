@@ -32,6 +32,8 @@ class ReceiveDataThread implements Runnable{
 			while ((receiveData = (String) ois.readObject()) != null){
 				
 				System.out.println("ReceiveDataThread_execute" + receiveData);
+
+				System.out.println(receiveData);
 				
 				
 				
