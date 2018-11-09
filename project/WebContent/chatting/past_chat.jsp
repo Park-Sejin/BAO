@@ -11,7 +11,7 @@
 	</head>
 	<body>	
 		<%
-			String sender_email = "sujin11@naver.com"; // 세션값으로 바꿔야함, 임의의 값임	
+			String sender_email = (String)session.getAttribute("email");
 		
 			ChatDAO cdao_m = new ChatDAO();
 			ArrayList<ChatBean> arr =  cdao_m.getChat(sender_email);

@@ -8,13 +8,20 @@
     pageEncoding="UTF-8"%>
 
     <%
-    	String email = (String) session.getAttribute("email");
+    	/* String email = (String) session.getAttribute("email"); */
+    	String email = ""; // 받은메세지 테스트. 나중에 세션으로 바꿔야함
     	String txt_input = request.getParameter("txt_input");
     	String sen_email = request.getParameter("sender_email");
     	
-    	String receiveData = (String)request.getAttribute("receiveData");
     	
-    	System.out.println(receiveData);
+    	/* 받은메세지 불러오기-------------------------------------------------- */
+    	/* ChatServerThread receive = new ChatServerThread();
+    	receive.execute(request, response);
+    	String receiveData = (String)request.getAttribute("receiveData"); */
+    	
+    	
+    	/* --------------------------------------------------------------- */
+    	
     	
     	
     	/* 디비 저장-------------------------------------------------- */
@@ -40,6 +47,7 @@
     	
     	//System.out.println("name: " + name + ", session: " + email);
     	
+    	
     %>
     <% if(sen_email.equals(email)) { %>
 	    <div id="chat_receive"> <!-- 보낸 메세지 -->
@@ -51,7 +59,7 @@
 			
 	<%} else { %>
 		<div id="chat_send"> <!-- 받은 메세지 -->
-			<span id="chat_msg"><%=receiveData %></span>
+			<span id="chat_msg"><%-- <%=receiveData %> --%>수정해야함</span>
 			<span id="chat_time">
 			<sub>오후 12:32</sub></span>
 			<sup style="color: #f66;">1</sup>

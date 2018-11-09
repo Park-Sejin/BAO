@@ -2,6 +2,7 @@ package chat_test;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,37 +12,28 @@ import chatting.action.Action;
 import chatting.action.ActionForward;
 
 //***ReceiveDataThread 클래스 설계(키보드로 메시지를 송신하면서 서버로부터 메시지를 수신 받기 위함)*****
-class ReceiveDataThread implements Runnable, Action {
+class ReceiveDataThread implements Runnable{
 	Socket client; // 서버와 통신하기 위한 소켓
 	ObjectInputStream ois; // 서버로부터 데이터를 수신받기 위한 스트림
-	String receiveData; // 서버로부터 수신받은 데이터를 저장하기 위한 변수
+	static String receiveData; // 서버로부터 수신받은 데이터를 저장하기 위한 변수
 
 	// 접속 요청한 소켓 객체와 입력 스트림이 전달됨
 	public ReceiveDataThread(Socket s, ObjectInputStream ois) {
 		client = s;
 		this.ois = ois;
 	}// ReceiveDataThread 클래스의 생성자의 끝
-	
 
-	@Override
-	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		request.setAttribute("receiveData", receiveData);
-		
-		return null;
-	}
+
+
 
 	public synchronized void run() {
 		try {
 			// 입력 스트림을 통해 데이터를 읽어 와서 출력
 			while ((receiveData = (String) ois.readObject()) != null){
 				
-				System.out.println(receiveData);
-				
-				execute(request, response);
+				System.out.println("ReceiveDataThread_execute" + receiveData);
 				
 				
-				/*String name = receiveData.split(":")[1];*/
 				
 				//---------------------------------------------
 				
