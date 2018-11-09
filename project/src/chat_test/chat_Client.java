@@ -5,7 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-import chat_test.ReceiveDataThread_past;
+import chat_test.ReceiveDataThread;
 import member.db.MemberBean;
 import member.db.MemberDAO;
 
@@ -15,7 +15,7 @@ public class chat_Client {
 	ObjectOutputStream oos; // 서버에 데이터를 전송하기 위한 스트림
 	ObjectInputStream ois; // 서버로부터 데이터를 전송받기 위한 스트림
 	String usr_id; // 접속자의 아이디를 저장할 변수 선언
-	ReceiveDataThread_past rt; // 서버가 보낸 데이터를 받기 위한 스레드 객체
+	ReceiveDataThread rt; // 서버가 보낸 데이터를 받기 위한 스레드 객체
 	String ipAddress;
 	final static int server_port = 6000;
 
@@ -42,7 +42,7 @@ public class chat_Client {
 			usr_id = sen_mb.getName(); // 글상자에서 대화명(사용자 id)를 얻어와서
 			oos.writeObject(usr_id); // 서버에게 송신
 			oos.flush();
-			rt = new ReceiveDataThread_past(client, ois);
+			rt = new ReceiveDataThread(client, ois);
 			Thread t = new Thread(rt); // 스레드 객체 생성
 			t.start(); // 스레드를 시작하고
 

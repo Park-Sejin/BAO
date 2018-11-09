@@ -44,16 +44,6 @@ public class ChattingFrontController extends HttpServlet{
     		forward = new ActionForward();
     		forward.setPath("./timeline.jsp");
     		forward.setRedirect(false);
-    		
-    		
-    	/*}else if(command.equals("/ChatServerThread.chat")){
-    		action = new ReceiveDataThread();
-    		try {
-				forward = action.execute(request, response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}*/
-    		
     	}
     	
     	
