@@ -38,7 +38,6 @@ class ReceiveDataThread implements Runnable, Action {
 				
 				System.out.println(receiveData);
 				
-				execute(request, response);
 				
 				
 				/*String name = receiveData.split(":")[1];*/
