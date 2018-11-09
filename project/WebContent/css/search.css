@@ -1,0 +1,35 @@
+@CHARSET "EUC-KR";
+
+body {
+	background-color: #f6f6f6;
+	overflow-y: scroll; 
+}
+
+article {
+	width: 900px;
+	margin: 0 auto;
+	border: 1px solid red;
+	float: right;
+}
+
+a {
+	cursor: pointer;
+}
+
+.clear {
+	clear: both;
+}
+
+/* search result */
+div#no_search {
+	
+}
+
+div#no_search h1 {
+	color: #8C8C8C;
+	font-weight: normal;
+}
+
+.resultTable tr {
+	border-bottom: 1px solid #505050;
+}

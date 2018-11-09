@@ -12,6 +12,7 @@ article {
 
 a {
 	cursor: pointer;
+	text-decoration: none;
 }
 
 .clear {
@@ -243,7 +244,6 @@ td.today {
 	padding-left: 10px;
 }
 .viewSched>a {
-	text-decoration: none;
 	color: #fff;
 }
 /* 달력부분 */

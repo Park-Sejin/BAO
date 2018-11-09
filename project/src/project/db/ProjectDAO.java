@@ -5,13 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import member.db.MemberBean;
 import project.favorite.db.ProjectFavoriteBean;
+import project.member.db.ProjectMemberBean;
 
 public class ProjectDAO {
 	Connection con = null;
@@ -232,28 +235,28 @@ public class ProjectDAO {
 	}
 
 	// 프로젝트 검색
-	public List searchProject(String keyword) {
-		List list = null;
+	public List searchProject(String keyword){
+		List list = new ArrayList();
 		try {
-			con = getCon();
-			System.out.println("keyword:!!!:"+keyword);
-			sql = "select * from project where pro_option=1 and pro_name LIKE ? ";
-			prpr = con.prepareStatement(sql);
-			prpr.setString(1, "%" + keyword + "%");
-			rs = prpr.executeQuery();
-
-			list = new ArrayList();
-			while (rs.next()) {
-				ProjectBean pb = new ProjectBean();
-				pb.setDate(rs.getDate("date"));
-				pb.setId(rs.getString("id"));
-				pb.setNum(rs.getInt("num"));
-				pb.setOption(rs.getInt("pro_option"));
-				pb.setProName(rs.getString("pro_name"));
-
-				list.add(pb);
+			con=getCon();
+			sql="select project.pro_name, member.name, project.date "
+					+ "from project join member "
+					+ "on project.id=member.email "
+					+ "where project.pro_option=1 and project.pro_name like ?";
+			prpr=con.prepareStatement(sql);
+			prpr.setString(1, "%"+keyword+"%");
+			rs=prpr.executeQuery();
+			if(rs.next()){
+				while(rs.next()){
+					HashMap hm = new HashMap();
+					hm.put("pro_name", rs.getString("pro_name"));
+					hm.put("member", rs.getString("name"));
+					hm.put("date", rs.getString("date"));
+					
+					list.add(hm);
+				}
 			}
-
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -261,6 +264,58 @@ public class ProjectDAO {
 		}
 		return list;
 	}
+	
+	//참여자 검색
+	public List searchMember(String keyword){
+		List list = null;
+		try {
+			con=getCon();
+			sql="select project.pro_name, member.name, project_member.date "
+					+ "from project join project_member "
+					+ "on project.num=project_member.project_num "
+					+ "join member on project_member.member_num=member.num "
+					+ "where member.name=?";
+			prpr=con.prepareStatement(sql);
+			prpr.setString(1, keyword);
+			rs = prpr.executeQuery();
+			if(rs.next()){
+				list = new ArrayList();
+				while(rs.next()){
+					HashMap hm = new HashMap();
+					hm.put("pro_name", rs.getString("pro_name"));
+					hm.put("member", rs.getString("name"));
+					hm.put("date", rs.getString("date"));
+					
+					list.add(hm);
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return list;
+	}
+	
+	//글 검색
+	public List searchWrite(String keyword){
+		List list = null;
+		try {
+			con=getCon();
+			sql="";
+			//db작성되면 추가
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return list;
+	}
+	
+	//모두 검색
+	//db작성되면 추가
 	
 	public void ProjectJoin(int memNum, int proNum){
 		try {
