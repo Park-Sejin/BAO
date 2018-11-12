@@ -238,7 +238,7 @@ td.today {
 }
 .viewSched {
 	margin-top: 7px;
-	background: #fa3062;
+	/* background: #fa3062; */
 	border-radius: 10px;
 	text-align: left;
 	padding-left: 10px;
@@ -246,5 +246,24 @@ td.today {
 .viewSched>a {
 	color: #fff;
 }
+
+/* 섹상지정 */
+.pink {
+	background: #fa3062;
+}
+.orange {
+	background: #f8972e;
+}
+.yellow {
+	background: #fabb11;
+}
+.green {
+	background: #23b877;
+}
+.sky {
+	background: #00c3bd;
+}
+
+
 /* 달력부분 */
 

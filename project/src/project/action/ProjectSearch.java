@@ -12,7 +12,9 @@ public class ProjectSearch implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
 		System.out.println("ProjectSearch_execute()");
+		
 		request.setCharacterEncoding("UTF-8");
 		// 로그인한 사람의 개인 정보를 출력
 		// 세션정보를 가져오기
@@ -37,7 +39,8 @@ public class ProjectSearch implements Action {
 		
 		// 카테고리에 따라 검색
 		if (type.equals("all")) {
-
+			System.out.println("모든 항목 검색 실행");
+			searchList = pdao.searchAll(keyword);
 		} else if (type.equals("project")) {
 			System.out.println("project 검색 실행");
 			searchList = pdao.searchProject(keyword);
@@ -51,6 +54,9 @@ public class ProjectSearch implements Action {
 		
 		// 검색 결과값 저장
 		request.setAttribute("searchList", searchList);
+		// 검색타입과 키워드 넘기기
+		request.setAttribute("type", type);
+		request.setAttribute("keyword", keyword);
 
 		forward = new ActionForward();
 		forward.setPath("content/searchResult.jsp");

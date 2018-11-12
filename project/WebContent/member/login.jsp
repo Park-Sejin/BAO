@@ -176,7 +176,7 @@
          <div id="gSignInWrapper">
              <div id="customBtn" class="customGPlusSignIn">
                <span class="icon"></span>
-               <span class="buttonText">구글계정으로 시작하기</span>
+               <span class="buttonText">구글계정으로 로그인</span>
              </div>
            </div>
            <script>startApp();</script>

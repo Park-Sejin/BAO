@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -32,7 +33,7 @@
 				alert('통신실패!!');
 			},
 	        success: function(data){
-	        	alert("설정변경");
+	        	//alert("설정변경");
 	        }
 		}); 
 	}
@@ -59,7 +60,7 @@
 				alert('통신실패!!');
 			},
 	        success: function(data){
-	        	alert("설정변경");
+	        	//alert("설정변경");
 	        }
 		}); 
 	}
@@ -96,7 +97,7 @@
 				alert('통신실패!!');
 			},
 	        success: function(data){
-	        	alert("설정변경");
+	        	//alert("설정변경");
 	        }
 		});
 	}	
@@ -180,6 +181,11 @@
 				//오늘
 				calendarStr += "<TD class=today>" + i + "<BR>"
 				//DB에 해당 날짜의 일정이 있으면 삽입
+				//if(스케줄1==i){calendarStr += "<DIV class=viewSched pink><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
+				//if(스케줄2==i){calendarStr += "<DIV class=viewSched orange><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
+				//if(일정1==i){calendarStr += "<DIV class=viewSched yellow><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
+				//if(일정2==i){calendarStr += "<DIV class=viewSched green><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
+				//if(일정3==i){calendarStr += "<DIV class=viewSched sky><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
 				calendarStr += "<DIV class=viewSched><a href='"+"'>"+i+"</a></DIV>"
 				calendarStr += "</TD>"
 			} else {
@@ -251,6 +257,7 @@
 					<dd>
 				<%	//내가 등록한 일정 설정값 가져오기
 					if(schedule1 == 1){
+						//List schedule1List = (List)request.getAttribute("schedule1List");
 						%>
 						<input type="checkbox" name="schedule" id="schedule1" onclick="schedule1Set()" checked="checked">
 						<label for="schedule1"><span>내가 등록한 일정</span></label>
@@ -264,6 +271,7 @@
 					<dd>
 				<%	//초대받은 일정 설정값 가져오기
 					if(schedule2 == 1){
+						//List schedule2List = (List)request.getAttribute("schedule2List");
 						%>
 						<input type="checkbox" name="schedule" id="schedule2" onclick="schedule2Set()" checked="checked">
 						<label for="schedule2"><span>초대받은 일정</span></label>

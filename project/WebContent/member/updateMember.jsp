@@ -80,12 +80,17 @@
     		
     });
     	
-    	
-    	
-	
 </script>
 </head>
 <body>
+<%
+	//email이 없으면 로그인페이지로 이동
+	String email=(String)session.getAttribute("email");
+	if(email == null){
+		response.sendRedirect("./Login.me");
+	}
+%>
+
 	<!-- 상단삽입 -->
 	<jsp:include page="../default/top_in.jsp"></jsp:include>
 	

@@ -1,8 +1,11 @@
 package project.action;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bao.TimeLine.db.BoardDAO;
 import member.setting.db.SettingBean;
 import member.setting.db.SettingDAO;
 
@@ -16,11 +19,8 @@ public class CalendarAction implements Action {
 		//파라미터값
 		String email = request.getParameter("email");
 		String schedule1_S = request.getParameter("schedule1");
-		System.out.println("schedule1_S : "+schedule1_S);
 		String schedule2_S = request.getParameter("schedule2");
-		System.out.println("schedule2_S : "+schedule2_S);
 		String work = request.getParameter("work");
-		System.out.println("work : "+work);
 		
 		//설정이 저장된 이메일이 있는지 확인
 		SettingDAO sdao = new SettingDAO();
@@ -32,11 +32,9 @@ public class CalendarAction implements Action {
 		sb.setWork(work);
 		if(schedule1_S != null){
 			int schedule1 = Integer.parseInt(schedule1_S);
-			System.out.println("schedule1 : "+schedule1);
 			sb.setSchedule1(schedule1);
 		} else if(schedule2_S != null){
 			int schedule2 = Integer.parseInt(schedule2_S);
-			System.out.println("schedule2 : "+schedule2);
 			sb.setSchedule2(schedule2);
 		}
 		
@@ -47,6 +45,28 @@ public class CalendarAction implements Action {
 			//저장된 셋팅값이 없으면 저장
 			sdao.insertSetting(sb);
 		}
+		
+		//체크된 값 가져가기
+		/*BoardDAO bdao = new BoardDAO();
+		if(schedule1_S.equals("1")){
+			List schedule1List = bdao.getSchedule(email);
+			request.setAttribute("schedule1List", schedule1List);
+		}
+		if(schedule2_S.equals("1")){
+			List schedule2List = bdao.getSchedule(email);
+			request.setAttribute("schedule2List", schedule2List);
+		}
+		if(work.equals("내 업무")){
+			List workList = bdao.getMyWork(email);
+			request.setAttribute("workList", workList);
+		} else if(work.equals("요청한 업무")){
+			List workList = bdao.getWork(email);
+			request.setAttribute("workList", workList);
+		} else if(work.equals("전체 업무")){
+			List workList = bdao.getAllWork(email);
+			request.setAttribute("workList", workList);
+		}*/
+		
 		
 		return null;
 	}
