@@ -68,7 +68,7 @@
       
    function chat_pop(){ /*  */
       window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
-      }
+   }
    
    function goBack() { /* 이전으로가기  */
 	    window.history.back();
@@ -87,6 +87,13 @@
    <%
       String email = (String) session.getAttribute("email");
       int num = Integer.parseInt(request.getParameter("num"));
+      
+      
+      int mem_num = 0;
+      if(request.getParameter("mem_num") != null) {
+      	mem_num = Integer.parseInt(request.getParameter("mem_num"));
+      } 
+	  
    %>
    <!-- aside -->
    <div id="rightMenuBox">
@@ -153,7 +160,8 @@
                            <img src="./img/right_menu/img_photo_null32.png" style="radius">
                         </div>
                         <div class="username" id="menu_profile">
-                           <a href="#"><%= mb.getName()%></a>
+                           <a href="timeline.jsp?num=<%=num%>&mem_num=<%=mb.getNum() %>"><%= mb.getName()%></a>
+                           <input type="hidden" id="mem_num" value="<%=mem_num%>"> <!-- 더 좋은방법... 찾.. -->
                         </div>
                         <div class="btn_right">
                            <a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
@@ -207,23 +215,31 @@
                   onerror="this.src='/design2/img_rn/img_photo_null_for_prfl.png'"
                   style="object-fit: cover; height: 400px; width: 400px;">
             </div>
+            
+            
+            <%	ProjectDAO pdao = new ProjectDAO();
+				ProjectBean pb = pdao.getProject(num);
+				
+				MemberDAO p_mdao = new MemberDAO();
+				MemberBean p_mb = new MemberBean();
+				
+             	
+             	if(mem_num != 0) { p_mb = p_mdao.getMember(mem_num); }
+             	%>
             <div class="prof_info">
                <div class="prof_top">
                   <h2>
-                     <span id="FLNM">박수진</span><span id="JBCL_NM"
+                     <span id="FLNM"><%=p_mb.getName() %></span><span id="JBCL_NM"
                         style="font-size: 20px; color: #969696; margin-left: 10px;"></span>
                   </h2>
-                  <%ProjectDAO pdao = new ProjectDAO();
-                     ProjectBean pb = pdao.getProject(num);%>
-                  
                   <p id="CMNM"><%=pb.getProName() %></p>
                   <a id="EDIT" class="ico_mod" style="display: none;"></a>
                </div>
                <div class="prof_cn">
-                  <p id="EML" style="visibility: visible;">tpwls1226@naver.com</p>
+                  <p id="EML" style="visibility: visible;"><%=p_mb.getEmail() %></p>
                   <p id="CLPH_NO" style="visibility: hidden;"></p>
                   <p id="CMPN_TLPH_NO" style="visibility: hidden;"></p>
-                  <input type="hidden" id="receive_email" value="sujin11@naver.com"> <!-- 임의의 값 -->
+                  <input type="hidden" id="receive_email" value="<%=p_mb.getEmail()%>">
                		<input type="button" value="server" onclick="server()">
                </div>
                <div class="prof_btn">
@@ -235,6 +251,7 @@
          </div>
       </div>
    </div>
+   
 
    
    
@@ -388,10 +405,17 @@
          var btn1 = document.getElementById('menu_profile');
          
          
+         var mem_num = $('#mem_num').val(); /* 더 좋은방법... 찾.. */
+         if(mem_num > 0) {
+    		 profile.style.display = "block";
+    	 }
+         
+         
          btn1.onclick = function() {
         	 /* $(document).ready(function() {
      			$('#receive_email').attr('value',receive_email);
         	 } */
+        	 
         	 
         	 profile.style.display = "block";
             
@@ -439,6 +463,7 @@
          window.onclick = function(event){
              if (event.target == profile) {
                 profile.style.display = "none";
+                location.href="timeline.jsp?num=<%=num%>"; /* 더 좋은방법....찾.. */
                 
              }else if(event.target == invite){
                 invite.style.display = "none";
@@ -451,8 +476,6 @@
           }
          } 
 
-   
-   
          
          
    </script>

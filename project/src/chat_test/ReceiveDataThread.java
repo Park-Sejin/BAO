@@ -30,13 +30,8 @@ class ReceiveDataThread implements Runnable{
 		try {
 			// 입력 스트림을 통해 데이터를 읽어 와서 출력
 			while ((receiveData = (String) ois.readObject()) != null){
-				
-				System.out.println("ReceiveDataThread_execute" + receiveData);
 
 				System.out.println(receiveData);
-				
-				
-				
 				
 				
 				//---------------------------------------------

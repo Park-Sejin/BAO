@@ -42,11 +42,34 @@
 							$("#txt_input").text("");
 						}
 					});
-					
 				});
 				
 				
 			});
+			
+			
+			
+			/* function autoRefresh_div(){
+				var currentLocation = window.location;
+				$("#chat_body").load(currentLocation + ' #chat_body');
+				
+			}
+			setInterval('autoRefresh_div()', 1000); */
+			
+			window.setInterval(function(){
+				$('#chat_body').load('./chatting/past_chat.jsp');
+				$('#chat_body').scrollTop($('#chat_body').prop('scrollHeight'));
+			}, 1000);
+			
+			/* window.setInterval(function() {
+			   $("#chat_body").html("#chat_body");
+			}, 1000); */
+			
+			
+			
+			
+
+			
 			
 		</script>
 	
@@ -72,10 +95,11 @@
 		<br>
 	
 		
-		<div id="chat_boay" style="min-width: 100px; min-height: 600px; height: 630px; overflow-y: scroll;">
+		<div id="chat_body" style="min-width: 100px; min-height: 600px; height: 630px; overflow-y: scroll;">
 			
 			<fieldset>
 				<jsp:include page="past_chat.jsp"></jsp:include>
+				<input type="hidden" id="foc">
 				
 				<legend>년도-월-일 요일</legend>
 				<div id="text_page">
@@ -111,12 +135,6 @@
 			<input type="hidden" value=<%=sender_email %> id="sender_email">
 			<input type="hidden" value=<%=receive_email %> id="receive_email">
 		</div>
-	
-	
-	
-	
-	
-	
 	
 	
 	

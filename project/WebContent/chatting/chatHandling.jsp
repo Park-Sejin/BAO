@@ -6,12 +6,17 @@
 <%@page import="chat_test.chat_Client"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+			
     <%
-    	/* String email = (String) session.getAttribute("email"); */
-    	String email = ""; // 받은메세지 테스트. 나중에 세션으로 바꿔야함
+    	String email = (String) session.getAttribute("email");
+    	/* String email = ""; // 받은메세지 테스트. 나중에 세션으로 바꿔야함 */
     	String txt_input = request.getParameter("txt_input");
     	String sen_email = request.getParameter("sender_email");
+    	String receiveData = request.getParameter("receiveData");
+    	
+    	if(sen_email == null) {
+    		String user_id = request.getParameter("user_id");
+    	}
     	
     	
     	/* 받은메세지 불러오기-------------------------------------------------- */
@@ -59,10 +64,9 @@
 			
 	<%} else { %>
 		<div id="chat_send"> <!-- 받은 메세지 -->
-			<span id="chat_msg"><%-- <%=receiveData %> --%>수정해야함</span>
+			<span id="chat_msg"><%=receiveData %></span>
 			<span id="chat_time">
 			<sub>오후 12:32</sub></span>
-			<sup style="color: #f66;">1</sup>
 		</div>
 		<div id="clear"></div>
 	<% } %>

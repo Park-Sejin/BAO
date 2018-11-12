@@ -53,11 +53,13 @@ class ChatServerThread implements Runnable {
 				// +++클라이언트로부터 보내진 메시지를 수신한다.++++++++++++
 				receiveData = (String) ois.readObject(); // 입력 스트림을 통해 클라이언트가 보낸 메시지를 읽어옴
 				// 클라이언트로부터 종료 메시지가 들어오면 반복 문을 벗어나서 finally 구문으로 간다.
-				if (receiveData.equals("/quit"))
-					break;
-				else // 받은 메시지를 모든 클라이언트에게 브로드 캐스팅한다.
+				if (receiveData.equals("/quit")) break;
+				else {// 받은 메시지를 모든 클라이언트에게 브로드 캐스팅한다.
 					/* broadcast(user_id + " : " + receiveData); */
 					broadcast(receiveData);
+				}// else
+					
+				
 			} // while
 		} catch (Exception e) {
 			System.out.println("클라이언트가 강제 종료");

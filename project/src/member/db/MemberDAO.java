@@ -394,6 +394,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 	            
+				mb.setNum(rs.getInt("num"));
 				mb.setEmail(rs.getString("email"));
 				mb.setName(rs.getString("name"));
 				mb.setPass(rs.getString("pass"));
