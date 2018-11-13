@@ -12,9 +12,11 @@
 	<body>	
 		<%
 			String sender_email = (String)session.getAttribute("email");
+			/* String receive_email = request.getParameter("receive_email"); */
+			String receive_email = (String)session.getAttribute("receive_email");
 		
 			ChatDAO cdao_m = new ChatDAO();
-			ArrayList<ChatBean> arr =  cdao_m.getChat(sender_email);
+			ArrayList<ChatBean> arr =  cdao_m.getChat(sender_email, receive_email);
 		
 		 	if(arr.size() != 0) { 
 		 	

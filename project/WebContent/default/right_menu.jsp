@@ -45,20 +45,7 @@
 		
 		$("#invite2_div").addClass("black");
 		$("#invite_div").empty();
-	 	$("#invite_div").load("./timeline.jsp");
-		
-   pageEncoding="UTF-8"%>
-
-
-
-   
-   <script type="text/javascript">
-   
-  /*  $(document).ready(function(){
-	    $("p").click(function(){
-	        $(this).hide();
-	    });
-	}); */
+	 	$("#invite_div").load("./timeline.jsp"); */
    
    function go_pop(){
       var receive_email = document.getElementById('receive_email').value;
