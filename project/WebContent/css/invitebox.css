@@ -57,7 +57,7 @@
                   font-size: 14px;
                    color: #969696; }
                    
-#invite_sub ul li .ico {
+#invite_sub ul li .ico { 
     position: absolute;
     top: 18px;
     left: 20px;
