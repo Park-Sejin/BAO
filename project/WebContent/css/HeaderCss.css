@@ -1,41 +1,34 @@
 @CHARSET "UTF-8";
 
-.LeftHeaderBody{
-   margin-left:-8px;
-   min-height: 200px;
 
-   width: 550px;
-   border-color: black;
-   background-color:#F6F6F6;
-   
-  z-index: 999; 
-   
-   border:1px solid blue;
- /*     position: sticky; */
-   /*   display:inline-block; */
+.LeftHeaderBody {
+  margin-left: -8px;
+  min-height: 200px;
+  width: 550px;
+  border-color: black;
+  background-color: #F6F6F6;
+  z-index: 999;
   vertical-align: top;
   display: inline-block;
-  margin-top: 150px;  
-  
+  margin-top: 150px;
   position: sticky;
-  top:0;
+  top: 0;
 }
 
-.LeftHeaderSub{
-   margin-left:350px;
+.LeftHeaderSub {
+  margin-left: 350px;
 }
 
-
-.LeftMenuTb{
-   text-align:left; 
-   color:#575757;
-   cursor:pointer;
-}
-.LeftMenuTr{
-   height:40px;
+.LeftMenuTb {
+  text-align: left;
+  color: #575757;
+  cursor: pointer;
 }
 
-.LeftMenuTb:hover{
-   background-color:#D5D5D5;
-   
+.LeftMenuTr {
+  height: 40px;
+}
+
+.LeftMenuTb:hover {
+  background-color: #D5D5D5;
 }

@@ -9,16 +9,9 @@
 <%@page import="member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Insert title here</title>
-	
-	<link href="css/right_menu.css" rel="stylesheet">
-	<link href="css/profile_popup.css" rel="stylesheet">
-	<link href="css/invitebox.css" rel="stylesheet">
-	
+
+
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	
 	<script type="text/javascript">
@@ -41,34 +34,7 @@
 		window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
 		}
 	
-	/*  $("#invite2_div").click(function(){
-		
-		$("#invite2_div").addClass("black");
-		$("#invite_div").empty();
-	 	$("#invite_div").load("./timeline.jsp");
-		
-   pageEncoding="UTF-8"%>
 
-
-
-   
-   <script type="text/javascript">
-   
-  /*  $(document).ready(function(){
-	    $("p").click(function(){
-	        $(this).hide();
-	    });
-	}); */
-   
-   function go_pop(){
-      var receive_email = document.getElementById('receive_email').value;
-      window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
-      }
-      
-      
-   function chat_pop(){ /*  */
-      window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
-   }
    
    function goBack() { /* 이전으로가기  */
 	    window.history.back();
@@ -77,10 +43,38 @@
    function closeWin() {
 	   part.close();
 	}
-
-
-    
    
+   </script>
+   
+   <script>
+  /*  $(document).ready(function(){
+	   $("teaminvite").click(function(){
+	       $("invite_div").load("invite2_div");
+	  		 });
+			}); */
+   
+  /*  $('#teaminvite').click(function(){
+		$.ajax({
+           url:'#invite2_div',
+           type:'get',
+           data:{
+           	'id':'test1'
+           },
+           success:function(data){
+           	$('#invite_div').empty();
+           	$('#invite_div').append(data);
+           }
+       })
+	});
+			
+	 */
+	 
+	  $(document).ready(function(){
+	 $("#teaminvite").click(function(){
+		 	$("#invite_sub").empty();
+			$("#invite_sub").load("#right_menu #invite2_sub");
+		});
+	 }); 
    
    </script>
 
@@ -236,6 +230,7 @@
                   <a id="EDIT" class="ico_mod" style="display: none;"></a>
                </div>
                <div class="prof_cn">
+
                   <p id="EML" style="visibility: visible;"><%=p_mb.getEmail() %></p>
                   <p id="CLPH_NO" style="visibility: hidden;"></p>
                   <p id="CMPN_TLPH_NO" style="visibility: hidden;"></p>
@@ -265,10 +260,10 @@
               </div>         
         </div>
         <div id="invite2_sub">
-           <ul>
-             <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
-             <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
-             <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
+           <ul> <!-- list로 회원정렬  -->
+             <li><span class="profile_ico"></span><p class="invite2_name">이름1</p><p class="invite2_team"></p></li>
+             <li><span class="profile_ico"></span><p class="invite2_name">이름2</p><p class="invite2_team"></p></li>
+             <li><span class="profile_ico"></span><p class="invite2_name">이름3</p><p class="invite2_team"></p></li>
              <li></li>
            </ul>   
         </div>      
@@ -326,7 +321,7 @@
 				
 				<div class="layerstyle4_cont">
 					<div id="contsearch">
-						<img src="../img/어쩌고저쩌고어쩌고..저쩌고 ㅠㅠㅠㅠㅠ">
+						<img src="../img/">
 						<input type="text" value="파일명, 등록자명으로 검색이 가능합니다.">
 						<button id="clicktxt">문서</button>
 						<button id="clickimg">이미지</button>
@@ -377,7 +372,7 @@
 										}
 									%>
 									<li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
-									<span id="insidepeople">이름2</span>
+									<span id="insidepe ople">이름2</span>
 										<div class="AllViewbtn_right">
 											<a class="btn set" id="moresetting"><!-- <span class="blind"></span> --></a>
 										</div></li>
@@ -461,19 +456,20 @@
          
          // When the user clicks anywhere outside of the modal, close it
          window.onclick = function(event){
+        	 
+        	 
              if (event.target == profile) {
                 profile.style.display = "none";
-                location.href="timeline.jsp?num=<%=num%>"; /* 더 좋은방법....찾.. */
-                
+                location.href="timeline.jsp?num=<%=num%>"; /* 더 좋은방법....찾.. */   
              }else if(event.target == invite){
                 invite.style.display = "none";
              }else if(event.target == filebox){
                 filebox.style.display = "none";
              }else if(event.target == part){
                 part.style.display="none";
-             }else if (event.target == test) {
-             test.style.display="none";
-          }
+             }else if(event.target == test){
+            	test.style.display="none";
+             }
          } 
 
          
