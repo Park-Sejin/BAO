@@ -38,6 +38,16 @@
 		<url-pattern>*.pr</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 타임라인 맵핑 -->
+	<servlet>
+		<servlet-name>TimeLineController</servlet-name>
+		<servlet-class>bao.TimeLine.action.TimeLineController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>TimeLineController</servlet-name>
+		<url-pattern>*.tl</url-pattern>
+	</servlet-mapping>
 	
 	<!-- 채팅 맵핑 -->
 	<servlet>
@@ -50,16 +60,6 @@
 		<url-pattern>*.chat</url-pattern>
 	</servlet-mapping>
 
-	<!-- 타임라인 -->
-	<servlet>
-		<servlet-name>TimeLineController</servlet-name>
-		<servlet-class>bao.TimeLine.action.TimeLineController</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>TimeLineController</servlet-name>
-		<url-pattern>*.tl</url-pattern>
-	</servlet-mapping>
 
 
 	<!-- 디비연결 -->

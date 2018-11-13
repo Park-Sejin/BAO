@@ -39,13 +39,12 @@ public class ChatDAO {
 		try {
 			con=getCon();
 			
-			sql="insert into chat(receiver,sender,message,read_cnt) values(?,?,?,?)";
+			sql="insert into chat(receiver,sender,message) values(?,?,?)";
 			pstmt=con.prepareStatement(sql);
 			
 			pstmt.setString(1, cb.getReceiver());
 			pstmt.setString(2, cb.getSender());
 			pstmt.setString(3, cb.getMessage());
-			pstmt.setInt(4, cb.getRead_cnt());
 			
 			pstmt.executeUpdate();
 			
@@ -56,18 +55,20 @@ public class ChatDAO {
 	
 	
 	// 이메일에 따른 채팅메세지를 가져오는 메서드
-	public ArrayList<ChatBean> getChat(String email){
+	public ArrayList<ChatBean> getChat(String sender_email, String receive_email){
 		
 		ArrayList<ChatBean> arr = new ArrayList<ChatBean>();
 		
 		try {
 			con=getCon();
 			
-			sql="select * from chat where receiver=? or sender=? order by date";
+			sql="select * from chat where (receiver=? and sender=?) or (receiver=? and sender=?) order by date";
 			pstmt=con.prepareStatement(sql);
 			
-			pstmt.setString(1, email);
-			pstmt.setString(2, email);
+			pstmt.setString(1, sender_email);
+			pstmt.setString(2, receive_email);
+			pstmt.setString(3, receive_email);
+			pstmt.setString(4, sender_email);
 			
 			rs = pstmt.executeQuery();
 			
@@ -88,5 +89,35 @@ public class ChatDAO {
 		} finally { CloseDB(); }
 		
 		return arr;
+	}
+	
+	
+	// 읽음처리 메서드
+	public void setRead(String sender_email, String receive_email){
+		
+		try {
+			con=getCon();
+			
+			sql="select * from chat where sender=? and receiver=? and read_cnt=1 order by date";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, sender_email);
+			pstmt.setString(2, receive_email);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				sql = "update chat set read_cnt=0 where sender=? and receiver=?";
+				pstmt=con.prepareStatement(sql);
+				
+				pstmt.setString(1, receive_email);
+				pstmt.setString(2, sender_email);
+				
+				pstmt.executeUpdate();
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { CloseDB(); }
 	}
 }

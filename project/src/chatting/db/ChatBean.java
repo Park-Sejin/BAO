@@ -17,7 +17,7 @@ public class ChatBean {
 	sender varchar(45),
 	message text,
 	date timestamp default now(),
-	read_cnt int);
+	read_cnt int default 1);
 	 */
 	
 	public int getNum() {

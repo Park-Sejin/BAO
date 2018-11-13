@@ -11,11 +11,19 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import member.db.MemberBean;
+
 public class ProjectMemberDAO {
 	Connection con = null;
 	PreparedStatement prpr = null;
+	PreparedStatement prpr2 = null;
+	PreparedStatement prpr3 = null;
 	String sql = "";
+	String sql2 = "";
+	String sql3 = "";
 	ResultSet rs = null;
+	ResultSet rs2 = null;
+	ResultSet rs3 = null;
 
 	// 디비연결 메서드 생성
 	private Connection getCon() throws Exception {
@@ -39,6 +47,38 @@ public class ProjectMemberDAO {
 		if (prpr != null) {
 			try {
 				prpr.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (rs2 != null) {
+			try {
+				rs2.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (prpr2 != null) {
+			try {
+				prpr2.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (rs3 != null) {
+			try {
+				rs3.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		if (prpr3 != null) {
+			try {
+				prpr3.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -111,7 +151,50 @@ public class ProjectMemberDAO {
 		return check;
 	}
 	
-	
+	public List getJoinMemberList(int memNum) {
+		List list = null;
+		try {
+			con = getCon();
+			sql = "select * from project_member where member_num = ?";
+			prpr = con.prepareStatement(sql);
+			prpr.setInt(1, memNum);
+			System.out.println("memNum : "+memNum);
+			rs = prpr.executeQuery();
+			list = new ArrayList();
+			while(rs.next()) {
+				sql2 = "select * from project_member where project_num = ?";
+				prpr2 = con.prepareStatement(sql2);
+				prpr2.setInt(1, rs.getInt("project_num"));
+				System.out.println("project_num : "+rs.getInt("project_num"));
+				rs2 = prpr2.executeQuery();
+				
+				while(rs2.next()) {
+						if(memNum != rs2.getInt("member_num")) {
+							sql3 = "select * from member where num = ?";
+							prpr3 = con.prepareStatement(sql3);
+							prpr3.setInt(1, rs2.getInt("member_num"));
+							rs3 = prpr3.executeQuery();
+							
+							if(rs3.next()) {
+								MemberBean mb = new MemberBean();
+								mb.setDate(rs3.getDate("date"));
+								mb.setEmail(rs3.getString("email"));
+								mb.setImage(rs3.getString("image"));
+								mb.setName(rs3.getString("name"));
+								mb.setNum(rs3.getInt("num"));
+								System.out.println(rs3.getString("name"));
+								list.add(mb);
+							}
+						}
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		return list;
+	}	
 	
 	
 	

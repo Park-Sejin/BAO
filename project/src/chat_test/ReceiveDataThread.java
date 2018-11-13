@@ -2,14 +2,7 @@ package chat_test;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.PrintWriter;
 import java.net.Socket;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import chatting.action.Action;
-import chatting.action.ActionForward;
 
 //***ReceiveDataThread 클래스 설계(키보드로 메시지를 송신하면서 서버로부터 메시지를 수신 받기 위함)*****
 class ReceiveDataThread implements Runnable{

@@ -360,8 +360,27 @@ public class ProjectDAO {
 		return pb;
 	}
 	
-	
-	
+	// 프로젝트 명 가져오기 
+	public String getProjectName(int proNum) {
+		String proSubject = "";
+		try {
+			con = getCon();
+			sql = "select * from project where num = ?";
+			prpr = con.prepareStatement(sql);
+			prpr.setInt(1, proNum);
+			rs = prpr.executeQuery();
+			if(rs.next()) {
+				proSubject = rs.getString("pro_name");
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			CloseDB();
+		}
+		return proSubject;
+		
+	}
 	
 	
 

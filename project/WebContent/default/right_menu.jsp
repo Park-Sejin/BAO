@@ -8,73 +8,58 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 
-
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	
-	<script type="text/javascript">
-	
-	function go_pop(){
-		/* $(document).ready(function() {
-			$('#server_cnt').attr('value',1);
-		}); */
-		var receive_email = document.getElementById('receive_email').value;
-		window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
-		alert("ddd");
-	}
-	
-	function server() {
-		window.open("./serverStart.chat","new","width=100, height=100");
-	}
-		
-		
-	function chat_pop(){
-		window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
-		}
-	
-
+   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+   
+   <script type="text/javascript">
+   
+   function go_pop(){
+      /* $(document).ready(function() {
+         $('#server_cnt').attr('value',1);
+      }); */
+      var receive_email = document.getElementById('receive_email').value;
+      window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+      alert("ddd");
+   }
+   
+   function server() {
+      window.open("./serverStart.chat","new","width=100, height=100");
+   }
+      
+      
+   function chat_pop(){
+      window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+      }
+   
+   /*  $("#invite2_div").click(function(){
+      
+      $("#invite2_div").addClass("black");
+      $("#invite_div").empty();
+       $("#invite_div").load("./timeline.jsp"); */
+   
+   function go_pop(){
+      var receive_email = document.getElementById('receive_email').value;
+      window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+      }
+      
+      
+   function chat_pop(){ /*  */
+      window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+   }
    
    function goBack() { /* 이전으로가기  */
-	    window.history.back();
-	}
+       location.href="./main.pr";
+   }
    
    function closeWin() {
-	   part.close();
-	}
+      part.close();
+   }
+
+
+    
    
-   </script>
-   
-   <script>
-  /*  $(document).ready(function(){
-	   $("teaminvite").click(function(){
-	       $("invite_div").load("invite2_div");
-	  		 });
-			}); */
-   
-  /*  $('#teaminvite').click(function(){
-		$.ajax({
-           url:'#invite2_div',
-           type:'get',
-           data:{
-           	'id':'test1'
-           },
-           success:function(data){
-           	$('#invite_div').empty();
-           	$('#invite_div').append(data);
-           }
-       })
-	});
-			
-	 */
-	 
-	  $(document).ready(function(){
-	 $("#teaminvite").click(function(){
-		 	$("#invite_sub").empty();
-			$("#invite_sub").load("#right_menu #invite2_sub");
-		});
-	 }); 
    
    </script>
 
@@ -85,9 +70,9 @@
       
       int mem_num = 0;
       if(request.getParameter("mem_num") != null) {
-      	mem_num = Integer.parseInt(request.getParameter("mem_num"));
+         mem_num = Integer.parseInt(request.getParameter("mem_num"));
       } 
-	  
+     
    %>
    <!-- aside -->
    <div id="rightMenuBox">
@@ -155,7 +140,9 @@
                         </div>
                         <div class="username" id="menu_profile">
                            <a href="timeline.jsp?num=<%=num%>&mem_num=<%=mb.getNum() %>"><%= mb.getName()%></a>
-                           <input type="hidden" id="mem_num" value="<%=mem_num%>"> <!-- 더 좋은방법... 찾.. -->
+                           <input type="hidden" id="mem_num" value="<%=mem_num%>">
+                          <%--  <input type="hidden" id="mem_num" value="<%=mb.getNum()%>">
+                           <a href="" class="a_name"><%= mb.getName()%></a> --%>
                         </div>
                         <div class="btn_right">
                            <a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
@@ -211,15 +198,15 @@
             </div>
             
             
-            <%	ProjectDAO pdao = new ProjectDAO();
-				ProjectBean pb = pdao.getProject(num);
-				
-				MemberDAO p_mdao = new MemberDAO();
-				MemberBean p_mb = new MemberBean();
-				
-             	
-             	if(mem_num != 0) { p_mb = p_mdao.getMember(mem_num); }
-             	%>
+            <%   ProjectDAO pdao = new ProjectDAO();
+            ProjectBean pb = pdao.getProject(num);
+            
+            MemberDAO p_mdao = new MemberDAO();
+            MemberBean p_mb = new MemberBean();
+            
+                
+                if(mem_num != 0) { p_mb = p_mdao.getMember(mem_num); }
+                %>
             <div class="prof_info">
                <div class="prof_top">
                   <h2>
@@ -230,12 +217,11 @@
                   <a id="EDIT" class="ico_mod" style="display: none;"></a>
                </div>
                <div class="prof_cn">
-
                   <p id="EML" style="visibility: visible;"><%=p_mb.getEmail() %></p>
                   <p id="CLPH_NO" style="visibility: hidden;"></p>
                   <p id="CMPN_TLPH_NO" style="visibility: hidden;"></p>
                   <input type="hidden" id="receive_email" value="<%=p_mb.getEmail()%>">
-               		<input type="button" value="server" onclick="server()">
+                     <input type="button" value="server" onclick="server()">
                </div>
                <div class="prof_btn">
                   <a id="CHAT" class="btn_prd_sty1_b" onclick="go_pop()"><span>채팅하기</span></a>
@@ -260,10 +246,10 @@
               </div>         
         </div>
         <div id="invite2_sub">
-           <ul> <!-- list로 회원정렬  -->
-             <li><span class="profile_ico"></span><p class="invite2_name">이름1</p><p class="invite2_team"></p></li>
-             <li><span class="profile_ico"></span><p class="invite2_name">이름2</p><p class="invite2_team"></p></li>
-             <li><span class="profile_ico"></span><p class="invite2_name">이름3</p><p class="invite2_team"></p></li>
+           <ul>
+             <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
+             <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
+             <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
              <li></li>
            </ul>   
         </div>      
@@ -306,87 +292,87 @@
 
    <!-- 파일함 -->
    <div id="filebox_div" class="modal">
-		<div id="part_memberPopup" class="AllView_div">
-			<div class="layerstyle4_po">
-				<div class="layerstyle4_title">
-					<!-- style="height: 43px; background-color: #f4f4f4; border-radius: 7px 0;" -->
-					<h4 style="padding: 11px 0 0 16px; font-weight: normal;">
-						<span class="icon_url"></span>&nbsp;프로젝트파일
-					</h4>
-					<a class="btn_layerstyle4_close" onclick="document.getElementById('filebox_div').style.display='none'"
-						style="position: absolute; top: 15px; right: 15px; width: 14px; height: 14px;">
-						<img src="./img/popup/allview_close.png" alt="닫기">
-					</a>
-				</div>
-				
-				<div class="layerstyle4_cont">
-					<div id="contsearch">
-						<img src="../img/">
-						<input type="text" value="파일명, 등록자명으로 검색이 가능합니다.">
-						<button id="clicktxt">문서</button>
-						<button id="clickimg">이미지</button>
-					</div>
-					
-					<div></div>				
-				</div>
-			</div>
-		</div>
-		</div>
+      <div id="part_memberPopup" class="AllView_div">
+         <div class="layerstyle4_po">
+            <div class="layerstyle4_title">
+               <!-- style="height: 43px; background-color: #f4f4f4; border-radius: 7px 0;" -->
+               <h4 style="padding: 11px 0 0 16px; font-weight: normal;">
+                  <span class="icon_url"></span>&nbsp;프로젝트파일
+               </h4>
+               <a class="btn_layerstyle4_close" onclick="document.getElementById('filebox_div').style.display='none'"
+                  style="position: absolute; top: 15px; right: 15px; width: 14px; height: 14px;">
+                  <img src="./img/popup/allview_close.png" alt="닫기">
+               </a>
+            </div>
+            
+            <div class="layerstyle4_cont">
+               <div id="contsearch">
+                  <img src="../img/어쩌고저쩌고어쩌고..저쩌고 ㅠㅠㅠㅠㅠ">
+                  <input type="text" value="파일명, 등록자명으로 검색이 가능합니다.">
+                  <button id="clicktxt">문서</button>
+                  <button id="clickimg">이미지</button>
+               </div>
+               
+               <div></div>            
+            </div>
+         </div>
+      </div>
+      </div>
 
 
 
    <!-- 전체보기 팝업창 -->
-	<div id="part_member" class="modal">
-		<div id="part_memberPopup" class="AllView_div">
-			<div class="layerstyle4_po">
-				<div class="layerstyle4_title">
-					<!-- style="height: 43px; background-color: #f4f4f4; border-radius: 7px 0;" -->
-					<h4 style="padding: 11px 0 0 16px; font-weight: normal;">
-						<span class="icon_url"></span>&nbsp;프로젝트 참여자
-					</h4>
-					<a class="btn_layerstyle4_close" onclick="document.getElementById('part_member').style.display='none'"
-						style="position: absolute; top: 15px; right: 15px; width: 14px; height: 14px;">
-						<img src="./img/popup/allview_close.png" alt="닫기">
-					</a>
+   <div id="part_member" class="modal">
+      <div id="part_memberPopup" class="AllView_div">
+         <div class="layerstyle4_po">
+            <div class="layerstyle4_title">
+               <!-- style="height: 43px; background-color: #f4f4f4; border-radius: 7px 0;" -->
+               <h4 style="padding: 11px 0 0 16px; font-weight: normal;">
+                  <span class="icon_url"></span>&nbsp;프로젝트 참여자
+               </h4>
+               <a class="btn_layerstyle4_close" onclick="document.getElementById('part_member').style.display='none'"
+                  style="position: absolute; top: 15px; right: 15px; width: 14px; height: 14px;">
+                  <img src="./img/popup/allview_close.png" alt="닫기">
+               </a>
 
 
-				</div>
-				<!-- top -->
-				<div class="layerstyle4_cont">
-					<div style="margin-right: 14px;">
-						<div class="mcustomScrollbar">
-							<div class="mcustominside">
-								<ul class="mcustominsidepeople">
-									<%
-										for (ProjectMemberBean pmb : arr) {
-											MemberDAO mdao = new MemberDAO();
-					                        MemberBean mb = mdao.getMember(pmb.getMember_num()); 
-											
-									%>
-									<li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
-									<a id="insidepeople" style="border: 1px solid green;"><%=mb.getName() %></a><b>|</b><strong><%=pmb.getNum() %></strong>
-										<div class="AllViewbtn_right">
-											<a class="btn set" id="moresetting"><span class="blind"></span></a>
-										</div></li>
-									<%
-										}
-									%>
-									<li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
-									<span id="insidepe ople">이름2</span>
-										<div class="AllViewbtn_right">
-											<a class="btn set" id="moresetting"><!-- <span class="blind"></span> --></a>
-										</div></li>
+            </div>
+            <!-- top -->
+            <div class="layerstyle4_cont">
+               <div style="margin-right: 14px;">
+                  <div class="mcustomScrollbar">
+                     <div class="mcustominside">
+                        <ul class="mcustominsidepeople">
+                           <%
+                              for (ProjectMemberBean pmb : arr) {
+                                 MemberDAO mdao = new MemberDAO();
+                                       MemberBean mb = mdao.getMember(pmb.getMember_num()); 
+                                 
+                           %>
+                           <li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
+                           <a id="insidepeople" style="border: 1px solid green;"><%=mb.getName() %></a><b>|</b><strong><%=pmb.getNum() %></strong>
+                              <div class="AllViewbtn_right">
+                                 <a class="btn set" id="moresetting"><span class="blind"></span></a>
+                              </div></li>
+                           <%
+                              }
+                           %>
+                           <li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
+                           <span id="insidepeople">이름2</span>
+                              <div class="AllViewbtn_right">
+                                 <a class="btn set" id="moresetting"><!-- <span class="blind"></span> --></a>
+                              </div></li>
 
-								</ul>
-							</div>
+                        </ul>
+                     </div>
 
-						</div>
-					</div>
-				</div>
+                  </div>
+               </div>
+            </div>
 
-			</div>
-		</div>
-	</div>
+         </div>
+      </div>
+   </div>
 
    
    
@@ -399,20 +385,43 @@
          var profile = document.getElementById('profile_div');
          var btn1 = document.getElementById('menu_profile');
          
+         var mem_num = $('#mem_num').val();
          
-         var mem_num = $('#mem_num').val(); /* 더 좋은방법... 찾.. */
+        <%--  $(document).ready(function() {
+             $(".a_name").click(function() {
+                var mem_num = $('#mem_num').val(); /* 더 좋은방법... 찾.. */
+                alert(mem_num);
+               $.ajax({
+                  type: "post",
+                  url: "./default/timeline.jsp?num="+<%=num%>+"&mem_num="+mem_num,
+                  data: {
+                     mem_num: $('#mem_num').val()
+                  },
+                  success: function(data){
+                     if(mem_num > 0) {
+                          profile.style.display = "block";
+                       } 
+                  }
+               });
+            });
+            
+            
+         }); --%>
+         
+         
+        
          if(mem_num > 0) {
-    		 profile.style.display = "block";
-    	 }
+           profile.style.display = "block";
+        } 
          
          
          btn1.onclick = function() {
-        	 /* $(document).ready(function() {
-     			$('#receive_email').attr('value',receive_email);
-        	 } */
-        	 
-        	 
-        	 profile.style.display = "block";
+            /* $(document).ready(function() {
+              $('#receive_email').attr('value',receive_email);
+            } */
+            
+            
+            profile.style.display = "block";
             
          }
          
@@ -456,23 +465,21 @@
          
          // When the user clicks anywhere outside of the modal, close it
          window.onclick = function(event){
-        	 
-        	 
              if (event.target == profile) {
                 profile.style.display = "none";
-                location.href="timeline.jsp?num=<%=num%>"; /* 더 좋은방법....찾.. */   
+                location.href="timeline.jsp?num=<%=num%>"; /* 더 좋은방법....찾.. */
+                
              }else if(event.target == invite){
                 invite.style.display = "none";
              }else if(event.target == filebox){
                 filebox.style.display = "none";
              }else if(event.target == part){
                 part.style.display="none";
-             }else if(event.target == test){
-            	test.style.display="none";
-             }
+             }else if (event.target == test) {
+             test.style.display="none";
+          }
          } 
 
          
          
    </script>
-

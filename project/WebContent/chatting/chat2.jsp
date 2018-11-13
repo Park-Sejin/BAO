@@ -22,12 +22,13 @@
 		<script type="text/javascript">
 		
 			$(document).ready(function() {
-			 	$("#clip_menu").hide();
+				$("#clip_menu").hide();
 				$("#chat_clip>#chat_c_img").click(function() {
 					$("#clip_menu").toggle();
 				});
 				
 				$("#chat_btn").click(function() {
+					
 					$.ajax({
 						type: "post",
 						url: "./chatHandling.chat",
@@ -42,6 +43,7 @@
 							$("#txt_input").text("");
 						}
 					});
+					$('#chat_body').scrollTop($('#chat_body').prop('scrollHeight'));
 				});
 				
 				
@@ -56,9 +58,13 @@
 			}
 			setInterval('autoRefresh_div()', 1000); */
 			
+			var cnt = 0;
 			window.setInterval(function(){
 				$('#chat_body').load('./chatting/past_chat.jsp');
-				$('#chat_body').scrollTop($('#chat_body').prop('scrollHeight'));
+				if(cnt == 0) {
+					$('#chat_body').scrollTop($('#chat_body').prop('scrollHeight')); 
+					cnt++;
+				}
 			}, 1000);
 			
 			/* window.setInterval(function() {
@@ -66,15 +72,18 @@
 			}, 1000); */
 			
 			
-			
-			
-
-			
-			
 		</script>
+		
+		
+		
+		
+		
+		
+		
+		
 	
 	</head>
-	<body>
+	<body scroll="no">
 		<% 
 			String sender_email = (String) session.getAttribute("email");
 			String receive_email = request.getParameter("receive_email");
@@ -98,7 +107,10 @@
 		<div id="chat_body" style="min-width: 100px; min-height: 600px; height: 630px; overflow-y: scroll;">
 			
 			<fieldset>
-				<jsp:include page="past_chat.jsp"></jsp:include>
+				<%session.setAttribute("receive_email", receive_email); %>
+				<jsp:include page="past_chat.jsp?receive_email=<%=receive_email %>"></jsp:include>
+				
+				
 				<input type="hidden" id="foc">
 				
 				<legend>년도-월-일 요일</legend>
