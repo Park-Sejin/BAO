@@ -8,7 +8,7 @@ div#rightMenuBox {
    width: 300px;
   position: sticky;
   left:1280px;
-  top:100px; */
+  top:100px; 
   vertical-align: top;
   margin-top: 150px;
 }
@@ -49,10 +49,10 @@ a.btn_listback {
     text-indent: 54px;
     color: #5f5ab9;
     font-weight: bold;
-    background-image: url(../img/right_menu/btn_listback.gif);
+    background-image: url(./img/right_menu/btn_listback.gif);
 }
 
-a.btn_listback:hover { background-image:url(../img/right_menu/btn_listback_overc4ca.gif);}
+a.btn_listback:hover { background-image:url(./img/right_menu/btn_listback_overc4ca.gif);}
 
 .collabo_set_wrap {
     margin-bottom: 11px;
@@ -292,11 +292,11 @@ a:hover, a:active {
 }
 
 .participant_wrap ul li .btn_right a.chat.on, .participant_wrap ul li .btn_right a.chat:hover {
-    background-image: url(../img/right_menu/btn_s_rightchat_on.png);
+    background-image: url(./img/right_menu/btn_s_rightchat_on.png);
 }
 
 .participant_wrap ul li .btn_right a.chat {
-    background-image: url(../img/right_menu/btn_s_rightchat_off.png);
+    background-image: url(./img/right_menu/btn_s_rightchat_off.png);
 }
 
 .participant_wrap ul li .btn_right > a.btn { /* 채팅버튼 */
@@ -308,7 +308,7 @@ a:hover, a:active {
 }
 
 .participant_wrap ul li .btn_right a.chat {
-    background-image: url(../img/right_menu/btn_s_rightchat_off.png);
+    background-image: url(./img/right_menu/btn_s_rightchat_off.png);
 }
 
 

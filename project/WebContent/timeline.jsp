@@ -6,7 +6,6 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>Insert title here</title>
 
-
 <link href="css/timeline.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="css/top.css">
 <link href="css/right_menu.css" rel="stylesheet">
@@ -16,7 +15,7 @@
 <link href="css/HeaderCss.css" rel="stylesheet">
 <link href="css/content.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-       <script src="jquery-sortable.js"></script>
+<script src="jquery-sortable.js"></script>
 
 <script type="text/javascript">
 // $(function  () {
