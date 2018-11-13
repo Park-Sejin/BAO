@@ -16,9 +16,11 @@
 			String receive_email = (String)session.getAttribute("receive_email");
 		
 			ChatDAO cdao_m = new ChatDAO();
-			ArrayList<ChatBean> arr =  cdao_m.getChat(sender_email, receive_email);
+			ArrayList<ChatBean> arr =  cdao_m.getChat(sender_email, receive_email);%>
 		
-		 	if(arr.size() != 0) { 
+		
+		<fieldset>
+		 <% if(arr.size() != 0) { 
 		 	
 				int cnt = 0;
 				String date2 = "";
@@ -27,20 +29,26 @@
 			    	
 			    	<legend> <%if(!date1.equals(date2) || cnt == 0){ %> <%=cb_m.getDate() %> <%} %> </legend>
 			    	
+			    	<% ChatDAO read_cdao = new ChatDAO(); %>
+			    	
+			    	
 				    <%if(cb_m.getSender().equals(sender_email)) { %>
 					    <div id="chat_receive"> <!-- 보낸 메세지 -->
+					    	<%if(cb_m.getRead_cnt() == 1){ %>
 							<sup style="color: #f66;">1</sup>
+							<%} %>
 							<span id="chat_time"><sub>오후 12:30</sub></span>
 							<span id="chat_msg"> <%=cb_m.getMessage() %></span>
 						</div>
 						<div id="clear"></div>
 						
 					<%} else { %>
+						<% read_cdao.setRead(sender_email, receive_email); %>
+						
 						<div id="chat_send"> <!-- 받은 메세지 -->
 							<span id="chat_msg"><%=cb_m.getMessage() %></span>
 							<span id="chat_time">
 							<sub>오후 12:32</sub></span>
-							<sup style="color: #f66;">1</sup>
 						</div>
 						<div id="clear"></div>
 				<%		} 
@@ -49,5 +57,6 @@
 				    date2 = cb_m.getDate().toString();
 				    }
 			}%>
+			</fieldset>
 	</body>	
 </html>
