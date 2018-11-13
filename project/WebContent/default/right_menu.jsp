@@ -71,7 +71,7 @@
    }
    
    function goBack() { /* 이전으로가기  */
-	    window.history.back();
+	    location.href="./main.pr";
 	}
    
    function closeWin() {
@@ -161,7 +161,9 @@
                         </div>
                         <div class="username" id="menu_profile">
                            <a href="timeline.jsp?num=<%=num%>&mem_num=<%=mb.getNum() %>"><%= mb.getName()%></a>
-                           <input type="hidden" id="mem_num" value="<%=mem_num%>"> <!-- 더 좋은방법... 찾.. -->
+                           <input type="hidden" id="mem_num" value="<%=mem_num%>">
+                          <%--  <input type="hidden" id="mem_num" value="<%=mb.getNum()%>">
+                           <a href="" class="a_name"><%= mb.getName()%></a> --%>
                         </div>
                         <div class="btn_right">
                            <a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
@@ -404,11 +406,34 @@
          var profile = document.getElementById('profile_div');
          var btn1 = document.getElementById('menu_profile');
          
+         var mem_num = $('#mem_num').val();
          
-         var mem_num = $('#mem_num').val(); /* 더 좋은방법... 찾.. */
+        <%--  $(document).ready(function() {
+			 	$(".a_name").click(function() {
+			 		var mem_num = $('#mem_num').val(); /* 더 좋은방법... 찾.. */
+			 		alert(mem_num);
+					$.ajax({
+						type: "post",
+						url: "./default/timeline.jsp?num="+<%=num%>+"&mem_num="+mem_num,
+						data: {
+							mem_num: $('#mem_num').val()
+						},
+						success: function(data){
+							if(mem_num > 0) {
+					    		 profile.style.display = "block";
+					    	 } 
+						}
+					});
+				});
+				
+				
+			}); --%>
+         
+         
+        
          if(mem_num > 0) {
     		 profile.style.display = "block";
-    	 }
+    	 } 
          
          
          btn1.onclick = function() {
