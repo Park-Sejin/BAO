@@ -1,3 +1,4 @@
+<%@page import="member.db.MemberBean"%>
 <%@page import="project.db.ProjectDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="bao.TimeLine.db.BoardDAO"%>
@@ -161,15 +162,14 @@
 					
 					<div id="hd_alarm_sec2">
 						<%
+							//알림 리스트 불러오기
 							BoardDAO h_bdao = new BoardDAO();
 							String id = (String)session.getAttribute("email");
 							MemberDAO h_mdao = new MemberDAO();
 							ProjectDAO h_pdao = new ProjectDAO();
 							int memNum = h_mdao.getMemberNum(id);
 							String memName = h_mdao.getName(memNum);
-							System.out.println(memNum);
 							List AlarmList = (List)h_bdao.alarmList(memNum);
-							System.out.println(AlarmList.size());
 							String proName = "";
 							for(int i=0; i<AlarmList.size(); i++){
 								AlarmBean ab = (AlarmBean)AlarmList.get(i);
@@ -179,9 +179,9 @@
                      	<div class="sec3_div">
                      		<img src="./img/top_header/thumb26.gif" width="40px"
 										height="40px"  class="sec3_div_img">
-							<span class="sec3_div_name"><%=proName %></span>
-							<span class="sec3_div_title"><span class="bold"><%=h_mdao.getName(ab.getMember_num()) %></span> ~~~를 했습니다.</span>
-							<span class="sec3_div_date"><%=ab.getDate() %> </span>
+							<span class="sec33_div_name"><%=proName %></span>
+							<span class="sec33_div_title"><span class="bold"><%=h_mdao.getName(ab.getMember_num()) %></span> ~~~를 했습니다.</span>
+							<span class="sec33_div_date"><%=ab.getDate() %> </span>
                     	</div>
                     	<%
                     		}
@@ -198,7 +198,16 @@
 		</li>
 		
 		<li>
-			<a id="icon_member"></a>
+			<a id="icon_member"
+				<%
+					MemberBean mb = h_mdao.getMember(id);
+					if(mb.getImage() != null){
+						%>
+						style="background-image: url('./upload/<%=mb.getImage()%>');"
+						<%
+					}
+				%>
+			></a>
 			<!-- The Modal -->
 			<div id="myModal3" class="modal2">
 
@@ -206,7 +215,17 @@
 				<div id="hd_member">
                      	<div class="hd_member_sec1">
                      		<div>
-                     			<img src="./img/top_header/thumb26.gif" width="40px" height="40px" class="rd">
+                     			<%
+                     				if(mb.getImage()==null){
+                     			%>
+                     					<img src="./img/top_header/thumb26.gif" width="40px" height="40px" class="rd">
+                     			<%
+                     				}else{
+                     			%>
+                     					<img src="./upload/<%=mb.getImage()%>" width="40px" height="40px" class="rd">
+                     			<%
+                     				}
+                     			%>
                      			<br>
                      			<b><%=memName %></b>
                      		</div>

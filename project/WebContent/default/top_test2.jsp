@@ -6,7 +6,7 @@
 <%@page import="member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+    
 <%
 	String id = (String)session.getAttribute("email");
 	MemberDAO a_mdao = new MemberDAO();
@@ -21,14 +21,18 @@
 	List memList = a_pmdao.getJoinMemberList(memNum);
 %>
 
-<script>
-	$(document).ready(function(){
-		$('#sbm').keyup(function(e){
-			if(e.keyCode == 13){
-				alert('assaf');
-			}
-		});
-	})
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	function onKeyDown(){
+		if(event.keyCode == 13){
+			alert('aaaa');
+		}
+	}	
+	function pop(){
+      var receive_email = document.getElementById('receive_email').value;
+      window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
+   }
+	
 </script>
 
 <div id="hd_chat_sec2">
@@ -36,7 +40,7 @@
 			<img src="./img/top_header/if_icon-111-search_314478.png" width="30" style="position: absolute; left: 10px;">
 			<input type="text" name="searchMember" placeholder="이름 소속 또는 연락처 검색" size="50"
 					style=" margin-left:5px;  line-height: 30px;  outline: none; position: absolute; left: 50px; border: none;"> 
-			<input type="button" style="display: none;" id="sbm">
+			<input type="button" style="display: none;" onkeydown="onKeyDown();">
 	</div>
 </div>
 
@@ -44,9 +48,21 @@
 	<div id="hd_chat_mynumber">
 		<span class="bold">내 프로필</span>
 		<div class="div_chat">
-			<a href="#"><img src="./img/top_header/thumb26.gif" width="40px"></a>
+			<a href="#">
+				<%
+					if(my_mb.getImage() == null){
+						
+				%>
+						<img src="./img/top_header/thumb26.gif" width="40px">
+				<%
+					}else{
+				%>
+						<img src="./upload/<%=my_mb.getImage()%>" width="40px">
+				<%
+					}
+				%>
+			</a>
 			<a href="#"><%=my_mb.getName() %></a>
-			<a href="#" class="icon_chat"></a>
 		</div>
 	</div>
 	<div id="hd_chat_allnumber">
@@ -56,10 +72,23 @@
 			for(int i = 0; i<memList.size(); i++){
 				MemberBean allListMB = (MemberBean)memList.get(i);
 		%>
+		<input type="hidden" id="receive_email" value="<%=allListMB.getEmail()%>">
 		<div class="div_chat">
-			<a href="#"><img src="./img/top_header/thumb26.gif" width="40px"></a>
+			<a href="#">
+				<%
+					if(allListMB.getImage() == null){
+				%>
+					<img src="./img/top_header/thumb26.gif" width="40px">
+				<%
+					}else{
+				%>
+					<img src="./upload/<%=allListMB.getImage()%>" width="40px">
+				<%
+					}
+				%>
+			</a>
 			<a href="#"><%=allListMB.getName() %></a>
-			<a href="#" class="icon_chat"></a>
+			<a class="icon_chat" onclick="pop();"></a>
 		</div>
 		<%
 			}

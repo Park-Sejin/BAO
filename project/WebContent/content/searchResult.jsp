@@ -48,10 +48,9 @@
     <!-- left -->
     <jsp:include page="../default/LeftHeader.jsp"></jsp:include> 
 
-	<div class="clear">
 	
 	<!-- 검색결과확인 -->
-	<article>
+	<article id="sear_article">
 	<div id="resultArea">
 	<!-- 검색타입과 키워드 -->
 	<%
@@ -80,7 +79,7 @@
 					HashMap hm = (HashMap)searchList.get(i);
 				%>
 				<table class="resultTable">
-					<tr>
+					<tr class="resultTr">
 						<td><a href="./timeline.jsp?num=<%=hm.get("pro_num")%>"><%=hm.get("pro_name") %></a></td>
 						<td><a href=""><%=hm.get("pro_master") %></a></td>
 						<td style="font-size: 13px;"><%=hm.get("pro_date") %></td>
@@ -88,13 +87,16 @@
 				<%
 					if(hm.get("content") != null){
 						%>
-						<tr>
+						<tr class="resultTr">
 							<td><a href=""><%=hm.get("content") %></a></td>
 							<td><a href=""><%=hm.get("writer") %></a></td>
 							<td style="font-size: 13px;"><%=hm.get("con_date") %></td>
 						</tr>
 						<%
 					}
+				%>
+				</table>
+				<%
 				}
 			} else { //검색타입이 all이 아닐때
 				%>
@@ -111,8 +113,8 @@
 					} else if(type.equals("글")){
 						%>
 						<tr class="firstTr">
-							<td>프로젝트</td>
 							<td>글</td>
+							<td>프로젝트</td>
 							<td>작성자</td>
 							<td>작성일</td>
 						</tr> 
@@ -131,13 +133,13 @@
 						HashMap hm = (HashMap)searchList.get(i);
 					%>
 					<tr class="resultTr">
-						<td><a href="./timeline.jsp?num=<%=hm.get("pro_num")%>"><%=hm.get("pro_name") %></a></td>
 						<%
 						//글정보 검색시에만 글 보이기
 						if(hm.get("content") != null){
 						%>
 							<td><a href=""><%=hm.get("content") %></a></td>
 						<%} %>
+						<td><a href="./timeline.jsp?num=<%=hm.get("pro_num")%>"><%=hm.get("pro_name") %></a></td>
 						<td><a href=""><%=hm.get("member") %></a></td>
 						<td style="font-size: 13px;"><%=hm.get("date") %></td>
 					</tr>

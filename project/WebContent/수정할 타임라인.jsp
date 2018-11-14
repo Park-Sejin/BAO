@@ -99,7 +99,7 @@ textarea {
 /* 달력 크기 */
 </style>
 <script type="text/javascript">
-$(document).ready(function() {
+/* $(document).ready(function() {
    
        $("#TDup").hide();
        $("#TCal").hide();
@@ -132,17 +132,17 @@ $(document).ready(function() {
       $("#TCal").hide();
       $("#TDup").hide();
       $("#TWirte").hide();
-   });
+   }); */
    /* -------------------------------------------------------------------------- */
    
    /* Modal */
-   $("#btn-open-dialog,#dialog-background,#btn-close-dialog").click(function () {
+   /* $("#btn-open-dialog,#dialog-background,#btn-close-dialog").click(function () {
       $("#my-dialog,#dialog-background").toggle();
-   });
+   }); */
    /* Modal */
    
    /* textbox 담당자 추가 */
-     var dupid;
+    /*  var dupid;
     $("#nav a").click(function(){
      var is=true;
       var id=$(this).text();
@@ -158,11 +158,11 @@ $(document).ready(function() {
                     +id+"<input type=button class=btnRemove value=X onclick='remove(this)'>"+
                     "</div>"); 
           }
-   });
+   }); */
     /* textbox 담당자 추가 */
    
    /* 항목추가 입력 */
-   $("#AddList").click(function(){
+   /* $("#AddList").click(function(){
       $("#AddList").remove();
       var addTag="";
       addTag+="<div class=line1 'style=border: 3px solid black;'><input type=text id=Startpicker placeholder=시작일 추가 onchange='Change1()'></div><br>";
@@ -190,10 +190,10 @@ $(document).ready(function() {
     });
    });
     /* 항목추가 입력 */
-});
+}); */
 </script>
 <!-- Text 감지 -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 var Startia=true;
 var Startiabu; //버튼 중복 제어
 function Change1(){
@@ -239,19 +239,19 @@ var Endiabu;
      document.getElementById("Endpicker").value ="";
  }
  
-</script>
+</script> -->
 <!-- Text 감지 -->
 
 <!-- 담당자 삭제 -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function remove(obj){
    document.getElementById('Chu').removeChild(obj.parentNode);
-}
+} -->
 </script>
 <!-- 담당자 삭제 -->
 
-<!-- 일정부분 달력  -->
-<script type="text/javascript">
+<!-- <!-- 일정부분 달력  -->
+<!-- <script type="text/javascript">
    $(document).ready(function(){
       $("#TStart1").datepicker({
           dateFormat:'yy-mm-dd' 
@@ -273,23 +273,23 @@ function remove(obj){
          $("#Sel2").show();
       }
    }
-   /* 종일 체크버튼 */   
-</script>
+   /* 종일 체크버튼 */    -->
+</script> -->
 <!-- 일정부분 달력  -->
 
 <!-- 장소검색  -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
    function init() {
           var input = document.getElementById('locationTextField');
        var autocomplete = new google.maps.places.Autocomplete(input);
    }
    google.maps.event.addDomListener(window, 'load', init);
-</script>
+</script> -->
 <!-- 장소검색  -->
 
 <!-- 할일 > 할일추가 -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 //border: 3px solid blue;
    function DoDoDo(){
 //       var Start = $(this).next()
@@ -325,7 +325,7 @@ function remove(obj){
             $(this).remove();
       });
    }
-</script>
+</script> -->
 
 <!--할일 > 할일추가  -->
 <script type="text/javascript">
@@ -334,24 +334,24 @@ function remove(obj){
 
 </head>
 <body>
-   <input type="button" value="글" id="write">
+   <!-- <input type="button" value="글" id="write">
    <input type="button" value="업무" id="Dup">
    <input type="button" value="일정" id="Cal">
-   <input type="button" value="할일" id="Do">
+   <input type="button" value="할일" id="Do"> -->
    <br>
    <!-- 글 -->
    <!-- onsubmit="return formCheck(); -->
-   <form action="" method="post" enctype="multipart/form-data" id="FWriteForm">
+ <!--   <form action="" method="post" enctype="multipart/form-data" id="FWriteForm">
          <div style="width: 800px; height: 200px;" id="TWirte">
-            <textarea placeholder="글을 작성하세요" rows="10" cols="100" name="content"></textarea><br>
-               <div>
+            <textarea placeholder="글을 작성하세요" rows="10" cols="100" name="content"></textarea><br> -->
+              <!--  <div>
                   <input type="file" name="write_file">
                   <input type="file" name="img_file">
                <input type="button" value="올리기" id="uploadbutton">
-               </div>
-         </div>
-   </form>
-   <script type="text/javascript">
+               </div> -->
+<!--          </div>
+   </form> -->
+   <!-- <script type="text/javascript">
    /* 글 */
    $(document).ready(function(){
      $("#uploadbutton").click(function(){
@@ -378,14 +378,14 @@ function remove(obj){
          });
    });
    /* 글 작성 끝 */
-   </script>
+   </script> -->
    <!-- 업무  -->
-   <form action="" method="post" enctype="multipart/form-data" id="DutyWriteForm">
-         <div style="width: 800px;" id="TDup">
+   <!-- <form action="" method="post" enctype="multipart/form-data" id="DutyWriteForm"> -->
+         <!-- <div style="width: 800px;" id="TDup"> -->
          <!-- 업무명 -->
-        <div style="border-bottom: 3px solid black;">
+        <!-- <div style="border-bottom: 3px solid black;">
            <input id="Val1" name="Duty_title" type="text" placeholder="업무명을 입력하세요" style="border:0; font-weight: bold; height: 30px;" size="40">
-        </div>
+        </div> -->
          <!-- 업무명 -->
    
          <!-- 업무명 진행 버튼 -->
@@ -426,10 +426,10 @@ function remove(obj){
          <input type="file" name="Duty_imgfile">
       <input type="button" value="올리기" id="DutyUpload">
         </div>
-   <!-- 외부영역 클릭시 -->
-   <div id="dialog-background"></div>
-   <!-- 외부영역 클릭시 -->
-   </div>
+   		<!-- 외부영역 클릭시 -->
+	   <div id="dialog-background"></div>
+	   <!-- 외부영역 클릭시 -->
+	   </div>
    </form>
    <script type="text/javascript">
    $(document).ready(function(){
@@ -462,28 +462,28 @@ function remove(obj){
    </script>
    <!-- 업무 작성 끝 -->
    
-   <div style="width: 800px; height: 200px;" id="TCal">
+   <!-- <div style="width: 800px; height: 200px;" id="TCal"> -->
       <!-- 일정 -->
-        <div style="border-bottom: 3px solid black;">
+        <!-- <div style="border-bottom: 3px solid black;">
            <input id="Schedule_title" type="text" placeholder="일정제목을 입력하세요" style="border:0; font-weight: bold; height: 30px;" size="40">
-        </div>
-              <input type="text" id="TStart1"><input type="text" id="Sel1">~<input type="text" id="TStart2"><input type="text" id="Sel2">
-              <input type="checkbox" id="Status" onclick="Stus()">종일
-           <div style="border-bottom: 3px solid black;">
+        </div> -->
+              <!-- <input type="text" id="TStart1"><input type="text" id="Sel1">~<input type="text" id="TStart2"><input type="text" id="Sel2"> -->
+              <!-- <input type="checkbox" id="Status" onclick="Stus()">종일 -->
+           <!-- <div style="border-bottom: 3px solid black;">
                  <input id="locationTextField" type="text" placeholder="장소를 입력하세요" style="border:none; font-weight: bold; height: 30px;" size="40">
-           </div>
-           <div style="border-bottom: 3px solid black;">
+           </div> -->
+          <!--  <div style="border-bottom: 3px solid black;">
                  <input id="Memo_sinput" type="text" placeholder="메모를 입력하세요" style="border:none; font-weight: bold; height: 30px;" size="40">
            </div>
                  <select>
-                       <!-- value는 기수아닌 서수 -->
+                       value는 기수아닌 서수
                  <option value="selectFirst"> 선택해봐 </option>
                  <option value="selectSecond"> 할꺼야 </option>
                  <option value="selectThird"> 말꺼야 </option>
                  <option value="selectFourth"> 어떻게 할꺼야 </option>
                  <option value="selectFifth"> 하기싫어 </option>
-                    <!-- value는 기수아닌 서수 -->   
-                 </select>
+                    value는 기수아닌 서수   
+                 </select> -->
       <!-- 일정 -->
       <!-- 
          is(":checked")와 다르게 써보기
@@ -492,15 +492,15 @@ function remove(obj){
       <br>
    </div>
    <!-- 할일 -->
-   <div style="width: 800px; height: 200px;" id="TWork">
+   <!-- <div style="width: 800px; height: 200px;" id="TWork"> -->
          <div style="border-bottom: 3px solid black;">
             <input id="Schedule_title" type="text" placeholder="할일제목을 입력하세요(선택)" style="border:none; font-weight: bold; height: 30px;" size="40">
          </div><br>
          <!-- 할일 추가 되는 부분 -->
          <div id="Chu_Dowork" style="width:100%;"></div>
-         <div style="border-bottom: 3px solid black;" id="AddDowork">
+         <!-- <div style="border-bottom: 3px solid black;" id="AddDowork">
             <a onclick="DoDoDo()">할일 추가</a>
-         </div>
+         </div> -->
          <!-- 할일 추가 되는 부분 -->
    </div>
    <!-- 할일 -->   
