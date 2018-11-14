@@ -29,7 +29,7 @@
       
       
    function chat_pop(){
-      window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
+      window.open("./chatPage.chat","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
       }
    
 
@@ -39,10 +39,7 @@
       window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
       }
       
-      
-   function chat_pop(){ 
-      window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
-   }
+  
    
    function goBack() { /* 이전으로가기  */
        location.href="./main.pr";
@@ -140,13 +137,14 @@
                            <img src="./img/right_menu/img_photo_null32.png" style="radius">
                         </div>
                         <div class="username" id="menu_profile">
-                           <a href="timeline.jsp?num=<%=num%>&mem_num=<%=mb.getNum() %>"> <%= mb.getName()%></a>
+                           <a href="Timeline.tl?num=<%=num%>&mem_num=<%=mb.getNum() %>"> <%= mb.getName()%></a>
                            <input type="hidden" id="mem_num" value="<%=mem_num%>">
                           <%--  <input type="hidden" id="mem_num" value="<%=mb.getNum()%>">
                            <a href="" class="a_name"><%= mb.getName()%></a> --%>
                         </div>
                         <div class="btn_right">
-                           <a class="btn chat" onclick="chat_pop()"><span class="blind">채팅</span></a>
+                        	<input type="hidden" id="receive_email" value="<%=mb.getEmail()%>">
+                           <a class="btn chat" onclick="go_pop()"><span class="blind">채팅</span></a>
                         </div>
                      </li>
                       <%} %>
@@ -496,7 +494,7 @@
          window.onclick = function(event){
              if (event.target == profile) {
                 profile.style.display = "none";
-                location.href="timeline.jsp?num=<%=num%>"; /* 더 좋은방법....찾.. */
+                location.href="Timeline.tl?num=<%=num%>"; /* 더 좋은방법....찾.. */
                 
              }else if(event.target == invite){
                 invite.style.display = "none";

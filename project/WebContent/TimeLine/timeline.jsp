@@ -238,6 +238,38 @@
          google.maps.event.addDomListener(window, 'load', init);
       </script>
       
+      <!-- chart -->      
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+	/*그래프의 종류*/      
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+    	  
+    	  /*그래프 데이터 부분*/
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Pizza');
+        data.addColumn('number', 'Populartiy');
+        data.addRows([
+          ['요청', 8],
+          ['진행', 3],
+          ['피드백', 11],
+          ['완료', 1], 
+          ['보류', 0]
+        ]);
+		
+        /*그래프 옵션*/
+        var options = {
+          title: '업무 리포트'
+        };
+		
+        /*그래프를 그릴 곳의 id*/
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+    </script>
+      
    </head>
 
 <body>
@@ -259,27 +291,12 @@
          </div>
          <div id="mar_btm"></div>
          
-         
          <div id="report">
-            <div id="chart_title">
-               <img src="img/timeline/check.png"> 업무 리포트 보기(전체 n개)
-               <a id="chart_up"><span style="visibility: hidden;">닫기</span></a><br>
-            </div>
-            
-            <div id="chart">
-               <div id="chart_cir">
-                     그림
-               </div>
-               
-               <ul id="chart_list">
-                  <li><span class="chart1"></span> 요청      <strong> n건 </strong>   <span class="chart1">n%</span></li>
-                  <li><span class="chart2"></span> 진행      <strong> n건 </strong>   <span class="chart2">n%</span></li>
-                  <li><span class="chart3"></span> 피드백   <strong> n건 </strong>   <span class="chart3">n%</span></li>
-                  <li><span class="chart4"></span> 완료      <strong> n건 </strong>   <span class="chart4">n%</span></li>
-                  <li><span class="chart5"></span> 보류      <strong> n건 </strong>   <span class="chart5">n%</span></li>
-               </ul>
+			<div id="chart">
+            		<div id="piechart"></div>
             </div>
          </div>
+         
          <div id="mar_btm"></div>
 
 
