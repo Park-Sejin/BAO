@@ -387,7 +387,7 @@
                               <div class="AllViewbtn_right">
                                  <a class="btn set" id="moresetting"><span class="blind"></span></a>
                               </div>
-                           </li> -->
+                           </li> --> 
 
                         </ul>
                      </div>
