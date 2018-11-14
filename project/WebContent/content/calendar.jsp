@@ -97,7 +97,17 @@
 				alert('통신실패!!');
 			},
 	        success: function(data){
-	        	//alert("설정변경");
+				/* var workList = new Array();
+				var result = request.responseText.split(",");
+				for (var i=0; i<result.length; i++) {
+					eval("workList"+result[i]);
+					alert(result[i]);
+				}; */
+				/* var title = data.split(",")[0];
+				var date = data.split(",")[1];
+				alert(date); */
+				
+				//alert(data);
 	        }
 		});
 	}	
