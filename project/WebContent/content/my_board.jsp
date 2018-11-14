@@ -21,7 +21,7 @@
 		<jsp:include page="../default/LeftHeader.jsp"></jsp:include>
 		
 		<%
-			String email = (String)request.getAttribute("email");
+			//String email = (String)request.getAttribute("email");
 			BoardDAO bdao = new BoardDAO();
 			
 			
@@ -61,7 +61,7 @@
 		         	
 		         <div id="mar_btm"></div>
 	         </div>
-	         <%} %>
+	         <%-- <%} %> --%>
 
 		</article>
 	</div>

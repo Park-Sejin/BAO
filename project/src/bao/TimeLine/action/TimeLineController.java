@@ -12,7 +12,7 @@ public class TimeLineController extends HttpServlet{
    
     protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       
-       // 가상 주소 가져와서 필요한 주소만 가져오기
+       // 媛��긽 二쇱냼 媛��졇���꽌 �븘�슂�븳 二쇱냼留� 媛��졇�삤湲�
        String requestURI = request.getRequestURI();
        String contextPath = request.getContextPath();
        String command = requestURI.substring(contextPath.length());
@@ -23,8 +23,8 @@ public class TimeLineController extends HttpServlet{
        Action action = null;
        
        
-       // 액션갔다가 돌아와 리턴받은 값을 forward로 저장해 밑의  if문 페이지 이동
-       // 글 작성부분
+       // �븸�뀡媛붾떎媛� �룎�븘�� 由ы꽩諛쏆� 媛믪쓣 forward濡� ���옣�빐 諛묒쓽  if臾� �럹�씠吏� �씠�룞
+       // 湲� �옉�꽦遺�遺�
        if(command.equals("/TimeLineWriteAction.tl")){
           //System.out.println("controller");
           action = new TimeLineWriteAction();
@@ -34,8 +34,8 @@ public class TimeLineController extends HttpServlet{
              e.printStackTrace();
           }
        }else if(command.equals("/TimeLine.tl")){
-          forward = new ActionForward();
-         forward.setPath("./TimeLine/divdiv.jsp");
+         forward = new ActionForward();
+         forward.setPath("./TimeLine/timeline.jsp");
          forward.setRedirect(false);
           
        }else if(command.equals("/TimeLineDutyWriteAction.tl")){
@@ -58,15 +58,11 @@ public class TimeLineController extends HttpServlet{
            forward.setPath("./content/my_board.jsp");
            forward.setRedirect(false);
             
-         }else if(command.equals("/timeline.tl")) {
-    	   forward = new ActionForward();
-    	   forward.setPath("./timeline.jsp");
-    	   forward.setRedirect(false);
-       }
+         }
        
 
        
-       // 페이지 이동    
+       // �럹�씠吏� �씠�룞    
        if(forward != null){
          if(forward.isRedirect()){
             response.sendRedirect(forward.getPath());
