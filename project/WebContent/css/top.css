@@ -251,6 +251,30 @@ header>a {
 	font-weight: ighter;
 }
 
+.sec33_div_name {
+	position: relative;
+	top: -10px;
+	left: 40px;
+	font-size:14px;
+	font-weight:bold;
+	display: inline;
+}
+.sec33_div_title {
+	position: relative;
+	top: 10px;
+	left: 20px;
+	display: inline;
+	font-size: 14px;
+}
+.sec33_div_date {
+	position: relative;
+	top: 40px;
+	left: -110.5px;
+	display: inline;
+	font-size: 12px;
+	font-weight: ighter;
+}
+
 <!-- -->
 #hd_alarm{
    width: 380px;
