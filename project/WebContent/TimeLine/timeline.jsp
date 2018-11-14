@@ -1,3 +1,8 @@
+<%@page import="bao.TimeLine.db.TotalDAO"%>
+<%@page import="bao.TimeLine.db.TotalBean"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="bao.TimeLine.db.BoardDAO"%>
+<%@page import="bao.TimeLine.db.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,14 +11,14 @@
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>Insert title here</title>
 
-      <link href="css/timeline.css" rel="stylesheet" type="text/css">
-      <link rel="stylesheet" href="css/top.css">
-      <link href="css/right_menu.css" rel="stylesheet">
-      <link href="css/profile_popup.css" rel="stylesheet">
-      <link href="css/invitebox.css" rel="stylesheet">
-      <link href="css/AllView_popup.css" rel="stylesheet">
-      <link href="css/HeaderCss.css" rel="stylesheet">
-      <link href="css/content.css" rel="stylesheet" type="text/css">
+      <link href="./css/timeline.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="./css/top.css">
+      <link href="./css/right_menu.css" rel="stylesheet">
+      <link href="./css/profile_popup.css" rel="stylesheet">
+      <link href="./css/invitebox.css" rel="stylesheet">
+      <link href="./css/AllView_popup.css" rel="stylesheet">
+      <link href="./css/HeaderCss.css" rel="stylesheet">
+      <link href="./css/content.css" rel="stylesheet" type="text/css">
       
       
       <!-- 구글 Map api -->
@@ -74,18 +79,7 @@
                      $("#center_spen").show();
                      $("#Sel2").show();
                   };
-               });
-               
-               /* $("#plus").click(function() {
-                  var plus ="<li><div><input type='text' size='80' placeholder='할일 입력하세요.'  style='width:94%;font-size: 16px; border: 0; color:gray;'></div></li>";
-                  $(this).parent().parent().prev().find('ul').append(plus);
-                  
-               }); */
-               
-               
-                $("ul").sortable();
-   
-   
+               });  
             });
          /* -------------------------------------------------------------------------- */
             
@@ -255,8 +249,8 @@
       <article id="timeline">
          <div id="title">
             <span id="time_left">
-               <img src="img/timeline/gray_star.png"> 'bao' 업무 공유방(n)
-               <img src="img/timeline/compy.png">
+               <img src="./img/timeline/gray_star.png"> 'bao' 업무 공유방(n)
+               <img src="./img/timeline/compy.png">
             </span>
             <span id="time_right">
                <img src=""style="border: 1px solid; width: 10px; height: 10px;">
@@ -268,7 +262,7 @@
          
          <div id="report">
             <div id="chart_title">
-               <img src="img/timeline/check.png"> 업무 리포트 보기(전체 n개)
+               <img src="./img/timeline/check.png"> 업무 리포트 보기(전체 n개)
                <a id="chart_up"><span style="visibility: hidden;">닫기</span></a><br>
             </div>
             
@@ -324,12 +318,12 @@
                   <tr style="height: 50px;">
                      <td style="vertical-align: middle;">&nbsp;
                         <div class="filebox bs3-primary">
-                           <img src="img/timeline/icon_attach_file.png" style="vertical-align: middle;">
+                           <img src="./img/timeline/icon_attach_file.png" style="vertical-align: middle;">
                            <label for="ex_file2">파일첨부</label>
                            <input type="file" id="ex_file2" name="write_file">
                         </div>
                         <div class="filebox bs3-success">
-                           <img src="img/timeline/icon_attach_pic.png" style="vertical-align: middle;">
+                           <img src="./img/timeline/icon_attach_pic.png" style="vertical-align: middle;">
                            <label for="ex_file2">이미지첨부</label> 
                            <input type="file" id="ex_file2" name="img_file"> 
                         </div>
@@ -385,11 +379,11 @@
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;"
                         height="30px margin-left:10px;">
-                        <img src="img/timeline/ico_timec4ca.png"></td>
+                        <img src="./img/timeline/ico_timec4ca.png"></td>
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="img/timeline/ico_userli_num_gr.png" style="vertical-align: middle;">
+                        <img src="./img/timeline/ico_userli_num_gr.png" style="vertical-align: middle;">
                         <select style="margin-left: 5px;">
                            <option></option>
                            <option></option>
@@ -398,22 +392,22 @@
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="img/timeline/ico_cal_task01c4ca.png" style="vertical-align: middle;">
+                        <img src="./img/timeline/ico_cal_task01c4ca.png" style="vertical-align: middle;">
                      </td>
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="img/timeline/ico_cal_task02c4ca.png" style="vertical-align: middle;">
+                        <img src="./img/timeline/ico_cal_task02c4ca.png" style="vertical-align: middle;">
                      </td>
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="img/timeline/ico_flag.png" style="vertical-align: middle;">
+                        <img src="./img/timeline/ico_flag.png" style="vertical-align: middle;">
                      </td>
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="img/timeline/icon_flag2.png" style="vertical-align: middle;">
+                        <img src="./img/timeline/icon_flag2.png" style="vertical-align: middle;">
                      </td>
                   </tr>
                   <tr>
@@ -425,10 +419,10 @@
                   </tr>
                   <tr style="height: 50px;">
                      <td style="vertical-align: middle;">&nbsp;
-                        <a> <img src="img/timeline/icon_attach_file.png" style="vertical-align: middle;">
+                        <a> <img src="./img/timeline/icon_attach_file.png" style="vertical-align: middle;">
                            <span style="font-size: 15px; font-weight: bold;">파일첨부 </span>
                         </a> &nbsp;&nbsp;&nbsp;
-                        <a> <img src="img/timeline/icon_attach_pic.png" style="vertical-align: middle; margin-left: 10px;">
+                        <a> <img src="./img/timeline/icon_attach_pic.png" style="vertical-align: middle; margin-left: 10px;">
                            <span style="font-size: 15px; font-weight: bold;">이미지첨부</span>
                         </a>
    
@@ -455,7 +449,7 @@
                </tr>
                <tr>
                   <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px margin-left:10px;">
-                     <img src="img/timeline/ico_timec4ca.png">
+                     <img src="./img/timeline/ico_timec4ca.png">
                      <input type="text" id="TStart1">
                      <select id="Sel1">
                         <option value="00:00">00:00</option>
@@ -517,19 +511,19 @@
                </tr>
                <tr>
                   <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                     <img src="img/timeline/ico_mapc4ca.png" style="vertical-align: middle;">
+                     <img src="./img/timeline/ico_mapc4ca.png" style="vertical-align: middle;">
                      <input id="locationTextField" type="text" placeholder="장소를 입력하세요" style="border:none; font-weight: bold; height: 30px;" size="40">
                   </td>
                </tr>
                <tr>
                   <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                     <img src="img/timeline/ico_memoc4ca.png" style="vertical-align: middle; margin-right: 10px;">
+                     <img src="./img/timeline/ico_memoc4ca.png" style="vertical-align: middle; margin-right: 10px;">
                      <input id="Memo_sinput" type="text" size="80" placeholder="메모을 입력하세요" style="width: 94%; font-size: 16px; border: 0; color: gray;">
                   </td>
                </tr>
                <tr>
                   <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                     <img src="img/timeline/ico_alarmc4ca.png" style="vertical-align: middle;">
+                     <img src="./img/timeline/ico_alarmc4ca.png" style="vertical-align: middle;">
                      <select>
                                 <!-- value는 기수아닌 서수 -->
                              <option value="selectFirst"> 선택해봐 </option>
@@ -615,6 +609,52 @@
                   });
                }
          </script>
+<div id="plusArea" style="">
+<%		
+		BoardBean Wbb=new BoardBean();
+		BoardDAO Wbdao=new BoardDAO();
+		ArrayList<BoardBean> list=Wbdao.Writeinfo();
+
+		
+		/* for(int Wcon=0; Wcon<list.size(); Wcon++){
+			Wbb=list.get(Wcon); */
+%>		
+<%
+		TotalBean tb=new TotalBean();
+		TotalDAO td=new TotalDAO();
+		ArrayList<TotalBean> TotalList=td.Totalinfo();
+%>
+		<!-- 타임라인 테이블 -->
+        <div id="TimeLineTable" style="border: 3px solid red;">
+        <%
+        	for(int Total=0; Total<TotalList.size(); Total++){
+				tb=TotalList.get(Total);
+        %>
+        	<!-- 글 작성 테이블 -->
+        	<div id="WriteForm">
+				<%
+				if(tb.getTable().equals("Write")) {
+				%>
+					내용 :<%=tb.getContent()%>
+				<%}%>
+			</div>
+			<!-- 업무 작성 테이블 -->
+			<div id="DutyForm">
+				<%
+				if(tb.getDTable().equals("Duty")){
+				%>
+					제목:<%=tb.getContent()%>
+				<%}%>
+			</div>
+			
+			
+        
+        
+        
+       </div> <!-- 타임라인 테이블 -->
+       <%} %>
+       
+    </div>
 
 
 
