@@ -33,7 +33,7 @@ public class TimeLineController extends HttpServlet{
           }catch(Exception e){
              e.printStackTrace();
           }
-       }else if(command.equals("/timeline.tl")){
+       }else if(command.equals("/timeLine.tl")){
          forward = new ActionForward();
          System.out.println("ㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷㄷ");
          forward.setPath("./TimeLine/timeline.jsp");
