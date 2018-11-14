@@ -57,7 +57,10 @@
 			 /* 	alert("teaminvite버튼"); */
 				$(".invite_popup").load("#right_menu .invite2_popup");
 			});
-		 }); 
+		 
+		
+    }); 
+   
     
    
    
@@ -137,13 +140,13 @@
                            <img src="./img/right_menu/img_photo_null32.png" style="radius">
                         </div>
                         <div class="username" id="menu_profile">
-                           <a href="timeline.jsp?num=<%=num%>&mem_num=<%=mb.getNum() %>"><%= mb.getName()%></a>
+                           <a href="timeline.jsp?num=<%=num%>&mem_num=<%=mb.getNum() %>"> <%= mb.getName()%></a>
                            <input type="hidden" id="mem_num" value="<%=mem_num%>">
                           <%--  <input type="hidden" id="mem_num" value="<%=mb.getNum()%>">
                            <a href="" class="a_name"><%= mb.getName()%></a> --%>
                         </div>
                         <div class="btn_right">
-                           <a class="btn_chat" onclick=""><span class="blind">채팅</span></a>
+                           <a class="btn chat" onclick="chat_pop()"><span class="blind">채팅</span></a>
                         </div>
                      </li>
                       <%} %>
@@ -157,7 +160,7 @@
                <!-- title -->
                <div class="part_title sendienceOutsideTitle">
                   <h5>
-                     <strong>외부참여자</strong><span id="sendienceOutsideCnt">123</span>
+                     <strong>외부참여자</strong><span id="sendienceOutsideCnt">(외부참여자)</span>
                   </h5>
                </div>
                <!-- 이름 -->
@@ -166,7 +169,7 @@
                <!-- title -->
                <div class="part_title sendienceInsideTitle">
                   <h5>
-                     <strong>내부참여자</strong><span id="sendienceInsideCnt"></span>
+                     <strong>내부참여자</strong><span id="sendienceInsideCnt">(내부참여자)</span>
                   </h5>
                </div>
                <!-- 이름 -->
@@ -245,7 +248,7 @@
         		<div class="prdbx_hd_top">
         			<h1>초대하기</h1>
         			<div class="btn_1" ><a>이전으로</a></div>
-        			<div class="btn_2" ><a>나가기</a></div>
+        			<div class="btn_2" onclick="document.getElementById('invite2_div').style.display='none'" ><a style="position: absolute; top: 15px; right: 15px; width: 14px; height: 14px;">나가기</a></div>
         		</div>
         		<!-- //상단 타이틀  -->
         		<div class="prdbx_hd_sch" id="invitesrchbox">
@@ -363,21 +366,28 @@
                               for (ProjectMemberBean pmb : arr) {
                               MemberDAO mdao = new MemberDAO();
                               MemberBean mb = mdao.getMember(pmb.getMember_num()); 
+                              
+                            
                                  
                            %>
                            <li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
-                           <a id="insidepeople" style="border: 1px solid green;"><%=mb.getName() %></a><b>|</b><strong><%=pmb.getNum() %></strong>
+                           <a id="insidepeoplename"><%=mb.getName() %></a><b>|</b><strong>
+                           <% if(pmb.getNum()==1){ %> <span>관리자</span>
+                           <%} else{ %> <span>회원</span>
+                        	   <%} %>
+                           </strong>
                               <div class="AllViewbtn_right">
-                                 <a class="btn set" id="moresetting"><span class="blind"></span></a>
+                                 <a class="btn set" id="moresetting"><span>채팅</span></a>
                               </div></li>
                            <%
                               }
                            %>
-                           <li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
+                           <!-- <li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
                            <span id="insidepeople"></span>
                               <div class="AllViewbtn_right">
-                                 <a class="btn set" id="moresetting"><!-- <span class="blind"></span> --></a>
-                              </div></li>
+                                 <a class="btn set" id="moresetting"><span class="blind"></span></a>
+                              </div>
+                           </li> -->
 
                         </ul>
                      </div>
@@ -403,7 +413,7 @@
          
          var mem_num = $('#mem_num').val();
          
-        <%--  $(document).ready(function() {
+        <%-- $(document).ready(function() {
              $(".a_name").click(function() {
                 var mem_num = $('#mem_num').val(); /* 더 좋은방법... 찾.. */
                 alert(mem_num);
@@ -423,7 +433,7 @@
             
             
          }); --%>
-         
+        
          
         
          if(mem_num > 0) {
@@ -471,11 +481,14 @@
          
          /* 전체보기 팝업창에서 프로필  */
        var test = document.getElementById('profile_div');
-       btn5 = document.getElementById('insidepeople');
+       btn5 = document.getElementById('insidepeoplename');
        
        btn5.onclick = function() {
+  
           test.style.display="block";
        }
+       
+       
          
          
          
