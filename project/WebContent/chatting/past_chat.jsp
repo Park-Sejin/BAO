@@ -35,7 +35,7 @@
 				    <%if(cb_m.getSender().equals(sender_email)) { %>
 					    <div id="chat_receive"> <!-- 보낸 메세지 -->
 					    	<%if(cb_m.getRead_cnt() == 1){ %>
-							<sup style="color: #f66;">1</sup>
+								<sup style="color: #f66;">1</sup>
 							<%} %>
 							<span id="chat_time"><sub>오후 12:30</sub></span>
 							<span id="chat_msg"> <%=cb_m.getMessage() %></span>
