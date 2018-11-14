@@ -253,15 +253,11 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
 /*---------------------------------------------------------------------------------------*/
 /* 게시물 올리기 */
 
-#time_board 
-
- { 
-	border: 1px solid #ff0;
+#time_board { 
 	width: 700px;
 	min-height: 200px;
 	background-color: #fff;
 	border: 1px solid #e5e6e9;
-	/*height: 500px;*/
 	position: relative;
 }
 #time_body {
@@ -313,7 +309,7 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
 
 
 
-#time_content {border: 1px solid red;
+#time_content {
 	/*min-height: 200px;*/
 	margin-top: 20px;
 	margin: 10px 15px 10px 0;
