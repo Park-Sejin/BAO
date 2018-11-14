@@ -1,33 +1,29 @@
 @CHARSET "UTF-8";
 
 body {
-	background-color: #f6f6f6;
+   background-color: #f6f6f6;
 }
 
 a{
-	text-decoration: none;
+   text-decoration: none;
 }
 
 article#content {
-	margin-top: 0px;
-	margin-right:0px;
-	margin-bottom:0;
-	width: 1150px; 
-	height: 1000px;
-	display: inline-block;
-	vertical-align: top;
-	margin-top: 150px;
+   margin-top: 0px;
+   margin-right:0px;
+   margin-bottom:0;
+   width: 1150px; 
+   height: 1000px;
+   display: inline-block;
+   vertical-align: top;
+   margin-top: 150px;
 }
 
 
 .content {
-   border: 1px solid red; 
    position: relative;
    min-height: 650px;
-
-   margin: 0px 300px 0 570px;
    width: 1100px;
-
 }
 
 .left {
@@ -54,7 +50,7 @@ article#content {
 }
 
 .btn_pj_work {
-	float : left;
+   float : left;
    position: relative;
    height: 240px;
    width: 245px;
@@ -76,7 +72,7 @@ article#content {
 }
 
 .btn_pj_work a{
-	color: #6661c1;
+   color: #6661c1;
 }
 
 .collabo_list {
@@ -114,7 +110,7 @@ article#content {
 }
 
 .collabo_title_txt>a{
-	color:white;
+   color:white;
 }
 
 
@@ -246,123 +242,123 @@ article#content {
 }
 
 .file-top{
-	width: 100%;
-	height: 45px;
-	border-radius:10px 10px 0 0;
-	background-color: #eeeeee;
+   width: 100%;
+   height: 45px;
+   border-radius:10px 10px 0 0;
+   background-color: #eeeeee;
 }
 
 .file-top>span{
-	font-size: 16px;
-	position: relative;
-	top: 10px;
-	left: 20px;
+   font-size: 16px;
+   position: relative;
+   top: 10px;
+   left: 20px;
 }
 
 #file_search{
-	position: relative;
-	left: 30px;
-	top: -19px;
+   position: relative;
+   left: 30px;
+   top: -19px;
 }
 
 .box1{
-	border: 1px solid #ebebeb;
-	border-radius: 3px;
-	width: 460px;
-	height: 30px;
-	position: relative;
-	top: 10px;
-	left: 25px;
+   border: 1px solid #ebebeb;
+   border-radius: 3px;
+   width: 460px;
+   height: 30px;
+   position: relative;
+   top: 10px;
+   left: 25px;
 }
 
 #file_button{
-	font-size: 12px;
-	color: white;
-	background-color:#808080;
-	width: 55px;
-	height: 30px;
-	text-decoration: none;
-	display: inline-block;
-	text-align: center;
-	line-height: 30px;
-	position: relative;
-	right: -40px;
-	top: -25px;
-	border-radius: 5px;
+   font-size: 12px;
+   color: white;
+   background-color:#808080;
+   width: 55px;
+   height: 30px;
+   text-decoration: none;
+   display: inline-block;
+   text-align: center;
+   line-height: 30px;
+   position: relative;
+   right: -40px;
+   top: -25px;
+   border-radius: 5px;
 }
 
 #image_button{
-	font-size: 12px;
-	color:black;
-	width: 65px;
-	height: 30px;
-	border: 1px solid #c9c9c9;
-	text-decoration: none;
-	display: inline-block;
-	text-align: center;
-	line-height: 30px;
-	position: relative;
-	right: -42px;
-	top: -25px;
-	border-radius: 5px;
+   font-size: 12px;
+   color:black;
+   width: 65px;
+   height: 30px;
+   border: 1px solid #c9c9c9;
+   text-decoration: none;
+   display: inline-block;
+   text-align: center;
+   line-height: 30px;
+   position: relative;
+   right: -42px;
+   top: -25px;
+   border-radius: 5px;
 }
 
 .file_select{
-	border: none;
-	outline: none;
-	cursor: pointer;
-	height: 30px;
-	margin-left: 25px;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   height: 30px;
+   margin-left: 25px;
 }
 
 #file_download{
-	float: right;
-	left: 20px;
-	color: black;
-	text-decoration: none;
-	margin-right: 35px;
-	font-size: 14px;
+   float: right;
+   left: 20px;
+   color: black;
+   text-decoration: none;
+   margin-right: 35px;
+   font-size: 14px;
 }
 
 .file-bottom>a{
-	
+   
 }
 
 .file-bottom{
-	width: 100%;
-	height: 600px;
+   width: 100%;
+   height: 600px;
 }
 
 .file_zone{
-	width: 90%;
-	height: 450px;
-	border: 1px solid black;
-	margin: 0 auto;
+   width: 90%;
+   height: 450px;
+   border: 1px solid black;
+   margin: 0 auto;
 }
 
 .zone_top{
-	background-color: #6661c1;
-	height: 35px;
+   background-color: #6661c1;
+   height: 35px;
 }
 
 .zone_top>span{
-	color: white;
-	font-size: 14px;
+   color: white;
+   font-size: 14px;
 }
 
 .zone_top>span:NTH-CHILD(1){
-	line-height: 35px;
-	margin-left: 50px;
+   line-height: 35px;
+   margin-left: 50px;
 }
 .zone_top>span:NTH-CHILD(2){
-	float: right;
-	line-height: 35px;
-	margin-right: 180px;
+   float: right;
+   line-height: 35px;
+   margin-right: 180px;
 }
 
 /* The Close Button */
 .close {
-	margin-right: 10px;
+   margin-right: 10px;
     color: #aaaaaa;
     float: right;
     font-size: 28px;
@@ -377,72 +373,71 @@ article#content {
 }
 
 .modal_sec1{
-	line-height:40px;
-	width: 100%;
-	height: 40px;
-	background-color: #ececec;
-	border-radius: 10px 10px 0 0;
+   line-height:40px;
+   width: 100%;
+   height: 40px;
+   background-color: #ececec;
+   border-radius: 10px 10px 0 0;
 }
 .modal_sec1>div{
-	margin-left: 10px;
+   margin-left: 10px;
 }
 
 
 .modal_sec2{
-	width: 100%;
-	height: 260px;
+   width: 100%;
+   height: 260px;
 }
 
 .modal_sec2>div{
-	padding: 20px;
+   padding: 20px;
 }
 
 .bbb{
-	font-size: 13px;
-	font-weight: bold;
-	margin-bottom: 5px;
+   font-size: 13px;
+   font-weight: bold;
+   margin-bottom: 5px;
 }
 
 .sec2_txt{
-	height: 30px;
+   height: 30px;
 }
 
 .rd_sp {
-	font-size: 13px;
-	margin-bottom: 5px;
+   font-size: 13px;
+   margin-bottom: 5px;
 }
 
 .bbb2{
-	font-size: 13px;
-	font-weight: bold;
-	margin-bottom: 5px;
-	color: red;
-	margin-top: 5px;
+   font-size: 13px;
+   font-weight: bold;
+   margin-bottom: 5px;
+   color: red;
+   margin-top: 5px;
 }
 
 
 .modal_submit{
-	float: right;
-	width: 90px;
-	height: 30px;
-	background-color: #6661c1;
-	color: white;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-weight: bold;
+   float: right;
+   width: 90px;
+   height: 30px;
+   background-color: #6661c1;
+   color: white;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   font-weight: bold;
 }
 
 .modal_btn{
-	float: right;
-	width: 90px;
-	height: 30px;
-	background-color: #f8f8f8;
-	color: #1f1f1f;
-	border: 1px solid #909090;
-	border-radius: 5px;
-	cursor: pointer;
-	font-weight: bold;
-	margin-right: 10px;
+   float: right;
+   width: 90px;
+   height: 30px;
+   background-color: #f8f8f8;
+   color: #1f1f1f;
+   border: 1px solid #909090;
+   border-radius: 5px;
+   cursor: pointer;
+   font-weight: bold;
+   margin-right: 10px;
 }
-
