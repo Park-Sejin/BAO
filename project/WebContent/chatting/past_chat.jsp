@@ -29,8 +29,6 @@
 			    	
 			    	<legend> <%if(!date1.equals(date2) || cnt == 0){ %> <%=cb_m.getDate() %> <%} %> </legend>
 			    	
-			    	<% ChatDAO read_cdao = new ChatDAO(); %>
-			    	
 			    	
 				    <%if(cb_m.getSender().equals(sender_email)) { %>
 					    <div id="chat_receive"> <!-- 보낸 메세지 -->
@@ -43,8 +41,6 @@
 						<div id="clear"></div>
 						
 					<%} else { %>
-						<% read_cdao.setRead(sender_email, receive_email); %>
-						
 						<div id="chat_send"> <!-- 받은 메세지 -->
 							<span id="chat_msg"><%=cb_m.getMessage() %></span>
 							<span id="chat_time">

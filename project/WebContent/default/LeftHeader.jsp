@@ -179,8 +179,8 @@
 				</td>
 			</tr>
 			<tr height="40px">
-				<td class="LeftMenuTb" onClick=" location.href='#' "><img
-					src="img/left_header/ico_my.png">&nbsp;&nbsp;나를 지정</td>
+				<td class="LeftMenuTb" onClick=" location.href='myBoard.tl' "><img
+					src="img/left_header/ico_my.png">&nbsp;&nbsp;내 게시물</td>
 			</tr>
 			<tr height="40px">
 				<td style="border-bottom: 1px solid #D5D5D5"></td>

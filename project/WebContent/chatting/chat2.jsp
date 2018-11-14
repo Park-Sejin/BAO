@@ -95,6 +95,9 @@
 			chat_Client cc = new chat_Client();
 			cc.ChatClient(sender_email, receive_email);
 			/* cc.ChatExit(); //채팅 종료 시. */
+			
+			ChatDAO read_cdao = new ChatDAO();
+			read_cdao.setRead(sender_email, receive_email);
 		
 		%>
 	
