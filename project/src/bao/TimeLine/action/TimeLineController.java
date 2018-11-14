@@ -45,7 +45,6 @@ public class TimeLineController extends HttpServlet{
           }catch(Exception e){
              e.printStackTrace();
           }
-          
        }else if(command.equals("/FileDownloadAction.tl")){
           action = new FileDownloadAction();
           try{
@@ -55,11 +54,10 @@ public class TimeLineController extends HttpServlet{
           }
        }else if(command.equals("/timeline.tl")) {
           forward = new ActionForward();
-          forward.setPath("./timeline.jsp");
+          forward.setPath("./TimeLine/timeline.jsp");
           forward.setRedirect(false);
        }
        
-
        
        // 페이지 이동    
        if(forward != null){
@@ -70,7 +68,6 @@ public class TimeLineController extends HttpServlet{
             dis.forward(request, response);
          }
       }
-       
    }
    
    
