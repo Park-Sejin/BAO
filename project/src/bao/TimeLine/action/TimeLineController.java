@@ -33,11 +33,10 @@ public class TimeLineController extends HttpServlet{
           }catch(Exception e){
              e.printStackTrace();
           }
-       }else if(command.equals("/TimeLine.tl")){
-          forward = new ActionForward();
-         forward.setPath("./TimeLine/divdiv.jsp");
-         forward.setRedirect(false);
-          
+       }else if(command.equals("/Timeline.tl")) {
+    	   forward = new ActionForward();
+    	   forward.setPath("./TimeLine/timeline.jsp");
+    	   forward.setRedirect(false);
        }else if(command.equals("/TimeLineDutyWriteAction.tl")){
           action = new TimeLineDutyWriteAction();
           try{
@@ -56,6 +55,7 @@ public class TimeLineController extends HttpServlet{
           forward = new ActionForward();
           forward.setPath("./TimeLine/timeline.jsp");
           forward.setRedirect(false);
+
        }
        
        
