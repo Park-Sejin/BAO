@@ -1,7 +1,17 @@
+<%@page import="member.db.MemberBean"%>
+<%@page import="project.db.ProjectDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="bao.TimeLine.db.BoardDAO"%>
+<%@page import="bao.TimeLine.db.AlarmBean"%>
+<%@page import="member.db.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="./css/top.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
@@ -36,32 +46,6 @@
 		$('#click_plus').click(function(){
 			alert("dfs");
 		});
-		$('#click_nockalarm').click(function(){
-			$.ajax({
-	            url:'./default/top_test3.jsp',
-	            type:'get',
-	            data:{
-	            	'id':'admin'
-	            },
-	            success:function(data){
-	            	$('#hd_alarm_sec2').empty();
-	            	$('#hd_alarm_sec2').append(data);
-	            }
-	        })
-		});
-		$('#click_allalarm').click(function(){
-			$.ajax({
-	            url:'./default/top_test4.jsp',
-	            type:'get',
-	            data:{
-	            	'id':'admin'
-	            },
-	            success:function(data){
-	            	$('#hd_alarm_sec2').empty();
-	            	$('#hd_alarm_sec2').append(data);
-	            }
-	        })
-		});
 		
 		$('#click_allck').click(function(){
 			alert("dfs");
@@ -70,6 +54,8 @@
 	})
 </script>
 
+</head>
+<body>
 	<header>
 	<a href="./main.pr"></a>
 
@@ -78,7 +64,7 @@
 			<select id="search_type" name="search_type1">
 				<option name="all" value="all">ALL</option>
 				<option name="project" value="project">프로젝트</option>
-				<option name="write" value="write">글</option>
+				<option name="wirte" value="write">글</option>
 				<option name="member" value="member">참여자</option>
 			</select>
 
@@ -168,61 +154,38 @@
 			<div id="myModal2" class="modal2">
 
 				<!-- Modal content -->
+				<!-- 알람 기능 -->
 				<div id="hd_alarm">
 					<div id="hd_alarm_sec1">
-						<a href="#" id="click_nockalarm">미확인알림</a>
 						<a href="#" id="click_allalarm">전체알림</a>
-						<a href="#" id="click_allck">모두 읽음</a>
 					</div>
 					
 					<div id="hd_alarm_sec2">
+						<%
+							//알림 리스트 불러오기
+							BoardDAO h_bdao = new BoardDAO();
+							String id = (String)session.getAttribute("email");
+							MemberDAO h_mdao = new MemberDAO();
+							ProjectDAO h_pdao = new ProjectDAO();
+							int memNum = h_mdao.getMemberNum(id);
+							String memName = h_mdao.getName(memNum);
+							List AlarmList = (List)h_bdao.alarmList(memNum);
+							String proName = "";
+							for(int i=0; i<AlarmList.size(); i++){
+								AlarmBean ab = (AlarmBean)AlarmList.get(i);
+								int proNum = h_bdao.getProNum(ab.getTwrite_num());
+								proName = h_pdao.getProjectName(proNum);
+						%>
                      	<div class="sec3_div">
                      		<img src="./img/top_header/thumb26.gif" width="40px"
 										height="40px"  class="sec3_div_img">
-							<span class="sec3_div_name">프로젝트 명 </span>
-							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
-							<span class="sec3_div_date">7시간 전 </span>
+							<span class="sec33_div_name"><%=proName %></span>
+							<span class="sec33_div_title"><span class="bold"><%=h_mdao.getName(ab.getMember_num()) %></span> ~~~를 했습니다.</span>
+							<span class="sec33_div_date"><%=ab.getDate() %> </span>
                     	</div>
-                    	
-                     	<div class="sec3_div">
-                     		<img src="./img/top_header/thumb26.gif" width="40px"
-										height="40px"  class="sec3_div_img">
-							<span class="sec3_div_name">프로젝트 명 </span>
-							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
-							<span class="sec3_div_date">7시간 전 </span>
-                    	</div>
-                    	
-                     	<div class="sec3_div">
-                     		<img src="./img/top_header/thumb26.gif" width="40px"
-										height="40px"  class="sec3_div_img">
-							<span class="sec3_div_name">프로젝트 명 </span>
-							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
-							<span class="sec3_div_date">7시간 전 </span>
-                    	</div>
-                    	
-                     	<div class="sec3_div">
-                     		<img src="./img/top_header/thumb26.gif" width="40px"
-										height="40px"  class="sec3_div_img">
-							<span class="sec3_div_name">프로젝트 명 </span>
-							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
-							<span class="sec3_div_date">7시간 전 </span>
-                    	</div>
-                    	
-                     	<div class="sec3_div">
-                     		<img src="./img/top_header/thumb26.gif" width="40px"
-										height="40px"  class="sec3_div_img">
-							<span class="sec3_div_name">프로젝트 명 </span>
-							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
-							<span class="sec3_div_date">7시간 전 </span>
-                    	</div>
-                    	
-                     	<div class="sec3_div">
-                     		<img src="./img/top_header/thumb26.gif" width="40px"
-										height="40px"  class="sec3_div_img">
-							<span class="sec3_div_name">프로젝트 명 </span>
-							<span class="sec3_div_title"><span class="bold">김철수</span> 님이 댓글을 등록했습니다.</span>
-							<span class="sec3_div_date">7시간 전 </span>
-                    	</div>
+                    	<%
+                    		}
+						%>
                     
                     
                     
@@ -235,7 +198,16 @@
 		</li>
 		
 		<li>
-			<a id="icon_member"></a>
+			<a id="icon_member"
+				<%
+					MemberBean mb = h_mdao.getMember(id);
+					if(mb.getImage() != null){
+						%>
+						style="background-image: url('./upload/<%=mb.getImage()%>');"
+						<%
+					}
+				%>
+			></a>
 			<!-- The Modal -->
 			<div id="myModal3" class="modal2">
 
@@ -243,9 +215,19 @@
 				<div id="hd_member">
                      	<div class="hd_member_sec1">
                      		<div>
-                     			<img src="./img/top_header/thumb26.gif" width="40px" height="40px" class="rd">
+                     			<%
+                     				if(mb.getImage()==null){
+                     			%>
+                     					<img src="./img/top_header/thumb26.gif" width="40px" height="40px" class="rd">
+                     			<%
+                     				}else{
+                     			%>
+                     					<img src="./upload/<%=mb.getImage()%>" width="40px" height="40px" class="rd">
+                     			<%
+                     				}
+                     			%>
                      			<br>
-                     			<b>류수재</b>
+                     			<b><%=memName %></b>
                      		</div>
                      	</div>
                      	<hr>
@@ -306,4 +288,9 @@
 			
 		</li>
 	</ul>
-</header>
+
+
+	</header>
+
+</body>
+</html>

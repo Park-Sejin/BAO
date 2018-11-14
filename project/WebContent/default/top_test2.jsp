@@ -94,61 +94,9 @@
 			}
 		%>
 		
-	<!-- 팝업창 div -->
-	   <div id="profile_div" class="modal">
-	      <div id="profilePopup" class="prdbx_wrap"
-	         style="top: 50%; left: 50%; width: 400px; height: 672px; z-index: 9100; position: fixed; margin-top: -336px; margin-left: -200px;">
-	         <div class="prof_bx">
-	            <div class="prof_thumb">
-	               <span class="bg"></span> <a class="btn_close" id="inviteBoxClose"
-	                  title="닫기"></a> <img id="PRFL_PHTG"
-	                  src="./img/right_menu/img_photo_null_for_prfl.png" alt=""
-	                  onerror="this.src='/design2/img_rn/img_photo_null_for_prfl.png'"
-	                  style="object-fit: cover; height: 400px; width: 400px;">
-	            </div>
-	            
-	            
-	            <%	
-		            int mem_num = 0;
-		            if(request.getParameter("mem_num") != null) {
-		            	mem_num = Integer.parseInt(request.getParameter("mem_num"));
-		            } 
-		            
-	            		ProjectDAO pdao = new ProjectDAO();
-					MemberDAO p_mdao = new MemberDAO();
-					MemberBean p_mb = new MemberBean();
-	             	
-	             	if(mem_num != 0) { p_mb = p_mdao.getMember(mem_num); }
-	             %>
-	            <div class="prof_info">
-	               <div class="prof_top">
-	                  <h2>
-	                     <span id="FLNM"><%=p_mb.getName() %></span><span id="JBCL_NM"
-	                        style="font-size: 20px; color: #969696; margin-left: 10px;"></span>
-	                  </h2>
-	                  <a id="EDIT" class="ico_mod" style="display: none;"></a>
-	               </div>
-	               <div class="prof_cn">
-	                  <p id="EML" style="visibility: visible;"><%=p_mb.getEmail() %></p>
-	                  <p id="CLPH_NO" style="visibility: hidden;"></p>
-	                  <p id="CMPN_TLPH_NO" style="visibility: hidden;"></p>
-	                  <input type="hidden" id="receive_email" value="<%=p_mb.getEmail()%>">
-	               		<input type="button" value="server" onclick="server()">
-	               </div>
-	               <div class="prof_btn">
-	                  <a id="CHAT" class="btn_prd_sty1_b" onclick="go_pop()"><span>채팅하기</span></a>
-	                  <a id="PROFILE_EDIT" class="btn_prd_sty1" style=""><span
-	                     style="color: #28272c">프로필 수정</span></a>
-	               </div>
-	            </div>
-	         </div>
 	      </div>
 	   </div>		
 		
-		
-	</div>
-	
-</div>
 
 
 
