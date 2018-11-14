@@ -53,7 +53,7 @@
 			});
 		});
 		
-		$('#promain').click(function(){
+		/*$('#promain').click(function(){
 			$.ajax({
 				type : "POST",
 				url : "promain.pr",
@@ -73,7 +73,7 @@
 					$('#content').append(data);
 				}
 			});
-		});
+		});*/
 		
 /* 		$('#favorite').click(function(){
 		$('#div_emt').empty();

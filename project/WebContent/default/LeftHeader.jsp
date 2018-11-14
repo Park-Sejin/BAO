@@ -8,7 +8,30 @@
 	$(document).ready(function() {
 		$("#file1").click(function() {
 			$("#filebox_cont").load("#LeftHeader #file_detail_view div");
-
+		});
+		
+		$('#promain').click(function(){
+			$.ajax({
+				type : "POST",
+				url : "promain.pr",
+				success : function(data){
+					$('#content').empty();
+					$('#container').empty();
+					$('#content').append(data);
+				}
+			});
+		});
+		
+		$('#favorite').click(function(){
+			$.ajax({
+				type : "POST",
+				url : "fa.pr",
+				success : function(data){
+					$('#content').empty();
+					$('#container').empty();
+					$('#content').append(data);
+				}
+			});
 		});
 	});
 
