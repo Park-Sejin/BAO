@@ -34,9 +34,9 @@ public class TimeLineController extends HttpServlet{
              e.printStackTrace();
           }
        }else if(command.equals("/Timeline.tl")) {
-    	   forward = new ActionForward();
-    	   forward.setPath("./TimeLine/timeline.jsp");
-    	   forward.setRedirect(false);
+          forward = new ActionForward();
+          forward.setPath("./TimeLine/timeline.jsp");
+          forward.setRedirect(false);
        }else if(command.equals("/TimeLineDutyWriteAction.tl")){
           action = new TimeLineDutyWriteAction();
           try{
@@ -44,6 +44,7 @@ public class TimeLineController extends HttpServlet{
           }catch(Exception e){
              e.printStackTrace();
           }
+          
        }else if(command.equals("/FileDownloadAction.tl")){
           action = new FileDownloadAction();
           try{
@@ -51,13 +52,13 @@ public class TimeLineController extends HttpServlet{
           }catch(Exception e){
              e.printStackTrace();
           }
-       }else if(command.equals("/timeline.tl")) {
+       }else if(command.equals("/myBoard.tl")) {
           forward = new ActionForward();
-          forward.setPath("./TimeLine/timeline.jsp");
+          forward.setPath("./content/my_board.jsp");
           forward.setRedirect(false);
-
        }
        
+
        
        // 페이지 이동    
        if(forward != null){
@@ -68,6 +69,7 @@ public class TimeLineController extends HttpServlet{
             dis.forward(request, response);
          }
       }
+       
    }
    
    
