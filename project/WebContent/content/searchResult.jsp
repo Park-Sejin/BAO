@@ -48,7 +48,6 @@
     <!-- left -->
     <jsp:include page="../default/LeftHeader.jsp"></jsp:include> 
 
-	<div class="clear">
 	
 	<!-- 검색결과확인 -->
 	<article id="sear_article">

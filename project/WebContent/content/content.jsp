@@ -6,12 +6,19 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link href="css/content.css" rel="stylesheet" type="text/css">
+
+<link href="css/top.css" rel="stylesheet"> 
+<link href="css/AllView_popup.css" rel="stylesheet"> 
+<link href="css/HeaderCss.css" rel="stylesheet"> 
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -82,6 +89,7 @@
 		}); */
 	});
 </script>
+
 </head>
 <body>
 
@@ -93,7 +101,7 @@
 		
 	%>
 	<article id="content">
-	<div class="content" >
+	<div class="content">
 		<div>
 			<div class="left">
 				<span>프로젝트</span><span><!-- (<projectList.size()%>) -->

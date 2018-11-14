@@ -1,4 +1,4 @@
-@CHARSET "EUC-KR";
+@CHARSET "UTF-8";
 
 body {
 	background-color: #f6f6f6;
@@ -10,15 +10,16 @@ article {
 }
 
 #sear_article {
+	margin-top: 0px;
+	margin-right:0px;
+	margin-bottom:0;
+	width: 700px;
+	height: 1000px;
 	display: inline-block;
-	position: sticky;
-	top:0;
-	left: 580px;
 	vertical-align: top;
-	display: inline-block;
-	margin-top: 150px;  
+	margin-top: 150px;
 }
-
+ 
 a {
 	cursor: pointer;
 	text-decoration: none;
@@ -32,7 +33,6 @@ a {
 /* search result */
 div#resultArea {
 	width: 870px;
-	border: 1px solid red;
 	float: left;
 	min-height: 580px;
 	padding: 10px;
