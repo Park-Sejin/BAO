@@ -137,7 +137,7 @@
                            <img src="./img/right_menu/img_photo_null32.png" style="radius">
                         </div>
                         <div class="username" id="menu_profile">
-                           <a href="timeline.tl?num=<%=num%>&mem_num=<%=mb.getNum() %>"> <%= mb.getName()%></a>
+                           <a href="Timeline.tl?num=<%=num%>&mem_num=<%=mb.getNum() %>"> <%= mb.getName()%></a>
                            <input type="hidden" id="mem_num" value="<%=mem_num%>">
                           <%--  <input type="hidden" id="mem_num" value="<%=mb.getNum()%>">
                            <a href="" class="a_name"><%= mb.getName()%></a> --%>
@@ -494,7 +494,7 @@
          window.onclick = function(event){
              if (event.target == profile) {
                 profile.style.display = "none";
-                location.href="timeline.tl?num=<%=num%>"; /* 더 좋은방법....찾.. */
+                location.href="Timeline.tl?num=<%=num%>"; /* 더 좋은방법....찾.. */
                 
              }else if(event.target == invite){
                 invite.style.display = "none";
