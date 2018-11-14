@@ -262,7 +262,7 @@
          
          <div id="report">
             <div id="chart_title">
-               <img src="./img/timeline/check.png"> 업무 리포트 보기(전체 n개)
+               <img src="img/timeline/check.png"> 업무 리포트 보기(전체 n개)
                <a id="chart_up"><span style="visibility: hidden;">닫기</span></a><br>
             </div>
             
@@ -301,7 +301,6 @@
                   </td>
                </tr>
             </table>
-
          </div>
 
          <!-- 글 -->
@@ -310,20 +309,20 @@
                <table style="border: 1px solid #EAEAEA; border-collapse: collapse;">
                   <tr>
                      <td colspan="2">
-                        <textarea rows="10" cols="95" placeholder="글을 작성하세요" name="content" 
-                           style="width: 97%; line-height: 18px; font-size: 16px; border: 0; font-weight: bold; color: gray; margin-left: 10px; margin-top: 10px;">
+                        <textarea placeholder="글을 작성하세요" rows="10" cols="95" name="content" 
+                           style="width: 97%; line-height: 18px; font-size: 16px; border: 0; font-weight: bold; margin-left: 10px; margin-top: 10px;">
                         </textarea>
                      </td>
                   </tr>
                   <tr style="height: 50px;">
                      <td style="vertical-align: middle;">&nbsp;
                         <div class="filebox bs3-primary">
-                           <img src="./img/timeline/icon_attach_file.png" style="vertical-align: middle;">
+                           <img src="img/timeline/icon_attach_file.png" style="vertical-align: middle;">
                            <label for="ex_file2">파일첨부</label>
                            <input type="file" id="ex_file2" name="write_file">
                         </div>
                         <div class="filebox bs3-success">
-                           <img src="./img/timeline/icon_attach_pic.png" style="vertical-align: middle;">
+                           <img src="img/timeline/icon_attach_pic.png" style="vertical-align: middle;">
                            <label for="ex_file2">이미지첨부</label> 
                            <input type="file" id="ex_file2" name="img_file"> 
                         </div>
@@ -364,8 +363,8 @@
             });
             /* 글 작성 끝 */
          </script>
-         
          <!-- 글 -->
+         
          <!-- 업무 -->
          <form action="" method="post" enctype="multipart/form-data" id="DutyWriteForm">
             <div id="TDup">
@@ -379,11 +378,11 @@
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;"
                         height="30px margin-left:10px;">
-                        <img src="./img/timeline/ico_timec4ca.png"></td>
+                        <img src="img/timeline/ico_timec4ca.png"></td>
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="./img/timeline/ico_userli_num_gr.png" style="vertical-align: middle;">
+                        <img src="img/timeline/ico_userli_num_gr.png" style="vertical-align: middle;">
                         <select style="margin-left: 5px;">
                            <option></option>
                            <option></option>
@@ -392,37 +391,32 @@
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="./img/timeline/ico_cal_task01c4ca.png" style="vertical-align: middle;">
+                        <img src="img/timeline/ico_cal_task01c4ca.png" style="vertical-align: middle;">
                      </td>
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="./img/timeline/ico_cal_task02c4ca.png" style="vertical-align: middle;">
+                        <img src="img/timeline/ico_cal_task02c4ca.png" style="vertical-align: middle;">
                      </td>
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="./img/timeline/ico_flag.png" style="vertical-align: middle;">
+                        <img src="img/timeline/ico_flag.png" style="vertical-align: middle;">
                      </td>
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="./img/timeline/icon_flag2.png" style="vertical-align: middle;">
+                        <img src="img/timeline/icon_flag2.png" style="vertical-align: middle;">
                      </td>
                   </tr>
                   <tr>
-                     <td colspan="2" style="padding: 2px 10px;">
-                        <textarea rows="10" cols="97" placeholder="글을 작성하세요"
-                           style="width: 97%; line-height: 18px; font-size: 16px; border: 0; font-weight: bold; color: gray; margin-left: 10px; margin-top: 10px;">
-                        </textarea>
-                     </td>
                   </tr>
                   <tr style="height: 50px;">
                      <td style="vertical-align: middle;">&nbsp;
-                        <a> <img src="./img/timeline/icon_attach_file.png" style="vertical-align: middle;">
+                        <a> <img src="img/timeline/icon_attach_file.png" style="vertical-align: middle;">
                            <span style="font-size: 15px; font-weight: bold;">파일첨부 </span>
                         </a> &nbsp;&nbsp;&nbsp;
-                        <a> <img src="./img/timeline/icon_attach_pic.png" style="vertical-align: middle; margin-left: 10px;">
+                        <a> <img src="img/timeline/icon_attach_pic.png" style="vertical-align: middle; margin-left: 10px;">
                            <span style="font-size: 15px; font-weight: bold;">이미지첨부</span>
                         </a>
    
@@ -435,9 +429,8 @@
                </table>
             </div>
          </form>
-
-
          <!-- 업무 -->
+         
          <!-- 일정 -->
          <div id="TCal">
             <table style="border: 1px solid #EAEAEA; border-collapse: collapse;">
@@ -449,7 +442,7 @@
                </tr>
                <tr>
                   <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px margin-left:10px;">
-                     <img src="./img/timeline/ico_timec4ca.png">
+                     <img src="img/timeline/ico_timec4ca.png">
                      <input type="text" id="TStart1">
                      <select id="Sel1">
                         <option value="00:00">00:00</option>
@@ -511,19 +504,19 @@
                </tr>
                <tr>
                   <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                     <img src="./img/timeline/ico_mapc4ca.png" style="vertical-align: middle;">
+                     <img src="img/timeline/ico_mapc4ca.png" style="vertical-align: middle;">
                      <input id="locationTextField" type="text" placeholder="장소를 입력하세요" style="border:none; font-weight: bold; height: 30px;" size="40">
                   </td>
                </tr>
                <tr>
                   <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                     <img src="./img/timeline/ico_memoc4ca.png" style="vertical-align: middle; margin-right: 10px;">
+                     <img src="img/timeline/ico_memoc4ca.png" style="vertical-align: middle; margin-right: 10px;">
                      <input id="Memo_sinput" type="text" size="80" placeholder="메모을 입력하세요" style="width: 94%; font-size: 16px; border: 0; color: gray;">
                   </td>
                </tr>
                <tr>
                   <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                     <img src="./img/timeline/ico_alarmc4ca.png" style="vertical-align: middle;">
+                     <img src="img/timeline/ico_alarmc4ca.png" style="vertical-align: middle;">
                      <select>
                                 <!-- value는 기수아닌 서수 -->
                              <option value="selectFirst"> 선택해봐 </option>
@@ -609,6 +602,8 @@
                   });
                }
          </script>
+        <%--  <a href="./FileDownloadAction.tl?file_name=<%=Wbb.getImg_file()%>"><img name="img" style="width:120px; height:auto;"
+       src="./upload/<%=Wbb.getImg_file()%>"></a></div><br> --%>
 <div id="plusArea" style="">
 <%		
 		BoardBean Wbb=new BoardBean();
@@ -618,6 +613,7 @@
 		
 		/* for(int Wcon=0; Wcon<list.size(); Wcon++){
 			Wbb=list.get(Wcon); */
+
 %>		
 <%
 		TotalBean tb=new TotalBean();
