@@ -82,3 +82,14 @@
    background: url(./img/invite/ico_prdbx_df4.png) no-repeat 0 0;
 }
 
+
+/* invite2 */
+
+.btn_prd_sty1_b2 span{
+    min-width: 80px;
+    height: 26px;
+    margin-top: 300px;
+    background: url(../img/right_menu/btn_prd_sty1_b.gif) no-repeat left top;
+}
+
+

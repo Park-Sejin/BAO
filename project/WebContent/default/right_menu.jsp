@@ -9,8 +9,7 @@
 <%@page import="member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-
-   
+  
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
    
    <script type="text/javascript">
@@ -41,7 +40,7 @@
       }
       
       
-   function chat_pop(){ /*  */
+   function chat_pop(){ 
       window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
    }
    
@@ -55,8 +54,8 @@
 	
    $(document).ready(function(){
 		 $("#teaminvite").click(function(){
-			 	$("#invite_sub").empty();
-				$("#invite_sub").load("#right_menu #invite2_sub");
+			 /* 	alert("teaminvite버튼"); */
+				$(".invite_popup").load("#right_menu .invite2_popup");
 			});
 		 }); 
     
@@ -96,12 +95,14 @@
             <a class="invite" id="rightBoxPrjInvite">초대하기</a>
             <!-- <a class="inviteurl">초대URL생성</a> -->
          </div>
-
+		 <% ProjectMemberDAO pmdao = new ProjectMemberDAO();
+                  List<ProjectMemberBean> arr = new ArrayList<ProjectMemberBean>();
+                  arr = pmdao.getProjectMember(num);%>
 
          <!-- //콜라보설정 -->
          <!-- 참여자목록 -->
          <div class="all_aplct_title">
-            전체 참여자&nbsp;<strong id="sendienceCnt">1명</strong><a id="allView" style="border: 1px solid black;">전체보기</a>
+                       전체 참여자&nbsp;<strong id="sendienceCnt"></strong><a id="allView" style="border: 1px solid black;">전체보기</a>
          </div>
 
 
@@ -119,9 +120,7 @@
 
             <div class="participant_scroll mCustomScrollbar">
                <!-- title -->
-               <% ProjectMemberDAO pmdao = new ProjectMemberDAO();
-                  List<ProjectMemberBean> arr = new ArrayList<ProjectMemberBean>();
-                  arr = pmdao.getProjectMember(num);%>
+              
                <div id="sendienceFirst" class="part_title first">
                   <h5>
                      <strong>프로젝트 관리자</strong><span id="sendienceAdminCnt">(<%= arr.size()%>)</span>
@@ -149,7 +148,7 @@
                      </li>
                       <%} %>
                       
-                      <% %>
+                     
                      <!-- 계속해서참여자추가(?) -->
 
 
@@ -158,7 +157,7 @@
                <!-- title -->
                <div class="part_title sendienceOutsideTitle">
                   <h5>
-                     <strong>외부참여자</strong><span id="sendienceOutsideCnt">(0)</span>
+                     <strong>외부참여자</strong><span id="sendienceOutsideCnt">123</span>
                   </h5>
                </div>
                <!-- 이름 -->
@@ -167,7 +166,7 @@
                <!-- title -->
                <div class="part_title sendienceInsideTitle">
                   <h5>
-                     <strong>내부참여자</strong><span id="sendienceInsideCnt">(0)</span>
+                     <strong>내부참여자</strong><span id="sendienceInsideCnt"></span>
                   </h5>
                </div>
                <!-- 이름 -->
@@ -241,20 +240,36 @@
    
    <div id="invite2_div" class="modal">
         <div class="invite2_popup" style="width:500px; height:620px; z-index:1100; position:fixed; ">
-           <div id="invite2_top">
-              <div id="invite2_title">
-                 <h2>초대하기</h2>
-              </div>         
+        	<div class="prdbx_hd">
+        		<!-- 상단 타이틀  -->
+        		<div class="prdbx_hd_top">
+        			<h1>초대하기</h1>
+        			<div class="btn_1" ><a>이전으로</a></div>
+        			<div class="btn_2" ><a>나가기</a></div>
+        		</div>
+        		<!-- //상단 타이틀  -->
+        		<div class="prdbx_hd_sch" id="invitesrchbox">
+        			<div class="prd_prd_schbx_in">
+        				<span role="status"></span>
+        				<input type="text" placeholder="함께 프로젝트를 진행했었던 사람들을 찾아보세요!">
+        			</div>
+        		</div>
+        		
+        	</div>   
+            <div class="prdbx_cn">
+            <%= arr.size()%>
+            
+    
+            
+            
+            
+            </div>
+            <div class="prdbx_ft">
+            	<a class="btn_prd_sty1_b2" id="inviteSelectId">
+            		<span>초대</span>
+            	</a>
+            </div>
         </div>
-        <div id="invite2_sub">
-           <ul>
-             <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
-             <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
-             <li><span class="profile_ico"></span><p class="invite2_name"></p><p class="invite2_team"></p></li>
-             <li></li>
-           </ul>   
-        </div>      
-      </div>
    </div>
    
    
@@ -346,8 +361,8 @@
                         <ul class="mcustominsidepeople">
                            <%
                               for (ProjectMemberBean pmb : arr) {
-                                 MemberDAO mdao = new MemberDAO();
-                                       MemberBean mb = mdao.getMember(pmb.getMember_num()); 
+                              MemberDAO mdao = new MemberDAO();
+                              MemberBean mb = mdao.getMember(pmb.getMember_num()); 
                                  
                            %>
                            <li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
@@ -359,7 +374,7 @@
                               }
                            %>
                            <li><img style="cursor: pointer; object-fit: cover;" id="insidepeople" src="./img/right_menu/img_photo_null32.png" onerror="this.src='/design2/img_rn/img_photo_null40.png'" >
-                           <span id="insidepeople">이름2</span>
+                           <span id="insidepeople"></span>
                               <div class="AllViewbtn_right">
                                  <a class="btn set" id="moresetting"><!-- <span class="blind"></span> --></a>
                               </div></li>
