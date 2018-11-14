@@ -70,9 +70,17 @@ public class CalendarAction implements Action {
 		
 		//업무가져오기
 		ProjectDAO pdao = new ProjectDAO();
-		List workList = pdao.getWork(email);
+		if(work.equals("전체 업무")){
+			List workList = pdao.getWork();
+			request.setAttribute("workList", workList);
+			System.out.println("workList: "+workList);
+		}
 		
-		return null;
+		ActionForward forward = new ActionForward();
+		forward.setPath("./content/calendarSet.jsp");
+		forward.setRedirect(false);
+		
+		return forward;
 	}
 
 }
