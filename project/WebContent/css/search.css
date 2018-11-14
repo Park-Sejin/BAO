@@ -9,6 +9,16 @@ article {
 	margin: 0 auto;
 }
 
+#sear_article {
+	display: inline-block;
+	position: sticky;
+	top:0;
+	left: 580px;
+	vertical-align: top;
+	display: inline-block;
+	margin-top: 150px;  
+}
+
 a {
 	cursor: pointer;
 	text-decoration: none;
@@ -56,12 +66,12 @@ div#no_search h1 {
 
 .resultTable {
 	background-color: #fff;
-	/* margin: 10px 5px; */
 	font-size: 20px;
 	color: #808080;
 	width: 100%;
 	border-collapse: collapse;
 	padding: 10px;
+	margin-bottom: 10px;
 }
 
 .firstTr {
@@ -81,9 +91,11 @@ div#no_search h1 {
 }
 
 .resultTr td {
-	width: 200px;
 	padding-left: 10px;
 }
 
+.resultTr td:NTH-OF-TYPE(1) {
+	width: 500px;
+}
 
 

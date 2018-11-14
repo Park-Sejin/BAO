@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import bao.TimeLine.db.BoardDAO;
 import member.setting.db.SettingBean;
 import member.setting.db.SettingDAO;
+import project.db.ProjectDAO;
 
 public class CalendarAction implements Action {
 
@@ -67,6 +68,9 @@ public class CalendarAction implements Action {
 			request.setAttribute("workList", workList);
 		}*/
 		
+		//업무가져오기
+		ProjectDAO pdao = new ProjectDAO();
+		List workList = pdao.getWork(email);
 		
 		return null;
 	}

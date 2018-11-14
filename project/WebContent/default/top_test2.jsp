@@ -44,7 +44,20 @@
 	<div id="hd_chat_mynumber">
 		<span class="bold">내 프로필</span>
 		<div class="div_chat">
-			<a href="#"><img src="./img/top_header/thumb26.gif" width="40px"></a>
+			<a href="#">
+				<%
+					if(my_mb.getImage() == null){
+						
+				%>
+						<img src="./img/top_header/thumb26.gif" width="40px">
+				<%
+					}else{
+				%>
+						<img src="./upload/<%=my_mb.getImage()%>" width="40px">
+				<%
+					}
+				%>
+			</a>
 			<a href="#"><%=my_mb.getName() %></a>
 			<a href="#" class="icon_chat"></a>
 		</div>
@@ -57,7 +70,19 @@
 				MemberBean allListMB = (MemberBean)memList.get(i);
 		%>
 		<div class="div_chat">
-			<a href="#"><img src="./img/top_header/thumb26.gif" width="40px"></a>
+			<a href="#">
+				<%
+					if(allListMB.getImage() == null){
+				%>
+					<img src="./img/top_header/thumb26.gif" width="40px">
+				<%
+					}else{
+				%>
+					<img src="./upload/<%=allListMB.getImage()%>" width="40px">
+				<%
+					}
+				%>
+			</a>
 			<a href="#"><%=allListMB.getName() %></a>
 			<a href="#" class="icon_chat"></a>
 		</div>

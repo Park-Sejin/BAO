@@ -33,11 +33,7 @@
       window.open("./chatting/chat2.jsp","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
       }
    
-   /*  $("#invite2_div").click(function(){
-      
-      $("#invite2_div").addClass("black");
-      $("#invite_div").empty();
-       $("#invite_div").load("./timeline.jsp"); */
+
    
    function go_pop(){
       var receive_email = document.getElementById('receive_email').value;
@@ -56,8 +52,13 @@
    function closeWin() {
       part.close();
    }
-
-
+	
+   $(document).ready(function(){
+		 $("#teaminvite").click(function(){
+			 	$("#invite_sub").empty();
+				$("#invite_sub").load("#right_menu #invite2_sub");
+			});
+		 }); 
     
    
    
@@ -128,8 +129,6 @@
                </div>
                <!-- 이름 -->
                <ul id="sendienceAdminUl" style="display: block;">      
-                  
-                        
                         <%for(ProjectMemberBean pmb : arr){ 
                            MemberDAO mdao = new MemberDAO();
                            MemberBean mb = mdao.getMember(pmb.getMember_num()); %>
@@ -149,6 +148,8 @@
                         </div>
                      </li>
                       <%} %>
+                      
+                      <% %>
                      <!-- 계속해서참여자추가(?) -->
 
 
@@ -272,16 +273,16 @@
 
             <div id="invite_sub">
                <ul>
-                  <li id="teaminvite"><p class="tit">팀, 직원 동료 초대</p>
+                  <li id="teaminvite"><span class="ico ico1"></span><p class="tit">팀, 직원 동료 초대</p>
                      <p class="txt">회사 직원 또는 조직도를 확인하고 초대할 수 있습니다.</p>
                   </li>
-                  <li id="alreadyinvite"><p class="tit">프로젝트 참여자</p>
+                  <li id="alreadyinvite"><span class="ico ico2"></span><p class="tit">프로젝트 참여자</p>
                      <p class="txt">프로젝트를 함께 했던 사람을 초대할 수 있습니다.</p>
                   </li>
-                  <li id="inviteemail"><p class="tit">이메일로 초대장 발송</p>
+                  <li id="inviteemail"><span class="ico ico3"></span><p class="tit">이메일로 초대장 발송</p>
                      <p class="txt">초대장을 이메일로 발송할 수 있습니다.</p>
                   </li>
-                  <li id="invitelink"><p class="tit">초대링크</p>
+                  <li id="invitelink"><span class="ico ico4"></span><p class="tit">초대링크</p>
                      <p class="txt">http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num=<%=num %></p>
                   </li>
                </ul>

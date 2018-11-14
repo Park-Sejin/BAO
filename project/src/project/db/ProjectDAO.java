@@ -12,6 +12,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import bao.TimeLine.db.DutyBean;
 import member.db.MemberBean;
 import project.favorite.db.ProjectFavoriteBean;
 import project.member.db.ProjectMemberBean;
@@ -239,7 +240,7 @@ public class ProjectDAO {
 		List list = new ArrayList();
 		try {
 			con=getCon();
-			sql="select project.pro_name, member.name, project.date "
+			sql="select project.pro_name, member.name, project.date, project.num "
 					+ "from project join member "
 					+ "on project.id=member.email "
 					+ "where project.pro_option=1 and project.pro_name like ?";
@@ -252,6 +253,7 @@ public class ProjectDAO {
 					hm.put("pro_name", rs.getString("pro_name"));
 					hm.put("member", rs.getString("name"));
 					hm.put("date", rs.getString("date"));
+					hm.put("pro_num", rs.getString("num"));
 					
 					list.add(hm);
 				}
@@ -270,13 +272,13 @@ public class ProjectDAO {
 		List list = null;
 		try {
 			con=getCon();
-			sql="select project.pro_name, member.name, project_member.date "
+			sql="select project.pro_name, member.name, project_member.date, project.num "
 					+ "from project join project_member "
 					+ "on project.num=project_member.project_num "
 					+ "join member on project_member.member_num=member.num "
-					+ "where member.name=?";
+					+ "where member.name like ?";
 			prpr=con.prepareStatement(sql);
-			prpr.setString(1, keyword);
+			prpr.setString(1, "%"+keyword+"%");
 			rs = prpr.executeQuery();
 			if(rs.next()){
 				list = new ArrayList();
@@ -285,6 +287,7 @@ public class ProjectDAO {
 					hm.put("pro_name", rs.getString("pro_name"));
 					hm.put("member", rs.getString("name"));
 					hm.put("date", rs.getString("date"));
+					hm.put("pro_num", rs.getString("num"));
 					
 					list.add(hm);
 				}
@@ -303,8 +306,27 @@ public class ProjectDAO {
 		List list = null;
 		try {
 			con=getCon();
-			sql="";
-			//db작성되면 추가
+			sql="select project.pro_name, twrite.content, twrite.Member_user, twrite.date, project.num "
+					+ "from project right outer join twrite "
+					+ "on project.num=twrite.project_num "
+					+ "where twrite.content like ?";
+			prpr = con.prepareStatement(sql);
+			prpr.setString(1, "%"+keyword+"%");
+			rs = prpr.executeQuery();
+			if(rs.next()){
+				list = new ArrayList();
+				System.out.println("list: "+list);
+				while(rs.next()){
+					HashMap hm = new HashMap();
+					hm.put("pro_name", rs.getString("pro_name"));
+					hm.put("content", rs.getString("content"));
+					hm.put("member", rs.getString("Member_user"));
+					hm.put("date", rs.getString("date"));
+					hm.put("pro_num", rs.getString("num"));
+					System.out.println("글 : "+rs.getString("content"));
+					list.add(hm);
+				}
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -315,7 +337,77 @@ public class ProjectDAO {
 	}
 	
 	//모두 검색
-	//db작성되면 추가
+	public List searchAll(String keyword){
+		List list = null;
+		try {
+			con=getCon();
+			sql="select project.pro_name, member.name, project.date, "
+					+ "twrite.content, twrite.Member_user, twrite.date, project.num "
+					+ "from project join member on project.id=member.email "
+					+ "left outer join twrite on project.num=twrite.project_num "
+					+ "where project.pro_name like ? "
+					+ "or member.name like ? "
+					+ "or twrite.Member_user like ? "
+					+ "or twrite.content like ?";
+			prpr = con.prepareStatement(sql);
+			prpr.setString(1, "%"+keyword+"%");
+			prpr.setString(2, "%"+keyword+"%");
+			prpr.setString(3, "%"+keyword+"%");
+			prpr.setString(4, "%"+keyword+"%");
+			rs = prpr.executeQuery();
+			if(rs.next()){
+				list = new ArrayList();
+				while(rs.next()){
+					HashMap hm = new HashMap();
+					hm.put("pro_name", rs.getString(1));
+					hm.put("pro_master", rs.getString(2));
+					hm.put("pro_date", rs.getString(3));
+					hm.put("content", rs.getString(4));
+					hm.put("writer", rs.getString(5));
+					hm.put("con_date", rs.getString(6));
+					hm.put("pro_num", rs.getString(7));
+					
+					list.add(hm);
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return list;
+	}
+	
+	//일정가져오기
+	public List getWork(String email){
+		List workList = new ArrayList();
+		try {
+			con=getCon();
+			sql="select duty_write.duty_title, duty_write.duty_firstday, duty_write.duty_lastday "
+					+ "from duty_write join member "
+					+ "on duty_write.duty_admin = member.name "
+					+ "where email=?";
+			prpr=con.prepareStatement(sql);
+			prpr.setString(1, email);
+			rs = prpr.executeQuery();
+			while(rs.next()){
+				DutyBean db = new DutyBean();
+				db.setDuty_title(rs.getString("duty_title"));
+				db.setDuty_firstday(rs.getString("duty_firstday"));
+				db.setDuty_lastday(rs.getString("duty_lastday"));
+				workList.add(db);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return workList;
+	}
 	
 	public void ProjectJoin(int memNum, int proNum){
 		try {

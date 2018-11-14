@@ -57,7 +57,7 @@
                   font-size: 14px;
                    color: #969696; }
                    
-#invite_sub ul li .ico {
+#invite_sub ul li .ico { 
     position: absolute;
     top: 18px;
     left: 20px;
@@ -67,18 +67,18 @@
 }
                    
 #invite_sub ul li .ico1 {
-   background: url(../img/invite/ico_prdbx_df1.png) no-repeat 0 0;
+   background: url(./img/invite/ico_prdbx_df1.png) no-repeat 0 0;
 }
 
 #invite_sub ul li .ico2 {
-   background: url(../img/invite/ico_prdbx_df2.png) no-repeat 0 0;
+   background: url(./img/invite/ico_prdbx_df2.png) no-repeat 0 0;
 }
 
 #invite_sub ul li .ico3 {
-   background: url(../img/invite/ico_prdbx_df3.png) no-repeat 0 0;
+   background: url(./img/invite/ico_prdbx_df3.png) no-repeat 0 0;
 }
 
 #invite_sub ul li .ico4 {
-   background: url(../img/invite/ico_prdbx_df4.png) no-repeat 0 0;
+   background: url(./img/invite/ico_prdbx_df4.png) no-repeat 0 0;
 }
 
