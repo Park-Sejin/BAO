@@ -11,7 +11,7 @@
 			/* response.sendRedirect("./timeline.chat");  */
 			/* response.sendRedirect("./main.pr"); */
 			response.sendRedirect("./Login.me");
-			// 탐라탐라탐라왜안되dd
+			// 한글설정
 		%>
 	</body>
 </html> 
