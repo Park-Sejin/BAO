@@ -58,7 +58,11 @@ public class TimeLineController extends HttpServlet{
            forward.setPath("./content/my_board.jsp");
            forward.setRedirect(false);
             
-         }
+         }else if(command.equals("/timeline.tl")) {
+    	   forward = new ActionForward();
+    	   forward.setPath("./timeline.jsp");
+    	   forward.setRedirect(false);
+       }
        
 
        

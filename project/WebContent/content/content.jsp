@@ -53,7 +53,7 @@
 			});
 		});
 		
-		$('#promain').click(function(){
+		/*$('#promain').click(function(){
 			$.ajax({
 				type : "POST",
 				url : "promain.pr",
@@ -73,7 +73,7 @@
 					$('#content').append(data);
 				}
 			});
-		});
+		});*/
 		
 /* 		$('#favorite').click(function(){
 		$('#div_emt').empty();
@@ -240,7 +240,7 @@
 					} 
 				%>
 				<p class="collabo_title_txt">
-					<a href="timeline.jsp?num=<%=num%>"><%=content%></a> <span class="big_num">123?</span>
+					<a href="timeline.tl?num=<%=num%>"><%=content%></a> <span class="big_num">123?</span>
 				</p>
 			</div>
 			<div class="folow_user_list">
