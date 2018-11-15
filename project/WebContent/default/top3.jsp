@@ -107,40 +107,6 @@
 								<span class="sec3_div_date">2018.10.25</span>
 							</div>
 						
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							
-							
 						</div>
 					</div>
 				</div>
