@@ -11,6 +11,8 @@ import java.util.Enumeration;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.json.simple.JSONObject;
 
 import com.oreilly.servlet.MultipartRequest;
@@ -18,6 +20,9 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import bao.TimeLine.db.BoardBean;
 import bao.TimeLine.db.BoardDAO;
+import member.db.MemberDAO;
+import project.db.ProjectBean;
+import project.db.ProjectDAO;
 
 
 public class TimeLineWriteAction implements Action{
@@ -26,6 +31,12 @@ public class TimeLineWriteAction implements Action{
    public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
       
       System.out.println("TimeLineWriteInsert execute()!!");
+      
+      HttpSession session = request.getSession();
+      String email = (String)session.getAttribute("email");
+      
+      
+      System.out.println("dd: " + email);
       
       request.setCharacterEncoding("UTF-8");
       try{
@@ -71,7 +82,12 @@ public class TimeLineWriteAction implements Action{
       bb.setImg_file(mr.getFilesystemName("img_file"));
       //System.out.println("Iaction : "+mr.getFilesystemName("img_file"));
       
-      bb.setMember_user(mr.getParameter("Member_user"));
+      bb.setMember_user(email);
+      
+      ProjectDAO pdao = new ProjectDAO();
+      ProjectBean pb =  pdao.getProject(Integer.parseInt(mr.getParameter("num")));
+      
+      bb.setProject_name(pb.getProName());
       
       BoardDAO bdao=new BoardDAO();
       bdao.insertWrite(bb);
@@ -107,12 +123,23 @@ public class TimeLineWriteAction implements Action{
       //request.setAttribute("list", list);
       //JSONParser JP=new JSONParser();
       
-      JSONObject obj=null;
+      /*JSONObject obj=null;
       //JSONArray arr=new JSONArray();
       String Write=null;
       obj=new JSONObject();
       obj.put("Con",bb.getContent());
-      obj.put("WF",bb.getWrite_file());
+      obj.put("WF",bb.getWrite_file());*/
+      
+      JSONObject obj=null;
+      //JSONArray arr=new JSONArray();
+      String Write=null;
+      
+      MemberDAO mdao = new MemberDAO();
+      
+      obj=new JSONObject();
+      obj.put("Name",mdao.getMember(bb.getMember_user()).getName());
+      obj.put("Date",bb.getDate());
+      obj.put("Content",bb.getContent());
       //obj.put("IF", multi.getParameter("Img_write_file"));
       Write=obj.toString();
       

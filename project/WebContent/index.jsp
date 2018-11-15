@@ -11,7 +11,7 @@
 			/* response.sendRedirect("./timeline.chat");  */
 			/* response.sendRedirect("./main.pr"); */
 			response.sendRedirect("./Login.me");
-			// 한글설정
+			// 타임라인 
 		%>
 	</body>
 </html> 

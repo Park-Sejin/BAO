@@ -16,6 +16,9 @@ public class ChatDAO {
 	PreparedStatement pstmt = null;
 	String sql = "";
 	ResultSet rs = null;
+	PreparedStatement pstmt2 = null;
+	String sql2 = "";
+	ResultSet rs2 = null;
 
 	// 디비연결 메서드
 	private Connection getCon() throws Exception {
@@ -30,6 +33,8 @@ public class ChatDAO {
 	public void CloseDB() {
 		if (rs != null) { try { rs.close(); } catch (SQLException e) { e.printStackTrace(); } }
 		if (pstmt != null) { try { pstmt.close(); } catch (SQLException e) { e.printStackTrace(); } }
+		if (rs2 != null) { try { rs2.close(); } catch (SQLException e) { e.printStackTrace(); } }
+		if (pstmt2 != null) { try { pstmt2.close(); } catch (SQLException e) { e.printStackTrace(); } }
 		if (con != null) { try { con.close(); } catch (SQLException e) { e.printStackTrace(); } }
 	}
 	
@@ -120,4 +125,8 @@ public class ChatDAO {
 			e.printStackTrace();
 		} finally { CloseDB(); }
 	}
+	
+	
+	
+	
 }
