@@ -13,14 +13,14 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
    <script type="text/javascript">
    
-   function copyToClipboard(val) {
+    function copyToClipboard(val) {
 	   var t = document.createElement("textarea");
 	   document.body.appendChild(t);
 	   t.value = val;
 	   t.select();
 	   document.execCommand('copy');
 	   document.body.removeChild(t);
-	 }
+	 } 
    
 	 
    
@@ -58,6 +58,53 @@
    function closeWin() {
       part.close();
    }
+   
+    /* invite2_div  
+    function btn_prd_add(){
+       alert("버튼클릭");
+	   
+	   var add ="";
+	   add= add+"<b>버튼클릭add</b>";
+	   
+	   $(".prd_namebx_container").append(add);
+	   alert("버튼클릭끝");	   
+	   
+   }*/
+   
+   function btn_prd_add(){
+       alert("버튼클릭");
+	   
+	   var add ="";
+	   var liarr = new array();
+	   
+	   var li = $(this);
+	   var div = li.children();
+	   
+	   console.log(" 클릭한 li의 데이터"+li.text());
+	   div.each(function(i){
+		  liarr.push(td.eq(i).text()); 
+	   });
+	   
+	   console.log("배열에 담긴 값"+liarr);
+	   
+	   var no = li.eq(0).text();
+	   var userid = li.eq(1).text();
+	   var name = li.eq(2).text();
+	   var email=li.eq(3).text();
+	   
+	   add+= "클릭된 열의 li 값"+no+userid+name+email+"gg";
+	   
+	   
+	   $(".prd_namebx_container").append(li.text());
+	   $(".prd_namebx_container").append(add);
+	   
+	   
+	   $(".prd_namebx_container").append(add);
+	   alert("버튼클릭끝");	   
+	   
+   } 
+  
+
 	
    $(document).ready(function(){
 		 $("#teaminvite").click(function(){
@@ -66,15 +113,15 @@
 			});
 		 
 		 
-		 $("#btn_prd_add").click(function(){
-			 alert("btn_prd_add");
-		 });
-		 
-		 $("#invitelink").click(function() {			   
+	
+		 /* link복사하기 inv  */
+		 $("#invitelink").click(function() {	
+			   alert("invitelink 클릭");
 			   copyToClipboard('http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num=1');
 			   alert("복사완료");
 			 });
 		 
+	
 		
     }); 
    
@@ -93,6 +140,7 @@
       int mem_num = 0;
       if(request.getParameter("mem_num") != null) {
          mem_num = Integer.parseInt(request.getParameter("mem_num"));
+         
       } 
      
    %>
@@ -165,10 +213,7 @@
                            <a href="" class="a_name"><%= mb.getName()%></a> --%>
                         </div>
                         <div class="btn_right">
-<<<<<<< HEAD
-=======
                         	<input type="hidden" id="receive_email" value="<%=mb.getEmail()%>">
->>>>>>> refs/remotes/origin/master
                            <a class="btn chat" onclick="go_pop()"><span class="blind">채팅</span></a>
                         </div>
                      </li>
@@ -264,7 +309,7 @@
    <!-- 팝업창 div2  -->
  
    <div id="invite2_div" class="modal">
-        <div class="invite2_popup" style="width:500px; height:620px; z-index:1100; position:fixed;" >
+        <div class="invite2_popup" style="width:500px; height:620px; z-index:1100; position:fixed; margin-bottom:10px;" >
         	<div class="prdbx_hd">
         		<!-- 상단 타이틀  -->
         		<div class="prdbx_hd_top">
@@ -283,10 +328,9 @@
             <div class="prdbx_cn">
             	<div class="prd_namebx_div">
             		<div class="prd_namebx_inside">
-            			<div class="prd_namebx_container">
-            			
+            			<div class="prd_namebx_container">          			
             				<div class="prd_name_cn"></div>
-            				<div class="prd_name_btn"><a class="all_del">전체삭제</a></div>
+            				<div class="prd_name_btn"><a id="all_del">전체삭제</a></div>
             			</div>
             		
             		</div>
@@ -298,29 +342,18 @@
 			
 			<div class="prdcn_list">
 				<ul>
-					<li style=" width: 480px; height:63px; border: 1px solid #800080; ">
+					<li id="buttontest" style=" width: 480px; height:63px; border: 1px solid #800080; ">
 					<img id="prflImg" src="">
 					<div class="prdcn_name"><%=mb.getName() %></div>
-					<div class="btn_r"><a id="btn_prd_add">추가</a></div>
+					<div class="btn_r"><a onclick="btn_prd_add()">추가</span></div>
 					</li>
 				</ul>
 			
 			</div>
 			<%}%>
-			<button id="check" width:"30px";>버튼</button>
+
 			
-			<script>
-			
-			 $(document).ready(function(){
-				 $("#btn_prd_add").click(function(){
-					alert("ggg"); 
-					
-					
-				 });
-			 });
-			
-			
-			</script>
+		
 			
             </div>
             <div class="prdbx_ft">
