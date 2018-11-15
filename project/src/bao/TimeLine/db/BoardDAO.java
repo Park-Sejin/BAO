@@ -159,7 +159,7 @@ public class BoardDAO {
 		return list;
 	}
 	
-	// twrite에서 project_num 가져오는 메서드 
+	// .twrite에서 project_num 가져오는 메서드 
 	public int getProNum(int twrite_num) {
 		int proNum=0;
 		try {
