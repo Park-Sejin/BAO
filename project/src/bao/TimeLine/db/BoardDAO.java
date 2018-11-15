@@ -92,7 +92,7 @@ public class BoardDAO {
       } finally {
          CloseDB();
       }
-      return Connectlist;
+      return Connectlist; 
    }
    
 // 알림 전송 메서드
