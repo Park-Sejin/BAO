@@ -84,10 +84,8 @@ public class TimeLineWriteAction implements Action{
       
       bb.setMember_user(email);
       
-      ProjectDAO pdao = new ProjectDAO();
-      ProjectBean pb =  pdao.getProject(Integer.parseInt(mr.getParameter("num")));
       
-      bb.setProject_name(pb.getProName());
+      bb.setProject_num(Integer.parseInt(mr.getParameter("num")));
       
       BoardDAO bdao=new BoardDAO();
       bdao.insertWrite(bb);

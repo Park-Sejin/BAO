@@ -46,7 +46,7 @@ public class BoardDAO {
          System.out.println("디비test");
          
          sql="insert into twrite(content,write_file,img_file,date,"
-               + "Member_user,project_name) values(?,?,?,now(),?,?)";
+               + "Member_user,project_num) values(?,?,?,now(),?,?)";
          pstmt=con.prepareStatement(sql);
          
          pstmt.setString(1, bb.getContent());
@@ -56,7 +56,7 @@ public class BoardDAO {
          pstmt.setString(3, bb.getImg_file());
          //System.out.println(bb.getImg_file());
          pstmt.setString(4, bb.getMember_user()); 
-         pstmt.setString(5, bb.getProject_name());
+         pstmt.setInt(5, bb.getProject_num());
          pstmt.executeUpdate();
          
       } catch (Exception e) {
@@ -84,6 +84,7 @@ public class BoardDAO {
                dto.setImg_file(rs.getString("img_file"));
                dto.setDate(rs.getDate("date"));
                dto.setMember_user(rs.getString("Member_user"));
+               dto.setProject_num(rs.getInt("Project_num"));
                dto.setTable_type(rs.getString("Table_type"));
                Connectlist.add(dto);
             }

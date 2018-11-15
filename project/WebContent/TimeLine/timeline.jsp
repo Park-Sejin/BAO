@@ -436,7 +436,7 @@
                             Write+="'" + Chutext.replace(/\r\n/gi,"<br>") + "'";
                             Write+="<br>";
                             Write+="</div>"; */
-                            $("#time_board").prepend(Write);
+                            $("#total_board").prepend(Write);
                        }
                   });
                });
@@ -796,7 +796,9 @@
 			TotalDAO td=new TotalDAO();
 			ArrayList<TotalBean> TotalList=td.Totalinfo(); // 안함. 나중에 토탈빈으로 바꿔야함.
     		
-    		
+    		%>
+    			<div id="total_board">
+    		<%
     		
     		arr = bdao.Writeinfo();
     		
@@ -831,11 +833,12 @@
 			         	
 			       
 			       <%} %>
+		       		<div id="mar_btm"></div>
 		       </div>
-		       <div id="mar_btm"></div>
+		       
          <%		} 
          	}%>
-    
+    		</div>
     
     
 
