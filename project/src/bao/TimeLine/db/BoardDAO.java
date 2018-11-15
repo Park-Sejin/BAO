@@ -40,25 +40,36 @@ public class BoardDAO {
    
    
    // 게시물 작성 메서드
-   public void insertWrite(BoardBean bb){
+   // tWrite_num값을 가져오려고 메서드 수정
+   public int insertWrite(BoardBean bb){
+	   int tNum = 1;
       try {
          con=getCon();
          System.out.println("디비test");
          
-         sql="insert into twrite(content,write_file,img_file,date,"
-               + "Member_user,project_num) values(?,?,?,now(),?,?)";
-         pstmt=con.prepareStatement(sql);
-         
-         pstmt.setString(1, bb.getContent());
-         pstmt.setString(2, bb.getWrite_file());
-         pstmt.setString(3, bb.getImg_file());
-         pstmt.setString(4, bb.getMember_user()); 
-         pstmt.setInt(5, bb.getProject_num());
-         pstmt.executeUpdate();
+         sql="select max(num) from twrite";
+         pstmt= con.prepareStatement(sql);
+         rs = pstmt.executeQuery();
+         if(rs.next()) {
+        	 		tNum = rs.getInt("max(num)")+1;
+        	 		System.out.println(tNum);
+        	 		sql="insert into twrite(content,write_file,img_file,date,"
+                     + "Member_user,project_num,num) values(?,?,?,now(),?,?,?)";
+               pstmt=con.prepareStatement(sql);
+               
+               pstmt.setString(1, bb.getContent());
+               pstmt.setString(2, bb.getWrite_file());
+               pstmt.setString(3, bb.getImg_file());
+               pstmt.setString(4, bb.getMember_user()); 
+               pstmt.setInt(5, bb.getProject_num());
+               pstmt.setInt(6, tNum);
+               pstmt.executeUpdate();
+         }
          
       } catch (Exception e) {
          e.printStackTrace();
       } finally { CloseDB(); }
+      return tNum;
    }
    
    
@@ -104,13 +115,13 @@ public class BoardDAO {
 			sql="select member_num from project_member where project_num = ?";
 			pstmt=con.prepareStatement(sql);
 			// 글 작성할 때 project_num 받아와야함
-			pstmt.setInt(1, 1);
+			pstmt.setInt(1, bb.getProject_num());
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				sql2="insert into alarm(project_num,member_num,twrite_num,date) values(?,?,?,now())";
 				pstmt2=con.prepareStatement(sql2);
-				pstmt2.setInt(1, 1);
+				pstmt2.setInt(1, bb.getProject_num());
 				pstmt2.setInt(2, rs.getInt("member_num"));
 				System.out.println("member_num : "+rs.getInt("member_num"));
 				pstmt2.setInt(3, tNum);
