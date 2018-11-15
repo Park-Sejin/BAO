@@ -621,30 +621,30 @@
          </script>
         <%--  <a href="./FileDownloadAction.tl?file_name=<%=Wbb.getImg_file()%>"><img name="img" style="width:120px; height:auto;"
        src="./upload/<%=Wbb.getImg_file()%>"></a></div><br> --%>
-<div id="plusArea" style="">
-<%		
-		BoardBean Wbb=new BoardBean();
-		BoardDAO Wbdao=new BoardDAO();
-		ArrayList<BoardBean> list=Wbdao.Writeinfo();
-
-		
-		/* for(int Wcon=0; Wcon<list.size(); Wcon++){
-			Wbb=list.get(Wcon); */
-
-%>		
-<%
-		TotalBean tb=new TotalBean();
-		TotalDAO td=new TotalDAO();
-		ArrayList<TotalBean> TotalList=td.Totalinfo();
-%>
-		<!-- 타임라인 테이블 -->
-        <div id="TimeLineTable" style="border: 3px solid red;">
-        <%
-        	for(int Total=0; Total<TotalList.size(); Total++){
-				tb=TotalList.get(Total);
-        %>
-        	<!-- 글 작성 테이블 -->
-        	<div id="WriteForm">
+	<div id="plusArea" style="">
+		<%		
+			BoardBean Wbb=new BoardBean();
+			BoardDAO Wbdao=new BoardDAO();
+			ArrayList<BoardBean> list=Wbdao.Writeinfo();
+	
+			
+			/* for(int Wcon=0; Wcon<list.size(); Wcon++){
+				Wbb=list.get(Wcon); */
+	
+		%>		
+		<%
+			TotalBean tb=new TotalBean();
+			TotalDAO td=new TotalDAO();
+			ArrayList<TotalBean> TotalList=td.Totalinfo();
+		%>
+			<!-- 타임라인 테이블 -->
+	        <div id="TimeLineTable" style="border: 3px solid red;">
+	        <%
+	        	for(int Total=0; Total<TotalList.size(); Total++){
+					tb=TotalList.get(Total);
+	        %>
+	       	<!-- 글 작성 테이블 -->
+	       	<div id="WriteForm">
 				<%
 				if(tb.getTable().equals("Write")) {
 				%>
@@ -659,15 +659,20 @@
 					제목:<%=tb.getContent()%>
 				<%}%>
 			</div>
-			
-			
-        
-        
-        
-       </div> <!-- 타임라인 테이블 -->
-       <%} %>
+				
+				
+	        
+	        
+	        
+		</div> <!-- 타임라인 테이블 -->
+	       <%} %>
        
     </div>
+    
+    
+    
+    
+    
 
 
 
