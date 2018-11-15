@@ -143,9 +143,16 @@
 								AlarmBean ab = (AlarmBean)AlarmList.get(i);
 								int proNum = h_bdao.getProNum(ab.getTwrite_num());
 								proName = h_pdao.getProjectName(proNum);
+								MemberBean mb = h_mdao.getMember( ab.getMember_num());
 						%>
                      	<div class="sec3_div">
-                     		<img src="./img/top_header/thumb26.gif" width="40px"
+                     		<img 
+                     			<%if(mb.getImage()==null){ %>
+                     			src="./img/top_header/thumb26.gif" 
+                     			<%}else{ %>
+                     			src="./upload/<%=mb.getImage()%> "
+                     			<%} %>
+                     			width="40px"
 										height="40px"  class="sec3_div_img">
 							<span class="sec33_div_name"><%=proName %></span>
 							<span class="sec33_div_title"><span class="bold"><%=h_mdao.getName(ab.getMember_num()) %></span>님이 글 작성을 했습니다.</span>

@@ -104,12 +104,14 @@
 					//$('table').append("<tr><td>"+item.title+"</td><td>"+item.gender+"</td><td>"+item.age+"</td></tr>");
 				});
 				console.log(rs); */
+				var id = document.getElementById('today');
 				$.each(json, function(index, item){
 				       //alert(item.title + ":" +item.date);
 				       
 				       //객체를 가져다가 파싱
 				       var title = item.title;
 				       var date = item.date;
+				       $(id).append(title);
 				       alert(title);
 				       alert(date);
 				});
@@ -201,7 +203,7 @@
 				//오늘
 				calendarStr += "<TD class=today>" + i + "<BR>"
 				//DB에 해당 날짜의 일정이 있으면 삽입
-				//if(스케줄1==i){calendarStr += "<DIV class=viewSched pink><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
+				calendarStr += "<DIV id=today ></DIV>"
 				//if(스케줄2==i){calendarStr += "<DIV class=viewSched orange><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
 				//if(일정1==i){calendarStr += "<DIV class=viewSched yellow><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
 				//if(일정2==i){calendarStr += "<DIV class=viewSched green><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
