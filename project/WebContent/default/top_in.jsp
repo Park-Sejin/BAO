@@ -1,3 +1,4 @@
+<%@page import="chatting.db.ChatDAO"%>
 <%@page import="member.db.MemberBean"%>
 <%@page import="project.db.ProjectDAO"%>
 <%@page import="java.util.List"%>
@@ -56,6 +57,9 @@
 
 </head>
 <body>
+	<%
+	String id = (String)session.getAttribute("email");
+	%>
 	<header>
 	<a href="./main.pr"></a>
 
@@ -98,7 +102,6 @@
 						</div>
 	
 						<div id="hd_chat_sec3">
-						
 							<div class="sec3_div">
 								<img src="./img/top_header/thumb26.gif" width="40px"
 												height="40px"  class="sec3_div_img">
@@ -106,40 +109,6 @@
 								<span class="sec3_div_title">안녕하세요</span>
 								<span class="sec3_div_date">2018.10.25</span>
 							</div>
-						
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							
 							
 						</div>
 					</div>
@@ -164,7 +133,6 @@
 						<%
 							//알림 리스트 불러오기
 							BoardDAO h_bdao = new BoardDAO();
-							String id = (String)session.getAttribute("email");
 							MemberDAO h_mdao = new MemberDAO();
 							ProjectDAO h_pdao = new ProjectDAO();
 							int memNum = h_mdao.getMemberNum(id);
