@@ -431,6 +431,7 @@ function remove(obj){
    <!-- 외부영역 클릭시 -->
    </div>
    </form>
+   
    <script type="text/javascript">
    $(document).ready(function(){
         $("#DutyUpload").click(function(){

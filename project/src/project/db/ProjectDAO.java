@@ -381,7 +381,7 @@ public class ProjectDAO {
 	}
 	
 	//일정가져오기
-	public List getWork(String email){
+	/*public List getWork(String email){
 		List workList = new ArrayList();
 		try {
 			con=getCon();
@@ -407,7 +407,31 @@ public class ProjectDAO {
 		}
 		
 		return workList;
+	}*/
+	public List getWork(){
+		List workList = new ArrayList();
+		try {
+			con=getCon();
+			sql="select duty_title, date from duty_write";
+			prpr=con.prepareStatement(sql);
+			rs = prpr.executeQuery();
+			while(rs.next()){
+				DutyBean db = new DutyBean();
+				db.setDuty_title(rs.getString("duty_title"));
+				db.setDate(rs.getDate("date"));
+				
+				workList.add(db);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			CloseDB();
+		}
+		
+		return workList;
 	}
+	
 	
 	public void ProjectJoin(int memNum, int proNum){
 		try {

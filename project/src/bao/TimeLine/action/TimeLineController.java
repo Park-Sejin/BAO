@@ -33,11 +33,10 @@ public class TimeLineController extends HttpServlet{
           }catch(Exception e){
              e.printStackTrace();
           }
-       }else if(command.equals("/TimeLine.tl")){
+       }else if(command.equals("/Timeline.tl")) {
           forward = new ActionForward();
-         forward.setPath("./TimeLine/divdiv.jsp");
-         forward.setRedirect(false);
-          
+          forward.setPath("./TimeLine/timeline.jsp");
+          forward.setRedirect(false);
        }else if(command.equals("/TimeLineDutyWriteAction.tl")){
           action = new TimeLineDutyWriteAction();
           try{
@@ -53,15 +52,10 @@ public class TimeLineController extends HttpServlet{
           }catch(Exception e){
              e.printStackTrace();
           }
-       }else if(command.equals("/myBoard.tl")){
-           forward = new ActionForward();
-           forward.setPath("./content/my_board.jsp");
-           forward.setRedirect(false);
-            
-         }else if(command.equals("/timeline.tl")) {
-    	   forward = new ActionForward();
-    	   forward.setPath("./timeline.jsp");
-    	   forward.setRedirect(false);
+       }else if(command.equals("/myBoard.tl")) {
+          forward = new ActionForward();
+          forward.setPath("./content/my_board.jsp");
+          forward.setRedirect(false);
        }
        
 
@@ -92,5 +86,3 @@ public class TimeLineController extends HttpServlet{
    
    
 }
-
-

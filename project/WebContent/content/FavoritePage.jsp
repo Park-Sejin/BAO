@@ -179,7 +179,7 @@
 				<a class="starOn" id="<%=num%>"></a>
 				
 				<p class="collabo_title_txt">
-					<a href="timeline.tl?num=<%=num%>"><%=content%></a> <span class="big_num">123?</span>
+					<a href="Timeline.tl?num=<%=num%>"><%=content%></a> <span class="big_num">123?</span>
 				</p>
 			</div>
 			<div class="folow_user_list">

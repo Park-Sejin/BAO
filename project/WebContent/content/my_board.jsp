@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="bao.TimeLine.db.BoardDAO"%>
+<%@page import="bao.TimeLine.db.BoardBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,9 +20,18 @@
 		<jsp:include page="../default/top3.jsp"></jsp:include>
 		<jsp:include page="../default/LeftHeader.jsp"></jsp:include>
 		
+		<%
+			//String email = (String)request.getAttribute("email");
+			BoardDAO bdao = new BoardDAO();
+			
+			
+		%>
+		
 		<article id="timeline">
 			<h3>내 게시물 글 보기</h3>
 			<div id="mar_btm"></div>
+			
+			
 			
 	        <div id="time_board">
 	            <div id="time_pName">
@@ -39,12 +51,17 @@
 		            	게시판 글
 		            	
 		            	
-		            <div>좋아요 댓글달기</div>	
+		            
+		            </div>
+		            <div>
+		            	<a href="">좋아요</a>
+		            	<a href="">댓글달기</a>
 		            </div>
 		         </div>
-		         
+		         	
 		         <div id="mar_btm"></div>
 	         </div>
+	         <%-- <%} %> --%>
 
 		</article>
 	</div>
