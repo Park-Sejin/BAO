@@ -87,12 +87,12 @@
 		} 
 		$.ajax({
 			type: "POST",
-			url: "./calendarAction.pr",
+			url: "./calendarJSON.pr",
 			data:{
 				"email":email,
 				"work":work
 			},
-			dataType:'text',
+			dataType:'json',
 	        success: function(json){
 	        		/*var title = data.split(",")[0];
 				var date = data.split(",")[1];
@@ -104,11 +104,16 @@
 					//$('table').append("<tr><td>"+item.title+"</td><td>"+item.gender+"</td><td>"+item.age+"</td></tr>");
 				});
 				console.log(rs); */
-				var list = json.trim();
-				var str = JSON.stringify(list);
-				var newArr = JSON.parse(str);
-				alert(newArr[0].date);
-				
+				$.each(json, function(index, item){
+				       //alert(item.title + ":" +item.date);
+				       
+				       //객체를 가져다가 파싱
+				       var title = item.title;
+				       var date = item.date;
+				       alert(title);
+				       alert(date);
+				});
+
 	        },
 	        error : function(){
 				alert('통신실패!!');
@@ -145,7 +150,6 @@
 		endDay= new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 		dayName= new Array("일", "월", "화", "수", "목", "금", "토");
 		col=0;
-
 		if (tYear == null) {
 			tYear = nYear;
 		}   
