@@ -1,3 +1,6 @@
+<%@page import="member.db.MemberDAO"%>
+<%@page import="bao.TimeLine.db.TotalDAO"%>
+<%@page import="bao.TimeLine.db.TotalBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="bao.TimeLine.db.BoardDAO"%>
 <%@page import="bao.TimeLine.db.BoardBean"%>
@@ -21,8 +24,11 @@
 		<jsp:include page="../default/LeftHeader.jsp"></jsp:include>
 		
 		<%
-			//String email = (String)request.getAttribute("email");
+			String email = (String)session.getAttribute("email");
+		
+		
 			BoardDAO bdao = new BoardDAO();
+			ArrayList<BoardBean> arr = new ArrayList<BoardBean>();
 			
 			
 		%>
@@ -33,35 +39,55 @@
 			
 			
 			
-	        <div id="time_board">
-	            <div id="time_pName">
-					<h3>프로젝트 명</h3>
-	            </div>
-	            <div id="time_body">
-		            <div id="time_profile">
-						<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">
-						<span id="time_info">
-							<b>이름</b><br>
-							<span style="color: #c0c0c0;font-size: 12px;">날짜</span>
-						</span>
-		            </div>
-		            <div class="clear"></div>
-		            
-		            <div id="time_content">
-		            	게시판 글
-		            	
-		            	
-		            
-		            </div>
-		            <div>
-		            	<a href="">좋아요</a>
-		            	<a href="">댓글달기</a>
-		            </div>
-		         </div>
-		         	
-		         <div id="mar_btm"></div>
-	         </div>
-	         <%-- <%} %> --%>
+	        <%
+	    	
+    		
+    		
+    		TotalBean tb=new TotalBean();
+			TotalDAO td=new TotalDAO();
+			ArrayList<TotalBean> TotalList=td.Totalinfo(); // 안함. 나중에 토탈빈으로 바꿔야함.
+    		
+    		
+    		
+    		arr = bdao.Writeinfo();
+    		
+    		if(arr.size() != 0) {
+    			for(BoardBean bb: arr) {
+    				if(bb.getMember_user().equals(email)){
+    				MemberDAO mdao = new MemberDAO();
+    		%>
+			    	<div id="time_board">
+			    		<% if(bb.getTable_type().equals("Write")) { %>
+			            <div id="time_body">
+				            <div id="time_profile">
+								<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">
+								<span id="time_info" style="width: 100px;">
+									<b><%= mdao.getMember(bb.getMember_user()).getName() %></b><br>
+									<span style="color: #c0c0c0;font-size: 12px;"><%=bb.getDate() %></span>
+								</span>
+				            </div>
+				            <div class="clear"></div>
+				            
+				            <div id="time_content">
+				            	<%=bb.getContent() %>
+				            	
+				            	
+				            
+				            </div>
+				            <div>
+				            	<a href="">좋아요</a>
+				            	<a href="">댓글달기</a>
+				            </div>
+				       </div>
+				         	
+				       
+				       <%} %>
+				       
+			       </div>
+			       <div id="mar_btm"></div>
+	         <%		}
+	         	} 
+	         }%>
 
 		</article>
 	</div>

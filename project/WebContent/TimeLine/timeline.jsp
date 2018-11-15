@@ -735,9 +735,10 @@
 			            </div>
 			       </div>
 			         	
-			       <div id="mar_btm"></div>
+			       
 			       <%} %>
 		       </div>
+		       <div id="mar_btm"></div>
          <%		} 
          	}%>
     
