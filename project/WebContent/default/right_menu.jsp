@@ -165,6 +165,10 @@
                            <a href="" class="a_name"><%= mb.getName()%></a> --%>
                         </div>
                         <div class="btn_right">
+<<<<<<< HEAD
+=======
+                        	<input type="hidden" id="receive_email" value="<%=mb.getEmail()%>">
+>>>>>>> refs/remotes/origin/master
                            <a class="btn chat" onclick="go_pop()"><span class="blind">채팅</span></a>
                         </div>
                      </li>
