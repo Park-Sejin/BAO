@@ -237,7 +237,7 @@
 				modal3.style.display = "block";
 			}
 			// When the user clicks anywhere outside of the modal, close it
-			window.onclick = function(event) {
+			/* window.onclick = function(event) {
 				if (event.target == modal1) {
 					modal1.style.display = "none";
 				}
@@ -247,9 +247,9 @@
 				if (event.target == modal3) {
 					modal3.style.display = "none";
 				}
-			}
+			} */
 			
-			/* $(".modal2").on("show.bs.modal", function() {
+			$(".modal2").on("show.bs.modal", function() {
 				var curModal;
 				curModal = this;
 				$(".modal2").each(function() {
@@ -257,7 +257,7 @@
 						$(this).modal("hide");
 					}
 				});
-			}); */
+			});
 			
 			</script>
 			
