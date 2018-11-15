@@ -246,7 +246,7 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
     z-index: 10;
 }
 #my-dialog {
-    display: none;
+    /* display: none; */
     position: fixed;
     left: calc( 50% - 160px ); top: calc( 50% - 70px );
     width: 223px; height: 200px; 
@@ -352,11 +352,56 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
 
 
 
+/* ----------------------------------------------------------댓글 css */
+#comment_body {
+	width: 700px;
+	min-height: 50px;
+	background-color: #eee;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+#comment_list, #form_in_div, #new_cmtList {
+	margin-left: 10px;
+	margin-bottom: 10px;	
+}
 
+#comment_info {
+	height: 40px;
+	line-height: 40px;
+	margin-left: 5px;
+	float: left;
+}
 
+#comment_body img, #form_in_div img {
+	float: left;
+	border: 1px solid #eee;
+	border-radius: 50%;
+}
 
+#comment_body span {
+	color: #c0c0c0;
+	font-size: 12px;
+}
+#cmt_content {
+	margin-left: 40px;
+}
 
+#form_in_div {
+	border-top: 1px solid #ccc;
+	padding-top: 5px;
+	margin-top: 10px;
+}
+#form_in_div input[type="text"] {
+	width: 600px;
+	height: 30px;
+	line-height: 30px;
+	margin-left: 5px;
+}
 
+#sub_cmt {
+	height: 30px;
+	width: 40px;
+}
 
 
 

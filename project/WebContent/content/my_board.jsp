@@ -1,3 +1,7 @@
+<%@page import="member.db.MemberBean"%>
+<%@page import="bao.TimeLine.db.CommentBean"%>
+<%@page import="bao.TimeLine.db.CommentDAO"%>
+<%@page import="project.db.ProjectDAO"%>
 <%@page import="member.db.MemberDAO"%>
 <%@page import="bao.TimeLine.db.TotalDAO"%>
 <%@page import="bao.TimeLine.db.TotalBean"%>
@@ -55,9 +59,15 @@
     			for(BoardBean bb: arr) {
     				if(bb.getMember_user().equals(email)){
     				MemberDAO mdao = new MemberDAO();
+    				ProjectDAO pdao = new ProjectDAO();
     		%>
 			    	<div id="time_board">
 			    		<% if(bb.getTable_type().equals("Write")) { %>
+			    		 <div id="time_pName">
+			               <h3><%=pdao.getProjectName(bb.getProject_num()) %></h3>
+			             </div>
+						    		
+			    		
 			            <div id="time_body">
 				            <div id="time_profile">
 								<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">
@@ -76,18 +86,85 @@
 				            </div>
 				            <div>
 				            	<a href="">좋아요</a>
-				            	<a href="">댓글달기</a>
 				            </div>
 				       </div>
-				         	
+				       <!-- 댓글 달기 -->
+				       <%
+				       		CommentDAO cdao = new CommentDAO();
+				       		ArrayList<CommentBean> cmt_arr = cdao.getComment();
+				       %>
 				       
+				       <div id="comment_body">
+				       		<%for(CommentBean cb : cmt_arr) { 
+				       			MemberDAO cmt_mdao = new MemberDAO();%>
+								<div id="comment_list">
+										<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png">
+										
+									<div id="comment_info">
+										<b><%= cmt_mdao.getMember(cb.getCmt_email()).getName() %></b>
+										<span style="color: #c0c0c0;font-size: 12px;"><%=cb.getDate() %></span>
+										좋아요
+										<a href="">수정</a> | <a href="">삭제</a><br>
+									</div>
+									<div class="clear"></div>
+									<div id="cmt_content">
+										<%=cb.getCmt_content() %>
+									</div>
+								</div>
+							<%} %><div id="new_cmtList"></div><!-- 작성한 페이지 ajax 넘어오는 div -->
+							
+							<form action="" id="comment_form"></form>
+								<div id="form_in_div">
+									<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png">
+									
+									<input type="text" id="content" name="content" placeholder="댓글을 입력하세요.">
+									<input type="hidden" id="board_num" name="board_num" value="<%= bb.getNum()%>">
+									<input type="button" value="작성" id="sub_cmt">
+								</div>
+							</form>
+	                  </div>
 				       <%} %> 
-				       
 			       </div>
 			       <div id="mar_btm"></div>
 	         <%		}
 	         	} 
 	         }%>
+	         <script>
+	         	$(document).ready(function(){
+	         		$("#sub_cmt").click(function(){
+	         			
+	         			$.ajax({
+	                       url:"./CommentAction.tl",
+	                       data: {
+	                    		board_num : $("#board_num").val(),
+		                    	content : $("#content").val()
+	                       },
+	                       type: 'POST',
+	                       success: function(data){
+	                          $("textarea[name=content]").val("");
+	                          var json = $.parseJSON(data);
+	                          var Chutext=json.Con;
+	                          var Write="<div style='margin-bottom: 10px;'>";
+	                          	Write+="<img alt='바꿔야함' src='./img/right_menu/img_photo_null32.png'>";
+	                          	Write+="<div id='comment_info'>";
+	                          	Write+="<b>"+json.Name+"</b>";
+	                          	Write+="<span style='color: #c0c0c0;font-size: 12px;'>"+json.Date+"</span>";
+	                          	Write+="좋아요/수정/삭제 해야함 css";
+	                          	Write+="</div>";
+	                          	Write+="<div class='clear'></div>";
+	                          	Write+="<div id='cmt_content'>";
+	                          	Write+=json.Content;
+	                          	Write+="</div>";
+	                          	Write+="</div>";
+	                          	
+	                            $("#new_cmtList").append(Write);
+	                            
+	                       }
+	                    });
+	         		});
+	         	});
+	         	
+	         </script>
 
 		</article>
 	</div>

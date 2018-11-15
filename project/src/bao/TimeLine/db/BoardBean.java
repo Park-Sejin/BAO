@@ -3,7 +3,7 @@ package bao.TimeLine.db;
 import java.util.Date;
 
 public class BoardBean {
-	
+	private int num;
 	private String content;
 	private String write_file;
 	private String img_file;
@@ -12,6 +12,13 @@ public class BoardBean {
 	private int project_num;
 	private String table_type;
 	
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getContent() {
 		return content;
 	}

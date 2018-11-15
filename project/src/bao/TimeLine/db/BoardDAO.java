@@ -76,6 +76,8 @@ public class BoardDAO {
             BoardBean dto = null;
             while (rs.next()) {
                dto = new BoardBean();
+               
+               dto.setNum(rs.getInt("num"));
                dto.setContent(rs.getString("content"));
                dto.setWrite_file(rs.getString("write_file"));
                dto.setImg_file(rs.getString("img_file"));

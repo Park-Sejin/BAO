@@ -834,6 +834,18 @@
 			            	<a href="">댓글달기</a>
 			            </div>
 			       </div>
+			       <!-- 댓글 달기 -->
+			       <div>
+<div id="comment_list">
+	<img alt="프로필사진" src="<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">">
+	이름 날짜 좋아요
+	수정 | 삭제
+</div>
+<div id="comment_form">
+	<img alt="프로필사진" src="<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">">
+	<input type="text" name="comment" placeholder="댓글을 입력하세요.">
+</div>
+                  </div>
 			         	
 			       
 			       <%} %>
