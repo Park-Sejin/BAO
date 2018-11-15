@@ -138,7 +138,7 @@ public class BoardDAO {
 		List list = null;
 		try {
 			con = getCon();
-			sql = "select * from alarm where member_num = ?";
+			sql = "select * from alarm where member_num = ? ORDER BY date DESC";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, memNum);
 			rs = pstmt.executeQuery();
