@@ -20,6 +20,8 @@
 		<link rel="stylesheet" href="./css/top.css">
 		<link href="./css/HeaderCss.css" rel="stylesheet">
 		<link href="./css/content.css" rel="stylesheet" type="text/css">
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	</head>
 	<body>
 		
@@ -96,7 +98,8 @@
 				       
 				       <div id="comment_body">
 				       		<%for(CommentBean cb : cmt_arr) { 
-				       			MemberDAO cmt_mdao = new MemberDAO();%>
+				       			MemberDAO cmt_mdao = new MemberDAO();
+				       			if(cb.getCmt_board_num() == bb.getNum()) {%>
 								<div id="comment_list">
 										<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png">
 										
@@ -111,15 +114,15 @@
 										<%=cb.getCmt_content() %>
 									</div>
 								</div>
-							<%} %><div id="new_cmtList"></div><!-- 작성한 페이지 ajax 넘어오는 div -->
+							<%}  } %><div id="new_cmtList<%=bb.getNum()%>"></div><!-- 작성한 페이지 ajax 넘어오는 div -->
 							
 							<form action="" id="comment_form"></form>
 								<div id="form_in_div">
 									<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png">
 									
-									<input type="text" id="content" name="content" placeholder="댓글을 입력하세요.">
-									<input type="hidden" id="board_num" name="board_num" value="<%= bb.getNum()%>">
-									<input type="button" value="작성" id="sub_cmt">
+									<input type="text" class="cmt_content" id="content<%=bb.getNum()%>" name="content" placeholder="댓글을 입력하세요.">
+									<input type="hidden" class="board_num" id="board_num<%=bb.getNum() %>" name="board_num" value="<%= bb.getNum()%>">
+									<input type="button" value="작성" class="sub_cmt" id="sub_cmt<%=bb.getNum()%>" style="width: 40px; height: 30px;">
 								</div>
 							</form>
 	                  </div>
@@ -131,13 +134,25 @@
 	         }%>
 	         <script>
 	         	$(document).ready(function(){
-	         		$("#sub_cmt").click(function(){
+	         		var sub_id = "";
+	         		var cmt_id = "";
+	         		var num = "";
+	         		var b_num = "";
+	         		
+	         		$(".cmt_content").click(function(){
+	         			cmt_id = "#"+$(this).attr('id');
+	         		});
+	         		
+	         		$(".sub_cmt").click(function(){
+	         			sub_id = "#"+$(this).attr('id');
+	         			num = sub_id.substring(8,sub_id.length);
+	         			b_num = "#board_num"+num;
 	         			
 	         			$.ajax({
 	                       url:"./CommentAction.tl",
 	                       data: {
-	                    		board_num : $("#board_num").val(),
-		                    	content : $("#content").val()
+	                    		board_num : $(b_num).val(),
+		                    	content : $(cmt_id).val()
 	                       },
 	                       type: 'POST',
 	                       success: function(data){
@@ -157,8 +172,7 @@
 	                          	Write+="</div>";
 	                          	Write+="</div>";
 	                          	
-	                            $("#new_cmtList").append(Write);
-	                            
+	                            $("#new_cmtList"+num).append(Write);
 	                       }
 	                    });
 	         		});
