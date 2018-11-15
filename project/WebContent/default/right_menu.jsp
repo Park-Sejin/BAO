@@ -10,9 +10,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
   
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
    <script type="text/javascript">
+   
+   function copyToClipboard(val) {
+	   var t = document.createElement("textarea");
+	   document.body.appendChild(t);
+	   t.value = val;
+	   t.select();
+	   document.execCommand('copy');
+	   document.body.removeChild(t);
+	 }
+   
+	 
    
    function go_pop(){
       /* $(document).ready(function() {
@@ -58,8 +68,20 @@
 				$(".invite_popup").load("#right_menu .invite2_popup");
 			});
 		 
+		 
+		 $("#btn_prd_add").click(function(){
+			 alert("btn_prd_add");
+		 });
+		 
+		 $("#invitelink").click(function() {			   
+			   copyToClipboard('http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num=1');
+			   alert("복사완료");
+			 });
+		 
 		
     }); 
+   
+ 
    
     
    
@@ -146,7 +168,7 @@
                            <a href="" class="a_name"><%= mb.getName()%></a> --%>
                         </div>
                         <div class="btn_right">
-                           <a class="btn chat" onclick="chat_pop()"><span class="blind">채팅</span></a>
+                           <a class="btn chat" onclick="go_pop()"><span class="blind">채팅</span></a>
                         </div>
                      </li>
                       <%} %>
@@ -228,8 +250,7 @@
                </div>
                <div class="prof_btn">
                   <a id="CHAT" class="btn_prd_sty1_b" onclick="go_pop()"><span>채팅하기</span></a>
-                  <a id="PROFILE_EDIT" class="btn_prd_sty1" style=""><span
-                     style="color: #28272c">프로필 수정</span></a>
+                  <a id="PROFILE_EDIT" class="btn_prd_sty1" style=""><span style="color: #28272c">프로필 수정</span></a>
                </div>
             </div>
          </div>
@@ -240,15 +261,15 @@
    
    
    <!-- 팝업창 div2  -->
-   
+ 
    <div id="invite2_div" class="modal">
-        <div class="invite2_popup" style="width:500px; height:620px; z-index:1100; position:fixed; ">
+        <div class="invite2_popup" style="width:500px; height:620px; z-index:1100; position:fixed;" >
         	<div class="prdbx_hd">
         		<!-- 상단 타이틀  -->
         		<div class="prdbx_hd_top">
         			<h1>초대하기</h1>
-        			<div class="btn_1" ><a>이전으로</a></div>
-        			<div class="btn_2" onclick="document.getElementById('invite2_div').style.display='none'" ><a style="position: absolute; top: 15px; right: 15px; width: 14px; height: 14px;">나가기</a></div>
+        			<div class="btn_1" id="inviteboxre"></div>
+        			<div class="btn_2" id="inviteboxclose" onclick="document.getElementById('invite_div').style.display='none'"></div>
         		</div>
         		<!-- //상단 타이틀  -->
         		<div class="prdbx_hd_sch" id="invitesrchbox">
@@ -256,16 +277,50 @@
         				<span role="status"></span>
         				<input type="text" placeholder="함께 프로젝트를 진행했었던 사람들을 찾아보세요!">
         			</div>
-        		</div>
-        		
+        		</div>  		
         	</div>   
             <div class="prdbx_cn">
-            <%= arr.size()%>
-            
-    
-            
-            
-            
+            	<div class="prd_namebx_div">
+            		<div class="prd_namebx_inside">
+            			<div class="prd_namebx_container">
+            			
+            				<div class="prd_name_cn"></div>
+            				<div class="prd_name_btn"><a class="all_del">전체삭제</a></div>
+            			</div>
+            		
+            		</div>
+            	
+            	</div>
+            <% for(ProjectMemberBean pmb : arr ){
+			MemberDAO mdao = new MemberDAO();
+			MemberBean mb = mdao.getMember(pmb.getMember_num()); %>
+			
+			<div class="prdcn_list">
+				<ul>
+					<li style=" width: 480px; height:63px; border: 1px solid #800080; ">
+					<img id="prflImg" src="">
+					<div class="prdcn_name"><%=mb.getName() %></div>
+					<div class="btn_r"><a id="btn_prd_add">추가</a></div>
+					</li>
+				</ul>
+			
+			</div>
+			<%}%>
+			<button id="check" width:"30px";>버튼</button>
+			
+			<script>
+			
+			 $(document).ready(function(){
+				 $("#btn_prd_add").click(function(){
+					alert("ggg"); 
+					
+					
+				 });
+			 });
+			
+			
+			</script>
+			
             </div>
             <div class="prdbx_ft">
             	<a class="btn_prd_sty1_b2" id="inviteSelectId">
@@ -275,7 +330,7 @@
         </div>
    </div>
    
-   
+
    
    <!-- 초대하기 -->
    <div id="invite_div" class="modal">
@@ -301,7 +356,7 @@
                      <p class="txt">초대장을 이메일로 발송할 수 있습니다.</p>
                   </li>
                   <li id="invitelink"><span class="ico ico4"></span><p class="tit">초대링크</p>
-                     <p class="txt">http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num=<%=num %></p>
+                     <p class="txt"><a>http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num=<%=num %></a></p>
                   </li>
                </ul>
             </div>
@@ -497,7 +552,6 @@
              if (event.target == profile) {
                 profile.style.display = "none";
                 location.href="timeline.jsp?num=<%=num%>"; /* 더 좋은방법....찾.. */
-                
              }else if(event.target == invite){
                 invite.style.display = "none";
              }else if(event.target == filebox){
