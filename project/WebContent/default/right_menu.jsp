@@ -115,8 +115,9 @@
    
        /* link복사하기 inv  */
        $("#invitelink").click(function() {   
+    	   var hidden_num = document.getElementById('hidden_num').value;
             alert("invitelink 클릭");
-            copyToClipboard('http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num=1');
+            copyToClipboard('http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num='+hidden_num);
             alert("복사완료");
           });
        
@@ -143,6 +144,7 @@
       } 
      
    %>
+   <input type="hidden" value="<%=num%>" id="hidden_num">
    <!-- aside -->
    <div id="rightMenuBox">
       <div class="aside_wrap">
@@ -373,7 +375,6 @@
          
          
          </script>
->>>>>>> refs/remotes/origin/master
          
             </div>
             <div class="prdbx_ft">
