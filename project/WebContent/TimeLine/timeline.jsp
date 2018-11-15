@@ -859,8 +859,8 @@
     			
     				MemberDAO mdao = new MemberDAO();
     	%>
-		    	<div id="time_board">
-		    		<% if(bb.getTable_type().equals("Write")) { %>
+		    <div id="time_board">
+                <% if(bb.getTable_type().equals("Write") && bb.getProject_num()==num) {%>
 		            <div id="time_body">
 			            <div id="time_profile">
 							<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">

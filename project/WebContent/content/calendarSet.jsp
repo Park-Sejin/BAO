@@ -12,10 +12,10 @@
 		JSONObject obj = new JSONObject();
 		DutyBean db = (DutyBean)workList.get(i);
 		obj.put("title", db.getDuty_title());
-		obj.put("date", db.getDate());
+		obj.put("date", db.getDate().toString());
 		
 		work.add(obj);
 	}
-
+	out.print(work);
 %>
 <%=work%>
