@@ -8,6 +8,14 @@ public class CommentBean {
 	String cmt_email;
 	String cmt_content;
 	Date date;
+	
+	/*create table comment(
+	cmt_num int primary key auto_increment,
+	cmt_board_num int,
+	cmt_email varchar(30),
+	cmt_content varchar(500),
+	date timestamp default now());*/
+	
 	public int getCmt_num() {
 		return cmt_num;
 	}
