@@ -32,7 +32,7 @@ public class Calendar implements Action {
 		SettingDAO sdao = new SettingDAO();
 		SettingBean sb = sdao.getSetting(email);
 		//저장된 일정 확인
-		BoardDAO bdao = new BoardDAO();
+		/*BoardDAO bdao = new BoardDAO();*/
 		//저장된 정보가 있으면 값 넘기기
 		if(sb != null){
 			String schedule1 = Integer.toString(sb.getSchedule1());
@@ -51,7 +51,7 @@ public class Calendar implements Action {
 				//}
 			}
 			String work = sb.getWork();
-			if(work != null){
+			/*if(work != null){
 				if(work.equals("내 업무")){
 					//List workList = bdao.getMyWork(email); //만들기
 					//request.setAttribute("workList", workList);
@@ -62,7 +62,7 @@ public class Calendar implements Action {
 					//List workList = bdao.getAllWork(email); //만들기
 					//request.setAttribute("workList", workList);
 				}
-			}
+			}*/
 			
 			request.setAttribute("schedule1", schedule1);
 			request.setAttribute("schedule2", schedule2);
