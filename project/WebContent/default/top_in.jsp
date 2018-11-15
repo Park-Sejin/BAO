@@ -1,3 +1,4 @@
+<%@page import="chatting.db.ChatBean"%>
 <%@page import="chatting.db.ChatDAO"%>
 <%@page import="member.db.MemberBean"%>
 <%@page import="project.db.ProjectDAO"%>
@@ -16,12 +17,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
+		var sid = document.getElementById('sid');
 		$('#click_chat').click(function(){
 			$.ajax({
 	            url:'./default/top_test1.jsp',
 	            type:'get',
 	            data:{
-	            	'id':'admin'
+	            	'email':sid
 	            },
 	            success:function(data){
 	            	$('#chat_block').empty();
@@ -60,6 +62,7 @@
 	<%
 	String id = (String)session.getAttribute("email");
 	%>
+	<input type="hidden" value="<%=id%>" name="sid">
 	<header>
 	<a href="./main.pr"></a>
 
@@ -100,15 +103,31 @@
 								</form>
 							</div>
 						</div>
-	
+						<%
+							ChatDAO cdao = new ChatDAO();
+							MemberDAO hd_mdao = new MemberDAO();
+							List chatList = cdao.getChatList(id);
+							for(int i=0; i<chatList.size(); i++){
+								ChatBean cb = (ChatBean)chatList.get(i);
+								MemberBean chatmb = hd_mdao.getMember(cb.getReceiver());
+						%>
 						<div id="hd_chat_sec3">
 							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
+								<%if(chatmb.getImage() == null){ %>
+									<img src="./img/top_header/thumb26.gif" width="40px"
+													height="40px"  class="sec3_div_img">
+								<%}else{ %>
+									<img src="./upload/<%=chatmb.getImage() %>" width="40px"
+													height="40px"  class="sec3_div_img">
+								<%} %>
+								<span class="sec3_div_name"><%=chatmb.getName() %></span>
+								<span class="sec3_div_title"><%=cb.getMessage() %></span>
+								<span class="sec3_div_date"><%=cb.getDate() %></span>
 							</div>
+						<%
+							}
+						
+						%>
 							
 						</div>
 					</div>
@@ -143,9 +162,16 @@
 								AlarmBean ab = (AlarmBean)AlarmList.get(i);
 								int proNum = h_bdao.getProNum(ab.getTwrite_num());
 								proName = h_pdao.getProjectName(proNum);
+								MemberBean mb = h_mdao.getMember( ab.getMember_num());
 						%>
                      	<div class="sec3_div">
-                     		<img src="./img/top_header/thumb26.gif" width="40px"
+                     		<img 
+                     			<%if(mb.getImage()==null){ %>
+                     			src="./img/top_header/thumb26.gif" 
+                     			<%}else{ %>
+                     			src="./upload/<%=mb.getImage()%> "
+                     			<%} %>
+                     			width="40px"
 										height="40px"  class="sec3_div_img">
 							<span class="sec33_div_name"><%=proName %></span>
 							<span class="sec33_div_title"><span class="bold"><%=h_mdao.getName(ab.getMember_num()) %></span>님이 글 작성을 했습니다.</span>
