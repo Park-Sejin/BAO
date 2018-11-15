@@ -917,7 +917,7 @@
 								<input type="hidden" class="board_num" id="board_num<%=bb.getNum() %>" name="board_num" value="<%= bb.getNum()%>">
 								<input type="button" value="작성" class="sub_cmt" id="sub_cmt<%=bb.getNum()%>" style="width: 40px; height: 30px;">
 								
-							</div>
+							</div> 
 						</form>
 	                </div>
 			       
