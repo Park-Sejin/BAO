@@ -28,7 +28,6 @@
          $('#server_cnt').attr('value',1);
       }); */
       var receive_email = document.getElementById('receive_email').value;
-      alert(receive_email);
       window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
    }
    

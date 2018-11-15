@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -126,7 +128,75 @@ public class ChatDAO {
 		} finally { CloseDB(); }
 	}
 	
+	// 읽음처리 메서드
+	public ArrayList<ChatBean> getChatList(String email){
+		ArrayList<ChatBean> arr = new ArrayList<ChatBean>();
+		Set<String> set = new LinkedHashSet<String>();
+		
+		try {
+			con=getCon();
+			
+			sql="select * from chat where sender=? or receiver=? order by date desc";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setString(1, email);
+			pstmt.setString(2, email);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				if(email.equals(rs.getString("sender"))){
+					set.add(rs.getString("receiver"));
+				}else {
+					set.add(rs.getString("sender"));
+				}
+			}
+			
+			
+			for(int i = 0; i < set.size(); i++){
+				sql = "select max(num) from chat where (receiver=? and sender=?) or (receiver=? and sender=?)";
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, email);
+				pstmt.setString(2, set.toArray()[i].toString());
+				pstmt.setString(3, set.toArray()[i].toString());
+				pstmt.setString(4, email);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()){
+					sql = "select * from chat where num=?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setInt(1, rs.getInt("max(num)"));
+					
+					rs = pstmt.executeQuery(); // num에 해당하는 정보 저장
+					
+					if(rs.next()){ // 모든 아이디값은 receiver에 저장
+						ChatBean cb = new ChatBean();
+						
+						cb.setNum(rs.getInt("num"));
+						if(email.equals(rs.getString("receiver"))){
+							cb.setReceiver(rs.getString("sender"));
+						}
+						else if(email.equals(rs.getString("sender"))){
+							cb.setReceiver(rs.getString("receiver"));
+						}
+						cb.setMessage(rs.getString("message"));
+						cb.setDate(rs.getTimestamp("date"));
+						
+						arr.add(cb);
+					}
+				}
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { CloseDB(); }
+		
+		return arr;
+	}
 	
+		
 	
 	
 }
