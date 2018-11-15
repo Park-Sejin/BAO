@@ -421,11 +421,6 @@ function remove(obj){
          </ul>
        <!-- 이미지 사진 추가  -->
      </div>
-     <div>
-         <input type="file" name="Duty_file">
-         <input type="file" name="Duty_imgfile">
-      <input type="button" value="올리기" id="DutyUpload">
-        </div>
    		<!-- 외부영역 클릭시 -->
 	   <div id="dialog-background"></div>
 	   <!-- 외부영역 클릭시 -->
@@ -462,35 +457,34 @@ function remove(obj){
    </script>
    <!-- 업무 작성 끝 -->
    
-   <!-- <div style="width: 800px; height: 200px;" id="TCal"> -->
+<div style="width: 800px; height: 200px;" id="TCal"> -->
       <!-- 일정 -->
-        <!-- <div style="border-bottom: 3px solid black;">
+         <div style="border-bottom: 3px solid black;">
            <input id="Schedule_title" type="text" placeholder="일정제목을 입력하세요" style="border:0; font-weight: bold; height: 30px;" size="40">
-        </div> -->
-              <!-- <input type="text" id="TStart1"><input type="text" id="Sel1">~<input type="text" id="TStart2"><input type="text" id="Sel2"> -->
-              <!-- <input type="checkbox" id="Status" onclick="Stus()">종일 -->
-           <!-- <div style="border-bottom: 3px solid black;">
+        </div> 
+               <input type="text" id="TStart1"><input type="text" id="Sel1">~<input type="text" id="TStart2"><input type="text" id="Sel2"> -->
+               <input type="checkbox" id="Status" onclick="Stus()">종일 -->
+            <div style="border-bottom: 3px solid black;">
                  <input id="locationTextField" type="text" placeholder="장소를 입력하세요" style="border:none; font-weight: bold; height: 30px;" size="40">
-           </div> -->
-          <!--  <div style="border-bottom: 3px solid black;">
+           </div>
+            <div style="border-bottom: 3px solid black;">
                  <input id="Memo_sinput" type="text" placeholder="메모를 입력하세요" style="border:none; font-weight: bold; height: 30px;" size="40">
            </div>
                  <select>
-                       value는 기수아닌 서수
+                       <!-- value는 기수아닌 서수 -->
                  <option value="selectFirst"> 선택해봐 </option>
                  <option value="selectSecond"> 할꺼야 </option>
                  <option value="selectThird"> 말꺼야 </option>
                  <option value="selectFourth"> 어떻게 할꺼야 </option>
                  <option value="selectFifth"> 하기싫어 </option>
-                    value는 기수아닌 서수   
-                 </select> -->
+                    <!-- value는 기수아닌 서수    -->
+                 </select>
       <!-- 일정 -->
       <!-- 
          is(":checked")와 다르게 써보기
          :focus도 써보자, 좋은기능이니까
        -->
       <br>
-   </div>
    <!-- 할일 -->
    <!-- <div style="width: 800px; height: 200px;" id="TWork"> -->
          <div style="border-bottom: 3px solid black;">
@@ -502,38 +496,7 @@ function remove(obj){
             <a onclick="DoDoDo()">할일 추가</a>
          </div> -->
          <!-- 할일 추가 되는 부분 -->
-   </div>
    <!-- 할일 -->   
-   <div id="plusArea" style="">
-<%      
-      BoardBean Wbb=new BoardBean();
-      BoardDAO Wbdao=new BoardDAO();
-      ArrayList<BoardBean> list=Wbdao.Writeinfo();
-
-      for(int Wcon=0; Wcon<list.size(); Wcon++){
-         Wbb=list.get(Wcon);
-%>      
-       <div id="WriteForm" style="border: 3px solid green;">
-       내용 : <%=Wbb.getContent().replace("\r\n","<br>")%><br>                                       
-       파일 : <%=Wbb.getWrite_file() %>
-       이미지 파일 : <a href="./FileDownloadAction.tl?file_name=<%=Wbb.getImg_file()%>"><img name="img" style="width:120px; height:auto;"
-       src="./upload/<%=Wbb.getImg_file()%>"></a></div><br>
-       <% }%>
-       
-<%
-      DutyBean db=new DutyBean();
-      DutyDAO ddao=new DutyDAO();
-      ArrayList<DutyBean> Dlist=ddao.Dutyinfo();
-      
-      for(int Dcon=0; Dcon<Dlist.size(); Dcon++){
-         db=Dlist.get(Dcon);
-%>
-       <div id="DutyForm" style="border: 3px solid black;">
-       제목 : <%=db.getDuty_title()%><br>
-       내용 : <%=db.getDuty_content()%>
-       </div>
-       <%} %>
-       
-    </div>
+ 
 </body>
 </html>
