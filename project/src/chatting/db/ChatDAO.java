@@ -128,7 +128,7 @@ public class ChatDAO {
 		} finally { CloseDB(); }
 	}
 	
-	// 읽음처리 메서드
+	// 채팅 목록 메서드 
 	public ArrayList<ChatBean> getChatList(String email){
 		ArrayList<ChatBean> arr = new ArrayList<ChatBean>();
 		Set<String> set = new LinkedHashSet<String>();
