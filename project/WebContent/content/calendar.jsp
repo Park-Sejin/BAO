@@ -101,13 +101,13 @@
 				var date = data.split(",")[1];
 				alert(title); */
 				
-				$.each(data,function(index,item){
+				/* $.each(data,function(index,item){
 					var rs="";
 					rs.append(item.title+":"+item.date+", ");
 					//$('table').append("<tr><td>"+item.title+"</td><td>"+item.gender+"</td><td>"+item.age+"</td></tr>");
 				});
-				console.log(rs);
-				//alert(data);
+				console.log(rs); */
+				alert(data);
 	        }
 		});
 	}	
