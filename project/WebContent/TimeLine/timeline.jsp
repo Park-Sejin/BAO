@@ -21,7 +21,6 @@
       <link href="./css/HeaderCss.css" rel="stylesheet">
       <link href="./css/content.css" rel="stylesheet" type="text/css">
       
-      
       <!-- 구글 Map api -->
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAtGe_n-epCEfG-V7QP6KP56hMykUp4YE4&v=3.exp&sensor=false&libraries=places"></script>
       <!-- Jquery-->
@@ -30,6 +29,47 @@
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
       <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
       
+      <style type="text/css">
+      /* Modal */
+#dialog-background {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* background: rgba(0,0,0,.3); */
+    z-index: 10;
+}
+#my-dialog {
+    display: none;
+    position: fixed;
+    /* left: calc( 50% - 160px ); top: calc( 50% - 70px ); */
+    width: 223px; height: 200px; 
+    background: white;
+    z-index: 11;
+    padding: 10px;
+    margin-top:100px;
+    /* margin-left:-700px;
+    margin-top:-178px; */
+    box-shadow: 10px 10px 20px 20px gray;
+}
+/* Modal */
+/* 담당자 추가 */
+#nav{
+  border:1px solid #ccc;
+  border-width:1px 0;
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+#nav li{
+  display:inline;
+}
+#nav a{
+  display:inline-block;
+  padding:10px;
+}
+      
+      </style>
 
       <script type="text/javascript">
 
@@ -83,14 +123,7 @@
                });  
             });
          /* -------------------------------------------------------------------------- */
-            
-            /* Modal */
-            $("#btn-open-dialog,#dialog-background,#btn-close-dialog").click(function () {
-               $("#my-dialog,#dialog-background").toggle();
-            });
-         
-         
-         
+                    
             /* textbox 담당자 추가 */
              var dupid;
              $("#nav a").click(function(){
@@ -240,7 +273,7 @@
       </script>
       
       <!-- chart -->      
-      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 	/*그래프의 종류*/      
       google.charts.load('current', {'packages':['corechart']});
@@ -412,6 +445,43 @@
          </script>
          <!-- 글 -->
          
+         <script type="text/javascript">
+
+         /* Modal */
+          $("#btn-open-dialog,#dialog-background,#btn-close-dialog").click(function () {
+            $("#my-dialog,#dialog-background").toggle();
+         });
+         /* Modal */
+         
+         
+      $("#AddList").click(function(){
+      $("#AddList").remove();
+      var addTag="";
+      addTag+="<div class=line1 'style=border: 3px solid black;'><input type=text id=Startpicker placeholder=시작일 추가 onchange='Change1()'></div><br>";
+      addTag+="<div class=line2 id=lastDay 'style=display: block;'><input type=text id=Endpicker placeholder=마감일 추가 onchange='Change2()'></div><br>";
+      $("#AddAdd").append(addTag);
+      $('#Startpicker').each(function(){
+           $(this).datepicker({
+                    dateFormat: 'yy-mm-dd' 
+                   ,showOtherMonths: true 
+                   ,showMonthAfterYear:true              
+                   ,buttonImageOnly: true        
+                   ,yearSuffix: "년"
+                   ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] 
+                   ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] 
+                   ,dayNamesMin: ['일','월','화','수','목','금','토'] 
+                   ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] 
+                   ,minDate: "-1M"
+                   ,maxDate: "+1M" 
+          });
+       });
+      $('#Endpicker').each(function(){
+        $(this).datepicker({
+           dateFormat:'yy-mm-dd'
+        });
+    });
+   });
+         </script>
          <!-- 업무 -->
          <form action="" method="post" enctype="multipart/form-data" id="DutyWriteForm">
             <div id="TDup">
@@ -425,17 +495,24 @@
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;"
                         height="30px margin-left:10px;">
-                        <img src="img/timeline/ico_timec4ca.png"></td>
+                        <img src="img/timeline/ico_timec4ca.png">
+                        <button>요청</button><button>진행</button><button>피드백</button><button>완료</button><button>보류</button>
+                     </td>
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
                         <img src="img/timeline/ico_userli_num_gr.png" style="vertical-align: middle;">
-                        <select style="margin-left: 5px;">
-                           <option></option>
-                           <option></option>
-                        </select>
+                        <!-- 담당자 추가 되는부분 -->
+                        <div id="Wrap">
+           				<div id="btn-open-dialog" style="width:100px; margin-left: 30px; text-align: center; margin-top: -14px; border: 1px solid #EAEAEA;">담당자 추가</div>
+            			<!-- 담당자 추가 되는부분 -->
+            			</div>
                      </td>
                   </tr>
+                  
+                  	<input type="button" value="항목추가 입력" id="AddList">
+                  
+                  
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
                         <img src="img/timeline/ico_cal_task01c4ca.png" style="vertical-align: middle;">
@@ -456,8 +533,9 @@
                         <img src="img/timeline/icon_flag2.png" style="vertical-align: middle;">
                      </td>
                   </tr>
-                  <tr>
-                  </tr>
+                  
+                  
+                  
                   <tr style="height: 50px;">
                      <td style="vertical-align: middle;">&nbsp;
                         <a> <img src="img/timeline/icon_attach_file.png" style="vertical-align: middle;">
@@ -475,6 +553,22 @@
                   </tr>
                </table>
             </div>
+        <div id="my-dialog" style="border: 3px solid red;">
+      <!-- 이미지 사진 추가  -->
+         <ul id="nav">
+            <li><a href="#">류수재</a></li>
+            <li><a href="#">박세진</a></li>
+            <li><a href="#">박수진</a></li>
+            <li><a href="#">엄재철</a></li>
+            <li><a href="#">여준혁</a></li>
+            <li><a href="#">이미진</a></li>
+         </ul>
+       <!-- 이미지 사진 추가  -->
+     </div>
+   		<!-- 외부영역 클릭시 -->
+	   <div id="dialog-background"></div>
+	   <!-- 외부영역 클릭시 -->
+            
          </form>
          <!-- 업무 -->
          
