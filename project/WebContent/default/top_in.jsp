@@ -148,7 +148,7 @@
                      		<img src="./img/top_header/thumb26.gif" width="40px"
 										height="40px"  class="sec3_div_img">
 							<span class="sec33_div_name"><%=proName %></span>
-							<span class="sec33_div_title"><span class="bold"><%=h_mdao.getName(ab.getMember_num()) %></span> ~~~를 했습니다.</span>
+							<span class="sec33_div_title"><span class="bold"><%=h_mdao.getName(ab.getMember_num()) %></span>님이 글 작성을 했습니다.</span>
 							<span class="sec33_div_date"><%=ab.getDate() %> </span>
                     	</div>
                     	<%
