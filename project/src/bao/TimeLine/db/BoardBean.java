@@ -9,6 +9,8 @@ public class BoardBean {
 	private String img_file;
 	private Date date;
 	private String Member_user;
+	private String project_name;
+	private String table_type;
 	
 	public String getContent() {
 		return content;
@@ -39,6 +41,18 @@ public class BoardBean {
 	}
 	public void setMember_user(String member_user) {
 		Member_user = member_user;
+	}
+	public String getProject_name() {
+		return project_name;
+	}
+	public void setProject_name(String project_name) {
+		this.project_name = project_name;
+	}
+	public String getTable_type() {
+		return table_type;
+	}
+	public void setTable_type(String table_type) {
+		this.table_type = table_type;
 	}
 	
 

@@ -165,10 +165,7 @@
                            <a href="" class="a_name"><%= mb.getName()%></a> --%>
                         </div>
                         <div class="btn_right">
-<<<<<<< HEAD
-=======
                         	<input type="hidden" id="receive_email" value="<%=mb.getEmail()%>">
->>>>>>> refs/remotes/origin/master
                            <a class="btn chat" onclick="go_pop()"><span class="blind">채팅</span></a>
                         </div>
                      </li>
@@ -298,10 +295,10 @@
 			
 			<div class="prdcn_list">
 				<ul>
-					<li style=" width: 480px; height:63px; border: 1px solid #800080; ">
+					<li style=" width: 480px; height:63px; border: 1px solid #800080; margin-bottom: 10px; ">
 					<img id="prflImg" src="">
 					<div class="prdcn_name"><%=mb.getName() %></div>
-					<div class="btn_r"><a id="btn_prd_add">추가</a></div>
+					<div class="btn_r"><a id="btn_prd_add" onclick="alert1()">추가</a></div>
 					</li>
 				</ul>
 			
@@ -311,12 +308,18 @@
 			
 			<script>
 			
+			
+			
 			 $(document).ready(function(){
-				 $("#btn_prd_add").click(function(){
+				 
+				 function alert1(){
+						alert("ggg");
+					}
+				 /* $("a>#btn_prd_add").click(function(){
 					alert("ggg"); 
 					
 					
-				 });
+				 }); */
 			 });
 			
 			
