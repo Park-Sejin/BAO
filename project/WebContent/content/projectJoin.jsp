@@ -8,6 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link href="css/invitePage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <%
@@ -34,12 +35,18 @@
 	} 
 	
 %>
-<form action="./projectJoinAction.pr">
-	<input type="hidden" value="<%=proNum%>" name="proNum">
-	<input type="hidden" value="<%=memNum%>" name="memNum">
-	해당 프로젝트에 가입하시겠습니까?<br>
-	<input type="submit" value="가입하기">
-</form>
+
+
+<div class="box">
+	<div class="box_param">
+		<form action="./projectJoinAction.pr">
+			<input type="hidden" value="<%=proNum%>" name="proNum">
+			<input type="hidden" value="<%=memNum%>" name="memNum">
+			<span>해당 프로젝트에 가입하시겠습니까?</span><br><br><br><br><br><br><br><br>
+			<input type="submit" value="가입하기">
+		</form>
+	</div>
+</div>
 
 </body>
 </html>
