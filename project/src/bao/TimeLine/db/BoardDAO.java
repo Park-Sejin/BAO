@@ -39,13 +39,14 @@ public class BoardDAO {
    }
    
    
+   // 게시물 작성 메서드
    public void insertWrite(BoardBean bb){
       try {
          con=getCon();
          System.out.println("디비test");
          
          sql="insert into twrite(content,write_file,img_file,date,"
-               + "Member_user) values(?,?,?,now(),?)";
+               + "Member_user,project_name) values(?,?,?,now(),?,?)";
          pstmt=con.prepareStatement(sql);
          
          pstmt.setString(1, bb.getContent());
@@ -54,7 +55,8 @@ public class BoardDAO {
          //System.out.println(bb.getFile());
          pstmt.setString(3, bb.getImg_file());
          //System.out.println(bb.getImg_file());
-         pstmt.setString(4, bb.getMember_user());
+         pstmt.setString(4, bb.getMember_user()); 
+         pstmt.setString(5, bb.getProject_name());
          pstmt.executeUpdate();
          
       } catch (Exception e) {
@@ -62,6 +64,8 @@ public class BoardDAO {
       } finally { CloseDB(); }
    }
    
+   
+   // 게시물 가져오는 메서드
    public ArrayList<BoardBean> Writeinfo() {
 
       ArrayList<BoardBean> Connectlist = null;
@@ -80,6 +84,7 @@ public class BoardDAO {
                dto.setImg_file(rs.getString("img_file"));
                dto.setDate(rs.getDate("date"));
                dto.setMember_user(rs.getString("Member_user"));
+               dto.setTable_type(rs.getString("Table_type"));
                Connectlist.add(dto);
             }
       } catch (Exception e) {
@@ -161,4 +166,14 @@ public class BoardDAO {
 		} finally { CloseDB(); }
 		return proNum;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

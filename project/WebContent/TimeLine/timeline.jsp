@@ -1,3 +1,4 @@
+<%@page import="member.db.MemberDAO"%>
 <%@page import="bao.TimeLine.db.TotalDAO"%>
 <%@page import="bao.TimeLine.db.TotalBean"%>
 <%@page import="java.util.ArrayList"%>
@@ -273,7 +274,11 @@
    </head>
 
 <body>
-
+	
+	<% String email = (String)session.getAttribute("email");
+		int num = Integer.parseInt(request.getParameter("num")); %>
+	
+	
    <div id="container">
       <jsp:include page="../default/top3.jsp"></jsp:include>
       <jsp:include page="../default/LeftHeader.jsp"></jsp:include>
@@ -342,6 +347,7 @@
                            <img src="img/timeline/icon_attach_pic.png" style="vertical-align: middle;">
                            <label for="ex_file2">이미지첨부</label> 
                            <input type="file" id="ex_file2" name="img_file"> 
+                           <input type="hidden" name="num" value="<%=num%>">
                         </div>
                      </td>
                      <td align="right">
@@ -367,13 +373,37 @@
                           $("textarea[name=content]").val("");
                           var json = $.parseJSON(data);
                           var Chutext=json.Con;
-                          var Write="";
-                            Write+="<div style='' id=TWirte>";
+                          var Write="<div id='time_board'>";
+                          	Write+="<div id='time_body'>";
+                          	Write+="<div id='time_profile'>";
+                          	Write+="<img alt='프로필사진' src='./img/right_menu/img_photo_null32.png' id='profile_img'>";
+                          	Write+="<span id='time_info' style='width: 100px;'>";
+                          	Write+=json.Name
+                          	<%-- Write+="<b><%= mdao.getMember(bb.getMember_user()).getName() %></b><br>"; --%>
+                          	Write+="<span style='color: #c0c0c0;font-size: 12px;'>" + json.Date + "</span>";
+                          	<%-- Write+="<span style='color: #c0c0c0;font-size: 12px;'><%=bb.getDate() %></span>"; --%>
+                          	Write+="</span>";
+                          	Write+="</div>";
+                          	Write+="<div class='clear'></div>";
+                          	Write+="<div id='time_content'>";
+                          	<%-- Write+="<%=bb.getContent() %>"; --%>
+                          	Write+=json.Content;
+                          	Write+="</div>";
+                          	Write+="<div>";
+                          	Write+="<a href=''>좋아요</a>";
+                          	Write+="<a href=''>댓글달기</a>";
+                          	Write+="</div>";
+                          	Write+="</div>";
+                          	Write+="<div id='mar_btm'></div>";
+                          	Write+="</div>";
+                          	Write+="</div>";
+                          	
+                            /* Write+="<div style='' id=TWirte>";
                             Write+="'" + json.WF + "'";
                             Write+="'" + Chutext.replace(/\r\n/gi,"<br>") + "'";
                             Write+="<br>";
-                            Write+="</div>";
-                            $("#plusArea").prepend(Write);
+                            Write+="</div>"; */
+                            $("#time_board").prepend(Write);
                        }
                   });
                });
@@ -621,55 +651,95 @@
          </script>
         <%--  <a href="./FileDownloadAction.tl?file_name=<%=Wbb.getImg_file()%>"><img name="img" style="width:120px; height:auto;"
        src="./upload/<%=Wbb.getImg_file()%>"></a></div><br> --%>
-	<div id="plusArea" style="">
-		<%		
-			BoardBean Wbb=new BoardBean();
-			BoardDAO Wbdao=new BoardDAO();
-			ArrayList<BoardBean> list=Wbdao.Writeinfo();
-	
-			
-			/* for(int Wcon=0; Wcon<list.size(); Wcon++){
-				Wbb=list.get(Wcon); */
-	
-		%>		
-		<%
-			TotalBean tb=new TotalBean();
+<%-- 		<div id="plusArea" style="">
+			<%		
+				BoardBean Wbb=new BoardBean();
+				BoardDAO Wbdao=new BoardDAO();
+				ArrayList<BoardBean> list=Wbdao.Writeinfo();
+		
+				
+				/* for(int Wcon=0; Wcon<list.size(); Wcon++){
+					Wbb=list.get(Wcon); */
+		
+			%>		
+			<%
+				TotalBean tb=new TotalBean();
+				TotalDAO td=new TotalDAO();
+				ArrayList<TotalBean> TotalList=td.Totalinfo();
+			%>
+				<!-- 타임라인 테이블 -->
+		        <div id="TimeLineTable" style="border: 3px solid red;">
+		        <%
+		        	for(int Total=0; Total<TotalList.size(); Total++){
+						tb=TotalList.get(Total);
+		        %>
+		       	<!-- 글 작성 테이블 -->
+		       	<div id="WriteForm">
+					<% if(tb.getTable().equals("Write")) { %>
+						내용 :<%=tb.getContent()%>
+					<%}%>
+				</div>
+				<!-- 업무 작성 테이블 -->
+				<div id="DutyForm">
+					<%
+					if(tb.getDTable().equals("Duty")){
+					%>
+						제목:<%=tb.getContent()%>
+					<%}%>
+				</div>
+			</div> <!-- 타임라인 테이블 -->
+		       <%} %>
+	       
+	    </div>	 --%>		
+    	
+    	
+    	<%
+	    	BoardDAO bdao = new BoardDAO();
+    		ArrayList<BoardBean> arr = new ArrayList<BoardBean>();
+    		
+    		
+    		TotalBean tb=new TotalBean();
 			TotalDAO td=new TotalDAO();
-			ArrayList<TotalBean> TotalList=td.Totalinfo();
-		%>
-			<!-- 타임라인 테이블 -->
-	        <div id="TimeLineTable" style="border: 3px solid red;">
-	        <%
-	        	for(int Total=0; Total<TotalList.size(); Total++){
-					tb=TotalList.get(Total);
-	        %>
-	       	<!-- 글 작성 테이블 -->
-	       	<div id="WriteForm">
-				<%
-				if(tb.getTable().equals("Write")) {
-				%>
-					내용 :<%=tb.getContent()%>
-				<%}%>
-			</div>
-			<!-- 업무 작성 테이블 -->
-			<div id="DutyForm">
-				<%
-				if(tb.getDTable().equals("Duty")){
-				%>
-					제목:<%=tb.getContent()%>
-				<%}%>
-			</div>
-				
-				
-	        
-	        
-	        
-		</div> <!-- 타임라인 테이블 -->
-	       <%} %>
-       
-    </div>
-    
-    
+			ArrayList<TotalBean> TotalList=td.Totalinfo(); // 안함. 나중에 토탈빈으로 바꿔야함.
+    		
+    		
+    		
+    		arr = bdao.Writeinfo();
+    		
+    		if(arr.size() != 0) {
+    			for(BoardBean bb: arr) {
+    			
+    				MemberDAO mdao = new MemberDAO();
+    	%>
+		    	<div id="time_board">
+		    		<% if(bb.getTable_type().equals("Write")) { %>
+		            <div id="time_body">
+			            <div id="time_profile">
+							<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">
+							<span id="time_info" style="width: 100px;">
+								<b><%= mdao.getMember(bb.getMember_user()).getName() %></b><br>
+								<span style="color: #c0c0c0;font-size: 12px;"><%=bb.getDate() %></span>
+							</span>
+			            </div>
+			            <div class="clear"></div>
+			            
+			            <div id="time_content">
+			            	<%=bb.getContent() %>
+			            	
+			            	
+			            
+			            </div>
+			            <div>
+			            	<a href="">좋아요</a>
+			            	<a href="">댓글달기</a>
+			            </div>
+			       </div>
+			         	
+			       <div id="mar_btm"></div>
+			       <%} %>
+		       </div>
+         <%		} 
+         	}%>
     
     
     
