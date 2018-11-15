@@ -20,6 +20,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import bao.TimeLine.db.BoardBean;
 import bao.TimeLine.db.BoardDAO;
+import bao.TimeLine.db.TotalBean;
 import member.db.MemberDAO;
 import project.db.ProjectBean;
 import project.db.ProjectDAO;
@@ -36,7 +37,7 @@ public class TimeLineWriteAction implements Action{
       String email = (String)session.getAttribute("email");
       
       
-      System.out.println("dd: " + email);
+      //System.out.println("dd: " + email);
       
       request.setCharacterEncoding("UTF-8");
       try{
@@ -73,18 +74,10 @@ public class TimeLineWriteAction implements Action{
       BoardBean bb=new BoardBean();
       
       
-      bb.setContent(mr.getParameter("content"));
-      //System.out.println("action : "+mr.getParameter("content"));
-      
+      bb.setContent(mr.getParameter("content")); 
       bb.setWrite_file(mr.getFilesystemName("write_file"));
-      //System.out.println("Faction : "+mr.getFilesystemName("write_file"));
-      
       bb.setImg_file(mr.getFilesystemName("img_file"));
-      //System.out.println("Iaction : "+mr.getFilesystemName("img_file"));
-      
       bb.setMember_user(email);
-      
-      
       bb.setProject_num(Integer.parseInt(mr.getParameter("num")));
       
       BoardDAO bdao=new BoardDAO();
@@ -131,6 +124,8 @@ public class TimeLineWriteAction implements Action{
       JSONObject obj=null;
       //JSONArray arr=new JSONArray();
       String Write=null;
+      System.out.println("넘버는"+bb.getProject_num());
+      System.out.println("타입은"+bb.getTable_type());
       
       MemberDAO mdao = new MemberDAO();
       
@@ -138,15 +133,15 @@ public class TimeLineWriteAction implements Action{
       obj.put("Name",mdao.getMember(bb.getMember_user()).getName());
       obj.put("Date",bb.getDate());
       obj.put("Content",bb.getContent());
+      obj.put("ProjectNum",bb.getProject_num());
+      obj.put("Type", bb.getTable_type());
       //obj.put("IF", multi.getParameter("Img_write_file"));
       Write=obj.toString();
       
       response.setContentType("text/html; charset=UTF-8");
       PrintWriter out = response.getWriter();
-       out.println(Write);
-       out.close();      
-
-      //System.out.println("xasxasxasd"+request.getAttribute("AA"));
+      out.println(Write);
+      out.close();      
       
 /*      ActionForward forward = new ActionForward();
       forward.setPath("./TimeLine/divdiv.jsp");

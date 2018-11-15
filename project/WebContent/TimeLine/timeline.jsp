@@ -352,8 +352,9 @@
                <table style="border: 1px solid #EAEAEA; border-collapse: collapse;">
                   <tr>
                      <td colspan="2">
-                        <textarea placeholder="글을 작성하세요" rows="10" cols="95" name="content" 
-                           style="width: 97%; line-height: 18px; font-size: 16px; border: 0; font-weight: bold; margin-left: 10px; margin-top: 10px;">
+                        <textarea rows="10" cols="95" name="content" placeholder="글을 작성하세요" 
+                        style="width: 97%; line-height: 18px; font-size: 16px; color:black; font-weight: bold; margin-left: 10px; margin-top: 10px;"
+                        >
                         </textarea>
                      </td>
                   </tr>
@@ -394,6 +395,9 @@
                           $("textarea[name=content]").val("");
                           var json = $.parseJSON(data);
                           var Chutext=json.Con;
+                          //alert(json.ProjectNum);
+                          //alert(json.Type);
+                          //if(json.ProjectNum==1 && )
                           var Write="<div id='time_board'>";
                           	Write+="<div id='time_body'>";
                           	Write+="<div id='time_profile'>";
@@ -418,17 +422,7 @@
                           	Write+="<div id='mar_btm'></div>";
                           	Write+="</div>";
                           	Write+="</div>";
-<<<<<<< HEAD
                             $("#time_board").prepend(Write);
-=======
-                          	
-                            /* Write+="<div style='' id=TWirte>";
-                            Write+="'" + json.WF + "'";
-                            Write+="'" + Chutext.replace(/\r\n/gi,"<br>") + "'";
-                            Write+="<br>";
-                            Write+="</div>"; */
-                            $("#total_board").prepend(Write);
->>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
                        }
                   });
                });

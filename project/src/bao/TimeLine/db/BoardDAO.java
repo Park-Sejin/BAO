@@ -50,11 +50,8 @@ public class BoardDAO {
          pstmt=con.prepareStatement(sql);
          
          pstmt.setString(1, bb.getContent());
-         //System.out.println("디비데이터"+bb.getContent());
          pstmt.setString(2, bb.getWrite_file());
-         //System.out.println(bb.getFile());
          pstmt.setString(3, bb.getImg_file());
-         //System.out.println(bb.getImg_file());
          pstmt.setString(4, bb.getMember_user()); 
          pstmt.setInt(5, bb.getProject_num());
          pstmt.executeUpdate();
