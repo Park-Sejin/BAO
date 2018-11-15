@@ -473,9 +473,29 @@
 	                    });
 	         		});
 	         	});
-               
             });
             /* 글 작성 끝 */
+            
+            
+            $(document).ready(function(){
+         		var like_id = "";
+         		var num = "";
+         		$(".like_btn").click(function(){
+         			like_id = "#"+$(this).attr('id');
+         			num = like_id.substring(5,like_id.length);
+         			
+         			$.ajax({
+                       url:"./LikePushCnt.tl",
+                       data: {
+	                    	"b_num" : num
+                       },
+                       type: 'POST',
+                       success: function(data){
+                          alert("좋아요");
+                       }
+                    });
+         		});
+         	});
          </script>
          <!-- 글 -->
          
@@ -878,8 +898,7 @@
 			            
 			            </div>
 			            <div>
-			            	<a href="">좋아요</a>
-			            	<a href="">댓글달기</a>
+			            	<a class="like_btn" id="like<%=bb.getNum()%>">좋아요</a>
 			            </div>
 			       </div>
 			       

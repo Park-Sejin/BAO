@@ -63,6 +63,13 @@ public class TimeLineController extends HttpServlet{
            }catch(Exception e){
               e.printStackTrace();
            }
+       }else if(command.equals("/LikePushCnt.tl")) {
+    	   action = new PushLikeAction();
+           try{
+              forward=action.execute(request, response);
+           }catch(Exception e){
+              e.printStackTrace();
+           }
        }
        
 
