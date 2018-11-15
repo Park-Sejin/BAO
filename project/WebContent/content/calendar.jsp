@@ -84,7 +84,7 @@
 			work = obj[1].value;
 		} else if($("#work3").is(":checked")){
 			work = obj[2].value;
-		}
+		} 
 		$.ajax({
 			type: "POST",
 			url: "./calendarAction.pr",
@@ -97,16 +97,16 @@
 				alert('통신실패!!');
 			},
 	        success: function(data){
-				/* var workList = new Array();
-				var result = request.responseText.split(",");
-				for (var i=0; i<result.length; i++) {
-					eval("workList"+result[i]);
-					alert(result[i]);
-				}; */
-				/* var title = data.split(",")[0];
+	        	/* var title = data.split(",")[0];
 				var date = data.split(",")[1];
-				alert(date); */
+				alert(title); */
 				
+				$.each(data,function(index,item){
+					var rs="";
+					rs.append(item.title+":"+item.date+", ");
+					//$('table').append("<tr><td>"+item.title+"</td><td>"+item.gender+"</td><td>"+item.age+"</td></tr>");
+				});
+				console.log(rs);
 				//alert(data);
 	        }
 		});
@@ -246,6 +246,7 @@
 	//저장된 설정 값 받아오기
 	String email = (String)request.getAttribute("email");
 	String work = (String)request.getAttribute("work"); 
+	System.out.println("work : "+work);
 	//int형변환
 	String schedule1_S = (String)request.getAttribute("schedule1");
 	int schedule1 = 0;
@@ -346,7 +347,23 @@
 								<label for="work3"><span>전체 업무</span></label>
 							</dd>
 							<%
+						} else {
+							%>
+							<dd>
+								<input type="checkbox" name="work" value="내 업무" id="work1" onclick="workSet(this)">
+								<label for="work1"><span>내 업무</span></label>
+							</dd>
+							<dd>
+								<input type="checkbox" name="work" value="요청한 업무" id="work2" onclick="workSet(this)">
+								<label for="work2"><span>요청한 업무</span></label>
+							</dd>
+							<dd>
+								<input type="checkbox" name="work" value="전체 업무" id="work3" onclick="workSet(this)">
+								<label for="work3"><span>전체 업무</span></label>
+							</dd>
+							<%
 						}
+						
 					} else {
 						%>
 					<dd>
