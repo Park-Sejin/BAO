@@ -92,14 +92,11 @@
 				"email":email,
 				"work":work
 			},
-			dataType : "text",
-	        error : function(){
-				alert('통신실패!!');
-			},
-	        success: function(data){
-	        	/* var title = data.split(",")[0];
+			dataType:'text',
+	        success: function(json){
+	        		/*var title = data.split(",")[0];
 				var date = data.split(",")[1];
-				alert(title); */
+				alert(title);*/
 				
 				/* $.each(data,function(index,item){
 					var rs="";
@@ -107,8 +104,17 @@
 					//$('table').append("<tr><td>"+item.title+"</td><td>"+item.gender+"</td><td>"+item.age+"</td></tr>");
 				});
 				console.log(rs); */
-				alert(data);
-	        }
+				var list = json.trim();
+				var str = JSON.stringify(list);
+				var newArr = JSON.parse(str);
+				alert(newArr[0].date);
+				
+	        },
+	        error : function(){
+				alert('통신실패!!');
+			}
+	        
+	        
 		});
 	}	
 	

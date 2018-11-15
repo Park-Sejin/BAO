@@ -23,12 +23,12 @@ header {
 
 header>a {
 	width: 40px;
-	height: 40px;
+	height: 30px;
 	background: url("../img/top_header/logo.png") no-repeat 0px 0px;
 	background-size: contain;
 	position: absolute;
 	top: 15px;
-	left: 120px;
+	left: 345px;
 }
 
 #header_icon li {
@@ -37,7 +37,7 @@ header>a {
 
 #search {
 	position: absolute;
-	left: 160px;
+	left: 380px;
 	top: 15px;
 	border: 1px solid #c5c4c6;
 	border-radius: 5px;
@@ -45,16 +45,17 @@ header>a {
 
 #search_type {
 	height: 30px;
-	width: 100px;
+	width: 120px;
 	display: inline;
 	border: none;
 	background-color: white;
 	outline: none;
+	padding-left: 10px;
 }
 
 #search_text {
 	height: 30px;
-	width: 400px;
+	width: 500px;
 	border: none;
 	outline: none;
 }

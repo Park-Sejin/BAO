@@ -418,7 +418,17 @@
                           	Write+="<div id='mar_btm'></div>";
                           	Write+="</div>";
                           	Write+="</div>";
+<<<<<<< HEAD
                             $("#time_board").prepend(Write);
+=======
+                          	
+                            /* Write+="<div style='' id=TWirte>";
+                            Write+="'" + json.WF + "'";
+                            Write+="'" + Chutext.replace(/\r\n/gi,"<br>") + "'";
+                            Write+="<br>";
+                            Write+="</div>"; */
+                            $("#total_board").prepend(Write);
+>>>>>>> branch 'master' of https://github.com/Park-Sejin/BAO.git
                        }
                   });
                });
@@ -796,7 +806,9 @@
 			TotalDAO td=new TotalDAO();
 			ArrayList<TotalBean> TotalList=td.Totalinfo(); // 안함. 나중에 토탈빈으로 바꿔야함.
     		
-    		
+    		%>
+    			<div id="total_board">
+    		<%
     		
     		arr = bdao.Writeinfo();
     		
@@ -831,11 +843,12 @@
 			         	
 			       
 			       <%} %>
+		       		<div id="mar_btm"></div>
 		       </div>
-		       <div id="mar_btm"></div>
+		       
          <%		} 
          	}%>
-    
+    		</div>
     
     
 
