@@ -250,6 +250,16 @@
 				}
 			}
 			
+			/* $(".modal2").on("show.bs.modal", function() {
+				var curModal;
+				curModal = this;
+				$(".modal2").each(function() {
+					if (this !== curModal) {
+						$(this).modal("hide");
+					}
+				});
+			}); */
+			
 			</script>
 			
 		</li>
