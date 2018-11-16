@@ -951,6 +951,7 @@
     			for(BoardBean bb: arr) {
     			
     				MemberDAO mdao = new MemberDAO();
+    				
     	%>
 
 		    <div id="time_board">
@@ -1036,7 +1037,7 @@
 			       <%} %>
 		       		<div id="mar_btm"></div>
 		       </div>
-		       <div id="DutyForm" style="border: 3px solid red;">
+		       <div id="DutyForm" style="">
 		       		<%-- 	<div id="time_profile">
 							<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">
 							<span id="time_info" style="width: 100px;">
