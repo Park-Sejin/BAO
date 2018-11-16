@@ -5,6 +5,7 @@
 <%@page import="chatting.db.ChatDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <div id="hd_chat_sec2">
 							<div id="chat_search">
 								<form action="">
@@ -24,6 +25,7 @@
 								ChatBean cb = (ChatBean)chatList.get(i);
 								MemberBean chatmb = hd_mdao.getMember(cb.getReceiver());
 						%>
+						<input type="hidden" id="receive_email" value="<%=cb.getReceiver()%>">
 						<div id="hd_chat_sec3">
 							<div class="sec3_div">
 								<%if(chatmb.getImage() == null){ %>
@@ -33,8 +35,8 @@
 									<img src="./upload/<%=chatmb.getImage() %>" width="40px"
 													height="40px"  class="sec3_div_img">
 								<%} %>
-								<span class="sec3_div_name"><%=chatmb.getName() %></span>
-								<span class="sec3_div_title"><%=cb.getMessage() %></span>
+								<span class="sec3_div_name"><a onclick="window.open('./chatPage.chat?receive_email=<%=cb.getReceiver() %>', 'new','width=700, height=870, status=no, location=no, directories=no,scrollbars=no;');"><%=chatmb.getName() %></a></span>
+								<span class="sec3_div_title"><a onclick="window.open('./chatPage.chat?receive_email=<%=cb.getReceiver() %>', 'new','width=700, height=870, status=no, location=no, directories=no,scrollbars=no;');"><%=cb.getMessage() %></a></span>
 								<span class="sec3_div_date"><%=cb.getDate() %></span>
 							</div>
 						<%

@@ -1,3 +1,4 @@
+<%@page import="member.db.MemberBean"%>
 <%@page import="bao.TimeLine.db.CommentBean"%>
 <%@page import="bao.TimeLine.db.CommentDAO"%>
 <%@page import="member.db.MemberDAO"%>
@@ -34,8 +35,8 @@
       <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
       
       <style type="text/css">
-      .ui-datepicker{ font-size: 12px; width: 200px; }
-	  .ui-datepicker select.ui-datepicker-month{ width:100px; font-size: 11px; }
+  .ui-datepicker{ font-size: 12px; width: 200px; }
+	.ui-datepicker select.ui-datepicker-month{ width:100px; font-size: 11px; }
 	  .ui-datepicker select.ui-datepicker-year{ width:100px; font-size: 11px; }
 
       /* Modal */
@@ -397,9 +398,6 @@
                           $("textarea[name=content]").val("");
                           var json = $.parseJSON(data);
                           var Chutext=json.Con;
-                          //alert(json.ProjectNum);
-                          //alert(json.Type);
-                          //if(json.ProjectNum==1 && )
                           var Write="<div id='time_board'>";
                           	Write+="<div id='time_body'>";
                           	Write+="<div id='time_profile'>";
@@ -425,6 +423,7 @@
                           	Write+="</div>";
                           	Write+="</div>";
                             $("#time_board").prepend(Write);
+                          //}  
                        }
                   });
                });
@@ -482,8 +481,9 @@
          		var num = "";
          		$(".like_btn").click(function(){
          			like_id = "#"+$(this).attr('id');
+         			alert("값"+like_id);
          			num = like_id.substring(5,like_id.length);
-         			
+         			alert("num?"+num);
          			$.ajax({
                        url:"./LikePushCnt.tl",
                        data: { 
@@ -517,10 +517,16 @@
         	 $("#AddList").click(function(){
              $("#AddList").remove();
              var addTag="";
+             addTag+="<table>";
+             addTag+="<tr>";
+             addTag+="<td>";
              addTag+="<img src='img/timeline/ico_cal_task01c4ca.png' style='vertical-align: middle;'>&nbsp;<span class=line1>";
-             addTag+="<input type=text id=Startpicker placeholder=시작일 추가 onchange='Change1()' style='border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;'></span><br>";
+             addTag+="<input type=text id=Startpicker placeholder='시작일 추가' onchange='Change1()' style='border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;'></span><br>";
              addTag+="<img src='img/timeline/ico_cal_task02c4ca.png' style='vertical-align: middle;'>&nbsp;<span class=line2>";
-             addTag+="<input type=text id=Endpicker placeholder=마감일 추가 onchange='Change2()' style='border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;'></span><br>";
+             addTag+="<input type=text id=Endpicker placeholder='마감일 추가' onchange='Change2()' style='border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;'></span><br>";
+             addTag+="</td>";
+             addTag+="</tr>";
+             addTag+="</table>";
              $("#AddAdd").append(addTag);	
              
               $('#Startpicker').each(function(){
@@ -571,6 +577,78 @@
          
          </script>
          <!-- 업무 -->
+     <script type="text/javascript">
+   		$(document).ready(function(){
+        $("#DutyUpload").click(function(){
+           var DformData=new FormData($("#DutyWriteForm")[0]);
+           $.ajax({
+             url:"./TimeLineDutyWriteAction.tl",
+             processData: false,
+                contentType: false,
+                data: DformData,
+                type: 'POST',
+             success: function(data){
+                var json = $.parseJSON(data);
+                //alert(json.Con);
+                var Dtext=json.DCon;
+                var DWrite="";
+                DWrite+="<div id=TDup>";
+                DWrite+="<table style='border: 1px solid #EAEAEA; border-collapse: collapse;'>";
+                DWrite+="<tr>";
+                DWrite+="<td colspan=2 style='border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px; height=30px margin-left:10px;'>";
+                DWrite+="<img src='img/timeline/ico_timec4ca.png'>";
+                DWrite+="<button>요청</button><button>진행</button><button>피드백</button><button>완료</button><button>보류</button>";
+                DWrite+="</td>";
+                DWrite+="</tr>";
+                DWrite+="<tr>";
+                DWrite+="<td colspan=2 style='border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;' height=30px>";
+                DWrite+="<img src='img/timeline/ico_userli_num_gr.png' style='vertical-align: middle; display:inline; float: left;'>";
+                         <!-- 담당자 추가 되는부분 -->
+                DWrite+=        "<div id=Wrap style='margin-top: 20px;'>";
+                DWrite+=			"<div id=btn-open-dialog style='width:100px; margin-left: 30px; text-align: center; margin-top: -14px; border: 1px solid #EAEAEA; float: left; color: #c0c0c0;font-size: 15px;'>담당자 추가</div>";
+                DWrite+=			"<span id=Chu style='float: left;' ></span>";
+             			<!-- 담당자 추가 되는부분 -->
+             			 DWrite+=		"</div>";
+             			 DWrite+=	      "</td>";
+             			 DWrite+=	"</tr>";
+             			 DWrite+=	"<tr>";
+             			 DWrite+=	"<td id=AddList style='margin-left: 30px; height: 35px;'>";
+             			 DWrite+=	 		"<div style='width:100px; margin-left: 30px; text-align: center; margin-top: -5px; border: 1px solid #EAEAEA; color: #c0c0c0;font-size: 15px;'>항목 추가</div>";
+             			 DWrite+=	    	"</td>";
+             			 DWrite+=	   "</tr>";
+             			 DWrite+=	  "</table>";
+             			/*  DWrite+=	"<div style='width: 100%; height: auto;' id=AddAdd></div>";
+             			 DWrite+=	"<textarea placeholder='업무 일정을 작성하세요' rows=10 cols=100 name=Duty_content style='width: 97%; line-height: 18px; font-size: 16px; border: 0; font-weight: bold; margin-left: 10px; margin-top: 10px;'></textarea>";
+             			 DWrite+=	"<div id=my-dialog>";
+             			 DWrite+=	"<ul id=nav>";
+             			 DWrite+=	"<li><a>류수재</a></li>";
+             			 DWrite+=	"<li><a>박세진</a></li>";
+             			 DWrite+=	"<li><a>박수진</a></li>";
+             			 DWrite+=	"<li><a>엄재철</a></li>";
+             			 DWrite+=		"<li><a>여준혁</a></li>";
+             			 DWrite+=	"<li><a>이미진</a></li>"''
+             			 DWrite+=	"</ul>";
+             			 DWrite+=	 "</div>"; */
+             			 DWrite+=	"<div id=dialog-background></div>";
+             			 DWrite+=	"<table>";
+             			 DWrite+=	"<tr style='height: 50px;'>";
+             			 DWrite+=	"<td style='vertical-align: middle;'>&nbsp;";
+             			 DWrite+=	"</td>";
+             			 DWrite+=	"<td align=right>";
+           
+             			 DWrite+=	" </td>";
+             			 DWrite+=	"</tr>";
+             			 DWrite+=	"</table>";
+             			 DWrite+=	"</div>";
+
+                
+                  $("#time_board").prepend(DWrite);          
+             }
+              });
+            });
+      });
+   </script>
+         <!-- 업무 -->
          <form action="" method="post" enctype="multipart/form-data" id="DutyWriteForm">
             <div id="TDup">
                <table style="border: 1px solid #EAEAEA; border-collapse: collapse;">
@@ -605,7 +683,6 @@
                   </tr>
               </table>
               <div style="width: 100%; height: auto;" id="AddAdd"></div>
-             
               <textarea placeholder="업무 일정을 작성하세요" rows="10" cols="100" name="Duty_content"
               style="width: 97%; line-height: 18px; font-size: 16px; border: 0; font-weight: bold; margin-left: 10px; margin-top: 10px;"></textarea>
      		   <div id="my-dialog">
@@ -618,9 +695,7 @@
             		<li><a>이미진</a></li>
          		</ul>
      		  </div>
-   		<!-- 외부영역 클릭시 -->
-	   <div id="dialog-background"></div>
-	   <!-- 외부영역 클릭시 -->    
+	   <div id="dialog-background"></div> 
                   <table>
                   <tr style="height: 50px;">
                      <td style="vertical-align: middle;">&nbsp;
@@ -630,19 +705,17 @@
                         <a> <img src="img/timeline/icon_attach_pic.png" style="vertical-align: middle; margin-left: 10px;">
                            <span style="font-size: 15px; font-weight: bold;">이미지첨부</span>
                         </a>
-   
                      </td>
                      <td align="right">
-                        <input type="submit" value="올리기"
+                        <input type="button" value="올리기" id="DutyUpload"
                            style="background-color: #5f5ab9; border: #5f5ab9; color: #fff; font-weight: bold; width: 100px; height: 30px; margin-left: 330px;">&nbsp;&nbsp;
                      </td>
                   </tr>
                   </table>
-              
             </div>
-            
          </form>
          <!-- 업무 -->
+         
          
          <!-- 일정 -->
          <div id="TCal">
@@ -878,7 +951,9 @@
     			for(BoardBean bb: arr) {
     			
     				MemberDAO mdao = new MemberDAO();
+    				
     	%>
+
 		    <div id="time_board">
                 <% if(bb.getTable_type().equals("Write") && bb.getProject_num()==num) {%>
 		            <div id="time_body">
@@ -893,14 +968,12 @@
 			            
 			            <div id="time_content">
 			            	<%=bb.getContent() %>
-			            	
-			            	
-			            
 			            </div>
 			            <div>
 			            	<a class="like_btn" id="like<%=bb.getNum()%>">좋아요</a>
 			            </div>
 			       </div>
+
 			       
 			       <!-- 댓글 달기 -->
 			       <%
@@ -913,8 +986,18 @@
 			       			MemberDAO cmt_mdao = new MemberDAO();
 			       			if(cb.getCmt_board_num() == bb.getNum()) {%>
 							<div id="comment_list">
-									<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png">
-									
+									<% 
+										MemberBean cmt_mb = cmt_mdao.getMember(email);
+										if(cmt_mb.getImage() == null){
+									%>
+											<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" width="34px;" height="34px">
+									<%
+										}else{
+									%>
+											<img alt="프로필사진" src="./upload/<%=cmt_mb.getImage()%>" width="34px;" height="34px">
+									<%
+										}
+									%>
 								<div id="comment_info">
 									<b><%= cmt_mdao.getMember(cb.getCmt_email()).getName() %></b>
 									<span style="color: #c0c0c0;font-size: 12px;"><%=cb.getDate() %></span>
@@ -930,8 +1013,19 @@
 						
 						<form action="" id="comment_form"></form>
 							<div id="form_in_div">
-								<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png">
-								
+								<%
+									MemberDAO cmt_mdao2 = new MemberDAO();
+									MemberBean cmt_mb = cmt_mdao2.getMember(email);
+									if(cmt_mb.getImage() == null){
+								%>
+										<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" width="34px;" height="34px">
+								<%
+									}else {
+								%>
+										<img alt="프로필사진" src="./upload/<%=cmt_mb.getImage()%>" width="34px;" height="34px">
+								<%
+									}
+								%>
 								<input type="text" class="cmt_content" id="content<%=bb.getNum()%>" name="content" placeholder="댓글을 입력하세요.">
 								<input type="hidden" class="board_num" id="board_num<%=bb.getNum() %>" name="board_num" value="<%= bb.getNum()%>">
 								<input type="button" value="작성" class="sub_cmt" id="sub_cmt<%=bb.getNum()%>" style="width: 40px; height: 30px;">
@@ -939,12 +1033,21 @@
 							</div> 
 						</form>
 	                </div>
-			       
+
 			       <%} %>
 		       		<div id="mar_btm"></div>
 		       </div>
+		       <div id="DutyForm" style="">
+		       		<%-- 	<div id="time_profile">
+							<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">
+							<span id="time_info" style="width: 100px;">
+								<b><%= mdao.getMember(bb.getMember_user()).getName() %></b><br>
+								<span style="color: #c0c0c0;font-size: 12px;"><%=bb.getDate() %></span>
+							</span>
+			            </div> --%>
+		       </div>
 		       
-         <%		} 
+         	<%} 
          	}%>
     		</div>
     

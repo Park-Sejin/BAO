@@ -22,6 +22,8 @@ public class TimeLineDutyWriteAction implements Action{
    @Override
    public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
       
+	   System.out.println("DutyAction!");
+	   
       request.setCharacterEncoding("UTF-8");
       try{
          int maxPostSize=100*1024*1024;
@@ -85,8 +87,6 @@ public class TimeLineDutyWriteAction implements Action{
        out.println(Write);
        out.close();      
 
-      //System.out.println("xasxasxasd"+request.getAttribute("AA"));
-      
 /*      ActionForward forward = new ActionForward();
       forward.setPath("./TimeLine/divdiv.jsp");
       forward.setRedirect(false);*/

@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 /*import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;*/
-
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.servlet.ServletContext;
@@ -86,8 +86,11 @@ public class TimeLineWriteAction implements Action{
       
       
       bb.setProject_num(Integer.parseInt(mr.getParameter("num")));
-      
+        
       BoardDAO bdao=new BoardDAO();
+
+      bdao.insertWrite(bb);
+
       int tNum = bdao.insertWrite(bb);
       bdao.alarm(bb, tNum);
       
@@ -104,30 +107,8 @@ public class TimeLineWriteAction implements Action{
       
       request.setAttribute("Conn", multi.getParameter("content"));
       
+>>>>>>> refs/remotes/origin/master
 
-       response.setContentType("text/html; charset=UTF-8");
-       PrintWriter out = response.getWriter();
-       out.println("<script>");
-       out.println("alert('sadsad');");
-       out.println("</script>");
-       out.close();
-       HttpSession session = request.getSession();
-      session.setAttribute("id", id);
-*/
-      
-      //ArrayList<BoardBean> list=bdao.Writeinfo();
-      //HttpSession session=request.getSession();
-      //session.setAttribute("AA", multi.getParameter("content"));
-      //request.setAttribute("AA",multi.getParameter("content"));
-      //request.setAttribute("list", list);
-      //JSONParser JP=new JSONParser();
-      
-      /*JSONObject obj=null;
-      //JSONArray arr=new JSONArray();
-      String Write=null;
-      obj=new JSONObject();
-      obj.put("Con",bb.getContent());
-      obj.put("WF",bb.getWrite_file());*/
       
       JSONObject obj=null;
       //JSONArray arr=new JSONArray();
@@ -139,6 +120,10 @@ public class TimeLineWriteAction implements Action{
       obj.put("Name",mdao.getMember(bb.getMember_user()).getName());
       obj.put("Date",bb.getDate());
       obj.put("Content",bb.getContent());
+<<<<<<< HEAD
+      obj.put("ProjectNum",bb.getProject_num());
+=======
+>>>>>>> refs/remotes/origin/master
       //obj.put("IF", multi.getParameter("Img_write_file"));
       Write=obj.toString();
       

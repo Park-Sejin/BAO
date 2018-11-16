@@ -1,3 +1,5 @@
+<%@page import="chatting.db.ChatBean"%>
+<%@page import="chatting.db.ChatDAO"%>
 <%@page import="member.db.MemberBean"%>
 <%@page import="project.db.ProjectDAO"%>
 <%@page import="java.util.List"%>
@@ -12,14 +14,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="./css/top.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
+		var sid = document.getElementById('sid');
 		$('#click_chat').click(function(){
 			$.ajax({
 	            url:'./default/top_test1.jsp',
 	            type:'get',
 	            data:{
-	            	'id':'admin'
+	            	'email':sid
 	            },
 	            success:function(data){
 	            	$('#chat_block').empty();
@@ -55,6 +59,10 @@
 
 </head>
 <body>
+	<%
+	String id = (String)session.getAttribute("email");
+	%>
+	<input type="hidden" value="<%=id%>" name="sid">
 	<header>
 	<a href="./main.pr"></a>
 
@@ -95,17 +103,32 @@
 								</form>
 							</div>
 						</div>
-	
+						<%
+							ChatDAO cdao = new ChatDAO();
+							MemberDAO hd_mdao = new MemberDAO();
+							List chatList = cdao.getChatList(id);
+							for(int i=0; i<chatList.size(); i++){
+								ChatBean cb = (ChatBean)chatList.get(i);
+								MemberBean chatmb = hd_mdao.getMember(cb.getReceiver());
+						%>
 						<div id="hd_chat_sec3">
-						
 							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
+								<%if(chatmb.getImage() == null){ %>
+									<img src="./img/top_header/thumb26.gif" width="40px"
+													height="40px"  class="sec3_div_img">
+								<%}else{ %>
+									<img src="./upload/<%=chatmb.getImage() %>" width="40px"
+													height="40px"  class="sec3_div_img">
+								<%} %>
+								<span class="sec3_div_name"><a onclick="window.open('./chatPage.chat?receive_email=<%=cb.getReceiver() %>', 'new','width=700, height=870, status=no, location=no, directories=no,scrollbars=no;');"><%=chatmb.getName() %></a></span>
+								<span class="sec3_div_title"><a onclick="window.open('./chatPage.chat?receive_email=<%=cb.getReceiver() %>', 'new','width=700, height=870, status=no, location=no, directories=no,scrollbars=no;');"><%=cb.getMessage() %></a></span>
+								<span class="sec3_div_date"><%=cb.getDate() %></span>
 							</div>
+						<%
+							}
 						
+						%>
+							
 						</div>
 					</div>
 				</div>
@@ -129,7 +152,6 @@
 						<%
 							//알림 리스트 불러오기
 							BoardDAO h_bdao = new BoardDAO();
-							String id = (String)session.getAttribute("email");
 							MemberDAO h_mdao = new MemberDAO();
 							ProjectDAO h_pdao = new ProjectDAO();
 							int memNum = h_mdao.getMemberNum(id);
@@ -140,12 +162,19 @@
 								AlarmBean ab = (AlarmBean)AlarmList.get(i);
 								int proNum = h_bdao.getProNum(ab.getTwrite_num());
 								proName = h_pdao.getProjectName(proNum);
+								MemberBean mb = h_mdao.getMember( ab.getMember_num());
 						%>
                      	<div class="sec3_div">
-                     		<img src="./img/top_header/thumb26.gif" width="40px"
+                     		<img 
+                     			<%if(mb.getImage()==null){ %>
+                     			src="./img/top_header/thumb26.gif" 
+                     			<%}else{ %>
+                     			src="./upload/<%=mb.getImage()%> "
+                     			<%} %>
+                     			width="40px"
 										height="40px"  class="sec3_div_img">
 							<span class="sec33_div_name"><%=proName %></span>
-							<span class="sec33_div_title"><span class="bold"><%=h_mdao.getName(ab.getMember_num()) %></span> ~~~를 했습니다.</span>
+							<span class="sec33_div_title"><span class="bold"><%=h_mdao.getName(ab.getMember_num()) %></span>님이 글 작성을 했습니다.</span>
 							<span class="sec33_div_date"><%=ab.getDate() %> </span>
                     	</div>
                     	<%
@@ -237,7 +266,7 @@
 				modal3.style.display = "block";
 			}
 			// When the user clicks anywhere outside of the modal, close it
-			/* window.onclick = function(event) {
+			window.onclick = function(event) {
 				if (event.target == modal1) {
 					modal1.style.display = "none";
 				}
@@ -247,17 +276,9 @@
 				if (event.target == modal3) {
 					modal3.style.display = "none";
 				}
-			} */
+			}
 			
-			$(".modal2").on("show.bs.modal", function() {
-				var curModal;
-				curModal = this;
-				$(".modal2").each(function() {
-					if (this !== curModal) {
-						$(this).modal("hide");
-					}
-				});
-			});
+			
 			
 			</script>
 			
