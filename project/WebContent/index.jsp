@@ -12,7 +12,7 @@
 			/* response.sendRedirect("./main.pr"); */
 			response.sendRedirect("./Login.me");
 
-			// 타임라인d 
+			// 깃 !
 
 			// 업무수
 
