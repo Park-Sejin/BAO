@@ -460,7 +460,7 @@
 	                          	Write+="<div id='comment_info'>";
 	                          	Write+="<b>"+json.Name+"</b>";
 	                          	Write+="<span style='color: #c0c0c0;font-size: 12px;'>"+json.Date+"</span>";
-	                          	Write+="좋아요/수정/삭제 해야함 css";
+	                          	
 	                          	Write+="</div>";
 	                          	Write+="<div class='clear'></div>";
 	                          	Write+="<div id='cmt_content'>";
@@ -598,13 +598,6 @@
             			</div>
                      </td>
                   </tr>
-<<<<<<< HEAD
-                  
-                  	 
-                  
-                  
-=======
->>>>>>> refs/remotes/origin/master
                   <tr>
                   	<td id="AddList" style="margin-left: 30px; height: 35px;">
                   		<div style="width:100px; margin-left: 30px; text-align: center; margin-top: -5px; border: 1px solid #EAEAEA; color: #c0c0c0;font-size: 15px;">항목 추가</div>

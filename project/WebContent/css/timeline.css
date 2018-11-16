@@ -1,197 +1,197 @@
 @CHARSET "UTF-8";
 
 body {
-	background-color: #f6f6f6;
+   background-color: #f6f6f6;
 }
 
 #container {
-	width: 2000px;
+   width: 2000px;
 }
 
 article#timeline {
-/* 	margin: 120px 300px 0 570px; */
-	margin-top: 0px;
-	margin-right:0px;
-	margin-bottom:0;
-	/* margin-left: 570px; */
-	width: 700px;
-	height: 1000px;
-	/* position: static;
-	top:0; */
-	display: inline-block;
+/*    margin: 120px 300px 0 570px; */
+   margin-top: 0px;
+   margin-right:0px;
+   margin-bottom:0;
+   /* margin-left: 570px; */
+   width: 700px;
+   height: 1000px;
+   /* position: static;
+   top:0; */
+   display: inline-block;
    vertical-align: top;
    margin-top: 150px;
 }
 
 div#mar_btm {
-	margin-bottom: 10px;
+   margin-bottom: 10px;
 }
 
 /* --------------------------------------------------------------업무공유방 부분*/
 div#report {
-	background-color: #fff;
+   background-color: #fff;
 }
 
 div#title {
-	background-color: #f66;
-	width: 700px;
-	height: 70px;
-	color: #fff;
-	font-size: 20px;
-	font-weight: bold;
-	line-height: 70px;
+   background-color: #f66;
+   width: 700px;
+   height: 70px;
+   color: #fff;
+   font-size: 20px;
+   font-weight: bold;
+   line-height: 70px;
 }
 
 div#title span#time_left {
-	margin: 0 0 0 20px;
+   margin: 0 0 0 20px;
 }
 
 div#title span#time_right {
-	float: right;
-	margin: 0 20px 0 0;
+   float: right;
+   margin: 0 20px 0 0;
 }
 
 /* -----------------------------------------------------------업무리포트 보기 부분*/
 div#chart_title {
-	font-size: 13px;
-	color: #555;
-	height: 50px;
-	line-height: 50px;
-	padding: 0 10px;
+   font-size: 13px;
+   color: #555;
+   height: 50px;
+   line-height: 50px;
+   padding: 0 10px;
 }
 
 a#chart_up {
-	width: 50px;
-	height: 50px;
-	background-image: url(./img/timeline/chart_up.png);
-	background-repeat: no-repeat;
-	background-position: center center;
-	float: right;
+   width: 50px;
+   height: 50px;
+   background-image: url(./img/timeline/chart_up.png);
+   background-repeat: no-repeat;
+   background-position: center center;
+   float: right;
 }
 
 div#chart {
-	width: 670px;
-	height: 225px;
+   width: 670px;
+   height: 225px;
 }
 
 /* ---------------------------------------------------------업무 리포트 보기(그림)*/
 div#chart_cir {
-	width: 400px;
-	height: 225px;
-	float: left;
-	text-align: center;
-	line-height: 225px;
+   width: 400px;
+   height: 225px;
+   float: left;
+   text-align: center;
+   line-height: 225px;
 }
 
 /* -------------------------------------------업무 리포트 리스트 부분(요청, 진행, ... 등등 */
 ul#chart_list { /* 업무 리포트 보기(리스트) */
-	float: right;
-	padding-top: 0px;
-	width: 170px;
-	box-sizing: border-box;
-	list-style: none;
-	margin: 0 70px 0 0;
-	padding: 0;
+   float: right;
+   padding-top: 0px;
+   width: 170px;
+   box-sizing: border-box;
+   list-style: none;
+   margin: 0 70px 0 0;
+   padding: 0;
 }
 
 ul#chart_list li {
-	position: relative;
-	cursor: pointer;
-	padding: 10px 0 0 20px;
-	height: 40px;
-	font-size: 14px;
-	color: #333;
-	border-bottom: 1px solid #e7e7e7;
-	box-sizing: border-box;
-	text-align: -webkit-match-parent;
+   position: relative;
+   cursor: pointer;
+   padding: 10px 0 0 20px;
+   height: 40px;
+   font-size: 14px;
+   color: #333;
+   border-bottom: 1px solid #e7e7e7;
+   box-sizing: border-box;
+   text-align: -webkit-match-parent;
 }
 
 ul#chart_list span { /* 동그라미 */
-	display: inline-block;
-	vertical-align: top;
-	margin-top: 4px;
-	margin-right: 8px;
-	width: 15px;
-	height: 12px;
-	border-radius: 6px;
+   display: inline-block;
+   vertical-align: top;
+   margin-top: 4px;
+   margin-right: 8px;
+   width: 15px;
+   height: 12px;
+   border-radius: 6px;
 }
 
 ul#chart_list span.chart1:NTH-OF-TYPE(2n-1) {
-	background-color: #4aaefb;
+   background-color: #4aaefb;
 }
 
 ul#chart_list span.chart2:NTH-OF-TYPE(2n-1) {
-	background-color: #50b766;
+   background-color: #50b766;
 }
 
 ul#chart_list span.chart3:NTH-OF-TYPE(2n-1) {
-	background-color: #f17a19;
+   background-color: #f17a19;
 }
 
 ul#chart_list span.chart4:NTH-OF-TYPE(2n-1) {
-	background-color: #2e417e;
+   background-color: #2e417e;
 }
 
 ul#chart_list span.chart5:NTH-OF-TYPE(2n-1) {
-	background-color: #aeaeae;
+   background-color: #aeaeae;
 }
 
 ul#chart_list span.chart1:NTH-OF-TYPE(2n) {
-	color: #4aaefb;
-	margin: 0 0 0 30px;
+   color: #4aaefb;
+   margin: 0 0 0 30px;
 }
 
 ul#chart_list span.chart2:NTH-OF-TYPE(2n) {
-	color: #50b766;
-	margin: 0 0 0 30px;
+   color: #50b766;
+   margin: 0 0 0 30px;
 }
 
 ul#chart_list span.chart3:NTH-OF-TYPE(2n) {
-	color: #f17a19;
-	margin: 0 0 0 16px;
+   color: #f17a19;
+   margin: 0 0 0 16px;
 }
 
 ul#chart_list span.chart4:NTH-OF-TYPE(2n) {
-	color: #2e417e;
-	margin: 0 0 0 30px;
+   color: #2e417e;
+   margin: 0 0 0 30px;
 }
 
 ul#chart_list span.chart5:NTH-OF-TYPE(2n) {
-	color: #aeaeae;
-	margin: 0 0 0 30px;
+   color: #aeaeae;
+   margin: 0 0 0 30px;
 }
 
 /* -------------------------------------------------------------글 작성 부분 */
 div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
-	background-color: #fff;
+   background-color: #fff;
 }
 
 #write {
-	border: none;
-	width: 100%;
-	height: 100%;
-	background: url('../img/timeline/button1.png') no-repeat;
+   border: none;
+   width: 100%;
+   height: 100%;
+   background: url('../img/timeline/button1.png') no-repeat;
 }
 
 #Dup {
-	border: none;
-	width: 100%;
-	height: 100%;
-	background: url('../img/timeline/button2.png') no-repeat;
+   border: none;
+   width: 100%;
+   height: 100%;
+   background: url('../img/timeline/button2.png') no-repeat;
 }
 
 #Cal {
-	border: none;
-	width: 100%;
-	height: 100%;
-	background: url('../img/timeline/button3.png') no-repeat;
+   border: none;
+   width: 100%;
+   height: 100%;
+   background: url('../img/timeline/button3.png') no-repeat;
 }
 
 #Do {
-	border: none;
-	width: 100%;
-	height: 100%;
-	background: url('../img/timeline/button4.png') no-repeat;
+   border: none;
+   width: 100%;
+   height: 100%;
+   background: url('../img/timeline/button4.png') no-repeat;
 }
 
 
@@ -237,7 +237,7 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
   font-weight: bold;
 }
 /* Modal */
-/* #dialog-background {
+/*  #dialog-background {
     display: none;
     position: fixed;
     top: 0; left: 0;
@@ -246,7 +246,7 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
     z-index: 10;
 }
 #my-dialog {
-    /* display: none; */
+    
     position: fixed;
     left: calc( 50% - 160px ); top: calc( 50% - 70px );
     width: 223px; height: 200px; 
@@ -257,26 +257,8 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
     margin-left:-700px;
     margin-top:-178px;
     box-shadow: 10px 10px 20px 20px gray;
-} */
-/* Modal */
-/* 담당자 추가 */
-
-/* #nav{
-  border:1px solid #ccc;
-  border-width:1px 0;
-  list-style:none;
-  margin:0;
-  padding:0;
 }
-#nav li{
-  display:inline;
-}
-#nav a{
-  display:inline-block;
-  padding:10px;
-} */
-
-
+ */
 
 
 
@@ -286,118 +268,117 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
 /* 게시물 올리기 */
 
 #time_board { 
-	width: 700px;
-	min-height: 200px;
-	background-color: #fff;
-	border: 1px solid #e5e6e9;
-	position: relative;
+   width: 700px;
+   min-height: 200px;
+   background-color: #fff;
+   border: 1px solid #e5e6e9;
+   position: relative;
 }
 #time_body {
-	padding: 28px 0 3px 20px;
+   padding: 28px 0 3px 20px;
 }
  
 #time_pName {
-	height: 50px;
-	border-bottom: 1px solid #e5e6e9;
+   height: 50px;
+   border-bottom: 1px solid #e5e6e9;
     margin-top: 8px;
-	min-height: 55px;
-	vertical-align: middle;
+   min-height: 55px;
+   vertical-align: middle;
 }
 
 #time_pName>h3 {
-	margin: 16px 0 0 10px;
+   margin: 16px 0 0 10px;
     font-size: 16px;
     color: #5f5ab9;
-	max-width: 78%;
-	padding: 10px;
+   max-width: 78%;
+   padding: 10px;
 }
 
 #time_profile {
-	display: block;
+   display: block;
 }
 
 #profile_img {
-	width: 40px;
-	height: 40px;
-	border: 1px solid #eee;
-	border-radius: 50%;
-	float:left;
+   width: 40px;
+   height: 40px;
+   border: 1px solid #eee;
+   border-radius: 50%;
+   float:left;
 
 }
 
 #time_info {
-	margin-left: 15px;
-	padding-top: 2px;
-	font-size: 15px;
-	width: 50px;
-	float: right;
-	float:left;
+   margin-left: 15px;
+   padding-top: 2px;
+   font-size: 15px;
+   width: 50px;
+   float: right;
+   float:left;
 }
 
 
 .clear {
-	clear: both;
+   clear: both;
 }
 
 
 
 #time_content {
-	/*min-height: 200px;*/
-	margin-top: 20px;
-	margin: 10px 15px 10px 0;
-	border-bottom: 1px solid #eee;
-	padding: 20px 0;
-	height: auto;
+   /*min-height: 200px;*/
+   margin-top: 20px;
+   margin: 10px 15px 10px 0;
+   border-bottom: 1px solid #eee;
+   padding: 20px 0;
+   height: auto;
 }
 
 
 
 /* ----------------------------------------------------------댓글 css */
 #comment_body {
-	width: 700px;
-	min-height: 50px;
-	background-color: #eee;
-	padding-top: 10px;
-	padding-bottom: 5px;
+   width: 700px;
+   min-height: 50px;
+   background-color: #eee;
+   padding-top: 10px;
+   padding-bottom: 5px;
 }
 #comment_list, #form_in_div, #new_cmtList {
-	margin-left: 10px;
-	margin-bottom: 10px;	
+   margin-left: 10px;
+   margin-bottom: 10px;   
 }
 
 #comment_info {
-	height: 40px;
-	line-height: 40px;
-	margin-left: 5px;
-	float: left;
+   height: 40px;
+   line-height: 40px;
+   margin-left: 5px;
+   float: left;
 }
 
 #comment_body img, #form_in_div img {
-	float: left;
-	border: 1px solid #eee;
-	border-radius: 50%;
+   float: left;
+   border: 1px solid #eee;
+   border-radius: 50%;
 }
 
 #comment_body span {
-	color: #c0c0c0;
-	font-size: 12px;
+   color: #c0c0c0;
+   font-size: 12px;
 }
 #cmt_content {
-	margin-left: 40px;
+   margin-left: 40px;
 }
 
 #form_in_div {
-	border-top: 1px solid #ccc;
-	padding-top: 5px;
-	margin-top: 10px;
+   border-top: 1px solid #ccc;
+   padding-top: 5px;
+   margin-top: 10px;
 }
 #form_in_div input[type="text"] {
-	width: 600px;
-	height: 30px;
-	line-height: 30px;
-	margin-left: 5px;
+   width: 600px;
+   height: 30px;
+   line-height: 30px;
+   margin-left: 5px;
 }
-
 
 
 

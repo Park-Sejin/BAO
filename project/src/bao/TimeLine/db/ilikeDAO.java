@@ -39,8 +39,10 @@ public class ilikeDAO {
 	
 	// 좋아요 추가 메서드
 	public void Push_like(ilikeBean lb){
+		
 		try {
 			con=getCon();
+			
 			sql = "select * from ilike where like_email=? and b_num=?";
 			pstmt=con.prepareStatement(sql);
 			
@@ -50,13 +52,27 @@ public class ilikeDAO {
 			rs = pstmt.executeQuery();
 			if(!rs.next()){
 			
-				sql = "insert into ilike(like_email,b_num,1) values(?,?,?)";
+				sql = "insert into ilike(like_email,b_num,push_cnt) values(?,?,1)";
 				pstmt=con.prepareStatement(sql);
 				
 				pstmt.setString(1, lb.getLike_email());
 				pstmt.setInt(2, lb.getB_num());
 				
 				pstmt.executeUpdate();
+				
+				
+				
+				sql = "select * from ilike where b_num=?";
+				pstmt=con.prepareStatement(sql);
+				
+				pstmt.setInt(1, lb.getB_num());
+				rs = pstmt.executeQuery();
+				
+				int cnt = 0;
+				while(rs.next()){
+					
+				}
+				
 			}else {
 				sql = "update ilike set push_cnt = push_cnt+1 where like_email=? and b_num=?";
 				pstmt=con.prepareStatement(sql);
@@ -65,10 +81,17 @@ public class ilikeDAO {
 				pstmt.setInt(2, lb.getB_num());
 				
 				pstmt.executeUpdate();
+				
+				/*sql = "update ilike set total"*/
 			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally { CloseDB(); }
 	}
+	
+	
+	
+	
+	
 }

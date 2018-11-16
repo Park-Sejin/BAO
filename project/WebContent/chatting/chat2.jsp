@@ -102,7 +102,7 @@
 		%>
 	
 		<div id="chat_top">
-			<%=re_mb.getName() %> <img src="../img/login/logo.png" alt="바꿔야함" id="chat_menu">
+			<%=re_mb.getName() %> 
 		</div>
 		<br>
 	
