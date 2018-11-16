@@ -120,8 +120,8 @@
 									<img src="./upload/<%=chatmb.getImage() %>" width="40px"
 													height="40px"  class="sec3_div_img">
 								<%} %>
-								<span class="sec3_div_name"><%=chatmb.getName() %></span>
-								<span class="sec3_div_title"><%=cb.getMessage() %></span>
+								<span class="sec3_div_name"><a onclick="window.open('./chatPage.chat?receive_email=<%=cb.getReceiver() %>', 'new','width=700, height=870, status=no, location=no, directories=no,scrollbars=no;');"><%=chatmb.getName() %></a></span>
+								<span class="sec3_div_title"><a onclick="window.open('./chatPage.chat?receive_email=<%=cb.getReceiver() %>', 'new','width=700, height=870, status=no, location=no, directories=no,scrollbars=no;');"><%=cb.getMessage() %></a></span>
 								<span class="sec3_div_date"><%=cb.getDate() %></span>
 							</div>
 						<%

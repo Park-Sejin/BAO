@@ -21,20 +21,6 @@
 	List memList = a_pmdao.getJoinMemberList(memNum);
 %>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript">
-	function onKeyDown(){
-		if(event.keyCode == 13){
-			alert('aaaa');
-		}
-	}	
-	function pop(){
-      var receive_email = document.getElementById('receive_email').value;
-      window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
-   }
-	
-</script>
-
 <div id="hd_chat_sec2">
 	<div id="chat_search">
 			<img src="./img/top_header/if_icon-111-search_314478.png" width="30" style="position: absolute; left: 10px;">
@@ -72,7 +58,6 @@
 			for(int i = 0; i<memList.size(); i++){
 				MemberBean allListMB = (MemberBean)memList.get(i);
 		%>
-		<input type="hidden" id="receive_email" value="<%=allListMB.getEmail()%>">
 		<div class="div_chat">
 			<a href="#">
 				<%
@@ -88,7 +73,7 @@
 				%>
 			</a>
 			<a href="#"><%=allListMB.getName() %></a>
-			<a class="icon_chat" onclick="pop();"></a>
+			<a class="icon_chat"  onclick="window.open('./chatPage.chat?receive_email=<%=allListMB.getEmail() %>', 'new','width=700, height=870, status=no, location=no, directories=no,scrollbars=no;');"></a>
 		</div>
 		<%
 			}
