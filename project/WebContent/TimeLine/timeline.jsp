@@ -34,8 +34,8 @@
       <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
       
       <style type="text/css">
-      .ui-datepicker{ font-size: 12px; width: 200px; }
-	  .ui-datepicker select.ui-datepicker-month{ width:100px; font-size: 11px; }
+  .ui-datepicker{ font-size: 12px; width: 200px; }
+	.ui-datepicker select.ui-datepicker-month{ width:100px; font-size: 11px; }
 	  .ui-datepicker select.ui-datepicker-year{ width:100px; font-size: 11px; }
 
       /* Modal */
@@ -480,8 +480,9 @@
          		var num = "";
          		$(".like_btn").click(function(){
          			like_id = "#"+$(this).attr('id');
+         			alert("값"+like_id);
          			num = like_id.substring(5,like_id.length);
-         			
+         			alert("num?"+num);
          			$.ajax({
                        url:"./LikePushCnt.tl",
                        data: { 
@@ -674,13 +675,6 @@
             			</div>
                      </td>
                   </tr>
-<<<<<<< HEAD
-                  
-                  	 
-                  
-                  
-=======
->>>>>>> refs/remotes/origin/master
                   <tr>
                   	<td id="AddList" style="margin-left: 30px; height: 35px;">
                   		<div style="width:100px; margin-left: 30px; text-align: center; margin-top: -5px; border: 1px solid #EAEAEA; color: #c0c0c0;font-size: 15px;">항목 추가</div>
@@ -957,14 +951,9 @@
     			
     				MemberDAO mdao = new MemberDAO();
     	%>
-<<<<<<< HEAD
-		    	<div id="time_board">
-		    		<% if(bb.getTable_type().equals("Write") && bb.getProject_num()==num) {%>
-		    		
-=======
+
 		    <div id="time_board">
                 <% if(bb.getTable_type().equals("Write") && bb.getProject_num()==num) {%>
->>>>>>> refs/remotes/origin/master
 		            <div id="time_body">
 			            <div id="time_profile">
 							<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">
@@ -982,8 +971,7 @@
 			            	<a class="like_btn" id="like<%=bb.getNum()%>">좋아요</a>
 			            </div>
 			       </div>
-<<<<<<< HEAD
-=======
+
 			       
 			       <!-- 댓글 달기 -->
 			       <%
@@ -1022,8 +1010,7 @@
 							</div> 
 						</form>
 	                </div>
-			       
->>>>>>> refs/remotes/origin/master
+
 			       <%} %>
 		       		<div id="mar_btm"></div>
 		       </div>

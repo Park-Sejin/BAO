@@ -88,9 +88,9 @@ public class TimeLineWriteAction implements Action{
       bb.setProject_num(Integer.parseInt(mr.getParameter("num")));
         
       BoardDAO bdao=new BoardDAO();
-<<<<<<< HEAD
+
       bdao.insertWrite(bb);
-=======
+
       int tNum = bdao.insertWrite(bb);
       bdao.alarm(bb, tNum);
       

@@ -237,7 +237,7 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
   font-weight: bold;
 }
 /* Modal */
-/* #dialog-background {
+/*  #dialog-background {
     display: none;
     position: fixed;
     top: 0; left: 0;
@@ -246,7 +246,7 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
     z-index: 10;
 }
 #my-dialog {
-    /* display: none; */
+    
     position: fixed;
     left: calc( 50% - 160px ); top: calc( 50% - 70px );
     width: 223px; height: 200px; 
@@ -257,26 +257,8 @@ div#time_write, div#TWirte, div#TDup, div#TCal, div#TWork {
     margin-left:-700px;
     margin-top:-178px;
     box-shadow: 10px 10px 20px 20px gray;
-} */
-/* Modal */
-/* 담당자 추가 */
-
-/* #nav{
-  border:1px solid #ccc;
-  border-width:1px 0;
-  list-style:none;
-  margin:0;
-  padding:0;
 }
-#nav li{
-  display:inline;
-}
-#nav a{
-  display:inline-block;
-  padding:10px;
-} */
-
-
+ */
 
 
 
