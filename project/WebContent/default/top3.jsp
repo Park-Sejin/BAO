@@ -12,7 +12,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="./css/top.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 	$(document).ready(function(){
 		$('#click_chat').click(function(){
@@ -107,40 +106,6 @@
 								<span class="sec3_div_date">2018.10.25</span>
 							</div>
 						
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							<div class="sec3_div">
-								<img src="./img/top_header/thumb26.gif" width="40px"
-												height="40px"  class="sec3_div_img">
-								<span class="sec3_div_name">김철수</span>
-								<span class="sec3_div_title">안녕하세요</span>
-								<span class="sec3_div_date">2018.10.25</span>
-							</div>
-							
-							
-							
 						</div>
 					</div>
 				</div>
@@ -272,7 +237,7 @@
 				modal3.style.display = "block";
 			}
 			// When the user clicks anywhere outside of the modal, close it
-			window.onclick = function(event) {
+			/* window.onclick = function(event) {
 				if (event.target == modal1) {
 					modal1.style.display = "none";
 				}
@@ -282,7 +247,17 @@
 				if (event.target == modal3) {
 					modal3.style.display = "none";
 				}
-			}
+			} */
+			
+			$(".modal2").on("show.bs.modal", function() {
+				var curModal;
+				curModal = this;
+				$(".modal2").each(function() {
+					if (this !== curModal) {
+						$(this).modal("hide");
+					}
+				});
+			});
 			
 			</script>
 			

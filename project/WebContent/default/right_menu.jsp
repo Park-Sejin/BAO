@@ -9,20 +9,19 @@
 <%@page import="member.db.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-  
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>  
+   
    <script type="text/javascript">
    
-   function copyToClipboard(val) {
-	   var t = document.createElement("textarea");
-	   document.body.appendChild(t);
-	   t.value = val;
-	   t.select();
-	   document.execCommand('copy');
-	   document.body.removeChild(t);
-	 }
+    function copyToClipboard(val) {
+      var t = document.createElement("textarea");
+      document.body.appendChild(t);
+      t.value = val;
+      t.select();
+      document.execCommand('copy');
+      document.body.removeChild(t);
+    } 
    
-	 
+    
    
    function go_pop(){
       /* $(document).ready(function() {
@@ -30,7 +29,6 @@
       }); */
       var receive_email = document.getElementById('receive_email').value;
       window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
-      alert("ddd");
    }
    
    function server() {
@@ -41,15 +39,7 @@
    function chat_pop(){
       window.open("./chatPage.chat","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
       }
-   
-
-   
-   function go_pop(){
-      var receive_email = document.getElementById('receive_email').value;
-      window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
-      }
       
-  
    
    function goBack() { /* 이전으로가기  */
        location.href="./main.pr";
@@ -58,24 +48,72 @@
    function closeWin() {
       part.close();
    }
-	
+   
+    /* invite2_div  
+    function btn_prd_add(){
+       alert("버튼클릭");
+      
+      var add ="";
+      add= add+"<b>버튼클릭add</b>";
+      
+      $(".prd_namebx_container").append(add);
+      alert("버튼클릭끝");      
+      
+   }*/
+   
+   function btn_prd_add(){
+       alert("버튼클릭");
+      
+      var add ="";
+      var liarr = new array();
+      
+      var li = $(this);
+      var div = li.children();
+      
+      console.log(" 클릭한 li의 데이터"+li.text());
+      div.each(function(i){
+        liarr.push(td.eq(i).text()); 
+      });
+      
+      console.log("배열에 담긴 값"+liarr);
+      
+      var no = li.eq(0).text();
+      var userid = li.eq(1).text();
+      var name = li.eq(2).text();
+      var email=li.eq(3).text();
+      
+      add+= "클릭된 열의 li 값"+no+userid+name+email+"gg";
+      
+      
+      $(".prd_namebx_container").append(li.text());
+      $(".prd_namebx_container").append(add);
+      
+      
+      $(".prd_namebx_container").append(add);
+      alert("버튼클릭끝");      
+      
+   } 
+  
+
+   
    $(document).ready(function(){
-		 $("#teaminvite").click(function(){
-			 /* 	alert("teaminvite버튼"); */
-				$(".invite_popup").load("#right_menu .invite2_popup");
-			});
-		 
-		 
-		 $("#btn_prd_add").click(function(){
-			 alert("btn_prd_add");
-		 });
-		 
-		 $("#invitelink").click(function() {			   
-			   copyToClipboard('http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num=1');
-			   alert("복사완료");
-			 });
-		 
-		
+       $("#teaminvite").click(function(){
+          /*    alert("teaminvite버튼"); */
+            $(".invite_popup").load("#right_menu .invite2_popup");
+         });
+       
+       
+   
+       /* link복사하기 inv  */
+       $("#invitelink").click(function() {   
+    	   var hidden_num = document.getElementById('hidden_num').value;
+            alert("invitelink 클릭");
+            copyToClipboard('http://localhost:8088/project/5m2Zg4FH5jF5T.pr?num='+hidden_num);
+            alert("복사완료");
+          });
+       
+   
+      
     }); 
    
  
@@ -93,9 +131,11 @@
       int mem_num = 0;
       if(request.getParameter("mem_num") != null) {
          mem_num = Integer.parseInt(request.getParameter("mem_num"));
+         
       } 
      
    %>
+   <input type="hidden" value="<%=num%>" id="hidden_num">
    <!-- aside -->
    <div id="rightMenuBox">
       <div class="aside_wrap">
@@ -117,7 +157,7 @@
             <a class="invite" id="rightBoxPrjInvite">초대하기</a>
             <!-- <a class="inviteurl">초대URL생성</a> -->
          </div>
-		 <% ProjectMemberDAO pmdao = new ProjectMemberDAO();
+       <% ProjectMemberDAO pmdao = new ProjectMemberDAO();
                   List<ProjectMemberBean> arr = new ArrayList<ProjectMemberBean>();
                   arr = pmdao.getProjectMember(num);%>
 
@@ -164,14 +204,14 @@
                           <%--  <input type="hidden" id="mem_num" value="<%=mb.getNum()%>">
                            <a href="" class="a_name"><%= mb.getName()%></a> --%>
                         </div>
-                        <div class="btn_right">
-                        	<input type="hidden" id="receive_email" value="<%=mb.getEmail()%>">
+                        <%-- <div class="btn_right">
+                           <input type="hidden" id="receive_email" value="<%=mb.getEmail()%>">
                            <a class="btn chat" onclick="go_pop()"><span class="blind">채팅</span></a>
-                        </div>
+                        </div> --%>
                      </li>
                       <%} %>
                       
-                     
+                      
                      <!-- 계속해서참여자추가(?) -->
 
 
@@ -261,75 +301,77 @@
    <!-- 팝업창 div2  -->
  
    <div id="invite2_div" class="modal">
-        <div class="invite2_popup" style="width:500px; height:620px; z-index:1100; position:fixed;" >
-        	<div class="prdbx_hd">
-        		<!-- 상단 타이틀  -->
-        		<div class="prdbx_hd_top">
-        			<h1>초대하기</h1>
-        			<div class="btn_1" id="inviteboxre"></div>
-        			<div class="btn_2" id="inviteboxclose" onclick="document.getElementById('invite_div').style.display='none'"></div>
-        		</div>
-        		<!-- //상단 타이틀  -->
-        		<div class="prdbx_hd_sch" id="invitesrchbox">
-        			<div class="prd_prd_schbx_in">
-        				<span role="status"></span>
-        				<input type="text" placeholder="함께 프로젝트를 진행했었던 사람들을 찾아보세요!">
-        			</div>
-        		</div>  		
-        	</div>   
+        <div class="invite2_popup" style="width:500px; height:620px; z-index:1100; position:fixed; margin-bottom:10px;" >
+           <div class="prdbx_hd">
+              <!-- 상단 타이틀  -->
+              <div class="prdbx_hd_top">
+                 <h1>초대하기</h1>
+                 <div class="btn_1" id="inviteboxre"></div>
+                 <div class="btn_2" id="inviteboxclose" onclick="document.getElementById('invite_div').style.display='none'"></div>
+              </div>
+              <!-- //상단 타이틀  -->
+              <div class="prdbx_hd_sch" id="invitesrchbox">
+                 <div class="prd_prd_schbx_in">
+                    <span role="status"></span>
+                    <input type="text" placeholder="함께 프로젝트를 진행했었던 사람들을 찾아보세요!">
+                 </div>
+              </div>        
+           </div>   
             <div class="prdbx_cn">
-            	<div class="prd_namebx_div">
-            		<div class="prd_namebx_inside">
-            			<div class="prd_namebx_container">
-            			
-            				<div class="prd_name_cn"></div>
-            				<div class="prd_name_btn"><a class="all_del">전체삭제</a></div>
-            			</div>
-            		
-            		</div>
-            	
-            	</div>
+               <div class="prd_namebx_div">
+                  <div class="prd_namebx_inside">
+                     <div class="prd_namebx_container">                   
+                        <div class="prd_name_cn"></div>
+                        <div class="prd_name_btn"><a id="all_del">전체삭제</a></div>
+                     </div>
+                  
+                  </div>
+               
+               </div>
             <% for(ProjectMemberBean pmb : arr ){
-			MemberDAO mdao = new MemberDAO();
-			MemberBean mb = mdao.getMember(pmb.getMember_num()); %>
-			
-			<div class="prdcn_list">
-				<ul>
-					<li style=" width: 480px; height:63px; border: 1px solid #800080; margin-bottom: 10px; ">
-					<img id="prflImg" src="">
-					<div class="prdcn_name"><%=mb.getName() %></div>
-					<div class="btn_r"><a id="btn_prd_add" onclick="alert1()">추가</a></div>
-					</li>
-				</ul>
-			
-			</div>
-			<%}%>
-			<button id="check" width:"30px";>버튼</button>
-			
-			<script>
-			
-			
-			
-			 $(document).ready(function(){
-				 
-				 function alert1(){
-						alert("ggg");
-					}
-				 /* $("a>#btn_prd_add").click(function(){
-					alert("ggg"); 
-					
-					
-				 }); */
-			 });
-			
-			
-			</script>
-			
+         MemberDAO mdao = new MemberDAO();
+         MemberBean mb = mdao.getMember(pmb.getMember_num()); %>
+         
+         <div class="prdcn_list">
+            <ul>
+               <li id="buttontest" style=" width: 480px; height:63px; border: 1px solid #800080; ">
+               <li style=" width: 480px; height:63px; border: 1px solid #800080; margin-bottom: 10px; ">
+
+               <img id="prflImg" src="">
+               <div class="prdcn_name"><%=mb.getName() %></div>
+
+               <div class="btn_r"><a id="btn_prd_add" onclick="alert1()">추가</a></div>
+               </li>
+            </ul>
+         
+         </div>
+         <%}%>
+
+         
+         <script>
+         
+         
+         
+          $(document).ready(function(){
+             
+             function alert1(){
+                  alert("ggg");
+               }
+             /* $("a>#btn_prd_add").click(function(){
+               alert("ggg"); 
+               
+               
+             }); */
+          });
+         
+         
+         </script>
+         
             </div>
             <div class="prdbx_ft">
-            	<a class="btn_prd_sty1_b2" id="inviteSelectId">
-            		<span>초대</span>
-            	</a>
+               <a class="btn_prd_sty1_b2" id="inviteSelectId">
+                  <span>초대</span>
+               </a>
             </div>
         </div>
    </div>
@@ -433,7 +475,7 @@
                            <a id="insidepeoplename"><%=mb.getName() %></a><b>|</b><strong>
                            <% if(pmb.getNum()==1){ %> <span>관리자</span>
                            <%} else{ %> <span>회원</span>
-                        	   <%} %>
+                              <%} %>
                            </strong>
                               <div class="AllViewbtn_right">
                                  <a class="btn set" id="moresetting"><span>채팅</span></a>

@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.box{
+	border: 1px solid white;
+	width: 800px;
+	height: 800px;
+	margin: 400px auto;
+	background: url("../img/content/invite.jpeg") no-repeat 0px 0px;
+	background-size: 100%;
+}
+
+.box_param{
+	width:400px;
+	height: 300px;
+	margin: 250px auto;
+	text-align: center;
+}
+
+.box_param span{
+	font-weight: bold;
+	font-size: 20px;
+}

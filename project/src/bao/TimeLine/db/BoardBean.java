@@ -3,15 +3,22 @@ package bao.TimeLine.db;
 import java.util.Date;
 
 public class BoardBean {
-	
+	private int num;
 	private String content;
 	private String write_file;
 	private String img_file;
 	private Date date;
 	private String Member_user;
-	private String project_name;
+	private int project_num;
 	private String table_type;
 	
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getContent() {
 		return content;
 	}
@@ -42,11 +49,11 @@ public class BoardBean {
 	public void setMember_user(String member_user) {
 		Member_user = member_user;
 	}
-	public String getProject_name() {
-		return project_name;
+	public int getProject_num() {
+		return project_num;
 	}
-	public void setProject_name(String project_name) {
-		this.project_name = project_name;
+	public void setProject_num(int project_num) {
+		this.project_num = project_num;
 	}
 	public String getTable_type() {
 		return table_type;

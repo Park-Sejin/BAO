@@ -36,8 +36,8 @@ public class TimeLineWriteAction implements Action{
       String email = (String)session.getAttribute("email");
       
       
-      System.out.println("dd: " + email);
-      
+      //System.out.println("dd: " + email);
+ 
       request.setCharacterEncoding("UTF-8");
       try{
          int maxPostSize=100*1024*1024;
@@ -84,13 +84,12 @@ public class TimeLineWriteAction implements Action{
       
       bb.setMember_user(email);
       
-      ProjectDAO pdao = new ProjectDAO();
-      ProjectBean pb =  pdao.getProject(Integer.parseInt(mr.getParameter("num")));
       
-      bb.setProject_name(pb.getProName());
+      bb.setProject_num(Integer.parseInt(mr.getParameter("num")));
       
       BoardDAO bdao=new BoardDAO();
-      bdao.insertWrite(bb);
+      int tNum = bdao.insertWrite(bb);
+      bdao.alarm(bb, tNum);
       
       /*List<String> ConList=new ArrayList<String>();
       ConList.add(multi.getParameter("content"));

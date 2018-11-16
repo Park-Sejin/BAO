@@ -1,3 +1,5 @@
+<%@page import="bao.TimeLine.db.CommentBean"%>
+<%@page import="bao.TimeLine.db.CommentDAO"%>
 <%@page import="member.db.MemberDAO"%>
 <%@page import="bao.TimeLine.db.TotalDAO"%>
 <%@page import="bao.TimeLine.db.TotalBean"%>
@@ -11,6 +13,8 @@
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       <title>Insert title here</title>
+      
+      
 
       <link href="./css/timeline.css" rel="stylesheet" type="text/css">
       <link rel="stylesheet" href="./css/top.css">
@@ -30,6 +34,10 @@
       <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />
       
       <style type="text/css">
+      .ui-datepicker{ font-size: 12px; width: 200px; }
+	  .ui-datepicker select.ui-datepicker-month{ width:100px; font-size: 11px; }
+	  .ui-datepicker select.ui-datepicker-year{ width:100px; font-size: 11px; }
+
       /* Modal */
 #dialog-background {
     display: none;
@@ -42,22 +50,22 @@
 #my-dialog {
     display: none;
     position: fixed;
-    /* left: calc( 50% - 160px ); top: calc( 50% - 70px ); */
-    width: 223px; height: 200px; 
+     left: calc( 50% - 140px ); top: calc( 50% - 100px );
+    width: 223px; height: 100px; 
     background: white;
     z-index: 11;
     padding: 10px;
     margin-top:100px;
     /* margin-left:-700px;
     margin-top:-178px; */
-    box-shadow: 10px 10px 20px 20px gray;
+    box-shadow: 10px 10px 10px 10px #EAEAEA;
 }
 /* Modal */
 /* 담당자 추가 */
 #nav{
   border:1px solid #ccc;
   border-width:1px 0;
-  list-style:none;
+  /* list-style:none; */
   margin:0;
   padding:0;
 }
@@ -68,7 +76,6 @@
   display:inline-block;
   padding:10px;
 }
-      
       </style>
 
       <script type="text/javascript">
@@ -124,24 +131,7 @@
             });
          /* -------------------------------------------------------------------------- */
                     
-            /* textbox 담당자 추가 */
-             var dupid;
-             $("#nav a").click(function(){
-              var is=true;
-               var id=$(this).text();
-                   $('#Chu').find('div').each(function(){
-                      dupid = $(this).text();
-                      if(dupid==id){
-                      is=false;
-                      alert("중복입니다.");
-                      }
-                   });
-                 if(is==true){
-                    $("#Chu").append("<div style='float:left; display: inline-block;'>"
-                             +id+"<input type=button class=btnRemove value=X onclick='remove(this)'>"+
-                             "</div>"); 
-                   }
-            });
+
              
              /* 항목추가 입력 */
              $("#AddList").click(function(){
@@ -364,8 +354,9 @@
                <table style="border: 1px solid #EAEAEA; border-collapse: collapse;">
                   <tr>
                      <td colspan="2">
-                        <textarea placeholder="글을 작성하세요" rows="10" cols="95" name="content" 
-                           style="width: 97%; line-height: 18px; font-size: 16px; border: 0; font-weight: bold; margin-left: 10px; margin-top: 10px;">
+                        <textarea rows="10" cols="95" name="content" placeholder="글을 작성하세요" 
+                        style="width: 97%; line-height: 18px; font-size: 16px; color:black; font-weight: bold; margin-left: 10px; margin-top: 10px;"
+                        >
                         </textarea>
                      </td>
                   </tr>
@@ -406,6 +397,9 @@
                           $("textarea[name=content]").val("");
                           var json = $.parseJSON(data);
                           var Chutext=json.Con;
+                          //alert(json.ProjectNum);
+                          //alert(json.Type);
+                          //if(json.ProjectNum==1 && )
                           var Write="<div id='time_board'>";
                           	Write+="<div id='time_body'>";
                           	Write+="<div id='time_profile'>";
@@ -430,57 +424,151 @@
                           	Write+="<div id='mar_btm'></div>";
                           	Write+="</div>";
                           	Write+="</div>";
-                          	
-                            /* Write+="<div style='' id=TWirte>";
-                            Write+="'" + json.WF + "'";
-                            Write+="'" + Chutext.replace(/\r\n/gi,"<br>") + "'";
-                            Write+="<br>";
-                            Write+="</div>"; */
                             $("#time_board").prepend(Write);
                        }
                   });
                });
+               
+               $(document).ready(function(){
+	         		var sub_id = "";
+	         		var cmt_id = "";
+	         		var num = "";
+	         		var b_num = "";
+	         		
+	         		$(".cmt_content").click(function(){
+	         			cmt_id = "#"+$(this).attr('id');
+	         		});
+	         		
+	         		$(".sub_cmt").click(function(){
+	         			sub_id = "#"+$(this).attr('id');
+	         			num = sub_id.substring(8,sub_id.length);
+	         			b_num = "#board_num"+num;
+	         			
+	         			$.ajax({
+	                       url:"./CommentAction.tl",
+	                       data: {
+	                    		board_num : $(b_num).val(),
+		                    	content : $(cmt_id).val()
+	                       },
+	                       type: 'POST',
+	                       success: function(data){
+	                          $("textarea[name=content]").val("");
+	                          var json = $.parseJSON(data);
+	                          var Chutext=json.Con;
+	                          var Write="<div style='margin-bottom: 10px;'>";
+	                          	Write+="<img alt='바꿔야함' src='./img/right_menu/img_photo_null32.png'>";
+	                          	Write+="<div id='comment_info'>";
+	                          	Write+="<b>"+json.Name+"</b>";
+	                          	Write+="<span style='color: #c0c0c0;font-size: 12px;'>"+json.Date+"</span>";
+	                          	Write+="좋아요/수정/삭제 해야함 css";
+	                          	Write+="</div>";
+	                          	Write+="<div class='clear'></div>";
+	                          	Write+="<div id='cmt_content'>";
+	                          	Write+=json.Content;
+	                          	Write+="</div>";
+	                          	Write+="</div>";
+	                          	
+	                            $("#new_cmtList"+num).append(Write);
+	                       }
+	                    });
+	         		});
+	         	});
             });
             /* 글 작성 끝 */
+            
+            
+            $(document).ready(function(){
+         		var like_id = "";
+         		var num = "";
+         		$(".like_btn").click(function(){
+         			like_id = "#"+$(this).attr('id');
+         			num = like_id.substring(5,like_id.length);
+         			
+         			$.ajax({
+                       url:"./LikePushCnt.tl",
+                       data: { 
+	                    	"b_num" : num
+                       },
+                       type: 'POST',
+                       success: function(data){
+                          alert("좋아요");
+                       }
+                    });
+         		});
+         	});
          </script>
          <!-- 글 -->
          
          <script type="text/javascript">
 
          /* Modal */
+         $(document).ready(function(){
           $("#btn-open-dialog,#dialog-background,#btn-close-dialog").click(function () {
             $("#my-dialog,#dialog-background").toggle();
+         });
          });
          /* Modal */
          
          
-      $("#AddList").click(function(){
-      $("#AddList").remove();
-      var addTag="";
-      addTag+="<div class=line1 'style=border: 3px solid black;'><input type=text id=Startpicker placeholder=시작일 추가 onchange='Change1()'></div><br>";
-      addTag+="<div class=line2 id=lastDay 'style=display: block;'><input type=text id=Endpicker placeholder=마감일 추가 onchange='Change2()'></div><br>";
-      $("#AddAdd").append(addTag);
-      $('#Startpicker').each(function(){
-           $(this).datepicker({
-                    dateFormat: 'yy-mm-dd' 
-                   ,showOtherMonths: true 
-                   ,showMonthAfterYear:true              
-                   ,buttonImageOnly: true        
-                   ,yearSuffix: "년"
-                   ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] 
-                   ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] 
-                   ,dayNamesMin: ['일','월','화','수','목','금','토'] 
-                   ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] 
-                   ,minDate: "-1M"
-                   ,maxDate: "+1M" 
+     
+         </script>
+         <script type="text/javascript">
+         $(document).ready(function(){
+        	 $("#AddList").click(function(){
+             $("#AddList").remove();
+             var addTag="";
+             addTag+="<img src='img/timeline/ico_cal_task01c4ca.png' style='vertical-align: middle;'>&nbsp;<span class=line1>";
+             addTag+="<input type=text id=Startpicker placeholder=시작일 추가 onchange='Change1()' style='border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;'></span><br>";
+             addTag+="<img src='img/timeline/ico_cal_task02c4ca.png' style='vertical-align: middle;'>&nbsp;<span class=line2>";
+             addTag+="<input type=text id=Endpicker placeholder=마감일 추가 onchange='Change2()' style='border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;'></span><br>";
+             $("#AddAdd").append(addTag);	
+             
+              $('#Startpicker').each(function(){
+                  $(this).datepicker({
+                           dateFormat: 'yy-mm-dd' 
+                          ,showOtherMonths: true 
+                          ,showMonthAfterYear:true              
+                          ,buttonImageOnly: true        
+                          ,yearSuffix: "년"
+                          ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] 
+                          ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] 
+                          ,dayNamesMin: ['일','월','화','수','목','금','토'] 
+                          ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] 
+                          ,minDate: "-1M"
+                          ,maxDate: "+1M" 
+                 });
+              });
+             $('#Endpicker').each(function(){
+               $(this).datepicker({
+                  dateFormat:'yy-mm-dd'
+               });
+           	}); 
           });
-       });
-      $('#Endpicker').each(function(){
-        $(this).datepicker({
-           dateFormat:'yy-mm-dd'
         });
-    });
-   });
+         
+         </script>
+         <script type="text/javascript">
+         /* textbox 담당자 추가 */
+         $(document).ready(function(){
+         var dupid;
+         $("#nav a").click(function(){
+          var is=true;
+           var id=$(this).text();
+               $('#Chu').find('div').each(function(){
+                  dupid = $(this).text();
+                  if(dupid==id){
+                  is=false;
+                  alert("중복입니다.");
+                  }
+               });
+             if(is==true){
+                $("#Chu").append(
+                "<div style='float: left; margin-top: -10px;'>"+id+"<input type=button class=btnRemove value=X onclick='remove(this)'>"+
+                 "</div>"); 
+               }
+        });
+         }); 
+         
          </script>
          <!-- 업무 -->
          <form action="" method="post" enctype="multipart/form-data" id="DutyWriteForm">
@@ -501,41 +589,46 @@
                   </tr>
                   <tr>
                      <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="img/timeline/ico_userli_num_gr.png" style="vertical-align: middle;">
+                        <img src="img/timeline/ico_userli_num_gr.png" style="vertical-align: middle; display:inline; float: left;">
                         <!-- 담당자 추가 되는부분 -->
-                        <div id="Wrap">
-           				<div id="btn-open-dialog" style="width:100px; margin-left: 30px; text-align: center; margin-top: -14px; border: 1px solid #EAEAEA;">담당자 추가</div>
+                        <div id="Wrap" style="margin-top: 20px;">
+           				<div id="btn-open-dialog" style="width:100px; margin-left: 30px; text-align: center; margin-top: -14px; border: 1px solid #EAEAEA; float: left; color: #c0c0c0;font-size: 15px;">담당자 추가</div>
+           				<span id="Chu" style="float: left;" ></span>
             			<!-- 담당자 추가 되는부분 -->
             			</div>
                      </td>
                   </tr>
+<<<<<<< HEAD
                   
                   	 
                   
                   
+=======
+>>>>>>> refs/remotes/origin/master
                   <tr>
-                     <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="img/timeline/ico_cal_task01c4ca.png" style="vertical-align: middle;">
-                     </td>
+                  	<td id="AddList" style="margin-left: 30px; height: 35px;">
+                  		<div style="width:100px; margin-left: 30px; text-align: center; margin-top: -5px; border: 1px solid #EAEAEA; color: #c0c0c0;font-size: 15px;">항목 추가</div>
+                  	</td>
                   </tr>
-                  <tr>
-                     <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="img/timeline/ico_cal_task02c4ca.png" style="vertical-align: middle;">
-                     </td>
-                  </tr>
-                  <tr>
-                     <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="img/timeline/ico_flag.png" style="vertical-align: middle;">
-                     </td>
-                  </tr>
-                  <tr>
-                     <td colspan="2" style="border: 1px solid #EAEAEA; border-collapse: collapse; padding: 2px 10px;" height="30px">
-                        <img src="img/timeline/icon_flag2.png" style="vertical-align: middle;">
-                     </td>
-                  </tr>
-                  
-                  
-                  
+              </table>
+              <div style="width: 100%; height: auto;" id="AddAdd"></div>
+             
+              <textarea placeholder="업무 일정을 작성하세요" rows="10" cols="100" name="Duty_content"
+              style="width: 97%; line-height: 18px; font-size: 16px; border: 0; font-weight: bold; margin-left: 10px; margin-top: 10px;"></textarea>
+     		   <div id="my-dialog">
+        		 <ul id="nav">
+           	 		<li><a>류수재</a></li>
+            		<li><a>박세진</a></li>
+           			<li><a>박수진</a></li>
+            		<li><a>엄재철</a></li>
+           			<li><a>여준혁</a></li>
+            		<li><a>이미진</a></li>
+         		</ul>
+     		  </div>
+   		<!-- 외부영역 클릭시 -->
+	   <div id="dialog-background"></div>
+	   <!-- 외부영역 클릭시 -->    
+                  <table>
                   <tr style="height: 50px;">
                      <td style="vertical-align: middle;">&nbsp;
                         <a> <img src="img/timeline/icon_attach_file.png" style="vertical-align: middle;">
@@ -548,26 +641,12 @@
                      </td>
                      <td align="right">
                         <input type="submit" value="올리기"
-                           style="background-color: #5f5ab9; border: #5f5ab9; color: #fff; font-weight: bold; width: 100px; height: 30px;">&nbsp;&nbsp;
+                           style="background-color: #5f5ab9; border: #5f5ab9; color: #fff; font-weight: bold; width: 100px; height: 30px; margin-left: 330px;">&nbsp;&nbsp;
                      </td>
                   </tr>
-               </table>
+                  </table>
+              
             </div>
-        <div id="my-dialog" style="border: 3px solid red;">
-      <!-- 이미지 사진 추가  -->
-         <ul id="nav">
-            <li><a href="#">류수재</a></li>
-            <li><a href="#">박세진</a></li>
-            <li><a href="#">박수진</a></li>
-            <li><a href="#">엄재철</a></li>
-            <li><a href="#">여준혁</a></li>
-            <li><a href="#">이미진</a></li>
-         </ul>
-       <!-- 이미지 사진 추가  -->
-     </div>
-   		<!-- 외부영역 클릭시 -->
-	   <div id="dialog-background"></div>
-	   <!-- 외부영역 클릭시 -->
             
          </form>
          <!-- 업무 -->
@@ -796,7 +875,9 @@
 			TotalDAO td=new TotalDAO();
 			ArrayList<TotalBean> TotalList=td.Totalinfo(); // 안함. 나중에 토탈빈으로 바꿔야함.
     		
-    		
+    		%>
+    			<div id="total_board">
+    		<%
     		
     		arr = bdao.Writeinfo();
     		
@@ -805,8 +886,8 @@
     			
     				MemberDAO mdao = new MemberDAO();
     	%>
-		    	<div id="time_board">
-		    		<% if(bb.getTable_type().equals("Write")) { %>
+		    <div id="time_board">
+                <% if(bb.getTable_type().equals("Write") && bb.getProject_num()==num) {%>
 		            <div id="time_body">
 			            <div id="time_profile">
 							<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" id="profile_img">
@@ -824,17 +905,55 @@
 			            
 			            </div>
 			            <div>
-			            	<a href="">좋아요</a>
-			            	<a href="">댓글달기</a>
+			            	<a class="like_btn" id="like<%=bb.getNum()%>">좋아요</a>
 			            </div>
 			       </div>
-			         	
-			       <div id="mar_btm"></div>
+			       
+			       <!-- 댓글 달기 -->
+			       <%
+			       		CommentDAO cdao = new CommentDAO();
+			       		ArrayList<CommentBean> cmt_arr = cdao.getComment();
+			       %>
+			       
+			       <div id="comment_body">
+			       		<%for(CommentBean cb : cmt_arr) { 
+			       			MemberDAO cmt_mdao = new MemberDAO();
+			       			if(cb.getCmt_board_num() == bb.getNum()) {%>
+							<div id="comment_list">
+									<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png">
+									
+								<div id="comment_info">
+									<b><%= cmt_mdao.getMember(cb.getCmt_email()).getName() %></b>
+									<span style="color: #c0c0c0;font-size: 12px;"><%=cb.getDate() %></span>
+									좋아요
+									<a href="">수정</a> | <a href="">삭제</a><br>
+								</div>
+								<div class="clear"></div>
+								<div id="cmt_content">
+									<%=cb.getCmt_content() %>
+								</div>
+							</div>
+						<%} }%><div id="new_cmtList<%=bb.getNum()%>"></div><!-- 작성한 페이지 ajax 넘어오는 div -->
+						
+						<form action="" id="comment_form"></form>
+							<div id="form_in_div">
+								<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png">
+								
+								<input type="text" class="cmt_content" id="content<%=bb.getNum()%>" name="content" placeholder="댓글을 입력하세요.">
+								<input type="hidden" class="board_num" id="board_num<%=bb.getNum() %>" name="board_num" value="<%= bb.getNum()%>">
+								<input type="button" value="작성" class="sub_cmt" id="sub_cmt<%=bb.getNum()%>" style="width: 40px; height: 30px;">
+								
+							</div> 
+						</form>
+	                </div>
+			       
 			       <%} %>
+		       		<div id="mar_btm"></div>
 		       </div>
+		       
          <%		} 
          	}%>
-    
+    		</div>
     
     
 
