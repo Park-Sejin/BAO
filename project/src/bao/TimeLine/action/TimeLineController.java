@@ -56,6 +56,20 @@ public class TimeLineController extends HttpServlet{
           forward = new ActionForward();
           forward.setPath("./content/my_board.jsp");
           forward.setRedirect(false);
+       }else if(command.equals("/CommentAction.tl")) {
+    	   action = new CommentAction();
+           try{
+              forward=action.execute(request, response);
+           }catch(Exception e){
+              e.printStackTrace();
+           }
+       }else if(command.equals("/LikePushCnt.tl")) {
+    	   action = new PushLikeAction();
+           try{
+              forward=action.execute(request, response);
+           }catch(Exception e){
+              e.printStackTrace();
+           }
        }
        
 

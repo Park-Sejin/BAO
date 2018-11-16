@@ -29,7 +29,6 @@
       }); */
       var receive_email = document.getElementById('receive_email').value;
       window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
-      alert("ddd");
    }
    
    function server() {
@@ -40,15 +39,7 @@
    function chat_pop(){
       window.open("./chatPage.chat","new","width=360, height=700, resizable=no, scrollbars=no, status=no, location=no, directories=no;");
       }
-   
-
-   
-   function go_pop(){
-      var receive_email = document.getElementById('receive_email').value;
-      window.open("./chatPage.chat?receive_email="+receive_email,"new","width=700, height=870, status=no, location=no, directories=no,scrollbars=no;");
-      }
       
-  
    
    function goBack() { /* 이전으로가기  */
        location.href="./main.pr";
@@ -213,14 +204,14 @@
                           <%--  <input type="hidden" id="mem_num" value="<%=mb.getNum()%>">
                            <a href="" class="a_name"><%= mb.getName()%></a> --%>
                         </div>
-                        <div class="btn_right">
+                        <%-- <div class="btn_right">
                            <input type="hidden" id="receive_email" value="<%=mb.getEmail()%>">
                            <a class="btn chat" onclick="go_pop()"><span class="blind">채팅</span></a>
-                        </div>
+                        </div> --%>
                      </li>
                       <%} %>
                       
-                     
+                      
                      <!-- 계속해서참여자추가(?) -->
 
 

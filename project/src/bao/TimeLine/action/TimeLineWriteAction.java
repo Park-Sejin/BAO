@@ -20,7 +20,6 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import bao.TimeLine.db.BoardBean;
 import bao.TimeLine.db.BoardDAO;
-import bao.TimeLine.db.TotalBean;
 import member.db.MemberDAO;
 import project.db.ProjectBean;
 import project.db.ProjectDAO;
@@ -38,7 +37,7 @@ public class TimeLineWriteAction implements Action{
       
       
       //System.out.println("dd: " + email);
-      
+ 
       request.setCharacterEncoding("UTF-8");
       try{
          int maxPostSize=100*1024*1024;
@@ -74,14 +73,41 @@ public class TimeLineWriteAction implements Action{
       BoardBean bb=new BoardBean();
       
       
-      bb.setContent(mr.getParameter("content")); 
+      bb.setContent(mr.getParameter("content"));
+      //System.out.println("action : "+mr.getParameter("content"));
+      
       bb.setWrite_file(mr.getFilesystemName("write_file"));
+      //System.out.println("Faction : "+mr.getFilesystemName("write_file"));
+      
       bb.setImg_file(mr.getFilesystemName("img_file"));
+      //System.out.println("Iaction : "+mr.getFilesystemName("img_file"));
+      
       bb.setMember_user(email);
+      
+      
       bb.setProject_num(Integer.parseInt(mr.getParameter("num")));
         
       BoardDAO bdao=new BoardDAO();
+<<<<<<< HEAD
       bdao.insertWrite(bb);
+=======
+      int tNum = bdao.insertWrite(bb);
+      bdao.alarm(bb, tNum);
+      
+      /*List<String> ConList=new ArrayList<String>();
+      ConList.add(multi.getParameter("content"));
+      ConList.add(multi.getParameter("write_file"));
+      ConList.add(multi.getParameter("Img_write_file"));*/
+      
+/*      
+      HashMap<String, Object> ConList=new HashMap<String, Object>();
+      ConList.put("Con", multi.getParameter("content"));
+      ConList.put("WF", multi.getParameter("write_file"));
+      ConList.put("IF", multi.getParameter("Img_write_file"));
+      
+      request.setAttribute("Conn", multi.getParameter("content"));
+      
+>>>>>>> refs/remotes/origin/master
 
       
       JSONObject obj=null;
@@ -94,14 +120,19 @@ public class TimeLineWriteAction implements Action{
       obj.put("Name",mdao.getMember(bb.getMember_user()).getName());
       obj.put("Date",bb.getDate());
       obj.put("Content",bb.getContent());
+<<<<<<< HEAD
       obj.put("ProjectNum",bb.getProject_num());
+=======
+>>>>>>> refs/remotes/origin/master
       //obj.put("IF", multi.getParameter("Img_write_file"));
       Write=obj.toString();
       
       response.setContentType("text/html; charset=UTF-8");
       PrintWriter out = response.getWriter();
-      out.println(Write);
-      out.close();      
+       out.println(Write);
+       out.close();      
+
+      //System.out.println("xasxasxasd"+request.getAttribute("AA"));
       
 /*      ActionForward forward = new ActionForward();
       forward.setPath("./TimeLine/divdiv.jsp");

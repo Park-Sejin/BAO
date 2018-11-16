@@ -87,12 +87,12 @@
 		} 
 		$.ajax({
 			type: "POST",
-			url: "./calendarAction.pr",
+			url: "./calendarJSON.pr",
 			data:{
 				"email":email,
 				"work":work
 			},
-			dataType:'text',
+			dataType:'json',
 	        success: function(json){
 	        		/*var title = data.split(",")[0];
 				var date = data.split(",")[1];
@@ -104,11 +104,18 @@
 					//$('table').append("<tr><td>"+item.title+"</td><td>"+item.gender+"</td><td>"+item.age+"</td></tr>");
 				});
 				console.log(rs); */
-				var list = json.trim();
-				var str = JSON.stringify(list);
-				var newArr = JSON.parse(str);
-				alert(newArr[0].date);
-				
+				var id = document.getElementById('today');
+				$.each(json, function(index, item){
+				       //alert(item.title + ":" +item.date);
+				       
+				       //객체를 가져다가 파싱
+				       var title = item.title;
+				       var date = item.date;
+				       $(id).append(title);
+				       alert(title);
+				       alert(date);
+				});
+
 	        },
 	        error : function(){
 				alert('통신실패!!');
@@ -145,7 +152,6 @@
 		endDay= new Array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
 		dayName= new Array("일", "월", "화", "수", "목", "금", "토");
 		col=0;
-
 		if (tYear == null) {
 			tYear = nYear;
 		}   
@@ -197,7 +203,7 @@
 				//오늘
 				calendarStr += "<TD class=today>" + i + "<BR>"
 				//DB에 해당 날짜의 일정이 있으면 삽입
-				//if(스케줄1==i){calendarStr += "<DIV class=viewSched pink><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
+				calendarStr += "<DIV id=today ></DIV>"
 				//if(스케줄2==i){calendarStr += "<DIV class=viewSched orange><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
 				//if(일정1==i){calendarStr += "<DIV class=viewSched yellow><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}
 				//if(일정2==i){calendarStr += "<DIV class=viewSched green><a href='"+일정번호+"'>"+일정제목+"</a></DIV>"}

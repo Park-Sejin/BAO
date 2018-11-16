@@ -11,7 +11,11 @@
 			/* response.sendRedirect("./timeline.chat");  */
 			/* response.sendRedirect("./main.pr"); */
 			response.sendRedirect("./Login.me");
+
+			// 타임라인d 
+
 			// 업무수
+
 		%>
 	</body>
 </html> 
