@@ -486,7 +486,7 @@
          			
          			$.ajax({
                        url:"./LikePushCnt.tl",
-                       data: {
+                       data: { 
 	                    	"b_num" : num
                        },
                        type: 'POST',
