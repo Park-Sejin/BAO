@@ -1,3 +1,4 @@
+<%@page import="member.db.MemberBean"%>
 <%@page import="bao.TimeLine.db.CommentBean"%>
 <%@page import="bao.TimeLine.db.CommentDAO"%>
 <%@page import="member.db.MemberDAO"%>
@@ -984,8 +985,18 @@
 			       			MemberDAO cmt_mdao = new MemberDAO();
 			       			if(cb.getCmt_board_num() == bb.getNum()) {%>
 							<div id="comment_list">
-									<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png">
-									
+									<% 
+										MemberBean cmt_mb = cmt_mdao.getMember(email);
+										if(cmt_mb.getImage() == null){
+									%>
+											<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" width="34px;" height="34px">
+									<%
+										}else{
+									%>
+											<img alt="프로필사진" src="./upload/<%=cmt_mb.getImage()%>" width="34px;" height="34px">
+									<%
+										}
+									%>
 								<div id="comment_info">
 									<b><%= cmt_mdao.getMember(cb.getCmt_email()).getName() %></b>
 									<span style="color: #c0c0c0;font-size: 12px;"><%=cb.getDate() %></span>
@@ -1001,8 +1012,19 @@
 						
 						<form action="" id="comment_form"></form>
 							<div id="form_in_div">
-								<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png">
-								
+								<%
+									MemberDAO cmt_mdao2 = new MemberDAO();
+									MemberBean cmt_mb = cmt_mdao2.getMember(email);
+									if(cmt_mb.getImage() == null){
+								%>
+										<img alt="프로필사진" src="./img/right_menu/img_photo_null32.png" width="34px;" height="34px">
+								<%
+									}else {
+								%>
+										<img alt="프로필사진" src="./upload/<%=cmt_mb.getImage()%>" width="34px;" height="34px">
+								<%
+									}
+								%>
 								<input type="text" class="cmt_content" id="content<%=bb.getNum()%>" name="content" placeholder="댓글을 입력하세요.">
 								<input type="hidden" class="board_num" id="board_num<%=bb.getNum() %>" name="board_num" value="<%= bb.getNum()%>">
 								<input type="button" value="작성" class="sub_cmt" id="sub_cmt<%=bb.getNum()%>" style="width: 40px; height: 30px;">
