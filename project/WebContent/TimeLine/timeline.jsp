@@ -510,7 +510,7 @@
                      </td>
                   </tr>
                   
-                  	<input type="button" value="항목추가 입력" id="AddList">
+                  	 
                   
                   
                   <tr>
