@@ -488,7 +488,7 @@
                        url:"./LikePushCnt.tl",
                        data: { 
 	                    	"b_num" : num
-                       },
+                       }, 
                        type: 'POST',
                        success: function(data){
                           alert("좋아요");
