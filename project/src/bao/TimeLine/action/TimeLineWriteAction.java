@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 /*import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;*/
-
+import java.util.ArrayList;
 import java.util.Enumeration;
 
 import javax.servlet.ServletContext;
@@ -79,53 +79,14 @@ public class TimeLineWriteAction implements Action{
       bb.setImg_file(mr.getFilesystemName("img_file"));
       bb.setMember_user(email);
       bb.setProject_num(Integer.parseInt(mr.getParameter("num")));
-      
+        
       BoardDAO bdao=new BoardDAO();
       bdao.insertWrite(bb);
-      
-      /*List<String> ConList=new ArrayList<String>();
-      ConList.add(multi.getParameter("content"));
-      ConList.add(multi.getParameter("write_file"));
-      ConList.add(multi.getParameter("Img_write_file"));*/
-      
-/*      
-      HashMap<String, Object> ConList=new HashMap<String, Object>();
-      ConList.put("Con", multi.getParameter("content"));
-      ConList.put("WF", multi.getParameter("write_file"));
-      ConList.put("IF", multi.getParameter("Img_write_file"));
-      
-      request.setAttribute("Conn", multi.getParameter("content"));
-      
 
-       response.setContentType("text/html; charset=UTF-8");
-       PrintWriter out = response.getWriter();
-       out.println("<script>");
-       out.println("alert('sadsad');");
-       out.println("</script>");
-       out.close();
-       HttpSession session = request.getSession();
-      session.setAttribute("id", id);
-*/
-      
-      //ArrayList<BoardBean> list=bdao.Writeinfo();
-      //HttpSession session=request.getSession();
-      //session.setAttribute("AA", multi.getParameter("content"));
-      //request.setAttribute("AA",multi.getParameter("content"));
-      //request.setAttribute("list", list);
-      //JSONParser JP=new JSONParser();
-      
-      /*JSONObject obj=null;
-      //JSONArray arr=new JSONArray();
-      String Write=null;
-      obj=new JSONObject();
-      obj.put("Con",bb.getContent());
-      obj.put("WF",bb.getWrite_file());*/
       
       JSONObject obj=null;
       //JSONArray arr=new JSONArray();
       String Write=null;
-      System.out.println("넘버는"+bb.getProject_num());
-      System.out.println("타입은"+bb.getTable_type());
       
       MemberDAO mdao = new MemberDAO();
       
@@ -134,7 +95,6 @@ public class TimeLineWriteAction implements Action{
       obj.put("Date",bb.getDate());
       obj.put("Content",bb.getContent());
       obj.put("ProjectNum",bb.getProject_num());
-      obj.put("Type", bb.getTable_type());
       //obj.put("IF", multi.getParameter("Img_write_file"));
       Write=obj.toString();
       
