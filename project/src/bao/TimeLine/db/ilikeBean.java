@@ -5,12 +5,14 @@ public class ilikeBean {
 	String like_email;
 	int b_num;
 	int push_cnt;
+	/*int total;*/
 	
 	/*create table ilike(
 	num int primary key auto_increment,
 	like_email varchar(30),
 	b_num int,
-	push_cnt int);*/
+	push_cnt int,
+	total int);*/
 	
 	public int getNum() {
 		return num;
@@ -36,6 +38,12 @@ public class ilikeBean {
 	public void setPush_cnt(int push_cnt) {
 		this.push_cnt = push_cnt;
 	}
+	/*public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}*/
 	
 	
 }
