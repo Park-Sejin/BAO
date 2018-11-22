@@ -135,7 +135,7 @@
 
              
              /* 항목추가 입력 */
-             $("#AddList").click(function(){
+             /*              $("#AddList").click(function(){
                 $("#AddList").remove();
                 var addTag="";
                 addTag+="<div class=line1 'style=border: 3px solid black;'><input type=text id=Startpicker placeholder=시작일 추가 onchange='Change1()'></div><br>";
@@ -165,8 +165,8 @@
          
          
          
-         
-      </script>
+          */
+      </script> 
       
       <!-- Text 감지 -->
       <script type="text/javascript">
@@ -459,7 +459,7 @@
 	                          	Write+="<div id='comment_info'>";
 	                          	Write+="<b>"+json.Name+"</b>";
 	                          	Write+="<span style='color: #c0c0c0;font-size: 12px;'>"+json.Date+"</span>";
-	                          	Write+="좋아요/수정/삭제 해야함 css";
+	                          	Write+="좋아요/수정/삭제 해야함";
 	                          	Write+="</div>";
 	                          	Write+="<div class='clear'></div>";
 	                          	Write+="<div id='cmt_content'>";
@@ -940,18 +940,19 @@
     		TotalBean tb=new TotalBean();
 			TotalDAO td=new TotalDAO();
 			ArrayList<TotalBean> TotalList=td.Totalinfo(); // 안함. 나중에 토탈빈으로 바꿔야함.
-    		
     		%>
     			<div id="total_board">
     		<%
-    		
+    		for(int Total=0; Total<TotalList.size(); Total++){
+				tb=TotalList.get(Total);
+			
     		arr = bdao.Writeinfo();
     		
     		if(arr.size() != 0) {
     			for(BoardBean bb: arr) {
     			
     				MemberDAO mdao = new MemberDAO();
-    				
+    				System.out.println("ddddddddd"+tb.getProject_num());
     	%>
 
 		    <div id="time_board">
@@ -1011,7 +1012,7 @@
 							</div>
 						<%} }%><div id="new_cmtList<%=bb.getNum()%>"></div><!-- 작성한 페이지 ajax 넘어오는 div -->
 						
-						<form action="" id="comment_form"></form>
+						<form action="" id="comment_form">
 							<div id="form_in_div">
 								<%
 									MemberDAO cmt_mdao2 = new MemberDAO();
@@ -1048,7 +1049,8 @@
 		       </div>
 		       
          	<%} 
-         	}%>
+         	}
+    	}%>
     		</div>
     
     

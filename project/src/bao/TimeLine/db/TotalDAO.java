@@ -57,12 +57,14 @@ public class TotalDAO {
 				//글
 				//if(rs.getString("Table_type").equals("Write")){
 					//System.out.print("dd");
+					//tb.setProject_num(rs.getInt("num"));
 					tb.setContent(rs.getString("content"));
 					tb.setWrite_file(rs.getString("write_file"));
 					tb.setImg_file(rs.getString("img_file"));
-					tb.setTdate(rs.getDate("date"));
+					tb.setDate(rs.getDate("date"));
 					tb.setMember_user(rs.getString("Member_user"));
-					tb.setTable(rs.getString("Table_type"));
+					tb.setTable_type(rs.getString("Table_type"));
+					
 				//}
 				//업무
 				//if(rs.getString("Table_type").equals("Duty")){

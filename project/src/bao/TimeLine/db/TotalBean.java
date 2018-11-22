@@ -6,12 +6,14 @@ public class TotalBean {
 	
 	
 	// 글
+	private int num;
 	private String content;
 	private String write_file;
 	private String img_file;
-	private Date Tdate;
+	private Date date;
 	private String Member_user;
-	private String Table;
+	private int project_num;
+	private String table_type;
 	
 	// 업무
 	private String duty_title;
@@ -23,20 +25,12 @@ public class TotalBean {
 	private String duty_lastday;
 	private Date Ddate;
 	private String DTable;
-
 	
-	
-	public String getTable() {
-		return Table;
+	public int getNum() {
+		return num;
 	}
-	public void setTable(String table) {
-		Table = table;
-	}
-	public String getDTable() {
-		return DTable;
-	}
-	public void setDTable(String dTable) {
-		DTable = dTable;
+	public void setNum(int num) {
+		this.num = num;
 	}
 	public String getContent() {
 		return content;
@@ -56,17 +50,29 @@ public class TotalBean {
 	public void setImg_file(String img_file) {
 		this.img_file = img_file;
 	}
-	public Date getTdate() {
-		return Tdate;
+	public Date getDate() {
+		return date;
 	}
-	public void setTdate(Date tdate) {
-		Tdate = tdate;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	public String getMember_user() {
 		return Member_user;
 	}
 	public void setMember_user(String member_user) {
 		Member_user = member_user;
+	}
+	public int getProject_num() {
+		return project_num;
+	}
+	public void setProject_num(int project_num) {
+		this.project_num = project_num;
+	}
+	public String getTable_type() {
+		return table_type;
+	}
+	public void setTable_type(String table_type) {
+		this.table_type = table_type;
 	}
 	public String getDuty_title() {
 		return duty_title;
@@ -116,6 +122,16 @@ public class TotalBean {
 	public void setDdate(Date ddate) {
 		Ddate = ddate;
 	}
+	public String getDTable() {
+		return DTable;
+	}
+	public void setDTable(String dTable) {
+		DTable = dTable;
+	}
+
+	
+	
+	
 	
 	
 	
